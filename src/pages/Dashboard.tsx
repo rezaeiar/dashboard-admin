@@ -1,10 +1,13 @@
-import React from 'react'
-import Header from '../components/Header'
+import TopBar from '../components/TopBar'
+import Navigation from '../components/Navigation'
 
 const Dashboard = () => {
     return (
         <div>
-            <Header />
+            <TopBar />
+            <div className="">
+                <Navigation />
+            </div>
         </div>
     )
 }
