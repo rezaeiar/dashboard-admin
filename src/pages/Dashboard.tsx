@@ -1,11 +1,192 @@
-import SideBar from '../components/SideBar'
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const Dashboard = () => {
+    const data = [
+        {
+            name: 'D1',
+            uv: 4000,
+            pv: 2400,
+            amt: 2400,
+        },
+        {
+            name: 'D2',
+            uv: 3000,
+            pv: 1398,
+            amt: 2210,
+        },
+        {
+            name: 'D3',
+            uv: 2000,
+            pv: 9800,
+            amt: 2290,
+        },
+        {
+            name: 'D4',
+            uv: 2780,
+            pv: 3908,
+            amt: 2000,
+        },
+        {
+            name: 'D5',
+            uv: 1890,
+            pv: 4800,
+            amt: 2181,
+        },
+        {
+            name: 'D6',
+            uv: 2390,
+            pv: 3800,
+            amt: 2500,
+        },
+        {
+            name: 'D7',
+            uv: 3490,
+            pv: 4300,
+            amt: 2100,
+        }
+    ];
+
     return (
-        <div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit doloremque sed nisi facere nihil debitis quasi cumque voluptatem ab sit molestias dicta nostrum, fugiat enim nobis placeat illo hic neque vel iste? Suscipit ex iusto vero in dicta quasi impedit. Impedit tempore enim voluptas tenetur quidem harum obcaecati laborum, possimus rem! Odit praesentium facere aperiam quidem! Nisi eveniet architecto non, ad omnis tenetur nihil magni recusandae! Eum, tempore, provident veritatis numquam dolorem neque adipisci velit aspernatur error deleniti repellendus facilis quaerat nostrum voluptate odio veniam asperiores ipsum est! Saepe facere quidem necessitatibus ut harum sapiente eius illum ducimus architecto, laudantium, dolorem voluptate tempora vero. Quisquam quas eius tempora accusantium quia sed vero animi quam illum repudiandae porro minima doloribus consectetur, ducimus vel temporibus perferendis, vitae sunt deserunt in illo ut blanditiis ex! Suscipit quaerat dignissimos, quam obcaecati provident expedita impedit fugit accusantium vitae, a earum dolorem. Incidunt, distinctio? Aliquam quas sint tempore vero ad explicabo atque distinctio, nemo in, commodi, perspiciatis asperiores similique? Maxime amet, quaerat qui ipsa modi omnis eaque? Aspernatur vero illum, labore libero architecto in veritatis, tenetur earum, quaerat eius ipsum necessitatibus consectetur delectus voluptates praesentium pariatur recusandae ratione magni? Illum nisi vitae corrupti perspiciatis quod dolorum blanditiis in, magnam fuga natus, libero cum, eos amet officiis nulla sequi soluta consequuntur itaque cupiditate quas error. Exercitationem commodi deserunt voluptatum, quas necessitatibus nesciunt. Atque ut quidem iure sed, cum dicta hic libero. Quia fugiat aut illum aliquid placeat, porro dolorum, sunt tempora iusto ullam fuga laborum enim veritatis aspernatur consequuntur eos unde non cupiditate temporibus corporis saepe ratione veniam id. Error cum quas assumenda distinctio aut labore nesciunt, nulla facere, unde porro tempora quis quos deserunt quam perferendis eos voluptates! Saepe quibusdam molestiae iure quia quos consequuntur, aspernatur nemo sequi deserunt vitae laudantium excepturi officiis harum possimus iste sed, autem eius quod animi? Perspiciatis consequatur delectus similique velit ab porro dignissimos adipisci soluta mollitia aliquam atque nisi facere quasi libero quisquam aperiam debitis possimus obcaecati ullam unde, quas quibusdam maxime? Reiciendis iure, dolore dolores itaque sit blanditiis doloribus quae aliquam corporis quas molestiae fugiat dignissimos vel deserunt sunt quam eius omnis. Laborum dolore nulla fuga odit voluptas nemo tempore? Nihil saepe quas porro, voluptatibus quos consequatur aspernatur ad laboriosam tempore laborum veritatis sint natus quibusdam ab perferendis reprehenderit qui praesentium est dolorem mollitia in? Veniam cupiditate quisquam, iure magnam dolorem quibusdam repudiandae quia dolorum deserunt similique ut blanditiis.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, corporis, qui in modi beatae minus unde voluptates veritatis iure minima quod quasi consequuntur accusamus quae aut autem! Repudiandae, autem. Consequatur!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste recusandae magnam perspiciatis repellat quidem ex consequuntur quo voluptas, quas quibusdam, eaque dolore quos. Cumque explicabo voluptatum repellat in a aspernatur possimus. Voluptas magni id culpa nihil. Porro quibusdam, sequi ut illo illum odio. Odit laboriosam omnis laudantium nihil itaque minus sunt repudiandae expedita quod! Atque est accusamus labore optio fuga? Debitis voluptatum reprehenderit eaque itaque corrupti autem consectetur, similique, nisi cum nulla tenetur, porro quam architecto quisquam aperiam rem odio veritatis. Doloribus, velit amet ab error reiciendis aspernatur repellendus consequatur architecto fugiat illo iste blanditiis dicta dolorem quam, expedita itaque, modi distinctio vero ipsam cumque. Similique debitis corporis dolore atque nulla dolor sed voluptatem voluptatum ipsa, vero commodi autem laudantium esse aliquam laborum, omnis quasi minus ullam ducimus, aperiam iure perspiciatis. Nobis, inventore? Placeat magnam harum cum sed sint libero exercitationem temporibus quae fuga laborum optio nobis eligendi vel tempore cumque facilis ullam eum, quas illum non? Deleniti error et est? Ullam deleniti veniam dolorum, cumque corrupti sequi dignissimos eum corporis nihil odio illo similique aliquid adipisci omnis sit nulla harum laboriosam veritatis esse expedita reprehenderit laborum deserunt nostrum exercitationem? Nihil reprehenderit nesciunt commodi dolore, illum ex cupiditate sit voluptas!
+        <div className="py-8 px-10 w-full bg-general-30 flex flex-col gap-y-8">
+            <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-nunitosans-bold text-general-100">
+                    Dashboard
+                </h2>
+            </div>
+            <div className="grid grid-cols-4 justify-between gap-x-4">
+                <div className="rounded-md shadow-md border-general-50 bg-white p-4 flex flex-col gap-y-6">
+                    <div className="flex justify-between items-center">
+                        <div className="flex flex-col gap-y-1">
+                            <h4 className="text-general-80">
+                                Total User
+                            </h4>
+                            <span className="text-general-100 text-xl font-nunitosans-extrabold">
+                                40,689
+                            </span>
+                        </div>
+                        <img src="./icons/users.svg" alt="" />
+                    </div>
+                    <div className="flex gap-x-1 text-xs items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-101">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+                        </svg>
+                        <div className="flex gap-x-1">
+                            <span className="text-green-101">
+                                8.5%
+                            </span>
+                            Up from yesterday
+                        </div>
+                    </div>
+                </div>
+                <div className="rounded-md shadow-md border-general-50 bg-white p-4 flex flex-col gap-y-6">
+                    <div className="flex justify-between items-center">
+                        <div className="flex flex-col gap-y-1">
+                            <h4 className="text-general-80">
+                                Total Order
+                            </h4>
+                            <span className="text-general-100 text-xl font-nunitosans-extrabold">
+                                10293
+                            </span>
+                        </div>
+                        <img src="./icons/orders.svg" alt="" />
+                    </div>
+                    <div className="flex gap-x-1 text-xs items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-101">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+                        </svg>
+                        <div className="flex gap-x-1">
+                            <span className="text-green-101">
+                                1.3%
+                            </span>
+                            Up from past week
+                        </div>
+                    </div>
+                </div>
+                <div className="rounded-md shadow-md border-general-50 bg-white p-4 flex flex-col gap-y-6">
+                    <div className="flex justify-between items-center">
+                        <div className="flex flex-col gap-y-1">
+                            <h4 className="text-general-80">
+                                Total Sales
+                            </h4>
+                            <span className="text-general-100 text-xl font-nunitosans-extrabold">
+                                $89,000
+                            </span>
+                        </div>
+                        <img src="./icons/sales.svg" alt="" />
+                    </div>
+                    <div className="flex gap-x-1 text-xs items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-red-101">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6 9 12.75l4.286-4.286a11.948 11.948 0 0 1 4.306 6.43l.776 2.898m0 0 3.182-5.511m-3.182 5.51-5.511-3.181" />
+                        </svg>
+                        <div className="flex gap-x-1">
+                            <span className="text-red-101">
+                                4.3%
+                            </span>
+                            Down from yesterday
+                        </div>
+                    </div>
+                </div>
+                <div className="rounded-md shadow-md border-general-50 bg-white p-4 flex flex-col gap-y-6">
+                    <div className="flex justify-between items-center">
+                        <div className="flex flex-col gap-y-1">
+                            <h4 className="text-general-80">
+                                Total Pending
+                            </h4>
+                            <span className="text-general-100 text-xl font-nunitosans-extrabold">
+                                2040
+                            </span>
+                        </div>
+                        <img src="./icons/pendings.svg" alt="" />
+                    </div>
+                    <div className="flex gap-x-1 text-xs items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-101">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+                        </svg>
+                        <div className="flex gap-x-1">
+                            <span className="text-green-101">
+                                1.8%
+                            </span>
+                            Up from yesterday
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="shadow-md rounded-md h-96 bg-white p-8 flex flex-col gap-y-10">
+                <div className="flex justify-between items-center">
+                    <h3 className="text-general-100 font-nunitosans-bold">
+                        Sales Details
+                    </h3>
+                    <button className="bg-general-30 flex border border-general-40 text-xs text-general-60 px-5 py-2 rounded gap-x-2 items-center hover:bg-general-40 transition-colors hover:border-general-50">
+                        October
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 text-sm text-general-60">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                </div>
+                <div className="h-96 w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                        <BarChart
+                            width={500}
+                            height={300}
+                            data={data}
+                            margin={{
+                                top: 20,
+                                right: 30,
+                                left: 20,
+                                bottom: 5,
+                            }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Bar dataKey="pv" stackId="a" fill="#8884d8" />
+                            <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+            </div>
         </div>
     )
 }
