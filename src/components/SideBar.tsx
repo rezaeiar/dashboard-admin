@@ -1,6 +1,6 @@
 const SideBar = () => {
     return (
-        <div className='bg-general-30 w-64 min-h-screen border-r border-general-50 py-4 flex flex-col gap-y-4'>
+        <div className='bg-general-30 w-64 shrink-0 min-h-screen border-r border-general-50 py-4 flex flex-col gap-y-4'>
             <div className="flex flex-col gap-y-3 border-b pb-3">
 
                 <ul className='flex flex-col gap-y-1'>

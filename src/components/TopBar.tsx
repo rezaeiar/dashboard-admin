@@ -1,7 +1,7 @@
 import Tooltip from "./Tooltip"
 const TopBar = () => {
     return (
-        <div className='w-full h-16 bg-white shadow flex justify-between items-center px-4 relative'>
+        <div className='sticky top-0 w-full h-16 bg-white shadow flex justify-between items-center px-4 z-50'>
             <div className="flex gap-x-8">
                 <h1 className='text-xl flex items-center font-nunitosans-extrabold cursor-default'>
                     <span className='text-primary-100'>Dash</span>
