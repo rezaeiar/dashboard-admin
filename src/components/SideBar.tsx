@@ -1,4 +1,4 @@
-const Navigation = () => {
+const SideBar = () => {
     return (
         <div className='bg-general-30 w-64 min-h-screen border-r border-general-50 py-4'>
             <div className="">
@@ -82,4 +82,4 @@ const Navigation = () => {
     )
 }
 
-export default Navigation
+export default SideBar

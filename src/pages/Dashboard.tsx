@@ -1,12 +1,12 @@
 import TopBar from '../components/TopBar'
-import Navigation from '../components/Navigation'
+import SideBar from '../components/SideBar'
 
 const Dashboard = () => {
     return (
         <div>
             <TopBar />
             <div className="">
-                <Navigation />
+                <SideBar />
             </div>
         </div>
     )
