@@ -7,21 +7,41 @@
         font-family: 'NunitoSans-Regular';
         src: url(assets/fonts/NunitoSans_7pt-Regular.ttf);
     }
+
     @font-face {
         font-family: 'NunitoSans-SemiBold';
         src: url(assets/fonts/NunitoSans_7pt-SemiBold.ttf);
     }
+
     @font-face {
         font-family: 'NunitoSans-Bold';
         src: url(assets/fonts/NunitoSans_7pt-Bold.ttf);
     }
+
     @font-face {
         font-family: 'NunitoSans-ExtraBold';
         src: url(assets/fonts/NunitoSans_7pt-ExtraBold.ttf);
     }
 }
+
 @layer base {
     html {
         font-family: 'NunitoSans-SemiBold';
     }
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
 }

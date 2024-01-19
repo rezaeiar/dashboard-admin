@@ -8,7 +8,7 @@ const App = () => {
     return (
         <div className="app">
             <TopBar />
-            <div className="flex">
+            <div className="flex relative">
                 <SideBar />
                 {router}
             </div>
