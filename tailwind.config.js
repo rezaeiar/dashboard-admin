@@ -69,15 +69,20 @@ export default {
                 },
             },
             fontFamily: {
-                'nunitosans-regular' : 'NunitoSans-Regular',
-                'nunitosans-semiBold' : 'NunitoSans-SemiBold',
-                'nunitosans-bold' : 'NunitoSans-Bold',
-                'nunitosans-extrabold' : 'NunitoSans-ExtraBold',
+                'nunitosans-regular': 'NunitoSans-Regular',
+                'nunitosans-semiBold': 'NunitoSans-SemiBold',
+                'nunitosans-bold': 'NunitoSans-Bold',
+                'nunitosans-extrabold': 'NunitoSans-ExtraBold',
             },
             boxShadow: {
-                'normal' : '0 0 5px 2px rgb(0 0 0 / 0.1)'
+                'normal': '0 0 5px 2px rgb(0 0 0 / 0.1)'
             }
         },
     },
-    plugins: [],
+    plugins: [
+        function ({ addVariant }) {
+            addVariant('child', '& > *');
+            addVariant('child-hover', '& > *:hover');
+        }
+    ],
 }
