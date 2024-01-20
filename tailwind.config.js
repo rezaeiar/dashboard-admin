@@ -75,7 +75,8 @@ export default {
                 'nunitosans-extrabold': 'NunitoSans-ExtraBold',
             },
             boxShadow: {
-                'normal': '0 0 5px 2px rgb(0 0 0 / 0.1)'
+                'normal': '0 0 5px 2px rgb(0 0 0 / 0.1)',
+                'card': '0 1 4px 0px rgb(21 34 50 / 0.08)'
             }
         },
     },

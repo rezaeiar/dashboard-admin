@@ -12,7 +12,7 @@ type RoutesType = {
 const routes: RoutesType[] = [
     { path: '/', element: <Dashboard /> },
     { path: '/orders', element: <Orders /> },
-    { path: '/categories', element: <Categories /> },
+    { path: '/categories', element: <Categories />},
     { path: '/login', element: <Login /> },
     { path: '/*', element: <NotFound /> },
 ]
