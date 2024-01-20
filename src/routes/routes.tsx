@@ -1,4 +1,5 @@
 import Dashboard from "../pages/Dashboard"
+import Login from "../pages/Login"
 
 type RoutesType = {
     path: string,
@@ -6,7 +7,8 @@ type RoutesType = {
 }
 
 const routes: RoutesType[] = [
-    { path: '/', element: <Dashboard /> }
+    { path: '/', element: <Dashboard /> },
+    { path: '/login', element: <Login /> },
 ]
 
 export default routes
