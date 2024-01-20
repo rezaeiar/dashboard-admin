@@ -6,24 +6,23 @@ import SideBar from "./components/SideBar"
 const App = () => {
     const router = useRoutes(routes)
 
-    if (router?.props.match.pathname === '/login') {
+    if (router?.props.match.pathname === '/login'
+        || router?.props.match.route.path === '/*') {
         return (
             <>
                 {router}
             </>
         )
     }
-    else {
-        return (
-            <div className="app">
-                <TopBar />
-                <div className="flex relative">
-                    <SideBar />
-                    {router}
-                </div>
+    return (
+        <div className="app">
+            <TopBar />
+            <div className="flex relative">
+                <SideBar />
+                {router}
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default App
