@@ -27,9 +27,9 @@ const SideBar = () => {
                                 </svg>
                                 Orders
                             </div>
-                            <span className='bg-general-100 text-white text-xs rounded-full h-min px-1.5 py-0.5 text-center'>
+                            {/* <span className='bg-general-100 text-white text-xs rounded-full h-min px-1.5 py-0.5 text-center'>
                                 16
-                            </span>
+                            </span> */}
                         </NavLink>
                     </li>
                     <li className='relative'>

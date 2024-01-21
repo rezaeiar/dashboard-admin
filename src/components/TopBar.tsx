@@ -26,7 +26,7 @@ const TopBar = () => {
                 </div>
                 <div className="flex gap-x-3 items-center cursor-pointer">
                     <div className="rounded-md overflow-hidden">
-                        <img src="./UK Flag.svg" alt="" />
+                        <img src="/UK Flag.svg" alt="" />
                     </div>
                     <div className="flex flex-col gap-y-1">
                         <span className='text-general-70 text-sm'>
@@ -39,7 +39,7 @@ const TopBar = () => {
                 </div>
                 <div className="flex gap-x-3 items-center cursor-pointer">
                     <div className="rounded-full bg-general-40 h-10 w-10 flex overflow-hidden">
-                        <img src="./images/a-l-l-e-f-v-i-n-i-c-i-u-s-343875-unsplash.png" alt="" />
+                        <img src="/images/a-l-l-e-f-v-i-n-i-c-i-u-s-343875-unsplash.png" alt="" />
                     </div>
                     <div className="flex flex-col gap-y-0.5">
                         <h4 className='text-general-100 text-sm font-nunitosans-bold'>
