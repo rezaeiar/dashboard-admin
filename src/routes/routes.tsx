@@ -3,6 +3,7 @@ import Orders from "../pages/Orders"
 import Categories from "../pages/Categories"
 import SingleCategory from "../pages/SingleCategory"
 import Products from "../pages/Products"
+import AddProduct from "../pages/AddProduct"
 import Login from "../pages/Login"
 import NotFound from "../pages/404"
 
@@ -17,6 +18,7 @@ const routes: RoutesType[] = [
     { path: '/categories', element: <Categories /> },
     { path: '/categories/:CategorieName', element: <SingleCategory /> },
     { path: '/products', element: <Products /> },
+    { path: '/products/add', element: <AddProduct /> },
     { path: '/login', element: <Login /> },
     { path: '/*', element: <NotFound /> },
 ]
