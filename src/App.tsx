@@ -18,8 +18,8 @@ const App = () => {
         <div className="app">
             <TopBar />
             <div className="flex relative">
-                <SideBar />
-                {router}
+                {/* <SideBar />
+                {router} */}
             </div>
         </div>
     )
