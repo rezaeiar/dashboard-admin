@@ -76,7 +76,8 @@ export default {
             },
             boxShadow: {
                 'normal': '0 0 5px 2px rgb(0 0 0 / 0.1)',
-                'card': '0 1 4px 0px rgb(21 34 50 / 0.08)'
+                'card': '0 1 4px 0px rgb(21 34 50 / 0.08)',
+                'box': '0px 9px 40px 0px rgba(0, 0, 0, 0.1)'
             }
         },
     },

@@ -1,7 +1,9 @@
+import AdminCard from "./AdminCard"
 import Tooltip from "./Tooltip"
+
 const TopBar = () => {
     return (
-        <div className='sticky top-0 w-full h-16 bg-white shadow flex justify-between items-center px-4 z-50'>
+        <div className='sticky top-0 w-full h-16 bg-white shadow flex justify-between items-center px-4 z-40'>
             <div className="flex gap-x-6 lg:gap-x-8 grow">
                 <h1 className='text-lg lg:text-xl flex items-center font-nunitosans-extrabold cursor-default'>
                     <span className='text-primary-100'>Dash</span>
@@ -15,7 +17,7 @@ const TopBar = () => {
                 </div>
             </div>
             <div className="flex gap-x-6 md:gap-x-8 items-center *:cursor-pointer *:shrink-0">
-                <div className="hidden md:block relative">
+                <div className="relative hidden md:block">
                     <div className="h-4 w-4 bg-primary-100 absolute rounded-full text-white text-[10px] flex items-center justify-center -right-1.5 -top-1.5">
                         4
                     </div>
@@ -24,7 +26,7 @@ const TopBar = () => {
                     </svg>
                     <Tooltip />
                 </div>
-                <div className="hidden sm:flex gap-x-2 lg:gap-x-3 items-center">
+                <div className="relative hidden sm:flex gap-x-2 lg:gap-x-3 items-center">
                     <div className="hidden md:block rounded-md overflow-hidden">
                         <img src="./topbar/UK Flag.svg" className="h-6 lg:h-7" alt="language" />
                     </div>
@@ -35,7 +37,7 @@ const TopBar = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
                 </div>
-                <div className="hidden sm:flex gap-x-2 lg:gap-x-3 items-center">
+                <div className="relative hidden sm:flex gap-x-2 lg:gap-x-3 items-center">
                     <div className="hidden md:flex rounded-full bg-general-40 h-8 w-8 lg:h-9 lg:w-9 overflow-hidden">
                         <img src="/images/a-l-l-e-f-v-i-n-i-c-i-u-s-343875-unsplash.png" alt="admin" />
                     </div>
@@ -50,6 +52,7 @@ const TopBar = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 text-general-70">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
+                    <AdminCard />
                 </div>
                 <div className="block md:hidden text-general-70">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">

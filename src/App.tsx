@@ -2,6 +2,7 @@ import { useRoutes } from "react-router-dom"
 import routes from "./routes/routes"
 import TopBar from "./components/TopBar"
 import SideBar from "./components/SideBar"
+import Overlay from "./components/Overlay"
 
 const App = () => {
     const router = useRoutes(routes)
@@ -15,12 +16,13 @@ const App = () => {
         )
     }
     return (
-        <div className="app">
+        <div className="app relative">
             <TopBar />
             <div className="flex relative">
                 {/* <SideBar />
                 {router} */}
             </div>
+            {/* <Overlay /> */}
         </div>
     )
 }
