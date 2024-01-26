@@ -3,8 +3,14 @@ import routes from "./routes/routes"
 import TopBar from "./components/TopBar"
 import SideBar from "./components/SideBar"
 import Overlay from "./components/Overlay"
+import i18n from '../i18n'
+import { useEffect, useState } from "react"
 
 const App = () => {
+    useEffect(() => {
+        document.body.dir = i18n.language === 'fa' ? 'rtl' : 'ltr'
+    }, [i18n.language])
+    
     const router = useRoutes(routes)
 
     if (router?.props.match.pathname === '/login'
@@ -16,7 +22,7 @@ const App = () => {
         )
     }
     return (
-        <div className="app relative">
+        <div className={`app relative`}>
             <TopBar />
             <div className="flex relative">
                 {/* <SideBar /> */}

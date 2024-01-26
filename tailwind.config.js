@@ -73,6 +73,10 @@ export default {
                 'nunitosans-semiBold': 'NunitoSans-SemiBold',
                 'nunitosans-bold': 'NunitoSans-Bold',
                 'nunitosans-extrabold': 'NunitoSans-ExtraBold',
+                'iransans-regular': 'IRANSans-Regular',
+                'iransans-semiBold': 'IRANSans-SemiBold',
+                'iransans-bold': 'IRANSans-Bold',
+                'iransans-extrabold': 'IRANSans-ExtraBold',
             },
             boxShadow: {
                 'normal': '0 0 5px 2px rgb(0 0 0 / 0.1)',
@@ -80,6 +84,7 @@ export default {
                 'box': '0px 9px 40px 0px rgba(0, 0, 0, 0.1)'
             }
         },
+        
     },
     plugins: [
         function ({ addVariant }) {

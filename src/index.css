@@ -22,11 +22,24 @@
         font-family: 'NunitoSans-ExtraBold';
         src: url(assets/fonts/NunitoSans_7pt-ExtraBold.ttf);
     }
-}
+    @font-face {
+        font-family: 'IRANSans-Regular';
+        src: url(assets/fonts/IRANSans/IRANSans.ttf);
+    }
 
-@layer base {
-    html {
-        font-family: 'NunitoSans-SemiBold';
+    @font-face {
+        font-family: 'IRANSans-SemiBold';
+        src: url(assets/fonts/IRANSans/IRANSans_Medium.ttf);
+    }
+
+    @font-face {
+        font-family: 'IRANSans-Bold';
+        src: url(assets/fonts/IRANSans/IRANSans_Bold.ttf);
+    }
+
+    @font-face {
+        font-family: 'IRANSans-ExtraBold';
+        src: url(assets/fonts/IRANSans/IRANSans_Black.ttf);
     }
 }
 
@@ -34,14 +47,24 @@
     width: 6px;
     height: 6px;
 }
+
 ::-webkit-scrollbar-track {
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.1);
 }
+
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.2);
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.4);
+}
+
+.ltr {
+    direction: ltr;
+}
+.rtl {
+    direction: rtl;
 }
