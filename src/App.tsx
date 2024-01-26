@@ -19,8 +19,8 @@ const App = () => {
         <div className="app relative">
             <TopBar />
             <div className="flex relative">
-                {/* <SideBar />
-                {router} */}
+                {/* <SideBar /> */}
+                {/* {router} */}
             </div>
             {/* <Overlay /> */}
         </div>
