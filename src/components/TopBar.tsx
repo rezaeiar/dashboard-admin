@@ -1,11 +1,31 @@
+import { useState } from "react"
 import AdminCard from "./AdminCard"
 import LanguageSelection from "./LanguageSelection"
 import NotificationCard from "./NotificationCard"
-import Tooltip from "./Tooltip"
 
 const TopBar = () => {
+
+    const [isShowAdminCard, setIsShowAdminCard] = useState(false)
+    const [isShowLanguageSelection, setIsShowLanguageSelection] = useState(false)
+    const [isShowNotificationCard, setIsShowNotificationCard] = useState(false)
+
+    const ShowAdminCardHandler = (show: boolean) => {
+        setIsShowAdminCard(show)
+        setIsShowLanguageSelection(false)
+        setIsShowNotificationCard(false)
+    }
+    const ShowLanguageSelectionHandler = (show: boolean) => {
+        setIsShowLanguageSelection(show)
+        setIsShowAdminCard(false)
+        setIsShowNotificationCard(false)
+    }
+    const ShowNotificationCardHandler = (show: boolean) => {
+        setIsShowNotificationCard(show)
+        setIsShowAdminCard(false)
+        setIsShowLanguageSelection(false)
+    }
     return (
-        <div className='sticky top-0 w-full h-14 md:h-16 bg-white shadow flex justify-between items-center px-4 z-40'>
+        <div className='sticky top-0 w-full h-14 md:h-16 bg-white shadow flex justify-between items-center px-4 z-40 select-none'>
             <div className="block md:hidden text-general-70">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -24,17 +44,16 @@ const TopBar = () => {
                 </div>
             </div>
             <div className="flex gap-x-6 md:gap-x-8 items-center *:cursor-pointer *:shrink-0 h-full">
-                <div className="relative h-10 hidden md:flex items-center">
+                <div className="relative h-10 hidden md:flex items-center" onClick={() => ShowNotificationCardHandler(!isShowNotificationCard)}>
                     <div className="h-4 w-4 bg-primary-100 absolute rounded-full text-white text-[10px] flex items-center justify-center -right-1.5 top-1">
                         4
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-general-70">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
                     </svg>
-                    <NotificationCard />
-                    {/* <Tooltip /> */}
+                    <NotificationCard show={isShowNotificationCard}/>
                 </div>
-                <div className="relative h-10 hidden md:flex gap-x-2 lg:gap-x-3 items-center">
+                <div className="relative h-10 hidden md:flex gap-x-2 lg:gap-x-3 items-center" onClick={() => ShowLanguageSelectionHandler(!isShowLanguageSelection)}>
                     <div className="block rounded-md overflow-hidden">
                         <img src="./topbar/UK Flag.svg" className="h-6 lg:h-7" alt="language" />
                     </div>
@@ -44,9 +63,9 @@ const TopBar = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 text-general-70">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
-                    <LanguageSelection />
+                    <LanguageSelection show={isShowLanguageSelection}/>
                 </div>
-                <div className="relative h-10 hidden md:flex gap-x-2 lg:gap-x-3 items-center">
+                <div className="relative h-10 hidden md:flex gap-x-2 lg:gap-x-3 items-center" onClick={() => ShowAdminCardHandler(!isShowAdminCard)}>
                     <div className="hidden md:flex rounded-full bg-general-40 h-8 w-8 lg:h-9 lg:w-9 overflow-hidden">
                         <img src="/images/a-l-l-e-f-v-i-n-i-c-i-u-s-343875-unsplash.png" alt="admin" />
                     </div>
@@ -61,7 +80,7 @@ const TopBar = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 text-general-70">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
-                    <AdminCard />
+                    <AdminCard show={isShowAdminCard}/>
                 </div>
                 <div className="block md:hidden text-general-70">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">

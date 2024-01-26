@@ -1,6 +1,10 @@
-const AdminCard = () => {
+type AdminCardProps = {
+    show: boolean,
+}
+const AdminCard = (props: AdminCardProps) => {
+
     return (
-        <div className="hidden opacity-0 transition-all flex-col min-w-48 bg-white shadow-box rounded-xl absolute top-12 right-0 divide-y child-hover:bg-general-30 border border-general-30 overflow-hidden">
+        <div className={`${props.show ? 'visible opacity-100' : 'invisible opacity-0'} flex transition-all flex-col min-w-48 bg-white shadow-box rounded-xl absolute top-12 right-0 divide-y child-hover:bg-general-30 border border-general-30 overflow-hidden`}>
             <div className="flex items-center gap-x-2 py-3 px-5 *:shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-primary-90">
                     <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z" />
