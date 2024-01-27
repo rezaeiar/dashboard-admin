@@ -8,5 +8,18 @@ const fa = {
     "change password": "تغییر رمز عبور",
     "activity log": "گزارش فعالیت",
     "log out": "خروج",
+    "dashboard": "داشبورد",
+    "orders": "سفارشات",
+    "products": "سفارشات",
+    "categories": "دسته بندی ها",
+    "customers": "مشتریان",
+    "coupons": "کدهای تخفیف",
+    "inbox": "صندوق ورودی",
+    "other information": "اطلاعات دیگر",
+    "knowledge base": "دانش محور",
+    "product updates": "به روز رسانی محصول",
+    "setting": "تنظیمات",
+    "personal settings": "تنظیمات شخصی",
+    "global settings": "تنظیمات جهانی",
 }
 export default fa

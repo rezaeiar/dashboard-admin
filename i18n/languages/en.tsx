@@ -8,5 +8,18 @@ const en = {
     "change password": "change password",
     "activity log": "activity log",
     "log out": "log out",
+    "dashboard": "dashboard",
+    "orders": "orders",
+    "products": "products",
+    "categories": "categories",
+    "customers": "customers",
+    "coupons": "coupons",
+    "inbox": "inbox",
+    "other information": "other information",
+    "knowledge base": "knowledge base",
+    "product updates": "Product Updates",
+    "setting": "setting",
+    "personal settings": "personal settings",
+    "global settings": "global settings",
 }
 export default en

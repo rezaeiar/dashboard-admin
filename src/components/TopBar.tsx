@@ -3,7 +3,6 @@ import AdminCard from "./AdminCard"
 import LanguageSelection from "./LanguageSelection"
 import NotificationCard from "./NotificationCard"
 import { useTranslation } from "react-i18next"
-import i18n from "../../i18n"
 
 const TopBar = () => {
 
