@@ -22,6 +22,7 @@
         font-family: 'NunitoSans-ExtraBold';
         src: url(assets/fonts/NunitoSans_7pt-ExtraBold.ttf);
     }
+
     @font-face {
         font-family: 'IRANSans-Regular';
         src: url(assets/fonts/IRANSans/IRANSans.ttf);
@@ -65,6 +66,7 @@
 .ltr {
     direction: ltr;
 }
+
 .rtl {
     direction: rtl;
 }

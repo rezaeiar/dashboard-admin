@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 const SideBar = () => {
     const { t } = useTranslation()
     return (
-        <div className='hidden md:flex sticky z-40 top-16 h-[calc(100vh-64px)] overflow-y-auto bg-white w-20 lg:w-64 shrink-0 border-r border-general-50 py-4 flex-col gap-y-4 capitalize'>
+        <div className='hidden md:flex sticky z-40 top-16 h-[calc(100vh-64px)] overflow-y-auto bg-general-30 w-20 lg:w-64 shrink-0 border-r border-general-50 py-4 flex-col gap-y-4 capitalize border border-l-general-50 rtl:border-r-general-50'>
             <div className="flex flex-col gap-y-3 border-b pb-3">
                 <ul className='flex flex-col gap-y-1'>
                     <li className='relative' id="clickable">

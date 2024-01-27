@@ -83,8 +83,7 @@ export default {
                 'card': '0 1 4px 0px rgb(21 34 50 / 0.08)',
                 'box': '0px 9px 40px 0px rgba(0, 0, 0, 0.1)'
             }
-        },
-        
+        }
     },
     plugins: [
         function ({ addVariant }) {

@@ -21,5 +21,11 @@ const fa = {
     "setting": "تنظیمات",
     "personal settings": "تنظیمات شخصی",
     "global settings": "تنظیمات جهانی",
+    "total user": "کل کاربران",
+    "total order": "کل سفارشات",
+    "total sales": "کل فروش",
+    "total pending": "در انتظار پرداخت",
+    "up from yesterday": "افزایش نسبت به دیروز",
+    "down from yesterday": "کاهش نسبت به دیروز",
 }
 export default fa

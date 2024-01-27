@@ -21,5 +21,11 @@ const en = {
     "setting": "setting",
     "personal settings": "personal settings",
     "global settings": "global settings",
+    "total user": "total user",
+    "total order": "total order",
+    "total sales": "total sales",
+    "total pending": "total pending",
+    "up from yesterday": "up from yesterday",
+    "down from yesterday": "down from yesterday",
 }
 export default en
