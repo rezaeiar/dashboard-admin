@@ -3,10 +3,11 @@ import AdminCard from "./AdminCard"
 import LanguageSelection from "./LanguageSelection"
 import NotificationCard from "./NotificationCard"
 import { useTranslation } from "react-i18next"
+import i18n from "../../i18n"
 
 const TopBar = () => {
 
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
 
     const [isShowAdminCard, setIsShowAdminCard] = useState(false)
     const [isShowLanguageSelection, setIsShowLanguageSelection] = useState(false)
@@ -58,10 +59,19 @@ const TopBar = () => {
                 </div>
                 <div className="relative h-10 hidden md:flex gap-x-2 lg:gap-x-3 items-center" onClick={() => ShowLanguageSelectionHandler(!isShowLanguageSelection)}>
                     <div className="block rounded-md overflow-hidden">
-                        <img src="./topbar/UK Flag.svg" className="h-6 lg:h-7" alt="language" />
+                        {
+                            i18n.language === "fa"
+                            ? <img src="./topbar/Flag_of_Iran.svg.webp" className="h-6 lg:h-7" alt="language" />
+                            : <img src="./topbar/UK Flag.svg" className="h-6 lg:h-7" alt="language" />
+                        }
+                        
                     </div>
                     <span className='text-general-70 text-xs lg:text-sm font-nunitosans-semiBold rtl:font-iransans-semiBold'>
-                        {t('english')}
+                        {
+                            i18n.language === "fa"
+                                ? t('persian')
+                                : t('english')
+                        }
                     </span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 text-general-70">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
