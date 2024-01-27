@@ -8,6 +8,7 @@ const LanguageSelection = (props: LanguageSelectionProps) => {
     const changeDirectionHandler = (lang: string) => {
         i18n.changeLanguage(lang)
         document.body.dir = lang === 'fa' ? 'rtl' : 'ltr'
+        localStorage.setItem("lang", lang)
     }
     const { t, i18n } = useTranslation()
     return (
