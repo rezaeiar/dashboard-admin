@@ -10,7 +10,7 @@ const fa = {
     "log out": "خروج",
     "dashboard": "داشبورد",
     "orders": "سفارشات",
-    "products": "سفارشات",
+    "products": "محصولات",
     "categories": "دسته بندی ها",
     "customers": "مشتریان",
     "coupons": "کدهای تخفیف",
@@ -27,5 +27,7 @@ const fa = {
     "total pending": "در انتظار پرداخت",
     "up from yesterday": "افزایش نسبت به دیروز",
     "down from yesterday": "کاهش نسبت به دیروز",
+    "add order": "اضافه کردن سفارش",
+    "export": "دانلود خروجی"
 }
 export default fa

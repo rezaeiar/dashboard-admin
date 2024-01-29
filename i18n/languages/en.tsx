@@ -27,5 +27,7 @@ const en = {
     "total pending": "total pending",
     "up from yesterday": "up from yesterday",
     "down from yesterday": "down from yesterday",
+    "add order": "add order",
+    "export": "export"
 }
 export default en
