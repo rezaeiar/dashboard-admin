@@ -30,7 +30,7 @@ const fa = {
     "add order": "اضافه کردن سفارش",
     "export": "دانلود خروجی",
     "order lists": "لیست سفارشات",
-    "filter by" : "مرتب کردن براساس",
+    "sort by" : "مرتب کردن براساس",
     "date": "تاریخ",
     "order type": "نوع سفارش",
     "order status": "وضعیت سفارش",

@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Products = () => {
     return (
         <div className="py-8 px-10 w-full bg-general-30 flex flex-col gap-y-8">

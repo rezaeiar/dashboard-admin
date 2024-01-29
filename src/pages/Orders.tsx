@@ -1,6 +1,5 @@
 import Button from "../components/Button"
 import { useTranslation } from "react-i18next"
-
 const Orders = () => {
 
     const { t } = useTranslation()
@@ -34,7 +33,7 @@ const Orders = () => {
                         </svg>
                     </div>
                     <div className="p-4 xl:p-6 shrink-0 flex items-center gap-x-2 cursor-pointer hover:bg-general-30 transition-colors">
-                        {t("filter by")}
+                        {t("sort by")}
                     </div>
                     <div className="p-4 xl:p-6 shrink-0 flex items-center gap-x-2 cursor-pointer hover:bg-general-30 transition-colors">
                         {t("date")}
@@ -212,6 +211,7 @@ const Orders = () => {
                     </div>
                 </div>
             </div>
+            {/* <FilterSelection /> */}
         </>
     )
 }

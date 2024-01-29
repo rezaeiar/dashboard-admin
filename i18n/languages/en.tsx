@@ -30,7 +30,7 @@ const en = {
     "add order": "add order",
     "export": "export",
     "order lists": "order lists",
-    "filter by": "filter by",
+    "sort by": "sort by",
     "date": "date",
     "order type": "order type",
     "order status": "order status",
