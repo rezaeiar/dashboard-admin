@@ -2,9 +2,7 @@ import { useRoutes } from "react-router-dom"
 import routes from "./routes/routes"
 import TopBar from "./components/TopBar"
 import SideBar from "./components/SideBar"
-import Overlay from "./components/Overlay"
 import i18n from '../i18n'
-import Button from "./components/Button"
 
 const App = () => {
     const pageLanguage = localStorage.getItem("lang");
@@ -42,13 +40,12 @@ const App = () => {
         )
     }
     return (
-        <div className={`app relative`}>
+        <div className="app relative">
             <TopBar />
-            <div className="flex relative">
+            <div className="flex">
                 <SideBar />
                 {router}
             </div>
-            {/* <Overlay /> */}
         </div>
     )
 }
