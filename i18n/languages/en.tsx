@@ -28,6 +28,12 @@ const en = {
     "up from yesterday": "up from yesterday",
     "down from yesterday": "down from yesterday",
     "add order": "add order",
-    "export": "export"
+    "export": "export",
+    "order lists": "order lists",
+    "filter by": "filter by",
+    "date": "date",
+    "order type": "order type",
+    "order status": "order status",
+    "reset filter": "reset filter"
 }
 export default en

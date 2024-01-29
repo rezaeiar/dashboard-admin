@@ -28,6 +28,12 @@ const fa = {
     "up from yesterday": "افزایش نسبت به دیروز",
     "down from yesterday": "کاهش نسبت به دیروز",
     "add order": "اضافه کردن سفارش",
-    "export": "دانلود خروجی"
+    "export": "دانلود خروجی",
+    "order lists": "لیست سفارشات",
+    "filter by" : "مرتب کردن براساس",
+    "date": "تاریخ",
+    "order type": "نوع سفارش",
+    "order status": "وضعیت سفارش",
+    "reset filter": "بازنشانی"
 }
 export default fa
