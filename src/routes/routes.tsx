@@ -5,7 +5,7 @@ import SingleCategory from "../pages/SingleCategory"
 import Products from "../pages/Products"
 import AddProduct from "../pages/AddProduct"
 import Customers from "../pages/Customers"
-
+import Coupons from "../pages/Coupons"
 import Login from "../pages/Login"
 import NotFound from "../pages/404"
 
