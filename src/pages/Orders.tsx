@@ -1,8 +1,16 @@
+import { useState } from "react"
 import Button from "../components/Button"
 import { useTranslation } from "react-i18next"
+// import FilterSelection from "../components/FilterSelection"
 const Orders = () => {
 
     const { t } = useTranslation()
+    const [showFilterSelection, setShowFilterSelection] = useState(false)
+
+    const showFilterSelectionHandler = (show: boolean) => {
+
+        setShowFilterSelection(show)
+    }
     return (
         <>
             <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-10 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
@@ -41,7 +49,7 @@ const Orders = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                         </svg>
                     </div>
-                    <div className="p-4 xl:p-6 shrink-0 flex items-center gap-x-2 cursor-pointer hover:bg-general-30 transition-colors">
+                    <div className="p-4 xl:p-6 shrink-0 flex items-center gap-x-2 cursor-pointer hover:bg-general-30 transition-colors" onClick={() => showFilterSelectionHandler(true)}>
                         {t("order type")}
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                             <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -211,7 +219,7 @@ const Orders = () => {
                     </div>
                 </div>
             </div>
-            {/* <FilterSelection /> */}
+            {/* <FilterSelection show={showFilterSelection} setShow={showFilterSelectionHandler} /> */}
         </>
     )
 }
