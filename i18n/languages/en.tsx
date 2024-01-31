@@ -34,6 +34,11 @@ const en = {
     "date": "date",
     "order type": "order type",
     "order status": "order status",
-    "reset filter": "reset filter"
+    "reset filter": "reset filter",
+    'filter by category': 'filter by category',
+    'filter by status': 'filter by status',
+    "completed": "completed",
+    "pending": "pending",
+    "rejected": "rejected",
 }
 export default en

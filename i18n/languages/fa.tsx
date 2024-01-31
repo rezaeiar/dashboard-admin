@@ -34,6 +34,11 @@ const fa = {
     "date": "تاریخ",
     "order type": "نوع سفارش",
     "order status": "وضعیت سفارش",
-    "reset filter": "بازنشانی"
+    "reset filter": "بازنشانی",
+    'filter by category': "فیلتر براساس دسته بندی",
+    'filter by status': 'فیلتر براساس وضعیت',
+    "completed": "تکمیل شده",
+    "pending": "در انتظار",
+    "rejected": "رد شده",
 }
 export default fa
