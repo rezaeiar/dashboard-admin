@@ -55,6 +55,7 @@ const en = {
     "actions": "actions",
     "add category": "add category",
     "item":"item",
-    "edit": "edit"
+    "edit": "edit",
+    "add customer": "add customer"
 }
 export default en

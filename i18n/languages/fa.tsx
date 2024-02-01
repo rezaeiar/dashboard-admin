@@ -55,6 +55,7 @@ const fa = {
     "actions": "اعمال تغییرات",
     "add category": "اضافه کردن دسته بندی",
     "item":"مورد",
-    "edit": "ویرایش"
+    "edit": "ویرایش",
+    "add customer": "اضافه کردن مشتری"
 }
 export default fa
