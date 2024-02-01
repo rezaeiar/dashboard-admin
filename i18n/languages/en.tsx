@@ -40,5 +40,11 @@ const en = {
     "completed": "completed",
     "pending": "pending",
     "rejected": "rejected",
+    "product stock": "product stock",
+    "add product": "add product",
+    "filter by": "filter by",
+    "price": "price",
+    "inventory": "inventory",
+    "rating": "rating",
 }
 export default en

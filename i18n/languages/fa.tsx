@@ -40,5 +40,11 @@ const fa = {
     "completed": "تکمیل شده",
     "pending": "در انتظار",
     "rejected": "رد شده",
+    "product stock": "موجودی محصول",
+    "add product": "اضافه کردن محصول",
+    "filter by": "فیلتر براساس",
+    "price": "قیمت",
+    "inventory": "موجودی محصول",
+    "rating": "امتیاز محصول",
 }
 export default fa
