@@ -22,10 +22,10 @@ const Orders = () => {
         },
     ]
     return (
-        <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-10 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
+        <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
             <div className="flex justify-between items-center">
                 <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100 capitalize">
-                    {t("order lists")}
+                    {t("orders")}
                 </h2>
                 <div className="flex gap-x-1 sm:gap-x-2">
                     <Button type="white" size="small" styles="">
@@ -44,9 +44,9 @@ const Orders = () => {
                 </div>
             </div>
             <div className="flex flex-col gap-y-4">
-                <div className="capitalize flex gap-2 md:gap-4 flex-col md:flex-row">
-                    <div className="grid grid-cols-2 h-10 md:flex gap-x-2 md:gap-x-4">
-                        <div className="flex items-center relative md:w-44 shrink-0 font-nunitosans-regular rtl:font-iransans-regular rounded border border-general-50">
+                <div className="capitalize flex gap-2 flex-col md:flex-row">
+                    <div className="grid grid-cols-2 h-10 md:flex gap-x-2">
+                        <div className="flex items-center relative md:w-44 shrink-0 font-nunitosans-regular rtl:font-iransans-regular rounded border border-general-50 bg-white">
                             <select className="h-full block w-full p-2 text-xs sm:text-sm text-general-70 bg-transparent appearance-none focus:outline-none focus:ring-0 focus:border-general-60 capitalize">
                                 <option selected value='-1'>
                                     {t('filter by category')}
@@ -58,7 +58,7 @@ const Orders = () => {
                             </select>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-3 h-3 absolute rtl:left-2 ltr:right-2 text-general-70"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
                         </div>
-                        <div className="flex items-center relative md:w-44 shrink-0 font-nunitosans-regular rtl:font-iransans-regular rounded border border-general-50">
+                        <div className="flex items-center relative md:w-44 shrink-0 font-nunitosans-regular rtl:font-iransans-regular rounded border border-general-50 bg-white">
                             <select className="h-full block w-full p-2 text-xs sm:text-sm text-general-70 bg-transparent appearance-none focus:outline-none focus:ring-0 focus:border-general-60 capitalize">
                                 <option selected value='-1'>
                                     {t('filter by status')}
@@ -70,7 +70,7 @@ const Orders = () => {
                             <div className="w-2 h-2 absolute rtl:left-2 ltr:right-2 bg-red-101 rounded-full"></div>
                         </div>
                     </div>
-                    <div className="flex md:flex-grow lg:grow-0 items-center font-nunitosans-regular relative text-xs sm:text-sm text-general-70">
+                    <div className="flex md:flex-grow lg:grow-0 items-center font-nunitosans-regular relative text-xs sm:text-sm text-general-70 bg-white">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-5 h-5 absolute left-3 rtl:right-3 cursor-pointer">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
                         </svg>
@@ -78,13 +78,13 @@ const Orders = () => {
                     </div>
                 </div>
                 <table className='border divide-y border-general-50 bg-white rounded-md w-full flex flex-col overflow-x-auto'>
-                    <tr className='p-3 md:p-4 bg-general-30 grid grid-cols-6 sm:text-sm text-xs font-nunitosans-extrabold text-general-100 child:text-start min-w-max gap-x-2'>
-                        <th className="w-28 sm:w-32">ID</th>
-                        <th className="w-28 sm:w-32">NAME</th>
-                        <th className="w-28 sm:w-32">ADDRESS</th>
-                        <th className="w-28 sm:w-32">DATE</th>
-                        <th className="w-28 sm:w-32">TYPE</th>
-                        <th className="w-28 sm:w-32">STATUS</th>
+                    <tr className='p-3 md:p-4 bg-general-30 grid grid-cols-6 sm:text-sm text-xs font-nunitosans-extrabold rtl:font-iransans-bold text-general-100 child:text-start min-w-max gap-x-2 uppercase'>
+                        <th className="w-28 sm:w-32">{t("id")}</th>
+                        <th className="w-28 sm:w-32">{t("client")}</th>
+                        <th className="w-28 sm:w-32">{t("address")}</th>
+                        <th className="w-28 sm:w-32">{t("date")}</th>
+                        <th className="w-28 sm:w-32">{t("category")}</th>
+                        <th className="w-28 sm:w-32">{t("status")}</th>
                     </tr>
                     <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
                         <td className="w-28 sm:w-32 shrink-0">00001</td>
@@ -209,8 +209,8 @@ const Orders = () => {
                 </table>
             </div>
             <div className="text-sm flex justify-between">
-                <span className="text-general-80">
-                    Showing 1-09 of 78
+                <span className="text-general-80 capitalize">
+                    {t("showing")} 1-09 {t("of")} 78
                 </span>
                 <div className="flex border border-general-50 divide-x rounded-md">
                     <div className="px-2 py-1">
