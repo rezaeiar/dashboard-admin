@@ -56,6 +56,12 @@ const en = {
     "add category": "add category",
     "item":"item",
     "edit": "edit",
-    "add customer": "add customer"
+    "add customer": "add customer",
+    "add coupons": "add coupons",
+    "customer": "customer",
+    "location": "location",
+    "spent": "spent",
+    "coupon": "coupon",
+    "usage": 'usage'
 }
 export default en

@@ -61,7 +61,7 @@ const Customers = () => {
                 <table className='border divide-y border-general-50 bg-white rounded-md w-full flex flex-col overflow-x-auto'>
                     <tr className='p-3 md:p-4 bg-general-30 grid grid-cols-4 sm:text-sm text-xs font-nunitosans-extrabold rtl:font-iransans-bold text-general-100 child:text-start min-w-max gap-x-2'>
                         <th className="w-36 sm:w-44">{t("customer")}</th>
-                        <th className="w-28 sm:w-32">{t("lacation")}</th>
+                        <th className="w-28 sm:w-32">{t("location")}</th>
                         <th className="w-28 sm:w-32">{t("orders")}</th>
                         <th className="w-28 sm:w-32">{t("spent")}</th>
                     </tr>

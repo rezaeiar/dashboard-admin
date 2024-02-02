@@ -56,6 +56,12 @@ const fa = {
     "add category": "اضافه کردن دسته بندی",
     "item":"مورد",
     "edit": "ویرایش",
-    "add customer": "اضافه کردن مشتری"
+    "add customer": "اضافه کردن مشتری",
+    "add coupons": "اضافه کردن کد تخفیف",
+    "customer": "مشتری",
+    "location": "آدرس",
+    "spent": "میزان خرید",
+    "coupon": "کد تخفیف",
+    "usage": 'استفاده شده'
 }
 export default fa
