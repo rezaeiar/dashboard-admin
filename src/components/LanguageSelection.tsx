@@ -21,7 +21,7 @@ const LanguageSelection = (props: LanguageSelectionProps) => {
             <div className="flex flex-col child-hover:bg-general-30">
                 <div className="py-3 px-5 flex justify-between items-center gap-x-10 text-general-90 font-nunitosans-semiBold rtl:font-iransans-semiBold" onClick={() => changeDirectionHandler("fa")}>
                     <div className="flex items-center gap-x-2">
-                        <img src="./topbar/Flag_of_Iran.svg.webp" className="h-6 lg:h-7 w-12 object-cover" alt="language" />
+                        <img src="/topbar/Flag_of_Iran.svg.webp" className="h-6 lg:h-7 w-12 object-cover" alt="language" />
                         <span className="text-sm">
                             {t('persian')}
                         </span>
@@ -35,7 +35,7 @@ const LanguageSelection = (props: LanguageSelectionProps) => {
                 </div>
                 <div className="py-3 px-5 flex justify-between items-center gap-x-10 text-general-90 font-nunitosans-semiBold rtl:font-iransans-semiBold" onClick={() => changeDirectionHandler('en')}>
                     <div className="flex items-center gap-x-2">
-                        <img src="./topbar/UK Flag.svg" className="h-6 lg:h-7 w-12 object-cover" alt="language" />
+                        <img src="/topbar/UK Flag.svg" className="h-6 lg:h-7 w-12 object-cover" alt="language" />
                         <span className="text-sm">
                             {t('english')}
                         </span>

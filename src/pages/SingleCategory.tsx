@@ -1,27 +1,41 @@
+import { useState } from "react"
+import Button from "../components/Button"
+import { useTranslation } from "react-i18next"
+import CheckBox from "../components/CheckBox"
+
 const SingleCategory = () => {
+    const { t } = useTranslation()
+    const [isChecked, setIsChecked] = useState(false)
     return (
-        <div className="py-8 px-10 w-full bg-general-30 flex flex-col gap-y-8">
+        <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
             <div className="flex justify-between items-center">
                 <div className="flex flex-col">
                     <div className="flex gap-x-1 text-general-80 font-nunitosans-regular items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                         </svg>
-                        <span className="text-sm">
+                        <span className="text-xs md:text-sm">
                             Back
                         </span>
                     </div>
-                    <h2 className="text-2xl font-nunitosans-bold text-general-100">
+                    <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100 capitalize">
                         Women Clothes
                     </h2>
                 </div>
-                <div className="flex gap-x-2">
-                    <button className="flex border border-general-50 text-xs text-primary-100 bg-white px-5 py-2 rounded gap-x-2 items-center hover:bg-general-40 transition-colors hover:border-general-50">
-                        Cancel
-                    </button>
-                    <button className="flex justify-center bg-primary-100 text-white text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors">
-                        Save
-                    </button>
+                <div className="flex gap-x-1 sm:gap-x-2">
+                    <Button type="white" size="small" styles="">
+                        <>
+                            {t("export")}
+                        </>
+                    </Button>
+                    <Button type="primary" size="small" styles="">
+                        <>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            {t("add product")}
+                        </>
+                    </Button>
                 </div>
             </div>
             <div className="grid gap-x-4 grid-cols-7">
@@ -107,6 +121,7 @@ const SingleCategory = () => {
                         <h5 className="text-general-100 text-sm font-nunitosans-extrabold">
                             Category Visibility
                         </h5>
+                        <CheckBox isChecked={isChecked} setIsChecked={setIsChecked} forId="Visible" />
                     </div>
                     <div className="bg-white rounded-md p-7 flex flex-col gap-y-4">
                         <h5 className="text-general-100 text-sm font-nunitosans-extrabold">

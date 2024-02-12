@@ -60,8 +60,8 @@ const TopBar = () => {
                     <div className="block rounded-md overflow-hidden">
                         {
                             i18n.language === "fa"
-                                ? <img src="./topbar/Flag_of_Iran.svg.webp" className="h-6 lg:h-7" alt="language" />
-                                : <img src="./topbar/UK Flag.svg" className="h-6 lg:h-7" alt="language" />
+                                ? <img src="/topbar/Flag_of_Iran.svg.webp" className="h-6 lg:h-7" alt="language" />
+                                : <img src="/topbar/UK Flag.svg" className="h-6 lg:h-7" alt="language" />
                         }
 
                     </div>
