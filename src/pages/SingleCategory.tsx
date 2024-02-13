@@ -14,8 +14,8 @@ const SingleCategory = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                         </svg>
-                        <span className="text-xs md:text-sm">
-                            Back
+                        <span className="text-xs md:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                            {t("back")}
                         </span>
                     </div>
                     <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100 capitalize">
@@ -38,8 +38,8 @@ const SingleCategory = () => {
             <div className="flex flex-col md:grid gap-3 lg:gap-4 grid-cols-7">
                 <div className="bg-white rounded-md p-5 xl:p-7 col-span-5 flex flex-col gap-y-4 xl:gap-y-6">
                     <div className="flex gap-x-2 items-center">
-                        <h5 className="text-general-100 font-nunitosans-extrabold">
-                            Products
+                        <h5 className="text-general-100 ltr:font-nunitosans-extrabold rtl:font-iransans-extrabold">
+                            {t("products")}
                         </h5>
                         <span className="text-general-60 text-sm font-nunitosans-regular">
                             12
@@ -109,45 +109,45 @@ const SingleCategory = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
-                            <span className="font-nunitosans-regular text-sm">
-                                Add Product
+                            <span className="ltr:font-nunitosans-regular rtl:font-iransans-regular text-sm">
+                                {t("add product")}
                             </span>
                         </>
                     </Button>
                 </div>
                 <div className="flex flex-col gap-y-3 lg:gap-y-4 col-span-2">
                     <div className="bg-white rounded-md p-5 xl:p-7 flex flex-col gap-y-4">
-                        <h5 className="text-general-100 text-xs xl:text-sm font-nunitosans-extrabold">
-                            Category Visibility
+                        <h5 className="text-general-100 text-xs xl:text-sm ltr:font-nunitosans-extrabold rtl:font-iransans-extrabold">
+                            {t("category visibility")}
                         </h5>
                         <div className="flex items-center gap-x-2">
                             <CheckBox isChecked={isChecked} setIsChecked={setIsChecked} forId="Visible" />
-                            <span className="text-xs font-nunitosans-regular text-general-90">
-                                Visible on site
+                            <span className="text-xs ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-90">
+                                {t("visible on site")}
                             </span>
                         </div>
                     </div>
                     <div className="bg-white rounded-md p-5 xl:p-7 flex flex-col gap-y-4">
-                        <h5 className="text-general-100 text-xs xl:text-sm font-nunitosans-extrabold">
-                            Category Info
+                        <h5 className="text-general-100 text-xs xl:text-sm ltr:font-nunitosans-extrabold rtl:font-iransans-extrabold">
+                            {t("category info")}
                         </h5>
                         <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                                Name
+                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("name")}
                             </label>
                             <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" value={'Women Clothes'} />
                         </div>
                         <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                                Image
+                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                            {t("image")}
                             </label>
                             <label className="border cursor-pointer border-dashed border-general-60 rounded-md flex items-center justify-center aspect-[4/3]" htmlFor="small_size">
                                 <div className="flex items-center justify-center flex-col gap-y-2">
                                     <div className="py-2 sm:py-1.5 xl:py-2 px-5 sm:px-2 xl:px-5 text-xs xl:text-sm capitalize bg-white text-primary-100 rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-general-30 active:bg-white disabled:bg-general-50 disabled:text-white focus:bg-white transition-colors border border-general-50 flex items-center gap-x-1">
-                                        Add File
+                                        {t("add file")}
                                     </div>
-                                    <span className="text-general-80 text-sm sm:text-[10px] xl:text-sm font-nunitosans-regular">
-                                        Or drag and drop files
+                                    <span className="text-general-80 text-sm sm:text-[10px] xl:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                        {t("or drag and drop files")}
                                     </span>
                                 </div>
                             </label>

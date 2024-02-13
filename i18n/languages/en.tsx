@@ -54,7 +54,7 @@ const en = {
     "product": "product",
     "actions": "actions",
     "add category": "add category",
-    "item":"item",
+    "item": "item",
     "edit": "edit",
     "add customer": "add customer",
     "add coupons": "add coupons",
@@ -62,6 +62,16 @@ const en = {
     "location": "location",
     "spent": "spent",
     "coupon": "coupon",
-    "usage": 'usage'
+    "usage": 'usage',
+    "save": "save",
+    "cancel": "cancel",
+    "back": "back",
+    "category visibility": "category visibility",
+    "visible on site": "visible on site",
+    "category info": "category info",
+    "add file": "add file",
+    "or drag and drop files": "or drag and drop files",
+    "name": "name",
+    "image": "image"
 }
 export default en
