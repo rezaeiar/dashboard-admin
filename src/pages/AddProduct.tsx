@@ -175,21 +175,6 @@ const AddProduct = () => {
                                 </svg>
                             </div>
                         </div>
-                        {/* <div className="flex flex-col">
-                            <label htmlFor="" className="text-sm text-general-60 font-nunitosans-regular">
-                                Image
-                            </label>
-                            <div className="border border-dashed border-general-60 rounded-md flex items-center justify-center py-12">
-                                <div className="flex items-center justify-center flex-col gap-y-2">
-                                    <button className="flex border border-general-50 text-xs text-primary-100 bg-white px-5 py-2 rounded gap-x-2 items-center hover:bg-general-40 transition-colors hover:border-general-50">
-                                        Add File
-                                    </button>
-                                    <span className="text-general-80 text-sm font-nunitosans-regular">
-                                        Or drag and drop files
-                                    </span>
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
                     <div className="bg-white rounded-md p-5 xl:p-7 flex flex-col gap-y-4">
                         <h5 className="text-general-100 text-xs xl:text-sm font-nunitosans-extrabold">

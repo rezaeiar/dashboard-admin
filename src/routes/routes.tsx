@@ -6,6 +6,7 @@ import Products from "../pages/Products"
 import AddProduct from "../pages/AddProduct"
 import Customers from "../pages/Customers"
 import Coupons from "../pages/Coupons"
+import AddCustomer from "../pages/AddCustomer"
 import Login from "../pages/Login"
 import NotFound from "../pages/404"
 
@@ -21,7 +22,8 @@ const routes: RoutesType[] = [
     { path: '/categories/:CategorieName', element: <SingleCategory /> },
     { path: '/products', element: <Products /> },
     { path: '/products/add', element: <AddProduct /> },
-    { path: '/Customers', element: <Customers /> },
+    { path: '/customers', element: <Customers /> },
+    { path: '/customers/add', element: <AddCustomer /> },
     { path: '/coupons', element: <Coupons /> },
     { path: '/login', element: <Login /> },
     { path: '/*', element: <NotFound /> },
