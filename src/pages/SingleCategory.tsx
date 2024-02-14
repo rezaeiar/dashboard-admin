@@ -38,7 +38,7 @@ const SingleCategory = () => {
             <div className="flex flex-col md:grid gap-3 lg:gap-4 grid-cols-7">
                 <div className="bg-white rounded-md p-5 xl:p-7 col-span-5 flex flex-col gap-y-4 xl:gap-y-6">
                     <div className="flex gap-x-2 items-center">
-                        <h5 className="text-general-100 ltr:font-nunitosans-extrabold rtl:font-iransans-extrabold">
+                        <h5 className="text-general-100 ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
                             {t("products")}
                         </h5>
                         <span className="text-general-60 text-sm font-nunitosans-regular">
@@ -117,7 +117,7 @@ const SingleCategory = () => {
                 </div>
                 <div className="flex flex-col gap-y-3 lg:gap-y-4 col-span-2">
                     <div className="bg-white rounded-md p-5 xl:p-7 flex flex-col gap-y-4">
-                        <h5 className="text-general-100 text-xs xl:text-sm ltr:font-nunitosans-extrabold rtl:font-iransans-extrabold">
+                        <h5 className="text-general-100 text-xs xl:text-sm ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
                             {t("category visibility")}
                         </h5>
                         <div className="flex items-center gap-x-2">
@@ -128,7 +128,7 @@ const SingleCategory = () => {
                         </div>
                     </div>
                     <div className="bg-white rounded-md p-5 xl:p-7 flex flex-col gap-y-4">
-                        <h5 className="text-general-100 text-xs xl:text-sm ltr:font-nunitosans-extrabold rtl:font-iransans-extrabold">
+                        <h5 className="text-general-100 text-xs xl:text-sm ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
                             {t("category info")}
                         </h5>
                         <div className="flex flex-col">

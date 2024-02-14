@@ -35,106 +35,105 @@ const AddCustomer = () => {
             <div className="bg-white rounded-md p-5 xl:p-7 col-span-5 flex flex-col gap-y-6 xl:gap-y-8 divide-y">
                 <div className="flex flex-col gap-y-6">
                     <div className="flex flex-col">
-                        <h5 className="text-general-100 text-sm xl:text-base font-nunitosans-extrabold">
-                            Customer Information
+                        <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
+                            {t("Customer Information")}
                         </h5>
-                        <span className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                            Most important information about the customer
+                        <span className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                            {t("Most important information about the customer")}
                         </span>
                     </div>
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3 sm:gap-y-6">
                         <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                                Size
+                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("First Name")}
                             </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" placeholder="Sizet" />
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder="" />
                         </div>
                         <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                                Value
+                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Last Name")}
                             </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" placeholder="Price at Discount" />
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder="" />
                         </div>
                         <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                                Size
+                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Email Address")}
                             </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" placeholder="Sizet" />
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder="" />
                         </div>
                         <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                                Value
+                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Phone Number")}
                             </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" placeholder="Price at Discount" />
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder="" />
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-col gap-y-6 pt-4 xl:pt-6">
                     <div className="flex flex-col">
-                        <h5 className="text-general-100 text-sm xl:text-base font-nunitosans-extrabold">
-                            Customer Address
+                        <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
+                            {t("Customer Address")}
                         </h5>
-                        <span className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                            Shipping address information
+                        <span className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                            {t("Shipping address information")}
                         </span>
                     </div>
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3 sm:gap-y-6">
                         <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                                Size
+                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Address")}
                             </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" placeholder="Sizet" />
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder="" />
                         </div>
                         <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                                Value
+                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Apartment")}
                             </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" placeholder="Price at Discount" />
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder="" />
                         </div>
                         <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                                Size
+                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("City")}
                             </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" placeholder="Sizet" />
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder="" />
                         </div>
-                        <div className="grid grid-cols-2 gap-x-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
                             <div className="flex flex-col">
-                                <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                                    Value
+                                <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                    {t("Country")}
                                 </label>
-                                <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" placeholder="Price at Discount" />
+                                <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Choose")} />
                             </div>
                             <div className="flex flex-col">
-                                <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                                    Value
+                                <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                    {t("Postal Code")}
                                 </label>
-                                <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" placeholder="Price at Discount" />
+                                <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder="" />
                             </div>
                         </div>
                         <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                                Value
+                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Phone")}
                             </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" placeholder="Price at Discount" />
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder="" />
                         </div>
                     </div>
                 </div>
-
                 <div className="flex flex-col gap-y-6 pt-4 xl:pt-6">
                     <div className="flex flex-col">
-                        <h5 className="text-general-100 text-sm xl:text-base font-nunitosans-extrabold">
-                            Customer Notes
+                        <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
+                            {t("Customer Notes")}
                         </h5>
-                        <span className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                            Add notes about customer
+                        <span className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                            {t("Add notes about customer")}
                         </span>
                     </div>
                     <div className="flex flex-col">
                         <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
-                                Notes
+                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Notes")}
                             </label>
-                            <textarea name="" id="" className="border border-general-50 outline-none rounded text-sm text-general-100 aspect-[5/1] px-4"></textarea>
+                            <textarea name="" id="" className="border border-general-50 outline-none rounded text-sm text-general-100 aspect-[10/2] px-4 py-2 resize-none" placeholder={t("Add notes about customer")}></textarea>
                         </div>
                     </div>
                 </div>

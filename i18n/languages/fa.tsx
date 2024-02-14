@@ -46,7 +46,7 @@ const fa = {
     "rating": "امتیاز محصول",
     "id": "شناسه",
     "client": "سفارش دهنده",
-    "address": "آدرس",
+    "Address": "آدرس",
     "category": "دسته بندی",
     "status": "وضعیت",
     "of": "از",
@@ -100,6 +100,20 @@ const fa = {
     "Add Tags": "اضافه کردن برچسب",
     "Enter tag name": "نام تگ را وارد کنید",
     "Customer Information": "اطلاعات مشتری",
-    "Most important information about the customer": "مهمترین اطلاعات در مورد مشتری"
+    "Most important information about the customer": "مهمترین اطلاعات در مورد مشتری",
+    "First Name": "نام",
+    "Last Name": "نام خانوادگی",
+    "Email Address": "پست الکترونیکی",
+    "Phone Number": "شماره موبایل",
+    "Customer Address": "آدرس مشتری",
+    "Shipping address information": "اطلاعات آدرس حمل و نقل",
+    "Apartment": "اپارتمان",
+    "City": "شهر",
+    "Postal Code": "کد پستی",
+    "Choose": "انتخاب کنید",
+    "Phone" : "شماره تلفن",
+    "Customer Notes": "یادداشت های مشتری",
+    "Add notes about customer": "یادداشت هایی در مورد مشتری اضافه کنید",
+    "Notes": "یادداشت ها"
 }
 export default fa
