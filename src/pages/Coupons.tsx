@@ -10,17 +10,12 @@ const Coupons = () => {
                     {t("coupons")}
                 </h2>
                 <div className="flex gap-x-1 sm:gap-x-2">
-                    <Button type="white" size="small" styles="">
-                        <>
-                            {t("export")}
-                        </>
-                    </Button>
-                    <Button type="primary" size="small" styles="">
+                    <Button type="primary" size="small" styles="" link="/coupons/create">
                         <>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
-                            {t("add coupons")}
+                            {t("create")}
                         </>
                     </Button>
                 </div>
