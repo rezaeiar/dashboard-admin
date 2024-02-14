@@ -139,13 +139,13 @@ const SingleCategory = () => {
                         </div>
                         <div className="flex flex-col">
                             <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                            {t("image")}
+                                {t("image")}
                             </label>
                             <label className="border cursor-pointer border-dashed border-general-60 rounded-md flex items-center justify-center aspect-[4/3]" htmlFor="small_size">
                                 <div className="flex items-center justify-center flex-col gap-y-2">
-                                    <div className="py-2 sm:py-1.5 xl:py-2 px-5 sm:px-2 xl:px-5 text-xs xl:text-sm capitalize bg-white text-primary-100 rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-general-30 active:bg-white disabled:bg-general-50 disabled:text-white focus:bg-white transition-colors border border-general-50 flex items-center gap-x-1">
-                                        {t("add file")}
-                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-general-60">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+                                    </svg>
                                     <span className="text-general-80 text-sm sm:text-[10px] xl:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                         {t("or drag and drop files")}
                                     </span>

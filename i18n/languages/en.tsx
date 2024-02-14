@@ -98,6 +98,8 @@ const en = {
     "This is digital item": "This is digital item",
     "Tags": "Tags",
     "Add Tags": "Add Tags",
-    "Enter tag name": "Enter tag name"
+    "Enter tag name": "Enter tag name",
+    "Customer Information": "Customer Information",
+    "Most important information about the customer": "Most important information about the customer"
 }
 export default en

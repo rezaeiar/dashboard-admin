@@ -98,6 +98,8 @@ const fa = {
     "This is digital item": "این مورد دیجیتال است",
     "Tags": "برچسب ها",
     "Add Tags": "اضافه کردن برچسب",
-    "Enter tag name": "نام تگ را وارد کنید"
+    "Enter tag name": "نام تگ را وارد کنید",
+    "Customer Information": "اطلاعات مشتری",
+    "Most important information about the customer": "مهمترین اطلاعات در مورد مشتری"
 }
 export default fa
