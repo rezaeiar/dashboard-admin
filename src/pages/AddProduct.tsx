@@ -41,17 +41,19 @@ const AddProduct = () => {
                         <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
                             {t("information")}
                         </h5>
-                        <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                {t("product name")}
-                            </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Summer T-Shirt")} />
-                        </div>
-                        <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                {t("product description")}
-                            </label>
-                            <textarea name="" id="" className="border py-2 border-general-50 outline-none rounded text-sm text-general-100 aspect-[5/1] px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular"></textarea>
+                        <div className="flex flex-col gap-y-3 sm:gap-y-6">
+                            <div className="flex flex-col">
+                                <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                    {t("product name")}
+                                </label>
+                                <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Summer T-Shirt")} />
+                            </div>
+                            <div className="flex flex-col">
+                                <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                    {t("product description")}
+                                </label>
+                                <textarea name="" id="" className="border py-2 border-general-50 outline-none rounded text-sm text-general-100 aspect-[5/1] px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular"></textarea>
+                            </div>
                         </div>
                     </div>
                     <div className="flex flex-col gap-y-6 pt-4 xl:pt-6">
@@ -74,7 +76,7 @@ const AddProduct = () => {
                         <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
                             {t("price")}
                         </h5>
-                        <div className="grid grid-cols-2 gap-x-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
                             <div className="flex flex-col">
                                 <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                     {t("product price")}
@@ -105,7 +107,7 @@ const AddProduct = () => {
                                 {t("This product has multiple options")}
                             </span>
                         </div>
-                        <div className="grid grid-cols-2 gap-x-4">
+                        <div className="grid grid-cols-1 gap-y-3 sm:grid-cols-2 gap-x-4">
                             <div className="flex flex-col">
                                 <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                     {t("title")}
@@ -127,7 +129,7 @@ const AddProduct = () => {
                         <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
                             {t("shipping")}
                         </h5>
-                        <div className="grid grid-cols-2 gap-x-4">
+                        <div className="grid grid-cols-1 gap-y-3 sm:grid-cols-2 gap-x-4">
                             <div className="flex flex-col">
                                 <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                     {t("Weight")}
