@@ -117,6 +117,21 @@ const fa = {
     "Notes": "یادداشت ها",
     "Overview": "پیش نمایش",
     "Order": "سفارش",
-    "Customer Orders": "سفارش های مشتری"
+    "Customer Orders": "سفارش های مشتری",
+    "Create Coupon": "ساخت کد تخفیف",
+    "Coupon Information": "اطلاعات کد تخفیف",
+    "Code will be used by users in checkout": "کد توسط کاربران در پرداخت استفاده خواهد شد",
+    "Coupon Code": "شناسه کد تخفیف",
+    "Coupon Name": "نام کد تخفیف",
+    "Coupon Type": "نوع کد تخفیف",
+    "Type of coupon you want to create": "نوع کد تخفیفی که می خواهید ایجاد کنید",
+    "Discount Value": "مقدار تخفیف",
+    "Applies to": "اعمال میشود به",
+    "Duration": "مدت زمان",
+    "Usage Limits": "محدودیت های استفاده",
+    "Fixed Discount": "تخفیف ثابت",
+    "Percentage Discount": "درصد تخفیف",
+    "Free Shipping": "ارسال رایگان",
+    "Price Discount": "تخفیف قیمت"
 }
 export default fa

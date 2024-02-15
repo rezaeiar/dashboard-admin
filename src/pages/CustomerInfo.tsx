@@ -1,8 +1,5 @@
-import { useState } from "react"
 import Button from "../components/Button"
 import { useTranslation } from "react-i18next"
-import CheckBox from "../components/CheckBox"
-import { Link } from "react-router-dom"
 
 const CustomerInfo = () => {
     const { t } = useTranslation()

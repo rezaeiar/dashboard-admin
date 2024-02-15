@@ -117,6 +117,21 @@ const en = {
     "Notes": "Notes",
     "Overview": "Overview",
     "Order": "Order",
-    "Customer Orders": "Customer Orders"
+    "Customer Orders": "Customer Orders",
+    "Create Coupon": "Create Coupon",
+    "Coupon Information": "Coupon Information",
+    "Code will be used by users in checkout": "Code will be used by users in checkout",
+    "Coupon Code": "Coupon Code",
+    "Coupon Name": "Coupon Name",
+    "Coupon Type": "Coupon Type",
+    "Type of coupon you want to create": "Type of coupon you want to create",
+    "Discount Value": "Discount Value",
+    "Applies to": "Applies to",
+    "Duration": "Duration",
+    "Usage Limits": "Usage Limits",
+    "Fixed Discount": "Fixed Discount",
+    "Percentage Discount": "Percentage Discount",
+    "Free Shipping": "Free Shipping",
+    "Price Discount": "Price Discount"
 }
 export default en
