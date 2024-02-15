@@ -16,7 +16,6 @@ const fa = {
     "coupons": "کدهای تخفیف",
     "inbox": "صندوق ورودی",
     "other information": "اطلاعات دیگر",
-    "knowledge base": "دانش محور",
     "product updates": "به روز رسانی محصول",
     "setting": "تنظیمات",
     "personal settings": "تنظیمات شخصی",
@@ -132,6 +131,8 @@ const fa = {
     "Fixed Discount": "تخفیف ثابت",
     "Percentage Discount": "درصد تخفیف",
     "Free Shipping": "ارسال رایگان",
-    "Price Discount": "تخفیف قیمت"
+    "Price Discount": "تخفیف قیمت",
+    "Team Members": "اعضای تیم",
+    "To-Do": "وظایف"
 }
 export default fa

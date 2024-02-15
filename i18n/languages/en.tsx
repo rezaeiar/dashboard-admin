@@ -16,7 +16,6 @@ const en = {
     "coupons": "coupons",
     "inbox": "inbox",
     "other information": "other information",
-    "knowledge base": "knowledge base",
     "product updates": "Product Updates",
     "setting": "setting",
     "personal settings": "personal settings",
@@ -132,6 +131,8 @@ const en = {
     "Fixed Discount": "Fixed Discount",
     "Percentage Discount": "Percentage Discount",
     "Free Shipping": "Free Shipping",
-    "Price Discount": "Price Discount"
+    "Price Discount": "Price Discount",
+    "Team Members": "Team Members",
+    "To-Do": "To-Do"
 }
 export default en
