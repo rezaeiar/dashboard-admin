@@ -8,6 +8,7 @@ import Customers from "../pages/Customers"
 import Coupons from "../pages/Coupons"
 import AddCustomer from "../pages/AddCustomer"
 import CreateCoupons from "../pages/CreateCoupons"
+import CustomerInfo from "../pages/CustomerInfo"
 import Login from "../pages/Login"
 import NotFound from "../pages/404"
 
@@ -25,6 +26,7 @@ const routes: RoutesType[] = [
     { path: '/products/add', element: <AddProduct /> },
     { path: '/customers', element: <Customers /> },
     { path: '/customers/add', element: <AddCustomer /> },
+    { path: '/customers/info/:id', element: <CustomerInfo /> },
     { path: '/coupons', element: <Coupons /> },
     { path: '/coupons/create', element: <CreateCoupons /> },
     { path: '/login', element: <Login /> },

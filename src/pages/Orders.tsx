@@ -93,8 +93,8 @@ const Orders = () => {
                         <td className="w-28 sm:w-32 shrink-0">28 May 2019</td>
                         <td className="w-28 sm:w-32 shrink-0">Book</td>
                         <td className="w-28 sm:w-32 shrink-0">
-                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors">
-                                Completed
+                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Completed")}
                             </button>
                         </td>
                     </tr>
@@ -105,8 +105,8 @@ const Orders = () => {
                         <td className="w-28 sm:w-32 shrink-0">28 May 2019</td>
                         <td className="w-28 sm:w-32 shrink-0">Book</td>
                         <td className="w-28 sm:w-32 shrink-0">
-                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors">
-                                Completed
+                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Completed")}
                             </button>
                         </td>
                     </tr>
@@ -117,8 +117,8 @@ const Orders = () => {
                         <td className="w-28 sm:w-32 shrink-0">28 May 2019</td>
                         <td className="w-28 sm:w-32 shrink-0">Book</td>
                         <td className="w-28 sm:w-32 shrink-0">
-                            <button className="w-4/5 flex justify-center bg-yellow-30 text-yellow-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors">
-                                Pending
+                            <button className="w-4/5 flex justify-center bg-yellow-30 text-yellow-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Pending")}
                             </button>
                         </td>
                     </tr>
@@ -141,8 +141,8 @@ const Orders = () => {
                         <td className="w-28 sm:w-32 shrink-0">28 May 2019</td>
                         <td className="w-28 sm:w-32 shrink-0">Book</td>
                         <td className="w-28 sm:w-32 shrink-0">
-                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors">
-                                Completed
+                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Completed")}
                             </button>
                         </td>
                     </tr>
@@ -153,8 +153,8 @@ const Orders = () => {
                         <td className="w-28 sm:w-32 shrink-0">28 May 2019</td>
                         <td className="w-28 sm:w-32 shrink-0">Book</td>
                         <td className="w-28 sm:w-32 shrink-0">
-                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors">
-                                Completed
+                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Completed")}
                             </button>
                         </td>
                     </tr>
@@ -165,8 +165,8 @@ const Orders = () => {
                         <td className="w-28 sm:w-32 shrink-0">28 May 2019</td>
                         <td className="w-28 sm:w-32 shrink-0">Book</td>
                         <td className="w-28 sm:w-32 shrink-0">
-                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors">
-                                Completed
+                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Completed")}
                             </button>
                         </td>
                     </tr>
@@ -177,8 +177,8 @@ const Orders = () => {
                         <td className="w-28 sm:w-32 shrink-0">28 May 2019</td>
                         <td className="w-28 sm:w-32 shrink-0">Book</td>
                         <td className="w-28 sm:w-32 shrink-0">
-                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors">
-                                Completed
+                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Completed")}
                             </button>
                         </td>
                     </tr>
@@ -189,8 +189,8 @@ const Orders = () => {
                         <td className="w-28 sm:w-32 shrink-0">28 May 2019</td>
                         <td className="w-28 sm:w-32 shrink-0">Book</td>
                         <td className="w-28 sm:w-32 shrink-0">
-                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors">
-                                Completed
+                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Completed")}
                             </button>
                         </td>
                     </tr>
@@ -201,8 +201,8 @@ const Orders = () => {
                         <td className="w-28 sm:w-32 shrink-0">28 May 2019</td>
                         <td className="w-28 sm:w-32 shrink-0">Book</td>
                         <td className="w-28 sm:w-32 shrink-0">
-                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors">
-                                Completed
+                            <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Completed")}
                             </button>
                         </td>
                     </tr>
