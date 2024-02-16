@@ -132,7 +132,7 @@ const en = {
     "Percentage Discount": "Percentage Discount",
     "Free Shipping": "Free Shipping",
     "Price Discount": "Price Discount",
-    "Team Members": "Team Members",
+    "Managers": "Managers",
     "To-Do": "To-Do"
 }
 export default en

@@ -132,7 +132,7 @@ const fa = {
     "Percentage Discount": "درصد تخفیف",
     "Free Shipping": "ارسال رایگان",
     "Price Discount": "تخفیف قیمت",
-    "Team Members": "اعضای تیم",
+    "Managers": "مدیران",
     "To-Do": "وظایف"
 }
 export default fa

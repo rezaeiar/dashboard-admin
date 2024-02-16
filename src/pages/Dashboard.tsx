@@ -1,4 +1,4 @@
-import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
+import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area, BarChart, Bar, Legend } from 'recharts';
 import { useTranslation } from 'react-i18next';
 import DashboardDetailCard from '../components/DashboardDetailCard';
 const Dashboard = () => {
@@ -64,125 +64,17 @@ const Dashboard = () => {
             amt: 2290,
         },
         {
-            name: '1',
+            name: '11',
             uv: 4000,
             pv: 2400,
             amt: 2400,
         },
         {
-            name: '2',
+            name: '12',
             uv: 3000,
             pv: 1398,
             amt: 2210,
-        },
-        {
-            name: '3',
-            uv: 2000,
-            pv: 9800,
-            amt: 2290,
-        },
-        {
-            name: '4',
-            uv: 2780,
-            pv: 3908,
-            amt: 2000,
-        },
-        {
-            name: '5',
-            uv: 1890,
-            pv: 4800,
-            amt: 2181,
-        },
-        {
-            name: '6',
-            uv: 2390,
-            pv: 3800,
-            amt: 2500,
-        },
-        {
-            name: '7',
-            uv: 3490,
-            pv: 4300,
-            amt: 2100,
-        },
-        {
-            name: '8',
-            uv: 7000,
-            pv: 2400,
-            amt: 2400,
-        },
-        {
-            name: '9',
-            uv: 3000,
-            pv: 1398,
-            amt: 2210,
-        },
-        {
-            name: '10',
-            uv: 2000,
-            pv: 9800,
-            amt: 2290,
-        },
-        {
-            name: '1',
-            uv: 4000,
-            pv: 2400,
-            amt: 2400,
-        },
-        {
-            name: '2',
-            uv: 3000,
-            pv: 1398,
-            amt: 2210,
-        },
-        {
-            name: '3',
-            uv: 2000,
-            pv: 9800,
-            amt: 2290,
-        },
-        {
-            name: '4',
-            uv: 2780,
-            pv: 3908,
-            amt: 2000,
-        },
-        {
-            name: '5',
-            uv: 1890,
-            pv: 4800,
-            amt: 2181,
-        },
-        {
-            name: '6',
-            uv: 2390,
-            pv: 3800,
-            amt: 2500,
-        },
-        {
-            name: '7',
-            uv: 3490,
-            pv: 4300,
-            amt: 2100,
-        },
-        {
-            name: '8',
-            uv: 7000,
-            pv: 2400,
-            amt: 2400,
-        },
-        {
-            name: '9',
-            uv: 3000,
-            pv: 1398,
-            amt: 2210,
-        },
-        {
-            name: '10',
-            uv: 2000,
-            pv: 9800,
-            amt: 2290,
-        },
+        }
     ];
     const { t } = useTranslation()
 
@@ -192,12 +84,6 @@ const Dashboard = () => {
                 <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100">
                     {t("dashboard")}
                 </h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-between gap-2 xl:gap-4">
-                <DashboardDetailCard title={t("total user")} value={2356} status={{ type: false, value: 4.3 }} icon={'users.svg'} />
-                <DashboardDetailCard title={t("total order")} value={534} status={{ type: true, value: 1.3 }} icon={'orders.svg'} />
-                <DashboardDetailCard title={t("total sales")} value={345} status={{ type: false, value: 4.3 }} icon={'sales.svg'} />
-                <DashboardDetailCard title={t("total pending")} value={44} status={{ type: true, value: 8.3 }} icon={'pendings.svg'} />
             </div>
             <div className="shadow-md rounded-md h-96 bg-white p-8 flex flex-col gap-y-10">
                 <div className="flex justify-between items-center">
@@ -229,6 +115,12 @@ const Dashboard = () => {
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-between gap-2 xl:gap-4">
+                <DashboardDetailCard title={t("total user")} value={2356} status={{ type: false, value: 4.3 }} icon={'users.svg'} />
+                <DashboardDetailCard title={t("total order")} value={534} status={{ type: true, value: 1.3 }} icon={'orders.svg'} />
+                <DashboardDetailCard title={t("total sales")} value={345} status={{ type: false, value: 4.3 }} icon={'sales.svg'} />
+                <DashboardDetailCard title={t("total pending")} value={44} status={{ type: true, value: 8.3 }} icon={'pendings.svg'} />
             </div>
             {/* <div className="shadow-md rounded-md h-96 bg-white p-8 flex flex-col gap-y-10">
 
