@@ -11,6 +11,7 @@ import CreateCoupons from "../pages/CreateCoupons"
 import CustomerInfo from "../pages/CustomerInfo"
 import TodoList from "../pages/TodoList"
 import Managers from "../pages/Managers"
+import Register from "../pages/Register"
 import Login from "../pages/Login"
 import NotFound from "../pages/404"
 
@@ -33,6 +34,7 @@ const routes: RoutesType[] = [
     { path: '/coupons/create', element: <CreateCoupons /> },
     { path: '/todolist', element: <TodoList /> },
     { path: '/managers', element: <Managers /> },
+    { path: '/register', element: <Register /> },
     { path: '/login', element: <Login /> },
     { path: '/*', element: <NotFound /> },
 ]

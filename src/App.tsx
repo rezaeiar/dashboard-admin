@@ -32,6 +32,7 @@ const App = () => {
     const router = useRoutes(routes)
 
     if (router?.props.match.pathname === '/login'
+        || router?.props.match.pathname === '/register'
         || router?.props.match.route.path === '/*') {
         return (
             <>
