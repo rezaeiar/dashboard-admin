@@ -150,6 +150,10 @@ const en = {
     "Continue With Google": "Continue With Google",
     "Continue with Facebook": "Continue with Facebook",
     "invalid email address": "invalid email address",
-    "Password must be between 6 and 16 characters": "Password must be between 6 and 16 characters"
+    "Password must be between 6 and 16 characters": "Password must be between 6 and 16 characters",
+    "New to Our Product?": "New to Our Product?",
+    "Forgot your password?": "Forgot your password?",
+    "Login to account": "Login to account",
+    "Or sign in using:": "Or sign in using:"
 }
 export default en

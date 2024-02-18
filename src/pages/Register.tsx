@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import Button from "../components/Button"
 import { useForm, SubmitHandler } from "react-hook-form"
-import React from "react"
 
 type Inputs = {
     email: string

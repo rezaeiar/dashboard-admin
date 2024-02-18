@@ -150,6 +150,10 @@ const fa = {
     "Continue With Google": "با گوگل ادامه دهید",
     "Continue with Facebook": "با فیس بوک ادامه دهید",
     "invalid email address": "آدرس ایمیل نامعتبر",
-    "Password must be between 6 and 16 characters": "رمز عبور باید بین 6 تا 16 کاراکتر باشد"
+    "Password must be between 6 and 16 characters": "رمز عبور باید بین 6 تا 16 کاراکتر باشد",
+    "New to Our Product?": "کاربر جدید هستید؟",
+    "Forgot your password?": "رمز عبور خود را فراموش کرده اید؟",
+    "Login to account": "وارد حساب کاربری شوید",
+    "Or sign in using:": "یا با استفاده از:"
 }
 export default fa
