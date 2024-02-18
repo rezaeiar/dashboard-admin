@@ -133,6 +133,23 @@ const en = {
     "Free Shipping": "Free Shipping",
     "Price Discount": "Price Discount",
     "Managers": "Managers",
-    "To-Do": "To-Do"
+    "To-Do": "To-Do",
+    "Email": "Email",
+    "Create an Account": "Create an Account",
+    "Have an Account?": "Have an Account?",
+    "Sign In": "Sign In",
+    "Enter Email Address": "Enter Email Address",
+    "Password": "Password",
+    "Create Password": "Create Password",
+    "Create Account": "Create Account",
+    "Email is required": "Email is required",
+    "Password is required": "Password is required",
+    "By creating account, you agree to our": "By creating account, you agree to our",
+    "Terms of Service": "Terms of Service",
+    "Or create an account using:": "Or create an account using:",
+    "Continue With Google": "Continue With Google",
+    "Continue with Facebook": "Continue with Facebook",
+    "invalid email address": "invalid email address",
+    "Password must be between 6 and 16 characters": "Password must be between 6 and 16 characters"
 }
 export default en

@@ -133,6 +133,23 @@ const fa = {
     "Free Shipping": "ارسال رایگان",
     "Price Discount": "تخفیف قیمت",
     "Managers": "مدیران",
-    "To-Do": "وظایف"
+    "To-Do": "وظایف",
+    "Email": "پست الکترونیک",
+    "Create an Account": "یک حساب کاربری ایجاد کنید",
+    "Have an Account?": "حساب کاربری دارید؟",
+    "Sign In": "ورود",
+    "Enter Email Address": "آدرس ایمیل را وارد کن",
+    "Password": "کلمه عبور",
+    "Create Password": "رمز عبور ایجاد کنید",
+    "Create Account": "ایجاد حساب کاربری",
+    "Email is required": "پست الکترونیک مورد نیاز است",
+    "Password is required": "کلمه عبور مورد نیاز است",
+    "By creating account, you agree to our": "با ایجاد حساب، شما با ما موافقت می کنید",
+    "Terms of Service": "شرایط استفاده از خدمات",
+    "Or create an account using:": "یا با استفاده از:",
+    "Continue With Google": "با گوگل ادامه دهید",
+    "Continue with Facebook": "با فیس بوک ادامه دهید",
+    "invalid email address": "آدرس ایمیل نامعتبر",
+    "Password must be between 6 and 16 characters": "رمز عبور باید بین 6 تا 16 کاراکتر باشد"
 }
 export default fa
