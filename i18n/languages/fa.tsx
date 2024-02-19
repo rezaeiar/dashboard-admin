@@ -160,6 +160,10 @@ const fa = {
     "Confirmation Code": "کد تایید",
     "Enter Code": "کد تایید",
     "Haven't received your code?": "کد خود را دریافت نکرده اید؟",
-    "Resend Code": "دوباره کد را ارسال کنید"
+    "Resend Code": "دوباره کد را ارسال کنید",
+    "Add New Task": "وظیفه جدید اضافه کنید",
+    "To-Do List": "لیست وظایف",
+    "Your Tasks": "وظایف شما",
+    "All Tasks": "همه وظایف"
 }
 export default fa

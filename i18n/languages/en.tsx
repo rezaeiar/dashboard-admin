@@ -160,6 +160,10 @@ const en = {
     "Confirmation Code": "Confirmation Code",
     "Enter Code": "Enter Code",
     "Haven't received your code?": "Haven't received your code?",
-    "Resend Code": "Resend Code"
+    "Resend Code": "Resend Code",
+    "Add New Task": "Add New Task",
+    "To-Do List": "To-Do List",
+    "Your Tasks": "Your Tasks",
+    "All Tasks": "All Tasks"
 }
 export default en
