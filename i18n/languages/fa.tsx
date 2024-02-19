@@ -154,6 +154,12 @@ const fa = {
     "New to Our Product?": "کاربر جدید هستید؟",
     "Forgot your password?": "رمز عبور خود را فراموش کرده اید؟",
     "Login to account": "وارد حساب کاربری شوید",
-    "Or sign in using:": "یا با استفاده از:"
+    "Or sign in using:": "یا با استفاده از:",
+    "Confirm Email": "تایید ایمیل",
+    "Check Your Email and Enter Confirmation Code": "ایمیل خود را بررسی کنید و کد تایید را وارد کنید",
+    "Confirmation Code": "کد تایید",
+    "Enter Code": "کد تایید",
+    "Haven't received your code?": "کد خود را دریافت نکرده اید؟",
+    "Resend Code": "دوباره کد را ارسال کنید"
 }
 export default fa

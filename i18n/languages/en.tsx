@@ -154,6 +154,12 @@ const en = {
     "New to Our Product?": "New to Our Product?",
     "Forgot your password?": "Forgot your password?",
     "Login to account": "Login to account",
-    "Or sign in using:": "Or sign in using:"
+    "Or sign in using:": "Or sign in using:",
+    "Confirm Email": "Confirm Email",
+    "Check Your Email and Enter Confirmation Code": "Check Your Email and Enter Confirmation Code",
+    "Confirmation Code": "Confirmation Code",
+    "Enter Code": "Enter Code",
+    "Haven't received your code?": "Haven't received your code?",
+    "Resend Code": "Resend Code"
 }
 export default en
