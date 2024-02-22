@@ -164,6 +164,7 @@ const en = {
     "Add New Task": "Add New Task",
     "To-Do List": "To-Do List",
     "Your Tasks": "Your Tasks",
-    "All Tasks": "All Tasks"
+    "All Tasks": "All Tasks",
+    "add Manager": "add Manager"
 }
 export default en
