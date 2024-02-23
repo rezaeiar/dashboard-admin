@@ -3,6 +3,7 @@ import routes from "./routes/routes"
 import TopBar from "./components/TopBar"
 import SideBar from "./components/SideBar"
 import i18n from '../i18n'
+import DeleteModal from "./components/DeleteModal"
 
 const App = () => {
     const pageLanguage = localStorage.getItem("lang");
@@ -47,6 +48,7 @@ const App = () => {
                 <SideBar />
                 {router}
             </div>
+            <DeleteModal />
         </div>
     )
 }

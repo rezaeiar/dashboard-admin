@@ -30,7 +30,7 @@ const Orders = () => {
     const serachHandler = (value: string) => {
         console.log(value);
     }
-    const [hasOrders, setHasOrders] = useState(true)
+    const [hasOrders, setHasOrders] = useState(false)
     if (!hasOrders) {
         return (
             <div className="py-4 h-screen sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
