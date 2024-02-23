@@ -4,6 +4,7 @@ import TopBar from "./components/TopBar"
 import SideBar from "./components/SideBar"
 import i18n from '../i18n'
 import DeleteModal from "./components/DeleteModal"
+import SuccessModal from "./components/SuccessModal"
 
 const App = () => {
     const pageLanguage = localStorage.getItem("lang");
@@ -48,7 +49,7 @@ const App = () => {
                 <SideBar />
                 {router}
             </div>
-            <DeleteModal />
+            <SuccessModal />
         </div>
     )
 }
