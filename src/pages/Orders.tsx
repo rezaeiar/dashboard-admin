@@ -2,6 +2,7 @@ import { useState } from "react"
 import Button from "../components/Button"
 import { useTranslation } from "react-i18next"
 import Filters from "../components/Filters"
+import EmptyEntity from "../components/EmptyEntity"
 const Orders = () => {
     const { t } = useTranslation()
     const products = [
@@ -29,6 +30,35 @@ const Orders = () => {
     const serachHandler = (value: string) => {
         console.log(value);
     }
+    const [hasOrders, setHasOrders] = useState(true)
+    if (!hasOrders) {
+        return (
+            <div className="py-4 h-screen sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
+                <div className="flex h-auto justify-between items-center">
+                    <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100 capitalize">
+                        {t("orders")}
+                    </h2>
+                    <div className="flex gap-x-1 sm:gap-x-2">
+                        <Button type="white" size="small" styles="">
+                            <>
+                                {t("export")}
+                            </>
+                        </Button>
+                        <Button type="primary" size="small" styles="">
+                            <>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                                {t("add order")}
+                            </>
+                        </Button>
+                    </div>
+                </div>
+                <EmptyEntity />
+            </div>
+        )
+    }
+
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
             <div className="flex justify-between items-center">
@@ -203,6 +233,7 @@ const Orders = () => {
             </div>
         </div>
     )
+
 }
 
 export default Orders
