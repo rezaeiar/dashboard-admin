@@ -6,6 +6,10 @@ type singUpType = {
     username: string,
     password: string
 }
+type singInType = {
+    username: string,
+    password: string
+}
 
 export const singUp = (userInfo : singUpType) => {
     return apiReq({
@@ -15,4 +19,11 @@ export const singUp = (userInfo : singUpType) => {
     })
         .then(res => console.log(res)
         )
+}
+export const singIn = (userInfo : singInType) => {
+    return apiReq({
+        method: "POST",
+        url: "/auth/signin",
+        data: userInfo
+    })
 }

@@ -2,23 +2,39 @@ import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import Button from "../components/Button"
 import { useForm, SubmitHandler } from "react-hook-form"
+import { singIn } from "../../api/services/auth"
+import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 
 type Inputs = {
-    email: string
+    username: string
     password: string
 }
 
 const Login = () => {
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (document.cookie.split('=')[1]) {
+            navigate("/")
+        }
+    }, [])
+    
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        console.log(data);
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        await singIn(data)
+            .then(res => {
+                if (res.status === 201) {
+                    document.cookie = `token=${res.data.token}`
+                    navigate("/")
+                }
+            })
 
     }
-    
+
     const { t } = useTranslation()
     return (
         <div className="w-full min-h-screen flex items-center justify-center bg-general-30 py-0 sm:py-12 md:py-20">
@@ -39,15 +55,12 @@ const Login = () => {
                 <div className="grid grid-cols-1 gap-y-3 sm:gap-y-5 w-full sm:w-auto">
                     <div className="flex flex-col w-auto sm:w-96 gap-y-1">
                         <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                            {t("Email")}
+                            {t("Username")}
                         </label>
-                        <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter Email Address")} {...register("email", {
-                            required: t("Email is required"), pattern: {
-                                value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                                message: t("invalid email address")
-                            }
+                        <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter Username")} {...register("username", {
+                            required: t("Username is required")
                         })} />
-                        {errors.email && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.email.message}</span>}
+                        {errors.username && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.username.message}</span>}
                     </div>
                     <div className="flex flex-col w-auto sm:w-96 gap-y-1">
                         <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
