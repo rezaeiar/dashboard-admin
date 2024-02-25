@@ -50,7 +50,7 @@ const App = () => {
                 <SideBar />
                 {router}
             </div>
-            <CategoriesModal />
+            {/* <CategoriesModal /> */}
         </div>
     )
 }
