@@ -1,11 +1,15 @@
-import { Link } from "react-router-dom"
+import { Link, json } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import Button from "../components/Button"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useState } from "react"
+import { singUp } from '../../api/services/auth'
 
 type Inputs = {
-    email: string
+    first_name: string,
+    last_name: string,
+    email: string,
+    username: string,
     password: string
 }
 const Register = () => {
@@ -14,9 +18,8 @@ const Register = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        console.log(data);
-        setIsConfirming(true)
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        await singUp(data)
     }
     const [isConfirming, setIsConfirming] = useState(false)
     const [confirmationCode, setConfirmationCode] = useState("")
@@ -43,6 +46,24 @@ const Register = () => {
                     <div className="grid grid-cols-1 gap-y-3 sm:gap-y-5 w-full sm:w-auto">
                         <div className="flex flex-col w-auto sm:w-96 gap-y-1">
                             <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("First name")}
+                            </label>
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter First name")} {...register("first_name", {
+                                required: t("First name is required")
+                            })} />
+                            {errors.first_name && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.first_name.message}</span>}
+                        </div>
+                        <div className="flex flex-col w-auto sm:w-96 gap-y-1">
+                            <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Last name")}
+                            </label>
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter Last name")} {...register("last_name", {
+                                required: t("Last name is required")
+                            })} />
+                            {errors.last_name && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.last_name.message}</span>}
+                        </div>
+                        <div className="flex flex-col w-auto sm:w-96 gap-y-1">
+                            <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                 {t("Email")}
                             </label>
                             <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter Email Address")} {...register("email", {
@@ -52,6 +73,15 @@ const Register = () => {
                                 }
                             })} />
                             {errors.email && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.email.message}</span>}
+                        </div>
+                        <div className="flex flex-col w-auto sm:w-96 gap-y-1">
+                            <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Username")}
+                            </label>
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter Username")} {...register("username", {
+                                required: t("Username is required")
+                            })} />
+                            {errors.username && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.username.message}</span>}
                         </div>
                         <div className="flex flex-col w-auto sm:w-96 gap-y-1">
                             <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
