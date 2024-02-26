@@ -1,8 +1,8 @@
-import { Link, json } from "react-router-dom"
+import { Link, json, useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import Button from "../components/Button"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { singUp } from '../../api/services/auth'
 
 type Inputs = {
@@ -13,6 +13,13 @@ type Inputs = {
     password: string
 }
 const Register = () => {
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (document.cookie.split('=')[1]) {
+            navigate("/")
+        }
+    }, [])
+
     const {
         register,
         handleSubmit,

@@ -18,7 +18,7 @@ const Login = () => {
             navigate("/")
         }
     }, [])
-    
+
     const {
         register,
         handleSubmit,

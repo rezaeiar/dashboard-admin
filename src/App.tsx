@@ -1,4 +1,4 @@
-import { useRoutes } from "react-router-dom"
+import { useNavigate, useRoutes } from "react-router-dom"
 import routes from "./routes/routes"
 import TopBar from "./components/TopBar"
 import SideBar from "./components/SideBar"
@@ -6,6 +6,7 @@ import i18n from '../i18n'
 import DeleteModal from "./components/DeleteModal"
 import SuccessModal from "./components/SuccessModal"
 import CategoriesModal from "./components/CategoriesModal"
+import { useEffect } from "react"
 
 const App = () => {
     const pageLanguage = localStorage.getItem("lang");
@@ -43,6 +44,13 @@ const App = () => {
             </>
         )
     }
+
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (!document.cookie.split('=')[1]) {
+            navigate("/login")
+        }
+    }, [])
     return (
         <div className="app relative">
             <TopBar />
