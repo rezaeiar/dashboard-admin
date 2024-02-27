@@ -165,6 +165,8 @@ const en = {
     "To-Do List": "To-Do List",
     "Your Tasks": "Your Tasks",
     "All Tasks": "All Tasks",
-    "add Manager": "add Manager"
+    "add Manager": "add Manager",
+    "User Name": "User Name",
+    "Role": "Role"
 }
 export default en

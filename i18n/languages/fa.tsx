@@ -165,6 +165,8 @@ const fa = {
     "To-Do List": "لیست وظایف",
     "Your Tasks": "وظایف شما",
     "All Tasks": "همه وظایف",
-    "add Manager": "اضافه کردن مدیر"
+    "add Manager": "اضافه کردن مدیر",
+    "User Name": "نام کاربری",
+    "Role": "نقش کاربر"
 }
 export default fa

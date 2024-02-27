@@ -8,13 +8,14 @@ type ButtonProps = {
     size: ButtonSize,
     styles: string,
     children: JSX.Element,
-    link?: string
+    link?: string,
+    onSubmit?: () => void
 }
 const Button = (props: ButtonProps) => {
     switch (props.type) {
         case "primary": {
             return (
-                <button>
+                <button onClick={props.onSubmit && props.onSubmit}>
                     <Link to={props.link ? props.link : ""} className={`primary ${props.size} ${props.styles}`}>
                         {
                             props.children
@@ -25,7 +26,7 @@ const Button = (props: ButtonProps) => {
         }
         case "secondary": {
             return (
-                <button>
+                <button onClick={props.onSubmit && props.onSubmit}>
                     <Link to={props.link ? props.link : ""} className={`secondary ${props.size} ${props.styles}`}>
                         {
                             props.children
@@ -36,7 +37,7 @@ const Button = (props: ButtonProps) => {
         }
         case "destructive": {
             return (
-                <button>
+                <button onClick={props.onSubmit && props.onSubmit}>
                     <Link to={props.link ? props.link : ""} className={`destructive ${props.size} ${props.styles}`}>
                         {
                             props.children
@@ -47,7 +48,7 @@ const Button = (props: ButtonProps) => {
         }
         case "destructive-secondary": {
             return (
-                <button>
+                <button onClick={props.onSubmit && props.onSubmit}>
                     <Link to={props.link ? props.link : ""} className={`destructive-secondary ${props.size} ${props.styles}`}>
                         {
                             props.children
@@ -58,7 +59,7 @@ const Button = (props: ButtonProps) => {
         }
         case "white": {
             return (
-                <button>
+                <button onClick={props.onSubmit && props.onSubmit}>
                     <Link to={props.link ? props.link : ""} className={`white ${props.size} ${props.styles}`}>
                         {
                             props.children
@@ -69,7 +70,7 @@ const Button = (props: ButtonProps) => {
         }
         default: {
             return (
-                <button>
+                <button onClick={props.onSubmit && props.onSubmit}>
                     <Link to={props.link ? props.link : ""} className={`primary ${props.size} ${props.styles}`}>
                         {
                             props.children
