@@ -17,7 +17,7 @@ type addCustomerType = {
 
 export const addCustomer = (customerInfo: addCustomerType) => {
     console.log(customerInfo);
-    
+
     return apiReq({
         method: "POST",
         url: "/user",
@@ -28,4 +28,14 @@ export const addCustomer = (customerInfo: addCustomerType) => {
     })
         .then(res => console.log(res)
         )
+}
+export const getAllCustomers = async () => {
+    return await apiReq({
+        method: "GET",
+        url: "/user",
+        headers: {
+            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+        }
+    })
+        .then(res => res.data)
 }
