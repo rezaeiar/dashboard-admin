@@ -39,3 +39,23 @@ export const getAllCustomers = async () => {
     })
         .then(res => res.data)
 }
+export const getSingleCustomer = async (id: string) => {
+    return await apiReq({
+        method: "GET",
+        url: `/user/${id}`,
+        headers: {
+            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+        }
+    })
+        .then(res => res.data)
+}
+export const deleteSingleCustomer = async (id: string) => {
+    return await apiReq({
+        method: "DELETE",
+        url: `/user/${id}`,
+        headers: {
+            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+        }
+    })
+        .then(res => res.data)
+}
