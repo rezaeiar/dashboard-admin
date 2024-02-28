@@ -1,6 +1,9 @@
 import { useTranslation } from "react-i18next"
 import Button from "./Button"
-const CategorieCard = () => {
+type CategorieCardProps = {
+    name: string
+}
+const CategorieCard = ({ name }: CategorieCardProps) => {
     const { t } = useTranslation()
     return (
         <div className="flex flex-col bg-white rounded-md overflow-hidden shadow-card group">
@@ -19,7 +22,7 @@ const CategorieCard = () => {
             </div>
             <div className="py-3 xl:py-5 px-5 xl:px-7">
                 <h3 className="text-general-100 text-xs sm:text-sm lg:text-base font-nunitosans-extrabold">
-                    Men Clothes
+                    {name}
                 </h3>
                 <span className="text-general-80 text-[10px] sm:text-xs lg:text-sm font-nunitosans-regular rtl:font-iransans-regular">
                     24 {t("item")}
