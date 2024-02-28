@@ -25,3 +25,13 @@ export const getAllCategories = async () => {
     })
         .then(res => res.data)
 }
+export const getSingleCategory = async (id: string) => {
+    return await apiReq({
+        method: "GET",
+        url: `/category/${id}`,
+        headers: {
+            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+        }
+    })
+        .then(res => res.data)
+}

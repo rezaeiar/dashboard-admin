@@ -2,10 +2,58 @@ import { useState } from "react"
 import Button from "../components/Button"
 import { useTranslation } from "react-i18next"
 import CheckBox from "../components/CheckBox"
+import { useParams } from "react-router-dom"
+import { getSingleCategory } from "../../api/services/category"
+import { useQuery } from "react-query"
 
 const SingleCategory = () => {
     const { t } = useTranslation()
     const [isChecked, setIsChecked] = useState(false)
+    const params = useParams()
+    const { data, isSuccess, isLoading } = useQuery(["category", params.CategorieName], () => getSingleCategory(params.CategorieName as string))
+
+    if (isLoading) {
+        return (
+            <div className="py-4 h-screen sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
+                <div className="flex justify-between items-center">
+                    <div className="flex flex-col">
+                        <div className="flex gap-x-1 text-general-80 font-nunitosans-regular items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                            </svg>
+                            <span className="text-xs md:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("back")}
+                            </span>
+                        </div>
+                        <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100 capitalize">
+                            Women Clothes
+                        </h2>
+                    </div>
+                    <div className="flex gap-x-1 sm:gap-x-2">
+                        <Button type="white" size="small" styles="">
+                            <>
+                                {t("cancel")}
+                            </>
+                        </Button>
+                        <Button type="primary" size="small" styles="">
+                            <>
+                                {t("save")}
+                            </>
+                        </Button>
+                    </div>
+                </div>
+                {
+                    isLoading &&
+                    <div className="bg-white h-full rounded shadow-box flex flex-col items-center justify-center gap-y-3 md:gap-y-5 px-4 sm:px-6 md:px-8">
+                        <h3 className="text-3xl text-general-90 font-nunitosans-extrabold">
+                            Loading..
+                        </h3>
+                        <div className="rounded-md h-12 w-12 border-4 border-t-4 border-blue-500 animate-spin absolute"></div>
+                    </div>
+                }
+            </div>
+        )
+    }
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
             <div className="flex justify-between items-center">
@@ -19,7 +67,7 @@ const SingleCategory = () => {
                         </span>
                     </div>
                     <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100 capitalize">
-                        Women Clothes
+                        {data.name}
                     </h2>
                 </div>
                 <div className="flex gap-x-1 sm:gap-x-2">

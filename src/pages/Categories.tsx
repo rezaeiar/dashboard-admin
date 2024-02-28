@@ -21,6 +21,7 @@ const Categories = () => {
     useEffect(() => {
         if (isSuccess) {
             setHasCategories(data.length ? true : false)
+
         }
     }, [isLoading])
     if (!hasCategories) {
@@ -78,7 +79,7 @@ const Categories = () => {
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 lg:gap-4">
                     {
-                        data.map((category: {name: string}) => (
+                        data.map((category: { id: string, name: string }) => (
                             <CategorieCard {...category} />
                         ))
                     }
