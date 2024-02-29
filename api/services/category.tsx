@@ -12,8 +12,7 @@ export const addCategory = async (categoryInfo: addCategoryType) => {
             "Authorization": `Bearer ${document.cookie.split('=')[1]}`
         }
     })
-        .then(res => console.log(res)
-        )
+        .then(res => res)
 }
 export const getAllCategories = async () => {
     return await apiReq({
@@ -34,4 +33,14 @@ export const getSingleCategory = async (id: string) => {
         }
     })
         .then(res => res.data)
+}
+export const deleteSingleCategory = async (id: string) => {
+    return await apiReq({
+        method: "DELETE",
+        url: `/category/${id}`,
+        headers: {
+            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+        }
+    })
+        .then(res => res)
 }

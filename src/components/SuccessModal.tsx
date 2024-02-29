@@ -1,8 +1,17 @@
 import Button from "./Button"
 
-const SuccessModal = () => {
+type SuccessModalProps = {
+    isShowSuccessModal: boolean,
+    setIsShowSuccessModal: React.Dispatch<React.SetStateAction<boolean>>
+}
+const SuccessModal = ({ isShowSuccessModal, setIsShowSuccessModal }: SuccessModalProps) => {
+    const hideModalHandler = (event: any) => {
+        if (event.target.className.includes("parent")) {
+            setIsShowSuccessModal(false)
+        }
+    }
     return (
-        <div className='flex items-center justify-center fixed h-screen w-full top-0 left-0 bg-general-100/50 z-50'>
+        <div className={`parent backdrop-blur-sm flex items-center justify-center fixed transition-all h-screen w-full top-0 left-0 bg-general-100/50 z-50 ${isShowSuccessModal ? "opacity-100 visible" : "opacity-0 invisible"}`} onClick={(event) => hideModalHandler(event)}>
             <div className="flex items-center flex-col gap-y-4 bg-white w-[500px] rounded p-6">
                 <div className="flex self-end items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-general-80">
@@ -22,7 +31,7 @@ const SuccessModal = () => {
                         Are you sure you want to delete 4 selected items?
                     </span>
                 </div>
-                <Button size="small" type="primary" styles="">
+                <Button size="small" type="primary" styles="" onSubmit={() => setIsShowSuccessModal(false)}>
                     <>
                         Continue
                     </>

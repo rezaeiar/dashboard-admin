@@ -5,7 +5,7 @@ const EmptyEntity = () => {
     const { t } = useTranslation()
 
     return (
-        <div className='bg-white h-full rounded shadow-box flex flex-col items-center justify-center gap-y-3 md:gap-y-5 px-4 sm:px-6 md:px-8'>
+        <div className='bg-white h-screen rounded shadow-box flex flex-col items-center justify-center gap-y-3 md:gap-y-5 px-4 sm:px-6 md:px-8'>
             <img src="/icons/illustration.svg" alt="" />
             <h3 className="ltr:font-nunitosans-bold rtl:font-iransans-bold text-lg text-general-100">
                 No Orders Yet
