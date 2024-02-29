@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import Button from "../components/Button"
 import { useTranslation } from "react-i18next"
-import { useEffect, useState } from "react"
 import { getAllCustomers } from "../../api/services/customer"
 import { useQuery } from "react-query"
 import EmptyEntity from "../components/EmptyEntity"

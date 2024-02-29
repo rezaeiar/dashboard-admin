@@ -1,11 +1,9 @@
 import Button from "../components/Button"
 import { useTranslation } from "react-i18next"
-import CheckBox from "../components/CheckBox"
-import { useState } from "react"
 
 const TodoList = () => {
     const { t } = useTranslation()
-    const [isChecked, setIsChecked] = useState(false)
+    // const [isChecked, setIsChecked] = useState(false)
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
             <div className="flex justify-between items-center">

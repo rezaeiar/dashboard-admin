@@ -1,4 +1,4 @@
-import { Link, json, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import Button from "../components/Button"
 import { useForm, SubmitHandler } from "react-hook-form"
@@ -28,7 +28,7 @@ const Register = () => {
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         await singUp(data)
     }
-    const [isConfirming, setIsConfirming] = useState(false)
+    const [isConfirming] = useState(false)
     const [confirmationCode, setConfirmationCode] = useState("")
 
     const { t } = useTranslation()

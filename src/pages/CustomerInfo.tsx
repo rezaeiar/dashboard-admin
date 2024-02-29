@@ -7,7 +7,7 @@ import { useQuery } from "react-query"
 const CustomerInfo = () => {
     const { t } = useTranslation()
     const params = useParams()
-    const { data, isLoading, isSuccess } = useQuery(['customer', params.id], () => getSingleCustomer(params.id as string))
+    const { data, isLoading } = useQuery(['customer', params.id], () => getSingleCustomer(params.id as string))
 
     const deleteCustomerHandler = (id: string) => {
         deleteSingleCustomer(id)
