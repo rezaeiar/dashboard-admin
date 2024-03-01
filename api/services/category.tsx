@@ -44,3 +44,14 @@ export const deleteSingleCategory = async (id: string) => {
     })
         .then(res => res)
 }
+export const changeCategoryInfo = async (id: string, name: string) => {
+    return await apiReq({
+        method: "PUT",
+        url: `/category/${id}`,
+        headers: {
+            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+        },
+        data: { name }
+    })
+        .then(res => res)
+}

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Button from "../components/Button"
 import { useTranslation } from "react-i18next"
 import CheckBox from "../components/CheckBox"
@@ -7,19 +7,38 @@ import { getSingleCategory } from "../../api/services/category"
 import { useQuery } from "react-query"
 import Loading from "../components/Loading"
 import DeleteModal from "../components/DeleteModal"
+import { changeCategoryInfo } from "../../api/services/category"
+import { useNavigate } from "react-router-dom"
 
 const SingleCategory = () => {
     const { t } = useTranslation()
+    const navigate = useNavigate()
     const [isChecked, setIsChecked] = useState(false)
     const params = useParams()
 
-    const { data, isLoading } = useQuery(["category", params.CategorieName], () => getSingleCategory(params.CategorieName as string))
+    const { data, isSuccess, isLoading } = useQuery(["category", params.CategorieName], () => getSingleCategory(params.CategorieName as string))
     const [isShowDeleteModal, setIsShowDeleteModal] = useState(false)
-    
+    const [categoryName, setCategoryName] = useState("")
+
+    useEffect(() => {
+        if (isSuccess) {
+            setCategoryName(data.name)
+        }
+    }, [isSuccess])
+
     if (isLoading) {
         return (
             <Loading />
         )
+    }
+
+    const changeCategoryInfoHandler = (id: string) => {
+        changeCategoryInfo(id, categoryName)
+        .then(res => {
+            if (res.status === 200) {
+                navigate("/categories")
+            }
+        })
     }
 
     return (
@@ -45,7 +64,7 @@ const SingleCategory = () => {
                                 {t("cancel")}
                             </>
                         </Button>
-                        <Button type="primary" size="small" styles="">
+                        <Button type="primary" size="small" styles="" onSubmit={() => changeCategoryInfoHandler(data.id)}>
                             <>
                                 {t("save")}
                             </>
@@ -152,7 +171,7 @@ const SingleCategory = () => {
                                 <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                     {t("name")}
                                 </label>
-                                <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" value={'Women Clothes'} />
+                                <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" value={categoryName} onChange={e => setCategoryName(e.target.value)} />
                             </div>
                             <div className="flex flex-col">
                                 <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
