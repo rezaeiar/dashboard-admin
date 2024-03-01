@@ -26,7 +26,7 @@ const DeleteModal = ({ isShowDeleteModal, setIsShowDeleteModal, categoryId }: De
         }
     }
     return (
-        <div className={`parent backdrop-blur-sm flex items-center justify-center fixed transition-all h-screen w-full top-0 left-0 bg-general-100/50 z-50 ${isShowDeleteModal ? "opacity-100 visible" : "opacity-0 invisible"}`} onClick={(event) => hideModalHandler(event)}>
+        <div className={`parent backdrop-blur-sm flex items-center justify-center fixed transition-all h-screen w-full top-0 left-0 bg-general-100/50 z-50 px-4 sm:px-6 md:px-8 ${isShowDeleteModal ? "opacity-100 visible" : "opacity-0 invisible"}`} onClick={(event) => hideModalHandler(event)}>
             <div className="flex flex-col gap-y-4 bg-white w-[500px] rounded p-6">
                 <div className="flex justify-between items-center">
                     <h3 className='ltr:font-nunitosans-bold rtl:font-iransans-bold text-lg text-general-100'>

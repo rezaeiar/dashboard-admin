@@ -27,7 +27,7 @@ const CategorieCard = ({ id, name }: CategorieCardProps) => {
                 </div>
             </div>
             <div className="py-3 xl:py-5 px-5 xl:px-7">
-                <h3 className="text-general-100 text-xs sm:text-sm lg:text-base font-nunitosans-extrabold">
+                <h3 className="text-general-100 text-xs sm:text-sm lg:text-base font-iransans-bold">
                     {name}
                 </h3>
                 <span className="text-general-80 text-[10px] sm:text-xs lg:text-sm font-nunitosans-regular rtl:font-iransans-regular">
