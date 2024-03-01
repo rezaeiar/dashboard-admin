@@ -7,17 +7,16 @@ import { getSingleCategory } from "../../api/services/category"
 import { useQuery } from "react-query"
 import Loading from "../components/Loading"
 import DeleteModal from "../components/DeleteModal"
-import { changeCategoryInfo } from "../../api/services/category"
-import { useNavigate } from "react-router-dom"
+import ConfirmModal from "../components/ConfirmModal"
 
 const SingleCategory = () => {
     const { t } = useTranslation()
-    const navigate = useNavigate()
     const [isChecked, setIsChecked] = useState(false)
     const params = useParams()
 
-    const { data, isSuccess, isLoading } = useQuery(["category", params.CategorieName], () => getSingleCategory(params.CategorieName as string))
+    const { data, isSuccess, isLoading , refetch} = useQuery(["category", params.CategorieName], () => getSingleCategory(params.CategorieName as string))
     const [isShowDeleteModal, setIsShowDeleteModal] = useState(false)
+    const [isShowConfirmModal, setIsShowConfirmModal] = useState(false)
     const [categoryName, setCategoryName] = useState("")
 
     useEffect(() => {
@@ -30,15 +29,6 @@ const SingleCategory = () => {
         return (
             <Loading />
         )
-    }
-
-    const changeCategoryInfoHandler = (id: string) => {
-        changeCategoryInfo(id, categoryName)
-        .then(res => {
-            if (res.status === 200) {
-                navigate("/categories")
-            }
-        })
     }
 
     return (
@@ -64,7 +54,7 @@ const SingleCategory = () => {
                                 {t("cancel")}
                             </>
                         </Button>
-                        <Button type="primary" size="small" styles="" onSubmit={() => changeCategoryInfoHandler(data.id)}>
+                        <Button type="primary" size="small" styles="" onSubmit={() => setIsShowConfirmModal(true)}>
                             <>
                                 {t("save")}
                             </>
@@ -199,6 +189,7 @@ const SingleCategory = () => {
                 </div>
             </div>
             <DeleteModal isShowDeleteModal={isShowDeleteModal} setIsShowDeleteModal={setIsShowDeleteModal} categoryId={params.CategorieName as string} />
+            <ConfirmModal isShowConfirmModal={isShowConfirmModal} setIsShowConfirmModal={setIsShowConfirmModal} categoryId={params.CategorieName as string} categoryName={categoryName} refetch={refetch} />
         </>
     )
 }
