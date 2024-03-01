@@ -11,7 +11,7 @@ type singInType = {
     password: string
 }
 
-export const singUp = (userInfo : singUpType) => {
+export const singUp = (userInfo: singUpType) => {
     return apiReq({
         method: "POST",
         url: "/auth/signup",
@@ -20,10 +20,20 @@ export const singUp = (userInfo : singUpType) => {
         .then(res => console.log(res)
         )
 }
-export const singIn = (userInfo : singInType) => {
+export const singIn = (userInfo: singInType) => {
     return apiReq({
         method: "POST",
         url: "/auth/signin",
         data: userInfo
     })
+}
+export const getMe = async () => {
+    return await apiReq({
+        method: "GET",
+        url: "/admin",
+        headers: {
+            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+        }
+    })
+    .then(res => res.data)
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useState } from "react"
 import Button from "./Button"
 import { useTranslation } from "react-i18next"
 import { addCategory } from '../../api/services/category'

@@ -3,6 +3,8 @@ import AdminCard from "./AdminCard"
 import LanguageSelection from "./LanguageSelection"
 import NotificationCard from "./NotificationCard"
 import { useTranslation } from "react-i18next"
+import { useQuery } from "react-query"
+import { getMe } from "../../api/services/auth"
 
 const TopBar = () => {
 
@@ -27,6 +29,10 @@ const TopBar = () => {
         setIsShowAdminCard(false)
         setIsShowLanguageSelection(false)
     }
+
+    const { data, isLoading, isSuccess } = useQuery("admin", () => getMe())
+    console.log(data);
+
     return (
         <div className='sticky top-0 w-full h-14 md:h-16 bg-white shadow flex justify-between items-center px-4 z-50 select-none'>
             <div className="block md:hidden text-general-70">
@@ -77,23 +83,52 @@ const TopBar = () => {
                     </svg>
                     <LanguageSelection show={isShowLanguageSelection} />
                 </div>
-                <div className="relative h-10 hidden md:flex gap-x-2 lg:gap-x-3 items-center" onClick={() => ShowAdminCardHandler(!isShowAdminCard)}>
-                    <div className="hidden md:flex rounded-full bg-general-40 h-8 w-8 lg:h-9 lg:w-9 overflow-hidden">
-                        <img src="/images/a-l-l-e-f-v-i-n-i-c-i-u-s-343875-unsplash.png" alt="admin" />
+                {
+                    isLoading &&
+                    <div className="animate-pulse relative h-10 hidden md:flex gap-x-2 lg:gap-x-3 items-center">
+                        <div className="hidden md:flex rounded-full bg-general-40 h-8 w-8 lg:h-9 lg:w-9 overflow-hidden items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-general-60">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                            </svg>
+                        </div>
+                        <div className="flex flex-col gap-y-1">
+                            <h4 className='bg-general-40 text-xs lg:text-sm font-nunitosans-bold rtl:font-iransans-bold h-2 w-20 rounded'>
+                            </h4>
+                            <span className='hidden md:block bg-general-40 text-[10px] lg:text-xs font-nunitosans-semiBold rtl:font-iransans-semiBold h-1.5 w-10 rounded'>
+                            </span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 text-general-40">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
                     </div>
-                    <div className="flex flex-col gap-y-0.5">
-                        <h4 className='text-general-100 text-xs lg:text-sm font-nunitosans-bold rtl:font-iransans-bold'>
-                            Moni Roy
-                        </h4>
-                        <span className='hidden md:block text-general-60 text-[10px] lg:text-xs font-nunitosans-semiBold rtl:font-iransans-semiBold'>
-                            {t('admin')}
-                        </span>
+                }
+                {
+                    isSuccess &&
+                    <div className="relative h-10 hidden md:flex gap-x-2 lg:gap-x-3 items-center" onClick={() => ShowAdminCardHandler(!isShowAdminCard)}>
+                        <div className="hidden md:flex rounded-full bg-general-40 h-8 w-8 lg:h-9 lg:w-9 overflow-hidden items-center justify-center">
+                            {/* <img src="/images/a-l-l-e-f-v-i-n-i-c-i-u-s-343875-unsplash.png" alt="admin" /> */}
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-general-60">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                            </svg>
+                        </div>
+                        <div className="flex flex-col gap-y-0.5">
+                            <h4 className='text-general-100 text-xs lg:text-sm font-nunitosans-bold rtl:font-iransans-bold'>
+                                {
+                                    `${data.first_name} ${data.last_name}`
+                                }
+                            </h4>
+                            <span className='hidden md:block text-general-60 text-[10px] lg:text-xs font-nunitosans-semiBold rtl:font-iransans-semiBold'>
+                                {
+                                    t(data.roles[0])
+                                }
+                            </span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 text-general-70">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                        <AdminCard show={isShowAdminCard} />
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3 text-general-70">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                    </svg>
-                    <AdminCard show={isShowAdminCard} />
-                </div>
+                }
                 <div className="block md:hidden text-general-70">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
