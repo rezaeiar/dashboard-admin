@@ -4,6 +4,8 @@ import TopBar from "./components/TopBar"
 import SideBar from "./components/SideBar"
 import i18n from '../i18n'
 import { useEffect } from "react"
+import SuccessModal from "./components/SuccessModal"
+import { useSelector } from "react-redux"
 
 const App = () => {
     const pageLanguage = localStorage.getItem("lang");
@@ -48,6 +50,17 @@ const App = () => {
             navigate("/login")
         }
     }, [])
+
+    type successModalInfoProps = {
+        success: {
+            value: {
+                vissablity: boolean
+            }
+        }
+    }
+    const successModalInfo = useSelector((state: successModalInfoProps) => state.success)
+    console.log(successModalInfo);
+    
     return (
         <div className="app relative">
             <TopBar />
@@ -55,6 +68,7 @@ const App = () => {
                 <SideBar />
                 {router}
             </div>
+            <SuccessModal isShowSuccessModal={successModalInfo.value.vissablity} />
         </div>
     )
 }

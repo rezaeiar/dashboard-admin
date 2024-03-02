@@ -1,8 +1,9 @@
-import { Dispatch, SetStateAction, useState } from "react"
+import { Dispatch, SetStateAction } from "react"
 import { changeCategoryInfo } from "../../api/services/category"
-import SuccessModal from "./SuccessModal"
 import Button from "./Button"
 import { QueryObserverResult, RefetchOptions, RefetchQueryFilters } from "react-query"
+import { useDispatch } from "react-redux"
+import { changeState } from "../store/slices/successSlice"
 
 type ConfirmModalProps = {
     isShowConfirmModal: boolean,
@@ -12,14 +13,15 @@ type ConfirmModalProps = {
     refetch : <TPageData>(options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined) => Promise<QueryObserverResult<any, unknown>>
 }
 const ConfirmModal = ({ isShowConfirmModal, setIsShowConfirmModal, categoryId, categoryName, refetch }: ConfirmModalProps) => {
+    const dispatch = useDispatch()
 
-    const [isShowSuccessModal, setIsShowSuccessModal] = useState(false)
+
     const changeCategoryInfoHandler = () => {
         changeCategoryInfo(categoryId, categoryName)
             .then(res => {
                 if (res.status === 200) {
                     setIsShowConfirmModal(false)
-                    setIsShowSuccessModal(true)
+                    dispatch(changeState({ vissablity: true, }))
                     refetch()
                 }
             })
@@ -57,7 +59,6 @@ const ConfirmModal = ({ isShowConfirmModal, setIsShowConfirmModal, categoryId, c
                     </div>
                 </div>
             </div>
-            <SuccessModal isShowSuccessModal={isShowSuccessModal} setIsShowSuccessModal={setIsShowSuccessModal} />
         </>
     )
 }

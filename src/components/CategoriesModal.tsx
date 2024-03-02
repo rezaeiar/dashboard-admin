@@ -3,7 +3,8 @@ import Button from "./Button"
 import { useTranslation } from "react-i18next"
 import { addCategory } from '../../api/services/category'
 import { QueryObserverResult, RefetchOptions, RefetchQueryFilters } from "react-query"
-import SuccessModal from "./SuccessModal"
+import { useDispatch } from "react-redux"
+import { changeState } from "../store/slices/successSlice"
 
 type CategoriesModalProps = {
     isShowCategoriesModal: boolean,
@@ -11,6 +12,8 @@ type CategoriesModalProps = {
     refetch: <TPageData>(options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined) => Promise<QueryObserverResult<any, unknown>>
 }
 const CategoriesModal = ({ isShowCategoriesModal, setIsShowCategoriesModal, refetch }: CategoriesModalProps) => {
+    const dispatch = useDispatch()
+
     const { t } = useTranslation()
     const hideModalHandler = (event: any) => {
         if (event.target.className.includes("parent")) {
@@ -24,7 +27,7 @@ const CategoriesModal = ({ isShowCategoriesModal, setIsShowCategoriesModal, refe
                 if (res.status === 201) {
                     setIsShowCategoriesModal(false)
                     refetch()
-                    setIsShowSuccessModal(true)
+                    dispatch(changeState({ vissablity: true, }))
                     setCategoryName("")
                 } else {
                     alert("Not deleted")
@@ -32,7 +35,6 @@ const CategoriesModal = ({ isShowCategoriesModal, setIsShowCategoriesModal, refe
             })
 
     }
-    const [isShowSuccessModal, setIsShowSuccessModal] = useState(false)
     return (
         <>
             <div className={`parent backdrop-blur-sm flex items-center justify-center fixed transition-all h-screen w-full top-0 left-0 bg-general-100/50 z-50 px-4 sm:px-6 md:px-8 ${isShowCategoriesModal ? "opacity-100 visible" : "opacity-0 invisible"}`} onClick={(event) => hideModalHandler(event)} onKeyDown={e => e.keyCode === 13 && addCategoryHandler()}>
@@ -69,7 +71,6 @@ const CategoriesModal = ({ isShowCategoriesModal, setIsShowCategoriesModal, refe
                     </div>
                 </div>
             </div>
-            <SuccessModal isShowSuccessModal={isShowSuccessModal} setIsShowSuccessModal={setIsShowSuccessModal} />
         </>
     )
 }
