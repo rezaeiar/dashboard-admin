@@ -1,36 +1,19 @@
-import { useEffect } from "react"
-import { useNavigate, useRoutes } from "react-router-dom"
-import routes from "./routes/routes"
-import SuccessModal from "./components/SuccessModal"
-import { useSelector } from "react-redux"
 import LanguageSelector from '../utils/LanguageSelector'
-import { useToken } from "./hooks/useToken"
+import { useRoutes } from "react-router-dom"
+import routes from "./routes/routes"
+import { useSelector } from "react-redux"
+import { successModalType } from './types/SuccessModal.types'
+import SuccessModal from "./components/SuccessModal"
 
 const App = () => {
-    const token = useToken()
-    const navigate = useNavigate()
-    useEffect(() => {
-        if (!token) {
-            navigate("/login")
-        }
-    }, [])
-
-    LanguageSelector()
-    const router = useRoutes(routes)
-    const successModalInfo = useSelector((state: successModalInfoProps) => state.success)
-
-    type successModalInfoProps = {
-        success: {
-            value: {
-                vissablity: boolean
-            }
-        }
-    }
-
+    LanguageSelector();
+    const router = useRoutes(routes);
+    const successModalInfo = useSelector((state: successModalType) => state.successModal);    
+    
     return (
         <div className="app">
             {router}
-            <SuccessModal isShowSuccessModal={successModalInfo.value.vissablity} />
+            <SuccessModal isShowSuccessModal={successModalInfo.value.vissablity} payload={successModalInfo.value.payload} />
         </div>
     )
 }

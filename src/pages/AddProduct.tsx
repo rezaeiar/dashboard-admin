@@ -8,7 +8,7 @@ import CategoriesModal from "../components/CategoriesModal"
 import { addProduct } from '../../api/services/product'
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import { changeState } from "../store/slices/successSlice"
+import { showSuccessModal } from "../store/slices/successModalSlice"
 
 const AddProduct = () => {
     const dispatch = useDispatch()
@@ -64,8 +64,8 @@ const AddProduct = () => {
         addProduct(newProductInfo)
             .then(res => {
                 if (res.status === 201) {
-                    dispatch(changeState({ vissablity: true, }))
-                    navigate("/products")
+                    dispatch(showSuccessModal({ vissablity: true, payload: { title: "Add successfully", description: "Your product has been successfully added to the product list." } }))
+                    navigate("/panel/products")
                 }
             })
     }
@@ -116,7 +116,7 @@ const AddProduct = () => {
                                     <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                         {t("product description")}
                                     </label>
-                                    <textarea name="" id="" className="border py-2 border-general-50 outline-none rounded text-sm text-general-100 aspect-[5/1] px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular resize-none" onChange={e => setDescription(e.target.value)}>{description}</textarea>
+                                    <textarea name="" id="" className="border py-2 border-general-50 outline-none rounded text-sm text-general-100 aspect-[5/1] px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular resize-none" onChange={e => setDescription(e.target.value)} defaultValue={description}></textarea>
                                 </div>
                             </div>
                         </div>
@@ -225,7 +225,7 @@ const AddProduct = () => {
                                 <ul>
                                     {
                                         data.map((category: { id: string, name: string }) => (
-                                            <li className="text-general-100 text-xs lg:text-sm flex items-center gap-x-2">
+                                            <li className="text-general-100 text-xs lg:text-sm flex items-center gap-x-2" key={category.id}>
                                                 <input type="checkbox" name={category.id} checked={category.id === categoryId ? true : false} id="" onChange={e => changeCategoryHandler(e, category.id)} />
                                                 <span>{category.name}</span>
                                             </li>
@@ -250,7 +250,7 @@ const AddProduct = () => {
                             <div className="flex flex-wrap gap-2">
                                 {
                                     tags.map(tag => (
-                                        <div className="flex bg-general-40 rounded text-general-80 items-center gap-x-2 text-[10px] lg:text-xs py-1 px-2">
+                                        <div className="flex bg-general-40 rounded text-general-80 items-center gap-x-2 text-[10px] lg:text-xs py-1 px-2" key={tag}>
                                             {tag}
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 cursor-pointer" onClick={() => setTags(prevState => prevState.filter(tagName => tagName !== tag))}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -274,7 +274,7 @@ const AddProduct = () => {
                                 <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
                                     Description
                                 </label>
-                                <textarea name="" id="" className="border border-general-50 outline-none rounded text-sm text-general-100 aspect-[5/2] px-4">
+                                <textarea name="" id="" className="border border-general-50 outline-none rounded text-sm text-general-100 aspect-[5/2] px-4" defaultValue={""}>
 
                                 </textarea>
                             </div>

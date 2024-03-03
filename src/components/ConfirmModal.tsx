@@ -3,7 +3,7 @@ import { changeCategoryInfo } from "../../api/services/category"
 import Button from "./Button"
 import { QueryObserverResult, RefetchOptions, RefetchQueryFilters } from "react-query"
 import { useDispatch } from "react-redux"
-import { changeState } from "../store/slices/successSlice"
+import { showSuccessModal } from "../store/slices/successModalSlice"
 
 type ConfirmModalProps = {
     isShowConfirmModal: boolean,
@@ -21,7 +21,7 @@ const ConfirmModal = ({ isShowConfirmModal, setIsShowConfirmModal, categoryId, c
             .then(res => {
                 if (res.status === 200) {
                     setIsShowConfirmModal(false)
-                    dispatch(changeState({ vissablity: true, }))
+                    dispatch(showSuccessModal({ vissablity: true, payload: {title: "", description: ""} }))
                     refetch()
                 }
             })

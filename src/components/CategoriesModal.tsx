@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import { addCategory } from '../../api/services/category'
 import { QueryObserverResult, RefetchOptions, RefetchQueryFilters } from "react-query"
 import { useDispatch } from "react-redux"
-import { changeState } from "../store/slices/successSlice"
+import { showSuccessModal } from "../store/slices/successModalSlice"
 
 type CategoriesModalProps = {
     isShowCategoriesModal: boolean,
@@ -27,7 +27,7 @@ const CategoriesModal = ({ isShowCategoriesModal, setIsShowCategoriesModal, refe
                 if (res.status === 201) {
                     setIsShowCategoriesModal(false)
                     refetch()
-                    dispatch(changeState({ vissablity: true, }))
+                    dispatch(showSuccessModal({ vissablity: true, payload: {title: "", description: ""} }))
                     setCategoryName("")
                 } else {
                     alert("Not deleted")

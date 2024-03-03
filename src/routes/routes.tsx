@@ -23,7 +23,7 @@ const routes: RouteType[] = [
     { path: '/', element: <Site /> },
     {
         path: "/panel", element: <Panel />, children: [
-            { path: '', element: <Dashboard /> },
+            { path: 'dashboard', element: <Dashboard /> },
             { path: 'orders', element: <Orders /> },
             { path: 'products', element: <Products /> },
             { path: 'products/add', element: <AddProduct /> },

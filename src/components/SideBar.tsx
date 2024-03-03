@@ -7,7 +7,7 @@ const SideBar = () => {
             <div className="flex flex-col gap-y-3 border-b pb-3">
                 <ul className='flex flex-col gap-y-1'>
                     <li className='relative' id="clickable">
-                        <NavLink to={'/'} className={({ isActive }) => {
+                        <NavLink to={'/panel/dashboard'} className={({ isActive }) => {
                             return `h-10 lg:px-4 mx-4 rounded text-sm flex justify-center lg:justify-between items-center rtl:font-iransans-semiBold transition-colors cursor-pointer ${isActive ? 'bg-primary-100 text-white before:bg-primary-100 before:h-full before:w-1 before:rounded-e before:left-0 rtl:before:right-0 before:absolute' : 'text-general-80 hover:bg-primary-100 hover:text-white'}`
                         }}>
                             <div className="flex gap-x-4 items-center">
@@ -21,7 +21,7 @@ const SideBar = () => {
                         </NavLink>
                     </li>
                     <li className='relative'>
-                        <NavLink to={'/orders'} className={({ isActive }) => {
+                        <NavLink to={'/panel/orders'} className={({ isActive }) => {
                             return `h-10 lg:px-4 mx-4 rounded text-sm flex justify-center lg:justify-between items-center rtl:font-iransans-semiBold transition-colors cursor-pointer ${isActive ? 'bg-primary-100 text-white before:bg-primary-100 before:h-full before:w-1 before:rounded-e before:left-0 rtl:before:right-0 before:absolute' : 'text-general-80 hover:bg-primary-100 hover:text-white'}`
                         }}>
                             <div className="flex gap-x-4 items-center">
@@ -35,7 +35,7 @@ const SideBar = () => {
                         </NavLink>
                     </li>
                     <li className='relative'>
-                        <NavLink to={'/products'} className={({ isActive }) => {
+                        <NavLink to={'/panel/products'} className={({ isActive }) => {
                             return `h-10 lg:px-4 mx-4 rounded text-sm flex justify-center lg:justify-between items-center rtl:font-iransans-semiBold transition-colors cursor-pointer ${isActive ? 'bg-primary-100 text-white before:bg-primary-100 before:h-full before:w-1 before:rounded-e before:left-0 rtl:before:right-0 before:absolute' : 'text-general-80 hover:bg-primary-100 hover:text-white'}`
                         }}>
                             <div className="flex gap-x-4 items-center">
@@ -49,7 +49,7 @@ const SideBar = () => {
                         </NavLink>
                     </li>
                     <li className='relative'>
-                        <NavLink to={'/categories'} className={({ isActive }) => {
+                        <NavLink to={'/panel/categories'} className={({ isActive }) => {
                             return `h-10 lg:px-4 mx-4 rounded text-sm flex justify-center lg:justify-between items-center rtl:font-iransans-semiBold transition-colors cursor-pointer ${isActive ? 'bg-primary-100 text-white before:bg-primary-100 before:h-full before:w-1 before:rounded-e before:left-0 rtl:before:right-0 before:absolute' : 'text-general-80 hover:bg-primary-100 hover:text-white'}`
                         }}>
                             <div className="flex gap-x-4 items-center">
@@ -63,7 +63,7 @@ const SideBar = () => {
                         </NavLink>
                     </li>
                     <li className='relative'>
-                        <NavLink to={'/customers'} className={({ isActive }) => {
+                        <NavLink to={'/panel/customers'} className={({ isActive }) => {
                             return `h-10 lg:px-4 mx-4 rounded text-sm flex justify-center lg:justify-between items-center rtl:font-iransans-semiBold transition-colors cursor-pointer ${isActive ? 'bg-primary-100 text-white before:bg-primary-100 before:h-full before:w-1 before:rounded-e before:left-0 rtl:before:right-0 before:absolute' : 'text-general-80 hover:bg-primary-100 hover:text-white'}`
                         }}>
                             <div className="flex gap-x-4 items-center">
@@ -77,7 +77,7 @@ const SideBar = () => {
                         </NavLink>
                     </li>
                     <li className='relative'>
-                        <NavLink to={'/coupons'} className={({ isActive }) => {
+                        <NavLink to={'/panel/coupons'} className={({ isActive }) => {
                             return `h-10 lg:px-4 mx-4 rounded text-sm flex justify-center lg:justify-between items-center rtl:font-iransans-semiBold transition-colors cursor-pointer ${isActive ? 'bg-primary-100 text-white before:bg-primary-100 before:h-full before:w-1 before:rounded-e before:left-0 rtl:before:right-0 before:absolute' : 'text-general-80 hover:bg-primary-100 hover:text-white'}`
                         }}>
                             <div className="flex gap-x-4 items-center">
@@ -91,7 +91,7 @@ const SideBar = () => {
                         </NavLink>
                     </li>
                     <li className='relative'>
-                        <NavLink to={'/inbox'} className={({ isActive }) => {
+                        <NavLink to={'/panel/inbox'} className={({ isActive }) => {
                             return `h-10 lg:px-4 mx-4 rounded text-sm flex justify-center lg:justify-between items-center rtl:font-iransans-semiBold transition-colors cursor-pointer ${isActive ? 'bg-primary-100 text-white before:bg-primary-100 before:h-full before:w-1 before:rounded-e before:left-0 rtl:before:right-0 before:absolute' : 'text-general-80 hover:bg-primary-100 hover:text-white'}`
                         }}>
                             <div className="flex gap-x-4 items-center">
@@ -115,7 +115,7 @@ const SideBar = () => {
                 </span>
                 <ul className='flex flex-col gap-y-1'>
                     <li className='relative'>
-                        <NavLink to={'/managers'} className={({ isActive }) => {
+                        <NavLink to={'/panel/managers'} className={({ isActive }) => {
                             return `h-10 lg:px-4 mx-4 rounded text-sm flex justify-center lg:justify-between items-center rtl:font-iransans-semiBold transition-colors cursor-pointer ${isActive ? 'bg-primary-100 text-white before:bg-primary-100 before:h-full before:w-1 before:rounded-e before:left-0 rtl:before:right-0 before:absolute' : 'text-general-80 hover:bg-primary-100 hover:text-white'}`
                         }}>
                             <div className="flex gap-x-4 items-center">
@@ -129,7 +129,7 @@ const SideBar = () => {
                         </NavLink>
                     </li>
                     <li className='relative'>
-                        <NavLink to={'/todolist'} className={({ isActive }) => {
+                        <NavLink to={'/panel/todolist'} className={({ isActive }) => {
                             return `h-10 lg:px-4 mx-4 rounded text-sm flex justify-center lg:justify-between items-center rtl:font-iransans-semiBold transition-colors cursor-pointer ${isActive ? 'bg-primary-100 text-white before:bg-primary-100 before:h-full before:w-1 before:rounded-e before:left-0 rtl:before:right-0 before:absolute' : 'text-general-80 hover:bg-primary-100 hover:text-white'}`
                         }}>
                             <div className="flex gap-x-4 items-center">

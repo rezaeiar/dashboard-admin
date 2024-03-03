@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import successSlice from "./slices/successSlice";
+import successModalSlice from "./slices/successModalSlice";
 
 const store = configureStore({
     reducer: {
-        success: successSlice
+        successModal: successModalSlice
     }
 })
 
