@@ -1,4 +1,5 @@
-@import url(scroll.css);
+@import url(styles/scroll.css);
+@import url(styles/direction.css);
 
 @tailwind base;
 @tailwind components;
@@ -37,13 +38,6 @@
         font-family: 'IRANSans-ExtraBold';
         src: url(assets/fonts/IRANSans/IRANSans_Black.ttf);
     }
-}
-
-.ltr {
-    direction: ltr;
-}
-.rtl {
-    direction: rtl;
 }
 
 @layer utilities {
