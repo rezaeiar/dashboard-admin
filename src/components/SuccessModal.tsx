@@ -38,7 +38,7 @@ const SuccessModal = ({ isShowSuccessModal, payload }: SuccessModalProps) => {
                         {payload && payload.description}
                     </span>
                 </div>
-                <Button size="small" type="primary" styles="" link="/products" onSubmit={() => dispatch(showSuccessModal({ vissablity: false, }))}>
+                <Button size="small" type="primary" styles="" onSubmit={() => dispatch(showSuccessModal({ vissablity: false, }))}>
                     <>
                         Continue
                     </>
