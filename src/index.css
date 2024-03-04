@@ -10,30 +10,37 @@
         font-family: 'NunitoSans-Regular';
         src: url(assets/fonts/NunitoSans/NunitoSans_7pt-Regular.ttf);
     }
+
     @font-face {
         font-family: 'NunitoSans-SemiBold';
         src: url(assets/fonts/NunitoSans/NunitoSans_7pt-SemiBold.ttf);
     }
+
     @font-face {
         font-family: 'NunitoSans-Bold';
         src: url(assets/fonts/NunitoSans/NunitoSans_7pt-Bold.ttf);
     }
+
     @font-face {
         font-family: 'NunitoSans-ExtraBold';
         src: url(assets/fonts/NunitoSans/NunitoSans_7pt-ExtraBold.ttf);
     }
+
     @font-face {
         font-family: 'IRANSans-Regular';
         src: url(assets/fonts/IRANSans/IRANSans.ttf);
     }
+
     @font-face {
         font-family: 'IRANSans-SemiBold';
         src: url(assets/fonts/IRANSans/IRANSans_Medium.ttf);
     }
+
     @font-face {
         font-family: 'IRANSans-Bold';
         src: url(assets/fonts/IRANSans/IRANSans_Bold.ttf);
     }
+
     @font-face {
         font-family: 'IRANSans-ExtraBold';
         src: url(assets/fonts/IRANSans/IRANSans_Black.ttf);
@@ -41,29 +48,44 @@
 }
 
 @layer utilities {
-    button a.primary {
+
+    button.primary,
+    a.primary {
         @apply bg-primary-100 text-white rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-primary-80 active:bg-primary-90 disabled:bg-general-50 focus:bg-primary-100 transition-colors flex items-center gap-x-1
     }
-    button a.secondary {
+
+    button.secondary,
+    a.secondary {
         @apply bg-primary-40 text-primary-100 rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-primary-30 active:bg-primary-40 disabled:bg-general-50 disabled:text-white focus:bg-primary-40 transition-colors flex items-center gap-x-1
     }
-    button a.white {
+
+    button.white,
+    a.white {
         @apply bg-white text-primary-100 rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-general-30 active:bg-white disabled:bg-general-50 disabled:text-white focus:bg-white transition-colors border border-general-50 flex items-center gap-x-1
     }
-    button a.destructive {
+
+    button.destructive,
+    a.destructive {
         @apply bg-red-101 text-white rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-red-80 active:bg-red-90 disabled:bg-general-50 focus:bg-red-100 transition-colors flex items-center gap-x-1
     }
-    button a.destructive-secondary {
+
+    button.destructive-secondary,
+    a.destructive-secondary {
         @apply bg-red-40 text-red-101 rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-red-30 active:bg-red-40 disabled:bg-general-50 disabled:text-white focus:bg-red-40 transition-colors flex items-center gap-x-1
     }
 
-    button a.large {
+    button.large,
+    a.large {
         @apply py-2 md:py-3 px-4 md:px-6 text-sm md:text-base
     }
-    button a.medium {
+
+    button.medium,
+    a.medium {
         @apply py-2 md:py-2 px-4 md:px-6 text-sm md:text-base
     }
-    button a.small {
+
+    button.small,
+    a.small {
         @apply py-2 md:py-2 px-3 md:px-5 text-xs md:text-sm
     }
 }
