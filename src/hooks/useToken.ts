@@ -1,5 +1,8 @@
+import Cookies from 'universal-cookie';
+
 const useToken = () => {
-    return document.cookie.split('=')[1]
+    const cookies = new Cookies();
+    return cookies.get("token")
 }
 
 export { useToken }

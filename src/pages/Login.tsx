@@ -6,12 +6,16 @@ import { singIn } from "../../api/services/auth"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 
+import Cookies from 'universal-cookie';
+
 type Inputs = {
     username: string
     password: string
 }
 
 const Login = () => {
+const cookies = new Cookies();
+
     const navigate = useNavigate()
     useEffect(() => {
         if (document.cookie.split('=')[1]) {
@@ -28,7 +32,8 @@ const Login = () => {
         await singIn(data)
             .then(res => {
                 if (res.status === 201) {
-                    document.cookie = `token=${res.data.token}`
+                    // document.cookie = `token=${res.data.token}`
+                    cookies.set('token', res.data.token, { path: '/' });
                     navigate("/")
                 }
             })
