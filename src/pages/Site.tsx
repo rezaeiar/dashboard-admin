@@ -6,9 +6,7 @@ const Site = () => {
     const token = useToken()
     const navigate = useNavigate()
     useEffect(() => {
-        if (!token) {
-            navigate("/login")
-        }
+        if (!token) navigate("/login")
     }, [])
 
     return (

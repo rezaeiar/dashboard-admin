@@ -143,6 +143,7 @@ const en = {
     "Create Password": "Create Password",
     "Create Account": "Create Account",
     "Email is required": "Email is required",
+    "Username is required": "Username is required",
     "Password is required": "Password is required",
     "By creating account, you agree to our": "By creating account, you agree to our",
     "Terms of Service": "Terms of Service",
@@ -150,7 +151,7 @@ const en = {
     "Continue With Google": "Continue With Google",
     "Continue with Facebook": "Continue with Facebook",
     "invalid email address": "invalid email address",
-    "Password must be between 6 and 16 characters": "Password must be between 6 and 16 characters",
+    "The password must be between 6 and 16 and contain English characters.": "The password must be between 6 and 16 and contain English characters.",
     "New to Our Product?": "New to Our Product?",
     "Forgot your password?": "Forgot your password?",
     "Login to account": "Login to account",
@@ -167,6 +168,14 @@ const en = {
     "All Tasks": "All Tasks",
     "add Manager": "add Manager",
     "User Name": "User Name",
-    "Role": "Role"
+    "Role": "Role",
+    "Operation failed": "Operation failed",
+    "Your login has failed, please try again.": "Your login has failed, please try again.",
+    "Done": "Done",
+    "Working on Title": "Working on Title",
+    "Working on Description": "Working on Description",
+    "Continue": "Continue",
+    "Enter Username": "Enter Username",
+    "Enter Password": "Enter Password"
 }
 export default en

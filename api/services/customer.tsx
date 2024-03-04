@@ -1,4 +1,5 @@
 import apiReq from "../CoreApi";
+
 type addCustomerType = {
     first_name: string,
     last_name: string,
@@ -15,10 +16,8 @@ type addCustomerType = {
     note: string,
 }
 
-export const addCustomer = (customerInfo: addCustomerType) => {
-    console.log(customerInfo);
-
-    return apiReq({
+export const addCustomer = async (customerInfo: addCustomerType) => {
+    return await apiReq({
         method: "POST",
         url: "/user",
         data: customerInfo,
@@ -26,8 +25,7 @@ export const addCustomer = (customerInfo: addCustomerType) => {
             "Authorization": `Bearer ${document.cookie.split('=')[1]}`
         }
     })
-        .then(res => console.log(res)
-        )
+        .then(res => res)
 }
 export const getAllCustomers = async () => {
     return await apiReq({
@@ -57,5 +55,5 @@ export const deleteSingleCustomer = async (id: string) => {
             "Authorization": `Bearer ${document.cookie.split('=')[1]}`
         }
     })
-        .then(res => res.data)
+        .then(res => res)
 }

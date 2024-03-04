@@ -1,6 +1,7 @@
+import { useDispatch } from "react-redux"
+import { useTranslation } from "react-i18next"
 import { showSuccessModal } from "../store/slices/successModalSlice"
 import Button from "./Button"
-import { useDispatch } from "react-redux"
 
 type SuccessModalProps = {
     isShowSuccessModal: boolean,
@@ -9,19 +10,21 @@ type SuccessModalProps = {
         description: string
     }
 }
+
 const SuccessModal = ({ isShowSuccessModal, payload }: SuccessModalProps) => {
-    
     const dispatch = useDispatch()
+    const { t } = useTranslation()
+
     const hideModalHandler = (event: any) => {
         if (event.target.className.includes("parent")) {
-            dispatch(showSuccessModal({ vissablity: false, payload: { title: "back to home", description: "back to home" } }))
+            dispatch(showSuccessModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") } }))
         }
     }
     return (
         <div className={`parent backdrop-blur-sm flex items-center justify-center fixed transition-all h-screen w-full top-0 left-0 bg-general-100/50 z-50 px-4 sm:px-6 md:px-8 ${isShowSuccessModal ? "opacity-100 visible" : "opacity-0 invisible"}`} onClick={(event) => hideModalHandler(event)}>
             <div className="flex items-center flex-col gap-y-4 bg-white w-[500px] rounded p-6">
-                <div className="flex self-end items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-general-80" onClick={() => dispatch(showSuccessModal({ vissablity: false, payload: { title: "back to home", description: "back to home" } }))}>
+                <div className="flex self-end items-center absolute">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-general-80" onClick={() => dispatch(showSuccessModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") } }))}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
                 </div>
@@ -38,9 +41,9 @@ const SuccessModal = ({ isShowSuccessModal, payload }: SuccessModalProps) => {
                         {payload && payload.description}
                     </span>
                 </div>
-                <Button size="small" type="primary" styles="" onSubmit={() => dispatch(showSuccessModal({ vissablity: false, }))}>
+                <Button size="small" type="primary" onSubmit={() => dispatch(showSuccessModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") } }))}>
                     <>
-                        Continue
+                        {t("Continue")}
                     </>
                 </Button>
             </div>

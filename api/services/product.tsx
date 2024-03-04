@@ -1,4 +1,5 @@
 import apiReq from "../CoreApi";
+
 type addProductType = {
     name: string,
     description: string,

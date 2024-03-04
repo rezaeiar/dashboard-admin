@@ -143,6 +143,7 @@ const fa = {
     "Create Password": "رمز عبور ایجاد کنید",
     "Create Account": "ایجاد حساب کاربری",
     "Email is required": "پست الکترونیک مورد نیاز است",
+    "Username is required": "نام کاربری مورد نیاز است",
     "Password is required": "کلمه عبور مورد نیاز است",
     "By creating account, you agree to our": "با ایجاد حساب، شما با ما موافقت می کنید",
     "Terms of Service": "شرایط استفاده از خدمات",
@@ -150,7 +151,7 @@ const fa = {
     "Continue With Google": "با گوگل ادامه دهید",
     "Continue with Facebook": "با فیس بوک ادامه دهید",
     "invalid email address": "آدرس ایمیل نامعتبر",
-    "Password must be between 6 and 16 characters": "رمز عبور باید بین 6 تا 16 کاراکتر باشد",
+    "The password must be between 6 and 16 and contain English characters.": "رمز عبور باید بین 6 تا 16 و حاوی کاراکتر های انگلیسی باشد.",
     "New to Our Product?": "کاربر جدید هستید؟",
     "Forgot your password?": "رمز عبور خود را فراموش کرده اید؟",
     "Login to account": "وارد حساب کاربری شوید",
@@ -167,6 +168,14 @@ const fa = {
     "All Tasks": "همه وظایف",
     "add Manager": "اضافه کردن مدیر",
     "User Name": "نام کاربری",
-    "Role": "نقش کاربر"
+    "Role": "نقش کاربر",
+    "Operation failed": "عملیات شکست خورد",
+    "Your login has failed, please try again.": "ورود شما ناموفق است، لطفا دوباره امتحان کنید.",
+    "Done" :"انجام شد",
+    "Working on Title": "کار روی عنوان",
+    "Working on Description": "کار بر روی توضیحات",
+    "Continue": "ادامه",
+    "Enter Username": "نام کاربری را وارد کنید",
+    "Enter Password": "کلمه عبور را وارد کنید"
 }
 export default fa

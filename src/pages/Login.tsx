@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom"
+import { useToken } from '../hooks/useToken';
+import Cookies from 'universal-cookie';
+import { useNavigate, Link } from "react-router-dom"
+import { useDispatch } from 'react-redux';
 import { useTranslation } from "react-i18next"
+import { useEffect } from "react"
 import Button from "../components/Button"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { singIn } from "../../api/services/auth"
-import { useNavigate } from "react-router-dom"
-import { useEffect } from "react"
-
-import Cookies from 'universal-cookie';
+import { showErrorModal } from '../store/slices/ErrorModalSlice';
 
 type Inputs = {
     username: string
@@ -14,12 +15,15 @@ type Inputs = {
 }
 
 const Login = () => {
-const cookies = new Cookies();
-
+    const token = useToken()
+    const cookies = new Cookies()
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const { t } = useTranslation()
+
     useEffect(() => {
-        if (document.cookie.split('=')[1]) {
-            navigate("/")
+        if (token) {
+            navigate("/panel")
         }
     }, [])
 
@@ -28,19 +32,21 @@ const cookies = new Cookies();
         handleSubmit,
         formState: { errors },
     } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        await singIn(data)
+    const onSubmit: SubmitHandler<Inputs> = (data) => {
+        singIn(data)
             .then(res => {
                 if (res.status === 201) {
-                    // document.cookie = `token=${res.data.token}`
                     cookies.set('token', res.data.token, { path: '/' });
-                    navigate("/")
+                    navigate("/panel/dashboard")
+                } else {
+                    dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your login has failed, please try again.") } }))
                 }
             })
-
+            .catch(() => {
+                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your login has failed, please try again.") } }))
+            })
     }
 
-    const { t } = useTranslation()
     return (
         <div className="w-full min-h-screen flex items-center justify-center bg-general-30 py-0 sm:py-12 md:py-20">
             <form className="flex flex-col justify-center items-center py-12 px-6 sm:px-16 bg-white rounded gap-y-10 h-screen w-full sm:w-auto sm:h-auto" onSubmit={handleSubmit(onSubmit)}>
@@ -60,9 +66,9 @@ const cookies = new Cookies();
                 <div className="grid grid-cols-1 gap-y-3 sm:gap-y-5 w-full sm:w-auto">
                     <div className="flex flex-col w-auto sm:w-96 gap-y-1">
                         <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                            {t("Username")}
+                            {t("User Name")}
                         </label>
-                        <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter Username")} {...register("username", {
+                        <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Username")} {...register("username", {
                             required: t("Username is required")
                         })} />
                         {errors.username && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.username.message}</span>}
@@ -71,15 +77,19 @@ const cookies = new Cookies();
                         <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                             {t("Password")}
                         </label>
-                        <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Create Password")} {...register("password", {
+                        <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Password")} {...register("password", {
                             required: t("Password is required"), pattern: {
                                 value: /^[a-zA-Z0-9!@#$%^&*]{6,16}$/,
-                                message: t("Password must be between 6 and 16 characters")
+                                message: t("The password must be between 6 and 16 and contain English characters.")
                             }
                         })} />
                         {errors.password && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.password.message}</span>}
                     </div>
-                    <input type="submit" className="capitalize bg-primary-100 text-white rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-primary-80 active:bg-primary-90 disabled:bg-general-50 focus:bg-primary-100 transition-colors flex items-center gap-x-1 py-2 md:py-2 px-4 md:px-6 text-sm md:text-base justify-center cursor-pointer" value={t("Login to account")} />
+                    <Button size="medium" type="primary" styles="justify-center" submit>
+                        <>
+                            {t("Login to account")}
+                        </>
+                    </Button>
                     <div className="ltr:font-nunitosans-regular rtl:font-iransans-regular text-xs flex flex-col gap-y-1 items-center">
                         <span className="text-primary-100">
                             {t("Forgot your password?")}

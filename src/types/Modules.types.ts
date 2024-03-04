@@ -7,6 +7,7 @@ export type ButtonProps = {
     size: ButtonSize,
     styles?: string,
     link?: string,
-    onSubmit?: () => void
+    onSubmit?: () => void,
+    submit? : boolean
     children: JSX.Element,
 }

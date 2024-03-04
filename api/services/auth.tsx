@@ -1,31 +1,21 @@
 import apiReq from "../CoreApi";
-type singUpType = {
-    first_name: string,
-    last_name: string,
-    email: string,
-    username: string,
-    password: string
-}
-type singInType = {
-    username: string,
-    password: string
-}
+import { singUpType, singInType } from "../../src/types/Auth.types";
 
-export const singUp = (userInfo: singUpType) => {
-    return apiReq({
+export const singUp = async (userInfo: singUpType) => {
+    return await apiReq({
         method: "POST",
         url: "/auth/signup",
         data: userInfo
     })
-        .then(res => console.log(res)
-        )
+        .then(res => res)
 }
-export const singIn = (userInfo: singInType) => {
-    return apiReq({
+export const singIn = async (userInfo: singInType) => {
+    return await apiReq({
         method: "POST",
         url: "/auth/signin",
         data: userInfo
     })
+        .then(res => res)
 }
 export const getMe = async () => {
     return await apiReq({
@@ -35,5 +25,5 @@ export const getMe = async () => {
             "Authorization": `Bearer ${document.cookie.split('=')[1]}`
         }
     })
-    .then(res => res.data)
+        .then(res => res.data)
 }
