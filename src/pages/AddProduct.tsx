@@ -4,7 +4,7 @@ import CheckBox from "../components/CheckBox"
 import { ChangeEvent, useState } from "react"
 import { useQuery } from "react-query"
 import { getAllCategories } from "../../api/services/category"
-import CategoriesModal from "../components/CategoriesModal"
+// import CategoriesModal from "../components/CategoriesModal"
 import { addProduct } from '../../api/services/product'
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
@@ -282,7 +282,7 @@ const AddProduct = () => {
                     </div>
                 </div>
             </div>
-            <CategoriesModal isShowCategoriesModal={isShowCategoriesModal} setIsShowCategoriesModal={setIsShowCategoriesModal} refetch={refetch} />
+            {/* <CategoriesModal isShowCategoriesModal={isShowCategoriesModal} setIsShowCategoriesModal={setIsShowCategoriesModal} refetch={refetch} /> */}
         </>
     )
 }
