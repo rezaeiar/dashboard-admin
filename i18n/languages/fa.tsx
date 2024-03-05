@@ -52,7 +52,6 @@ const fa = {
     "showing": "درحال نمایش",
     "product": "محصول",
     "actions": "اعمال تغییرات",
-    "add category": "اضافه کردن دسته بندی",
     "item": "مورد",
     "Edit": "ویرایش",
     "add customer": "اضافه کردن مشتری",
@@ -63,7 +62,7 @@ const fa = {
     "coupon": "کد تخفیف",
     "usage": 'استفاده شده',
     "save": "ذخیره کردن",
-    "cancel": "لغو",
+    "Cancel": "لغو",
     "back": "بازگشت",
     "category visibility": "قابلیت مشاهده دسته",
     "visible on site": "قابل مشاهده در سایت",
@@ -179,6 +178,10 @@ const fa = {
     "Working on Description": "کار بر روی توضیحات",
     "Continue": "ادامه",
     "Enter Username": "نام کاربری را وارد کنید",
-    "Enter Password": "کلمه عبور را وارد کنید"
+    "Enter Password": "کلمه عبور را وارد کنید",
+    "Add Category": "اضافه کردن دسته بندی",
+    "Category Name": "نام دسته بندی",
+    "Women Clothes": "لباس زنانه",
+    "Create Category": "ایجاد دسته بندی"
 }
 export default fa

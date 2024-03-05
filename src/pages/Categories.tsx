@@ -10,15 +10,15 @@ import { useDispatch } from "react-redux"
 import { showAddCategoryModal } from "../store/slices/AddCategoryModalSlice"
 
 const Categories = () => {
-    const dispatch = useDispatch()
 
+    const dispatch = useDispatch()
     const { t } = useTranslation()
     
-    const { data, isLoading } = useQuery("categories", getAllCategories)
-
     const showCategoriesModalHandler = () => {
         dispatch(showAddCategoryModal({ vissablity: true }))
     }
+
+    const { data, isLoading } = useQuery("categories", getAllCategories)
 
     if (isLoading) return <Loading />
     return (

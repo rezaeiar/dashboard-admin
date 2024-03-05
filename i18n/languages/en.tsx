@@ -52,7 +52,6 @@ const en = {
     "showing": "showing",
     "product": "product",
     "actions": "actions",
-    "add category": "add category",
     "item": "item",
     "Edit": "Edit",
     "add customer": "add customer",
@@ -63,7 +62,7 @@ const en = {
     "coupon": "coupon",
     "usage": 'usage',
     "save": "save",
-    "cancel": "cancel",
+    "Cancel": "Cancel",
     "back": "back",
     "category visibility": "category visibility",
     "visible on site": "visible on site",
@@ -179,6 +178,10 @@ const en = {
     "Working on Description": "Working on Description",
     "Continue": "Continue",
     "Enter Username": "Enter Username",
-    "Enter Password": "Enter Password"
+    "Enter Password": "Enter Password",
+    "Add Category": "Add Category",
+    "Category Name": "Category Name",
+    "Women Clothes": "Women Clothes",
+    "Create Category": "Create Category"
 }
 export default en

@@ -1,4 +1,3 @@
-import LanguageSelector from '../utils/LanguageSelector'
 import { useRoutes } from "react-router-dom"
 import routes from "./routes/routes"
 import { useSelector } from "react-redux"
@@ -10,7 +9,6 @@ import ErrorModal from './components/ErrorModal'
 import AddCategoryModal from './components/AddCategoryModal'
 
 const App = () => {
-    LanguageSelector();
     const router = useRoutes(routes);
     const successModalInfo = useSelector((state: successModalType) => state.successModal);
     const errorModalInfo = useSelector((state: errorModalType) => state.errorModal);
