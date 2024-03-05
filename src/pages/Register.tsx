@@ -31,8 +31,8 @@ const Register = () => {
         formState: { errors },
     } = useForm<Inputs>()
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        // await singUp(data)
-        //     .then(res => res)
+        await singUp(data)
+            .then(res => res)
         setIsConfirming(true)
     }
 

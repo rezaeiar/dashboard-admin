@@ -182,6 +182,13 @@ const en = {
     "Add Category": "Add Category",
     "Category Name": "Category Name",
     "Women Clothes": "Women Clothes",
-    "Create Category": "Create Category"
+    "Create Category": "Create Category",
+    "Successful operation": "Successful operation",
+    "Your desired category has been added.": "Your desired category has been added.",
+    "products in this category": "products in this category",
+    "The category is empty of products": "The category is empty of products",
+    "Organize all your items in stock by creating and adding them to categories.": "Organize all your items in stock by creating and adding them to categories.",
+    "Categories helps to find items faster for your customers.": "Categories helps to find items faster for your customers.",
+    "Create First Category": "Create First Category"
 }
 export default en

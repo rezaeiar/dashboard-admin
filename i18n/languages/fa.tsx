@@ -182,6 +182,13 @@ const fa = {
     "Add Category": "اضافه کردن دسته بندی",
     "Category Name": "نام دسته بندی",
     "Women Clothes": "لباس زنانه",
-    "Create Category": "ایجاد دسته بندی"
+    "Create Category": "ایجاد دسته بندی",
+    "Successful operation": "عملیات موفقیت آمیز",
+    "Your desired category has been added.": "دسته بندی مورد نظر شما اضافه شد.",
+    "products in this category": "محصول در این دسته بندی",
+    "The category is empty of products": "دسته بندی خالی از محصول است",
+    "Organize all your items in stock by creating and adding them to categories.": "با ایجاد و افزودن آنها به دسته ها، تمام اقلام موجود در انبار خود را سازماندهی کنید.",
+    "Categories helps to find items faster for your customers.": 'دسته‌ها کمک می‌کنند تا اقلام را سریع‌تر برای مشتریان خود پیدا کنید.',
+    "Create First Category": "اولین دسته بندی را ایجاد کنید"
 }
 export default fa
