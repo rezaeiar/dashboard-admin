@@ -5,7 +5,7 @@ export const singUp = async (userInfo: singUpType) => {
     return await apiReq({
         method: "POST",
         url: "/auth/signup",
-        data: userInfo
+        data: userInfo,
     })
         .then(res => res)
 }

@@ -1,9 +1,10 @@
-import { Link, useNavigate } from "react-router-dom"
+import { useToken } from "../hooks/useToken"
+import { useNavigate, Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import Button from "../components/Button"
-import { useForm, SubmitHandler } from "react-hook-form"
 import { useEffect, useState } from "react"
+import { useForm, SubmitHandler } from "react-hook-form"
 import { singUp } from '../../api/services/auth'
+import Button from "../components/Button"
 
 type Inputs = {
     first_name: string,
@@ -12,26 +13,28 @@ type Inputs = {
     username: string,
     password: string
 }
+
 const Register = () => {
+    const token = useToken()
     const navigate = useNavigate()
+    const { t } = useTranslation()
+
     useEffect(() => {
-        if (document.cookie.split('=')[1]) {
-            navigate("/")
-        }
+        if (token) navigate("/")
     }, [])
 
+    const [isConfirming, setIsConfirming] = useState(false)
+    const [confirmationCode, setConfirmationCode] = useState("")
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm<Inputs>()
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        await singUp(data)
+        // await singUp(data)
+        //     .then(res => res)
+        setIsConfirming(true)
     }
-    const [isConfirming] = useState(false)
-    const [confirmationCode, setConfirmationCode] = useState("")
-
-    const { t } = useTranslation()
 
     if (!isConfirming) {
         return (
@@ -53,19 +56,19 @@ const Register = () => {
                     <div className="grid grid-cols-1 gap-y-3 sm:gap-y-5 w-full sm:w-auto">
                         <div className="flex flex-col w-auto sm:w-96 gap-y-1">
                             <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                {t("First name")}
+                                {t("First Name")}
                             </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter First name")} {...register("first_name", {
-                                required: t("First name is required")
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter First Name")} {...register("first_name", {
+                                required: t("First Name is required")
                             })} />
                             {errors.first_name && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.first_name.message}</span>}
                         </div>
                         <div className="flex flex-col w-auto sm:w-96 gap-y-1">
                             <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                {t("Last name")}
+                                {t("Last Name")}
                             </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter Last name")} {...register("last_name", {
-                                required: t("Last name is required")
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Last Name")} {...register("last_name", {
+                                required: t("Last Name is required")
                             })} />
                             {errors.last_name && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.last_name.message}</span>}
                         </div>
@@ -73,7 +76,7 @@ const Register = () => {
                             <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                 {t("Email")}
                             </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter Email Address")} {...register("email", {
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Email Address")} {...register("email", {
                                 required: t("Email is required"), pattern: {
                                     value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                                     message: t("invalid email address")
@@ -83,9 +86,9 @@ const Register = () => {
                         </div>
                         <div className="flex flex-col w-auto sm:w-96 gap-y-1">
                             <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                {t("Username")}
+                                {t("User Name")}
                             </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter Username")} {...register("username", {
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Username")} {...register("username", {
                                 required: t("Username is required")
                             })} />
                             {errors.username && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.username.message}</span>}
@@ -94,15 +97,19 @@ const Register = () => {
                             <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                 {t("Password")}
                             </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Create Password")} {...register("password", {
+                            <input type="password" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Password")} {...register("password", {
                                 required: t("Password is required"), pattern: {
                                     value: /^[a-zA-Z0-9!@#$%^&*]{6,16}$/,
-                                    message: t("Password must be between 6 and 16 characters")
+                                    message: t("The password must be between 6 and 16 and contain English characters.")
                                 }
                             })} />
                             {errors.password && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.password.message}</span>}
                         </div>
-                        <input type="submit" className="capitalize bg-primary-100 text-white rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-primary-80 active:bg-primary-90 disabled:bg-general-50 focus:bg-primary-100 transition-colors flex items-center gap-x-1 py-2 md:py-2 px-4 md:px-6 text-sm md:text-base justify-center cursor-pointer" value={t("Create Account")} />
+                        <Button size="medium" type="primary" styles="justify-center" submit>
+                            <>
+                                {t("Create Account")}
+                            </>
+                        </Button>
                         <div className="ltr:font-nunitosans-regular rtl:font-iransans-regular text-xs flex flex-col gap-y-1 items-center">
                             <span className="text-general-70">
                                 {t("By creating account, you agree to our")}
@@ -156,9 +163,13 @@ const Register = () => {
                         <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                             {t("Confirmation Code")}
                         </label>
-                        <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-100 py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter Code")} value={confirmationCode} onChange={e => setConfirmationCode(e.target.value)} />
+                        <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Confirmation Code")} value={confirmationCode} onChange={e => setConfirmationCode(e.target.value)} />
                     </div>
-                    <input type="submit" className="capitalize bg-primary-100 text-white rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-primary-80 active:bg-primary-90 disabled:bg-general-50 focus:bg-primary-100 transition-colors flex items-center gap-x-1 py-2 md:py-2 px-4 md:px-6 text-sm md:text-base justify-center cursor-pointer" value={t("Confirm Email")} />
+                    <Button size="medium" type="primary" styles="justify-center">
+                        <>
+                            {t("Confirm Email")}
+                        </>
+                    </Button>
                     <span className="bg-general-50 h-px"></span>
                     <span className="text-general-60 text-xs ltr:font-nunitosans-regular rtl:font-iransans-regular flex justify-center">
                         {t("Haven't received your code?")}
