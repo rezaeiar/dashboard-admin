@@ -63,7 +63,7 @@ const en = {
     "usage": 'usage',
     "save": "save",
     "Cancel": "Cancel",
-    "back": "back",
+    "Back": "Back",
     "category visibility": "category visibility",
     "visible on site": "visible on site",
     "category info": "category info",

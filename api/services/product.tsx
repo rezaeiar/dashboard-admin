@@ -4,8 +4,9 @@ type addProductType = {
     name: string,
     description: string,
     count: number,
-    price: string,
+    price: number,
     tags: string[],
+    country: string,
     weight: string,
     isDigital: boolean,
     categoryId: string

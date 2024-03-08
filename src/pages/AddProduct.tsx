@@ -19,9 +19,10 @@ const AddProduct = () => {
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [count, setCount] = useState("")
-    const [price, setPrice] = useState("")
+    const [price, setPrice] = useState(Number)
     const [tags, setTags] = useState<string[]>([])
     const [weight, setWeight] = useState("")
+    const [country, setCountry] = useState("")
     const [isDigital, setIsDigital] = useState(false)
     const [tagName, setTagName] = useState("")
     const [categoryId, setCategoryId] = useState("")
@@ -54,9 +55,10 @@ const AddProduct = () => {
             name,
             description,
             count: +count,
-            price,
+            price: +price,
             tags,
             weight,
+            country,
             isDigital,
             categoryId
         }
@@ -145,7 +147,7 @@ const AddProduct = () => {
                                     <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                         {t("product price")}
                                     </label>
-                                    <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("enter price")} value={price} onChange={e => setPrice(e.target.value)} />
+                                    <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("enter price")} value={price} onChange={e => setPrice(+e.target.value)} />
                                 </div>
                                 <div className="flex flex-col">
                                     <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
@@ -171,7 +173,7 @@ const AddProduct = () => {
                                     <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                         {t("Country")}
                                     </label>
-                                    <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Select Country")} />
+                                    <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Select Country")} value={country} onChange={e => setCountry(e.target.value)} />
                                 </div>
                             </div>
                             <div className="flex items-center gap-x-2">

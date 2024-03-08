@@ -63,7 +63,7 @@ const fa = {
     "usage": 'استفاده شده',
     "save": "ذخیره کردن",
     "Cancel": "لغو",
-    "back": "بازگشت",
+    "Back": "بازگشت",
     "category visibility": "قابلیت مشاهده دسته",
     "visible on site": "قابل مشاهده در سایت",
     "category info": "اطلاعات دسته بندی",
