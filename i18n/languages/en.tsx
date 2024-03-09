@@ -205,6 +205,6 @@ const en = {
     "You are removing the product from this category, are you sure?": "You are removing the product from this category, are you sure?",
     "Your desired product has been successfully removed from the category.": "Your desired product has been successfully removed from the category.",
     "Your desired product was not removed from the category, please try again.": "Your desired product was not removed from the category, please try again.",
-    "Loading..": "Loading.."
+    "Loading..": "Loading..",
 }
 export default en

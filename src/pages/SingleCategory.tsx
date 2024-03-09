@@ -126,7 +126,7 @@ const SingleCategory = () => {
                                 <div className="flex flex-col gap-y-3">
                                     {
                                         data.products.map((product: { name: string, id: string }) => (
-                                            <div className="border border-general-50 rounded-md p-2 sm:p-3 xl:p-4 flex justify-between items-center">
+                                            <div className="border border-general-50 rounded-md p-2 sm:p-3 xl:p-4 flex justify-between items-center" key={product.id}>
                                                 <div className="flex gap-x-3 xl:gap-x-4 items-center">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 sm:w-6 sm:h-6">
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
@@ -208,7 +208,7 @@ const SingleCategory = () => {
                             </div>
                             <div className="flex mt-5 pt-5 w-full border-t">
                                 <span className="text-red-101  text-xs lg:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular cursor-pointer" onClick={() => showDeleteConfirmModal()}>
-                                    {t("Delete Customer")}
+                                    {t("Delete Category")}
                                 </span>
                             </div>
                         </div>

@@ -59,7 +59,7 @@ const Categories = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 lg:gap-4">
                     {
                         data.map((category: CatagoryType) => (
-                            <CategorieCard {...category} />
+                            <CategorieCard key={category.id} {...category} />
                         ))
                     }
                 </div>
