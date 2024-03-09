@@ -204,6 +204,7 @@ const fa = {
     "Delete product from category": "حذف محصول از دسته",
     "You are removing the product from this category, are you sure?": "شما در حال حذف محصول از این دسته هستید، مطمئنید؟",
     "Your desired product has been successfully removed from the category.": "محصول مورد نظر شما با موفقیت از دسته بندی حذف شد.",
-    "Your desired product was not removed from the category, please try again.": "محصول نظر شما از دسته بندی حذف نشد، دوباره جستجو کنید."
+    "Your desired product was not removed from the category, please try again.": "محصول نظر شما از دسته بندی حذف نشد، دوباره جستجو کنید.",
+    "Loading..": "بارگذاری.."
 }
 export default fa
