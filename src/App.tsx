@@ -23,7 +23,7 @@ const App = () => {
             <SuccessModal isShowSuccessModal={successModalInfo.value.vissablity} payload={successModalInfo.value.payload} />
             <ErrorModal isShowErrorModal={errorModalInfo.value.vissablity} payload={errorModalInfo.value.payload} />
             <AddCategoryModal isShowCategoriesModal={addCategoryModalInfo.value.vissablity} />
-            <ConfirmModal isShowConfirmModal={confirmModalInfo.value.vissablity} payload={confirmModalInfo.value.payload} button={confirmModalInfo.value.button as "Delete" | "Continue"} redirect={confirmModalInfo.value.redirect} handler={confirmModalInfo.value.handler} />
+            <ConfirmModal isShowConfirmModal={confirmModalInfo.value.vissablity} payload={confirmModalInfo.value.payload} button={confirmModalInfo.value.button as "Delete" | "Continue"} handler={confirmModalInfo.value.handler} />
         </div>
     )
 }

@@ -37,7 +37,7 @@ const AddProduct = () => {
         }
     }
 
-    const { data, isSuccess, refetch } = useQuery("categories", getAllCategories)
+    const { data, isSuccess } = useQuery("categories", getAllCategories)
 
     const changeCategoryHandler = (e: ChangeEvent<HTMLInputElement>, categoryId: string) => {
         if (e.target.checked) {
@@ -49,6 +49,8 @@ const AddProduct = () => {
     const showCategoriesModalHandler = () => {
         setIsShowCategoriesModal(true)
     }
+    console.log(isShowCategoriesModal);
+    
 
     const addNewProductHandler = () => {
         const newProductInfo = {

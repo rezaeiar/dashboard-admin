@@ -3,7 +3,7 @@ import Button from "../components/Button"
 import { useTranslation } from "react-i18next"
 import { getAllCustomers } from "../../api/services/customer"
 import { useQuery } from "react-query"
-import EmptyEntity from "../components/EmptyEntity"
+// import EmptyEntity from "../components/EmptyEntity"
 import Loading from "../components/Loading"
 
 const Customers = () => {
@@ -142,7 +142,8 @@ const Customers = () => {
                         </div>
                     </>
                 ) : (
-                    <EmptyEntity />
+                    <div className="">empty</div>
+                    // <EmptyEntity />
                 )
             }
 

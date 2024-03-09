@@ -2,7 +2,7 @@ import { useState } from "react"
 import Button from "../components/Button"
 import { useTranslation } from "react-i18next"
 import Filters from "../components/Filters"
-import EmptyEntity from "../components/EmptyEntity"
+// import EmptyEntity from "../components/EmptyEntity"
 const Orders = () => {
     const { t } = useTranslation()
     const products = [
@@ -58,7 +58,8 @@ const Orders = () => {
                         </Button>
                     </div>
                 </div>
-                <EmptyEntity />
+                <div className="">empty</div>
+                {/* <EmptyEntity /> */}
             </div>
         )
     }
