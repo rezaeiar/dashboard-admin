@@ -1,8 +1,11 @@
 import apiReq from "../CoreApi";
+import Cookies from 'universal-cookie';
 
 type addCategoryType = {
     name: string,
 }
+
+const cookies = new Cookies()
 
 export const addCategory = async (categoryInfo: addCategoryType) => {
     return await apiReq({
@@ -10,7 +13,7 @@ export const addCategory = async (categoryInfo: addCategoryType) => {
         url: "/category",
         data: categoryInfo,
         headers: {
-            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+            "Authorization": `Bearer ${cookies.get("token")}`
         }
     })
         .then(res => res)
@@ -20,7 +23,7 @@ export const getAllCategories = async () => {
         method: "GET",
         url: "/category",
         headers: {
-            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+            "Authorization": `Bearer ${cookies.get("token")}`
         }
     })
         .then(res => res.data)
@@ -30,7 +33,7 @@ export const getSingleCategory = async (id: string) => {
         method: "GET",
         url: `/category/${id}`,
         headers: {
-            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+            "Authorization": `Bearer ${cookies.get("token")}`
         }
     })
         .then(res => res.data)
@@ -40,7 +43,7 @@ export const deleteSingleCategory = async (id: string) => {
         method: "DELETE",
         url: `/category/${id}`,
         headers: {
-            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+            "Authorization": `Bearer ${cookies.get("token")}`
         }
     })
         .then(res => res)
@@ -50,9 +53,20 @@ export const changeCategoryInfo = async (id: string, name: string) => {
         method: "PUT",
         url: `/category/${id}`,
         headers: {
-            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+            "Authorization": `Bearer ${cookies.get("token")}`
         },
         data: { name }
+    })
+        .then(res => res)
+}
+export const deleteProductFromCategory = async (id: string, productId: string) => {
+    return await apiReq({
+        method: "DELETE",
+        url: `/category/${id}/removeProduct`,
+        headers: {
+            "Authorization": `Bearer ${cookies.get("token")}`
+        },
+        data: {productId}
     })
         .then(res => res)
 }

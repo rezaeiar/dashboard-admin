@@ -39,22 +39,22 @@ const ConfirmModal = ({ isShowConfirmModal, payload, button, handler }: ConfirmM
                     {
                         button === "Continue" ?
                             <a className="text-primary-100 ltr:font-nunitosans-regular rtl:font-iransans-regular cursor-pointer" onClick={() => dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button, handler }))}>
-                                Cancel
+                                {t("Cancel")}
                             </a> :
                             <a className="text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular cursor-pointer" onClick={() => dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button, handler }))}>
-                                Cancel
+                                {t("Cancel")}
                             </a>
                     }
                     {
                         button === "Continue" ?
                             <Button size="small" type="primary" styles="" onSubmit={() => handler()} link="">
                                 <>
-                                    Continue
+                                    {t("Continue")}
                                 </>
                             </Button> :
                             <Button size="small" type="destructive" styles="" onSubmit={() => handler()}>
                                 <>
-                                    Delete
+                                    {t("Delete")}
                                 </>
                             </Button>
                     }
