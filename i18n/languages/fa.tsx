@@ -54,7 +54,7 @@ const fa = {
     "actions": "اعمال تغییرات",
     "item": "مورد",
     "Edit": "ویرایش",
-    "add customer": "اضافه کردن مشتری",
+    "Add Customer": "اضافه کردن مشتری",
     "add coupons": "اضافه کردن کد تخفیف",
     "customer": "مشتری",
     "location": "آدرس",
@@ -205,6 +205,8 @@ const fa = {
     "You are removing the product from this category, are you sure?": "شما در حال حذف محصول از این دسته هستید، مطمئنید؟",
     "Your desired product has been successfully removed from the category.": "محصول مورد نظر شما با موفقیت از دسته بندی حذف شد.",
     "Your desired product was not removed from the category, please try again.": "محصول نظر شما از دسته بندی حذف نشد، دوباره جستجو کنید.",
-    "Loading..": "بارگذاری.."
+    "Loading..": "بارگذاری..",
+    "Your customer has been successfully added to the customer list.": "مشتری شما با موفقیت به لیست مشتریان اضافه شد.",
+    "Your customer was not added to the customer list, please try again.": "مشتری شما به لیست مشتریان اضافه نشده است، لطفا دوباره امتحان کنید."
 }
 export default fa

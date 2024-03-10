@@ -1,4 +1,5 @@
 import apiReq from "../CoreApi";
+import Cookies from 'universal-cookie';
 
 type addCustomerType = {
     first_name: string,
@@ -16,13 +17,15 @@ type addCustomerType = {
     note: string,
 }
 
+const cookies = new Cookies()
+
 export const addCustomer = async (customerInfo: addCustomerType) => {
     return await apiReq({
         method: "POST",
         url: "/user",
         data: customerInfo,
         headers: {
-            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+            "Authorization": `Bearer ${cookies.get("token")}`
         }
     })
         .then(res => res)
@@ -32,7 +35,7 @@ export const getAllCustomers = async () => {
         method: "GET",
         url: "/user",
         headers: {
-            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+            "Authorization": `Bearer ${cookies.get("token")}`
         }
     })
         .then(res => res.data)
@@ -42,7 +45,7 @@ export const getSingleCustomer = async (id: string) => {
         method: "GET",
         url: `/user/${id}`,
         headers: {
-            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+            "Authorization": `Bearer ${cookies.get("token")}`
         }
     })
         .then(res => res.data)
@@ -52,7 +55,7 @@ export const deleteSingleCustomer = async (id: string) => {
         method: "DELETE",
         url: `/user/${id}`,
         headers: {
-            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
+            "Authorization": `Bearer ${cookies.get("token")}`
         }
     })
         .then(res => res)

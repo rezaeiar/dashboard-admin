@@ -54,7 +54,7 @@ const en = {
     "actions": "actions",
     "item": "item",
     "Edit": "Edit",
-    "add customer": "add customer",
+    "Add Customer": "Add Customer",
     "add coupons": "add coupons",
     "customer": "customer",
     "location": "location",
@@ -206,5 +206,7 @@ const en = {
     "Your desired product has been successfully removed from the category.": "Your desired product has been successfully removed from the category.",
     "Your desired product was not removed from the category, please try again.": "Your desired product was not removed from the category, please try again.",
     "Loading..": "Loading..",
+    "Your customer has been successfully added to the customer list.": "Your customer has been successfully added to the customer list.",
+    "Your customer was not added to the customer list, please try again.": "Your customer was not added to the customer list, please try again."
 }
 export default en
