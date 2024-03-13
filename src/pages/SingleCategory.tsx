@@ -35,6 +35,7 @@ const SingleCategory = () => {
                 if (res.status === 200) {
                     dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
                     dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your changes were made successfully.") } }))
+                    refetch()
                 }
             })
             .catch(() => {
@@ -84,7 +85,7 @@ const SingleCategory = () => {
     return (
         <>
             <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-start">
                     <div className="flex flex-col">
                         <div className="flex gap-x-1 text-general-80 font-nunitosans-regular items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3">

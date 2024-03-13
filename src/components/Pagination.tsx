@@ -1,42 +1,34 @@
-import { useState } from "react"
 import { useTranslation } from "react-i18next"
 
 type Pagination = {
     page: number,
     numberOfItems: number,
-    changePage: (page: number) => void
+    shown: number
+    changePage: (page: number) => void,
 }
 
-const Pagination = ({ page, numberOfItems, changePage }: Pagination) => {
+const Pagination = ({ page, numberOfItems, shown, changePage }: Pagination) => {
 
     const { t } = useTranslation()
-    const [shown, setShown] = useState(5)
 
     const startAt = ((page - 1) * shown) + 1
-    const endIn = numberOfItems >= shown ? shown + 1 : numberOfItems
+    const endIn = (numberOfItems / page > shown) ? ((page - 1) * shown) + shown : numberOfItems
 
     const changePageHandler = (state: "PREV" | "NEXT") => {
         switch (state) {
             case "PREV": {
-                if (page > 1) {
-                    changePage(page - 1)
-                }
+                if (page > 1) changePage(page - 1)
                 break
             }
             case "NEXT": {
-                console.log((Math.ceil(numberOfItems / shown)), page);
-
-                if ((Math.ceil(numberOfItems / shown)) > page) {
-                    changePage(page + 1)
-
-                }
+                if ((Math.ceil(numberOfItems / shown)) > page) changePage(page + 1)
             }
         }
     }
     return (
         <div className="text-sm flex justify-between">
-            <span className="text-general-80 capitalize">
-                {t("showing")} {startAt}-{endIn} {t("of")} {numberOfItems}
+            <span className="text-general-80">
+                {t("Showing")} {startAt}-{endIn} {t("of")} {numberOfItems}
             </span>
             <div className="flex border border-general-50 divide-x rounded-md">
                 <div className={`px-2 py-1 ${(page > 1) ? 'cursor-pointer text-general-100' : "text-general-80"}`} onClick={() => changePageHandler("PREV")}>

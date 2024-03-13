@@ -1,7 +1,7 @@
 const en = {
     'english': 'english',
     'persian': 'persian',
-    'search': 'search',
+    'Search': 'Search',
     'admin': 'admin',
     "select language": "select language",
     "manage account": "manage account",
@@ -39,7 +39,7 @@ const en = {
     "Pending": "Pending",
     "rejected": "rejected",
     "Add Product": "Add Product",
-    "filter by": "filter by",
+    "Filter by": "Filter by",
     "Price": "Price",
     "inventory": "inventory",
     "rating": "rating",
@@ -49,7 +49,7 @@ const en = {
     "category": "category",
     "status": "status",
     "of": "of",
-    "showing": "showing",
+    "Showing": "Showing",
     "product": "product",
     "actions": "actions",
     "item": "item",
@@ -211,6 +211,9 @@ const en = {
     "Select Role": "Select Role",
     "User": "User",
     "Admin": "Admin",
-    "Number of orders": "Number of orders"
+    "Number of orders": "Number of orders",
+    "By deleting the user, all his registered information on the site will be deleted. are you sure?": "By deleting the user, all his registered information on the site will be deleted. are you sure?",
+    "Your desired client has been successfully deleted.": "Your desired client has been successfully deleted.",
+    "Your desired client could not be deleted, please try again.": "Your desired client could not be deleted, please try again."
 }
 export default en

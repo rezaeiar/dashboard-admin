@@ -1,7 +1,7 @@
 const fa = {
     'english': 'انگلیسی',
     'persian': 'فارسی',
-    'search': 'جستجو',
+    'Search': 'جستجو',
     'admin': 'مدیر',
     "select language": 'انتخاب زبان',
     "manage account": "مدیریت حساب",
@@ -39,7 +39,7 @@ const fa = {
     "Pending": "در انتظار",
     "rejected": "رد شده",
     "Add Product": "اضافه کردن محصول",
-    "filter by": "فیلتر براساس",
+    "Filter by": "فیلتر براساس",
     "Price": "قیمت",
     "inventory": "موجودی محصول",
     "rating": "امتیاز محصول",
@@ -49,7 +49,7 @@ const fa = {
     "category": "دسته بندی",
     "status": "وضعیت",
     "of": "از",
-    "showing": "درحال نمایش",
+    "Showing": "درحال نمایش",
     "product": "محصول",
     "actions": "اعمال تغییرات",
     "item": "مورد",
@@ -211,6 +211,9 @@ const fa = {
     "Select Role": "نقش را انتخاب کنید",
     "User": "کاربر",
     "Admin": "مدیر",
-    "Number of orders": "تعداد سفارشات"
+    "Number of orders": "تعداد سفارشات",
+    "By deleting the user, all his registered information on the site will be deleted. are you sure?": "با حذف کاربر تمامی اطلاعات ثبت شده وی در سایت حذف خواهد شد. مطمئنید؟",
+    "Your desired client has been successfully deleted.": "مشتری مورد نظر شما با موفقیت حذف شد.",
+    "Your desired client could not be deleted, please try again.": "مشتری مورد نظر شما حذف نشد, لطفا دوباره تلاش کنید."
 }
 export default fa
