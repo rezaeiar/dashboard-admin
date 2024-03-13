@@ -11,8 +11,8 @@ const en = {
     "dashboard": "dashboard",
     "orders": "orders",
     "products": "products",
-    "categories": "categories",
-    "customers": "customers",
+    "Categories": "Categories",
+    "Customers": "Customers",
     "coupons": "coupons",
     "inbox": "inbox",
     "other information": "other information",
@@ -27,7 +27,7 @@ const en = {
     "up from yesterday": "up from yesterday",
     "down from yesterday": "down from yesterday",
     "add order": "add order",
-    "export": "export",
+    "Export": "Export",
     "sort by": "sort by",
     "Date": "Date",
     "order type": "order type",
@@ -135,7 +135,7 @@ const en = {
     "Price Discount": "Price Discount",
     "Managers": "Managers",
     "To-Do": "To-Do",
-    "Email": "Email",
+    "email": "email",
     "Create an Account": "Create an Account",
     "Have an Account?": "Have an Account?",
     "Sign In": "Sign In",
@@ -207,6 +207,10 @@ const en = {
     "Your desired product was not removed from the category, please try again.": "Your desired product was not removed from the category, please try again.",
     "Loading..": "Loading..",
     "Your customer has been successfully added to the customer list.": "Your customer has been successfully added to the customer list.",
-    "Your customer was not added to the customer list, please try again.": "Your customer was not added to the customer list, please try again."
+    "Your customer was not added to the customer list, please try again.": "Your customer was not added to the customer list, please try again.",
+    "Select Role": "Select Role",
+    "User": "User",
+    "Admin": "Admin",
+    "Number of orders": "Number of orders"
 }
 export default en

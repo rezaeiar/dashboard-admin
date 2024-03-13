@@ -11,8 +11,8 @@ const fa = {
     "dashboard": "داشبورد",
     "orders": "سفارشات",
     "products": "محصولات",
-    "categories": "دسته بندی ها",
-    "customers": "مشتریان",
+    "Categories": "دسته بندی ها",
+    "Customers": "مشتریان",
     "coupons": "کدهای تخفیف",
     "inbox": "صندوق ورودی",
     "other information": "اطلاعات دیگر",
@@ -27,7 +27,7 @@ const fa = {
     "up from yesterday": "افزایش نسبت به دیروز",
     "down from yesterday": "کاهش نسبت به دیروز",
     "add order": "اضافه کردن سفارش",
-    "export": "دانلود خروجی",
+    "Export": "دانلود خروجی",
     "sort by": "مرتب کردن براساس",
     "Date": "تاریخ",
     "order type": "نوع سفارش",
@@ -135,7 +135,7 @@ const fa = {
     "Price Discount": "تخفیف قیمت",
     "Managers": "مدیران",
     "To-Do": "وظایف",
-    "Email": "پست الکترونیک",
+    "email": "پست الکترونیک",
     "Create an Account": "یک حساب کاربری ایجاد کنید",
     "Have an Account?": "حساب کاربری دارید؟",
     "Sign In": "ورود",
@@ -207,6 +207,10 @@ const fa = {
     "Your desired product was not removed from the category, please try again.": "محصول نظر شما از دسته بندی حذف نشد، دوباره جستجو کنید.",
     "Loading..": "بارگذاری..",
     "Your customer has been successfully added to the customer list.": "مشتری شما با موفقیت به لیست مشتریان اضافه شد.",
-    "Your customer was not added to the customer list, please try again.": "مشتری شما به لیست مشتریان اضافه نشده است، لطفا دوباره امتحان کنید."
+    "Your customer was not added to the customer list, please try again.": "مشتری شما به لیست مشتریان اضافه نشده است، لطفا دوباره امتحان کنید.",
+    "Select Role": "نقش را انتخاب کنید",
+    "User": "کاربر",
+    "Admin": "مدیر",
+    "Number of orders": "تعداد سفارشات"
 }
 export default fa
