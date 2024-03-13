@@ -17,7 +17,7 @@ const Customers = () => {
     const dispatch = useDispatch()
     const { t } = useTranslation()
 
-    const { data, isLoading, refetch } = useQuery("customers", getAllCustomers)
+    const { data, isLoading, refetch, dataUpdatedAt } = useQuery("customers", getAllCustomers)
     const [allCustomers, setAllCustomers] = useState<null | { roles: String[], order_count: number, purchase_amount: number }[]>(null)
 
     const [selectedRole, setSelectedRole] = useState("-1")
@@ -25,8 +25,13 @@ const Customers = () => {
     const [serachedValue, setSearchedValue] = useState("")
     const [shown] = useState(10)
     const [page, setPage] = useState(1);
-
+    
     const changePage = (page: number) => setPage(page)
+    let updatedTime = new Date(dataUpdatedAt);
+
+    useEffect(() => {
+        updatedTime = new Date(dataUpdatedAt);
+    }, [dataUpdatedAt])
 
     useEffect(() => {
         if (data) setAllCustomers([...data])
@@ -165,9 +170,7 @@ const Customers = () => {
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex items-center gap-x-3">
                                                     <div className="h-12 w-12 uppercase bg-general-60 rounded-full text-white flex items-center justify-center">
-                                                        {
-                                                            customer.first_name.slice(0, 1)
-                                                        }
+                                                        {customer.first_name.slice(0, 1)}
                                                     </div>
                                                     <span>
                                                         {customer.first_name} {customer.last_name}
@@ -175,9 +178,7 @@ const Customers = () => {
                                                 </div>
                                             </td>
                                             <td className="w-28 sm:w-32 shrink-0">
-                                                {
-                                                    customer.email
-                                                }
+                                                {customer.email}
                                             </td>
                                             <td className="w-28 sm:w-32 shrink-0">{customer.order_count}</td>
                                             <td className="w-28 sm:w-32 shrink-0">${customer.purchase_amount.toLocaleString()}</td>
@@ -200,7 +201,7 @@ const Customers = () => {
                                 }
                             </tbody>
                         </table>
-                        <Pagination page={page} numberOfItems={allCustomers.length} shown={shown} changePage={changePage} />
+                        <Pagination page={page} numberOfItems={allCustomers.length} shown={shown} updatedTime={updatedTime} changePage={changePage} />
                     </>
                 }
             </div>

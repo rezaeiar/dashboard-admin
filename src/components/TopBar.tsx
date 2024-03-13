@@ -48,7 +48,7 @@ const TopBar = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 absolute left-3 rtl:right-3 cursor-pointer">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                     </svg>
-                    <input type="text" className='h-10 w-72 lg:w-96 rounded-full border border-white focus:border-general-40 transition-colors outline-none px-10 placeholder:text-general-70 capitalize font-nunitosans-regular rtl:font-iransans-regular' placeholder={t('search')} />
+                    <input type="text" className='h-10 w-72 lg:w-96 rounded-full border border-white focus:border-general-40 transition-colors outline-none px-10 placeholder:text-general-70 capitalize font-nunitosans-regular rtl:font-iransans-regular' placeholder={t('Search')} />
                 </div>
             </div>
             <div className="flex gap-x-6 md:gap-x-8 items-center *:cursor-pointer *:shrink-0 h-full capitalize">

@@ -214,6 +214,7 @@ const en = {
     "Number of orders": "Number of orders",
     "By deleting the user, all his registered information on the site will be deleted. are you sure?": "By deleting the user, all his registered information on the site will be deleted. are you sure?",
     "Your desired client has been successfully deleted.": "Your desired client has been successfully deleted.",
-    "Your desired client could not be deleted, please try again.": "Your desired client could not be deleted, please try again."
+    "Your desired client could not be deleted, please try again.": "Your desired client could not be deleted, please try again.",
+    "Updated in": "Updated in"
 }
 export default en
