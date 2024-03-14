@@ -215,6 +215,6 @@ const fa = {
     "By deleting the user, all his registered information on the site will be deleted. are you sure?": "با حذف کاربر تمامی اطلاعات ثبت شده وی در سایت حذف خواهد شد. مطمئنید؟",
     "Your desired client has been successfully deleted.": "مشتری مورد نظر شما با موفقیت حذف شد.",
     "Your desired client could not be deleted, please try again.": "مشتری مورد نظر شما حذف نشد, لطفا دوباره تلاش کنید.",
-    "Updated in": "بروزرسانی شده در"
+    "Updated in": "بروزرسانی شده در",
 }
 export default fa
