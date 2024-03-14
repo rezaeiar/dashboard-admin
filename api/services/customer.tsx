@@ -17,6 +17,19 @@ type addCustomerType = {
     note: string,
 }
 
+type editCustomerInfoType = {
+    first_name: string,
+    last_name: string,
+    roles: string[],
+    home_phone_number: string,
+    phone_number: string
+    address: string,
+    country: string,
+    city: string
+    postal_code: string,
+    note: string,
+}
+
 const cookies = new Cookies()
 
 export const addCustomer = async (customerInfo: addCustomerType) => {
@@ -54,6 +67,17 @@ export const deleteSingleCustomer = async (id: string) => {
     return await apiReq({
         method: "DELETE",
         url: `/user/${id}`,
+        headers: {
+            "Authorization": `Bearer ${cookies.get("token")}`
+        }
+    })
+        .then(res => res)
+}
+export const editCustomerInfo = async (id: string, customerInfo: editCustomerInfoType) => {
+    return await apiReq({
+        method: "PUT",
+        url: `/user/${id}`,
+        data: customerInfo,
         headers: {
             "Authorization": `Bearer ${cookies.get("token")}`
         }

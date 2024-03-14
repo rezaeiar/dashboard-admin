@@ -142,12 +142,12 @@ const Customers = () => {
                     <>
                         <table className='border divide-y border-general-50 bg-white rounded-md w-full flex flex-col overflow-x-auto'>
                             <thead>
-                                <tr className='p-3 md:p-4 bg-general-30 grid grid-cols-5 sm:text-sm text-xs font-nunitosans-extrabold rtl:font-iransans-bold text-general-100 child:text-start min-w-max gap-x-2 capitalize'>
-                                    <th className="w-36 sm:w-44 text-start">{t("customer")}</th>
-                                    <th className="w-28 sm:w-32 text-start">{t("email")}</th>
-                                    <th className="w-28 sm:w-32 text-start">{t("orders")}</th>
-                                    <th className="w-28 sm:w-32 text-start">{t("spent")}</th>
-                                    <th className="w-36 sm:w-44 text-start">{t("actions")}</th>
+                                <tr className='p-3 md:p-4 bg-general-30 grid grid-cols-5 sm:text-sm text-xs font-nunitosans-extrabold rtl:font-iransans-bold text-general-100 *:text-start min-w-max gap-x-2 capitalize'>
+                                    <th className="w-36 sm:w-44">{t("customer")}</th>
+                                    <th className="w-28 sm:w-32">{t("email")}</th>
+                                    <th className="w-28 sm:w-32">{t("orders")}</th>
+                                    <th className="w-28 sm:w-32">{t("spent")}</th>
+                                    <th className="w-36 sm:w-44">{t("actions")}</th>
                                 </tr>
                             </thead>
                             <tbody>

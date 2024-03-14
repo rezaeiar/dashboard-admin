@@ -216,5 +216,8 @@ const fa = {
     "Your desired client has been successfully deleted.": "مشتری مورد نظر شما با موفقیت حذف شد.",
     "Your desired client could not be deleted, please try again.": "مشتری مورد نظر شما حذف نشد, لطفا دوباره تلاش کنید.",
     "Updated in": "بروزرسانی شده در",
+    "The country is not entered": "کشور وارد نشده",
+    "Address not entered": "آدرس وارد نشده است",
+    "No phone number entered": "شماره تلفن وارد نشده است"
 }
 export default fa

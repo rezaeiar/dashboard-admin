@@ -8,6 +8,8 @@ import { showConfirmModal } from "../store/slices/ConfirmModalSlice"
 import { showSuccessModal } from "../store/slices/successModalSlice"
 import { showErrorModal } from "../store/slices/ErrorModalSlice"
 import { useDispatch } from "react-redux"
+import { useEffect, useState } from "react"
+import { editCustomerInfo } from "../../api/services/customer"
 
 const CustomerInfo = () => {
 
@@ -17,6 +19,9 @@ const CustomerInfo = () => {
     const { t } = useTranslation()
 
     const { data, isLoading } = useQuery(['customer', params.id], () => getSingleCustomer(params.id as string))
+
+    const [note, setNote] = useState('')
+
 
     const deleteCategoryHandler = (id: string) => {
         deleteSingleCustomer(id)
@@ -32,9 +37,47 @@ const CustomerInfo = () => {
             })
     }
 
+    
+    console.log(data);
+    
+    const changeCustomerInfoHandler = (id: string) => {
+        const { first_name, last_name, roles, home_phone_number, phone_number, address, country, city, postal_code } = data
+        const customerInfo = {
+            first_name,
+            last_name,
+            roles,
+            home_phone_number,
+            phone_number,
+            address,
+            country,
+            city,
+            postal_code,
+            note: "note"
+        }
+        console.log(customerInfo);
+
+        editCustomerInfo(id, customerInfo)
+            .then((res) => {
+                console.log(res);
+
+                if (res.status === 200) {
+                    dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
+                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your changes were made successfully.") } }))
+                }
+            })
+            .catch(() => {
+                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your changes were not applied, please try again.") } }))
+            })
+    }
+
     const showDeleteConfirmModal = (id: string) => {
         dispatch(showConfirmModal({ vissablity: true, payload: { title: t("Delete Customer"), description: t("By deleting the user, all his registered information on the site will be deleted. are you sure?") }, button: "Delete", handler: () => deleteCategoryHandler(id as string) }))
     }
+
+    const showEditConfirmModal = (id: string) => {
+        dispatch(showConfirmModal({ vissablity: true, payload: { title: t("Change information"), description: t("You are changing the information of this customer, are you sure?") }, button: "Continue", handler: () => changeCustomerInfoHandler(id as string) }))
+    }
+
 
     if (isLoading) return <Loading />
 
@@ -60,7 +103,7 @@ const CustomerInfo = () => {
                             {t("Cancel")}
                         </>
                     </Button>
-                    <Button type="primary" size="small">
+                    <Button type="primary" size="small" onSubmit={() => showEditConfirmModal(params.id as string)}>
                         <>
                             {t("Save")}
                         </>
@@ -72,16 +115,22 @@ const CustomerInfo = () => {
                     <div className="bg-white rounded-md p-5 xl:p-7 flex flex-col gap-y-4 xl:gap-y-6 divide-y">
                         <div className="flex justify-between">
                             <div className="flex gap-x-2 md:gap-x-5">
-                                <div className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 bg-general-60 text-xl md:text-4xl rounded-full text-white flex items-center justify-center uppercase">
+                                <div className={`h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 text-xl md:text-4xl rounded-full text-white flex items-center justify-center uppercase ${!!data.roles.includes("ADMIN") ? 'bg-yellow-101 shadow-md' : "bg-general-60"}`}>
                                     {data.first_name.slice(0, 1)}
                                 </div>
                                 <div className="flex flex-col gap-y-1 md:gap-y-2">
-                                    <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold capitalize">
+                                    <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold capitalize flex gap-x-1 items-center">
                                         {data.first_name} {data.last_name}
+                                        {
+                                            !!data.roles.includes("ADMIN") &&
+                                            <span className="text-general-80 text-xs ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                                ({t("Admin")})
+                                            </span>
+                                        }
                                     </h5>
                                     <div className="flex flex-col">
                                         <span className="text-general-70 ltr:font-nunitosans-semiBold rtl:font-iransans-regular text-[10px] sm:text-xs">
-                                            {data.country ? data.country : ""}
+                                            {data.country ? data.country : t("The country is not entered")}
                                         </span>
                                         <span className="text-general-70 ltr:font-nunitosans-semiBold rtl:font-iransans-regular text-[10px] sm:text-xs">
                                             5 {t("Order")}
@@ -119,9 +168,7 @@ const CustomerInfo = () => {
                                     <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                         {t("Notes")}
                                     </label>
-                                    <textarea name="" id="" className="border border-general-50 outline-none rounded text-sm text-general-100 aspect-[10/2] px-4 py-2 resize-none" placeholder={t("Add notes about customer")}>
-                                        {data.note}
-                                    </textarea>
+                                    <textarea name="" id="" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular aspect-[10/2] resize-none" placeholder={t("Add notes about customer")} onChange={e => setNote(e.target.value)} value={note}></textarea>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +178,7 @@ const CustomerInfo = () => {
                             {t("Customer Orders")}
                         </h5>
                         <table className='divide-y bg-white rounded-md w-full flex flex-col overflow-x-auto'>
-                            <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-70 child:text-start min-w-max gap-x-2'>
+                            <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-70 child:text-start min-w-max gap-x-2 *:text-start'>
                                 <th className="w-28 sm:w-32">{t("Order")}</th>
                                 <th className="w-28 sm:w-32">{t("Date")}</th>
                                 <th className="w-32 sm:w-36">{t("Order Status")}</th>
@@ -212,7 +259,7 @@ const CustomerInfo = () => {
                                     {t("Address")}
                                 </h5>
                                 <span className="text-general-80 ltr:font-nunitosans-regular rtl:font-iransans-regular text-sm">
-                                    {data.address}
+                                    {data.address ? data.address : t("Address not entered")}
                                 </span>
                             </div>
                             <div className="flex flex-col gap-y-2">
@@ -228,13 +275,13 @@ const CustomerInfo = () => {
                                     {t("Phone")}
                                 </h5>
                                 <span className="text-general-80 ltr:font-nunitosans-regular rtl:font-iransans-regular text-sm">
-                                    {data.phone_number}
+                                    {data.phone_number ? data.phone_number : t("No phone number entered")}
                                 </span>
                             </div>
                         </div>
                         <div className="flex pt-5">
                             <span className="text-red-101 text-xs lg:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular cursor-pointer" onClick={() => showDeleteConfirmModal(params.id as string)}>
-                                Delete Customer
+                                {t("Delete Customer")}
                             </span>
                         </div>
                     </div>

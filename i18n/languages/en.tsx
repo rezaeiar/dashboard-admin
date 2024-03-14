@@ -216,5 +216,8 @@ const en = {
     "Your desired client has been successfully deleted.": "Your desired client has been successfully deleted.",
     "Your desired client could not be deleted, please try again.": "Your desired client could not be deleted, please try again.",
     "Updated in": "Updated in",
+    "The country is not entered": "The country is not entered",
+    "Address not entered": "Address not entered",
+    "No phone number entered": "No phone number entered"
 }
 export default en
