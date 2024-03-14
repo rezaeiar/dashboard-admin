@@ -8,7 +8,7 @@ import { showConfirmModal } from "../store/slices/ConfirmModalSlice"
 import { showSuccessModal } from "../store/slices/successModalSlice"
 import { showErrorModal } from "../store/slices/ErrorModalSlice"
 import { useDispatch } from "react-redux"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { editCustomerInfo } from "../../api/services/customer"
 
 const CustomerInfo = () => {
@@ -37,10 +37,8 @@ const CustomerInfo = () => {
             })
     }
 
-    
-    console.log(data);
-    
     const changeCustomerInfoHandler = (id: string) => {
+
         const { first_name, last_name, roles, home_phone_number, phone_number, address, country, city, postal_code } = data
         const customerInfo = {
             first_name,
@@ -52,9 +50,8 @@ const CustomerInfo = () => {
             country,
             city,
             postal_code,
-            note: "note"
+            note
         }
-        console.log(customerInfo);
 
         editCustomerInfo(id, customerInfo)
             .then((res) => {
@@ -178,68 +175,72 @@ const CustomerInfo = () => {
                             {t("Customer Orders")}
                         </h5>
                         <table className='divide-y bg-white rounded-md w-full flex flex-col overflow-x-auto'>
-                            <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-70 child:text-start min-w-max gap-x-2 *:text-start'>
-                                <th className="w-28 sm:w-32">{t("Order")}</th>
-                                <th className="w-28 sm:w-32">{t("Date")}</th>
-                                <th className="w-32 sm:w-36">{t("Order Status")}</th>
-                                <th className="w-28 sm:w-32">{t("Price")}</th>
-                            </tr>
-                            <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
-                                <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
-                                    #23534D
-                                </td>
-                                <td className="w-28 sm:w-32 shrink-0">
-                                    May 25, 3:12 PM
-                                </td>
-                                <td className="w-32 sm:w-36 shrink-0">
-                                    <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                        {t("Completed")}
-                                    </button>
-                                </td>
-                                <td className="w-28 sm:w-32 shrink-0">$29.74</td>
-                            </tr>
-                            <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
-                                <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
-                                    #23534D
-                                </td>
-                                <td className="w-28 sm:w-32 shrink-0">
-                                    May 25, 3:12 PM
-                                </td>
-                                <td className="w-32 sm:w-36 shrink-0">
-                                    <button className="w-4/5 flex justify-center bg-yellow-30 text-yellow-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                        {t("Pending")}
-                                    </button>
-                                </td>
-                                <td className="w-28 sm:w-32 shrink-0">$29.74</td>
-                            </tr>
-                            <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
-                                <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
-                                    #23534D
-                                </td>
-                                <td className="w-28 sm:w-32 shrink-0">
-                                    May 25, 3:12 PM
-                                </td>
-                                <td className="w-32 sm:w-36 shrink-0">
-                                    <button className="w-4/5 flex justify-center bg-yellow-30 text-yellow-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                        {t("Pending")}
-                                    </button>
-                                </td>
-                                <td className="w-28 sm:w-32 shrink-0">$29.74</td>
-                            </tr>
-                            <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
-                                <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
-                                    #23534D
-                                </td>
-                                <td className="w-28 sm:w-32 shrink-0">
-                                    May 25, 3:12 PM
-                                </td>
-                                <td className="w-32 sm:w-36 shrink-0">
-                                    <button className="w-4/5 flex justify-center bg-yellow-30 text-yellow-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                        {t("Pending")}
-                                    </button>
-                                </td>
-                                <td className="w-28 sm:w-32 shrink-0">$29.74</td>
-                            </tr>
+                            <thead>
+                                <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-70 child:text-start min-w-max gap-x-2 *:text-start'>
+                                    <th className="w-28 sm:w-32">{t("Order")}</th>
+                                    <th className="w-28 sm:w-32">{t("Date")}</th>
+                                    <th className="w-32 sm:w-36">{t("Order Status")}</th>
+                                    <th className="w-28 sm:w-32">{t("Price")}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
+                                    <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
+                                        #23534D
+                                    </td>
+                                    <td className="w-28 sm:w-32 shrink-0">
+                                        May 25, 3:12 PM
+                                    </td>
+                                    <td className="w-32 sm:w-36 shrink-0">
+                                        <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                            {t("Completed")}
+                                        </button>
+                                    </td>
+                                    <td className="w-28 sm:w-32 shrink-0">$29.74</td>
+                                </tr>
+                                <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
+                                    <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
+                                        #23534D
+                                    </td>
+                                    <td className="w-28 sm:w-32 shrink-0">
+                                        May 25, 3:12 PM
+                                    </td>
+                                    <td className="w-32 sm:w-36 shrink-0">
+                                        <button className="w-4/5 flex justify-center bg-yellow-30 text-yellow-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                            {t("Pending")}
+                                        </button>
+                                    </td>
+                                    <td className="w-28 sm:w-32 shrink-0">$29.74</td>
+                                </tr>
+                                <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
+                                    <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
+                                        #23534D
+                                    </td>
+                                    <td className="w-28 sm:w-32 shrink-0">
+                                        May 25, 3:12 PM
+                                    </td>
+                                    <td className="w-32 sm:w-36 shrink-0">
+                                        <button className="w-4/5 flex justify-center bg-yellow-30 text-yellow-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                            {t("Pending")}
+                                        </button>
+                                    </td>
+                                    <td className="w-28 sm:w-32 shrink-0">$29.74</td>
+                                </tr>
+                                <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
+                                    <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
+                                        #23534D
+                                    </td>
+                                    <td className="w-28 sm:w-32 shrink-0">
+                                        May 25, 3:12 PM
+                                    </td>
+                                    <td className="w-32 sm:w-36 shrink-0">
+                                        <button className="w-4/5 flex justify-center bg-yellow-30 text-yellow-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                            {t("Pending")}
+                                        </button>
+                                    </td>
+                                    <td className="w-28 sm:w-32 shrink-0">$29.74</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
