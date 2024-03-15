@@ -218,6 +218,11 @@ const fa = {
     "Updated in": "بروزرسانی شده در",
     "The country is not entered": "کشور وارد نشده",
     "Address not entered": "آدرس وارد نشده است",
-    "No phone number entered": "شماره تلفن وارد نشده است"
+    "No phone number entered": "شماره تلفن وارد نشده است",
+    "Count": "تعداد",
+    "Further Information": "اطلاعات تکمیلی",
+    "Enter the product number": "تعداد محصول را وارد کنید",
+    "Your product has been successfully added to the product list.": "محصول شما با موفقیت به لیست محصولات اضافه شد.",
+    "Your product was not added to the product list, please try again.": "محصول شما به لیست محصول اضافه نشده است، لطفا دوباره امتحان کنید."
 }
 export default fa

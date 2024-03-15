@@ -6,20 +6,25 @@ import { useQuery } from "react-query"
 import { getAllCategories } from "../../api/services/category"
 // import CategoriesModal from "../components/CategoriesModal"
 import { addProduct } from '../../api/services/product'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { showSuccessModal } from "../store/slices/successModalSlice"
+import { showAddCategoryModal } from "../store/slices/AddCategoryModalSlice"
+import { showConfirmModal } from "../store/slices/ConfirmModalSlice"
+import { showErrorModal } from "../store/slices/ErrorModalSlice"
 
 const AddProduct = () => {
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { t } = useTranslation()
+
     const [multipleOptions, setMultipleOptions] = useState(false)
 
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [count, setCount] = useState("")
-    const [price, setPrice] = useState(Number)
+    const [price, setPrice] = useState("")
     const [tags, setTags] = useState<string[]>([])
     const [weight, setWeight] = useState("")
     const [country, setCountry] = useState("")
@@ -45,14 +50,11 @@ const AddProduct = () => {
         }
     }
 
-    const [isShowCategoriesModal, setIsShowCategoriesModal] = useState(false)
     const showCategoriesModalHandler = () => {
-        setIsShowCategoriesModal(true)
+        dispatch(showAddCategoryModal({ vissablity: true }))
     }
-    console.log(isShowCategoriesModal);
-    
 
-    const addNewProductHandler = () => {
+    const createProductHandler = () => {
         const newProductInfo = {
             name,
             description,
@@ -68,37 +70,40 @@ const AddProduct = () => {
         addProduct(newProductInfo)
             .then(res => {
                 if (res.status === 201) {
-                    dispatch(showSuccessModal({ vissablity: true, payload: { title: "Add successfully", description: "Your product has been successfully added to the product list." } }))
+                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your product has been successfully added to the product list.") } }))
                     navigate("/panel/products")
                 }
+            })
+            .catch(() => {
+                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your product was not added to the product list, please try again.") } }))
             })
     }
     return (
         <>
             <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-start">
                     <div className="flex flex-col">
                         <div className="flex gap-x-1 text-general-80 font-nunitosans-regular items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                             </svg>
-                            <span className="text-xs md:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                {t("back")}
-                            </span>
+                            <Link to='/panel/products' className="text-xs md:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Back")}
+                            </Link>
                         </div>
                         <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100 capitalize">
-                            {t("add product")}
+                            {t("Add Product")}
                         </h2>
                     </div>
                     <div className="flex gap-x-1 sm:gap-x-2">
-                        <Button type="white" size="small" styles="">
+                        <Button type="white" size="small" link="/panel/products">
                             <>
-                                {t("cancel")}
+                                {t("Cancel")}
                             </>
                         </Button>
-                        <Button type="primary" size="small" styles="" onSubmit={addNewProductHandler}>
+                        <Button type="primary" size="small" styles="" onSubmit={createProductHandler}>
                             <>
-                                {t("save")}
+                                {t("Save")}
                             </>
                         </Button>
                     </div>
@@ -114,13 +119,13 @@ const AddProduct = () => {
                                     <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                         {t("product name")}
                                     </label>
-                                    <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Summer T-Shirt")} value={name} onChange={e => setName(e.target.value)} />
+                                    <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Summer T-Shirt")} value={name} onChange={e => setName(e.target.value)} />
                                 </div>
                                 <div className="flex flex-col">
                                     <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                         {t("product description")}
                                     </label>
-                                    <textarea name="" id="" className="border py-2 border-general-50 outline-none rounded text-sm text-general-100 aspect-[5/1] px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular resize-none" onChange={e => setDescription(e.target.value)} defaultValue={description}></textarea>
+                                    <textarea name="" id="" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular aspect-[10/2] resize-none" onChange={e => setDescription(e.target.value)} defaultValue={description}></textarea>
                                 </div>
                             </div>
                         </div>
@@ -142,20 +147,20 @@ const AddProduct = () => {
                         </div>
                         <div className="flex flex-col gap-y-6 pt-4 xl:pt-6">
                             <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
-                                {t("Further information")}
+                                {t("Further Information")}
                             </h5>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
                                 <div className="flex flex-col">
                                     <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                         {t("product price")}
                                     </label>
-                                    <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("enter price")} value={price} onChange={e => setPrice(+e.target.value)} />
+                                    <input type="number" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("enter price")} value={price} onChange={e => setPrice(e.target.value)} />
                                 </div>
                                 <div className="flex flex-col">
                                     <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                         {t("Count")}
                                     </label>
-                                    <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Count of product")} value={count} onChange={e => setCount(e.target.value)} />
+                                    <input type="number" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter the product number")} value={count} onChange={e => setCount(e.target.value)} />
                                 </div>
                             </div>
                         </div>
@@ -169,13 +174,13 @@ const AddProduct = () => {
                                     <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                         {t("Weight")}
                                     </label>
-                                    <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter Weight")} value={weight} onChange={e => setWeight(e.target.value)} />
+                                    <input type="number" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Weight")} value={weight} onChange={e => setWeight(e.target.value)} />
                                 </div>
                                 <div className="flex flex-col">
                                     <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                         {t("Country")}
                                     </label>
-                                    <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Select Country")} value={country} onChange={e => setCountry(e.target.value)} />
+                                    <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Select Country")} value={country} onChange={e => setCountry(e.target.value)} />
                                 </div>
                             </div>
                             <div className="flex items-center gap-x-2">
@@ -203,13 +208,13 @@ const AddProduct = () => {
                                             <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                                 {t("title")}
                                             </label>
-                                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("enter title")} />
+                                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("enter title")} />
                                         </div>
                                         <div className="flex flex-col">
                                             <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                                 {t("value")}
                                             </label>
-                                            <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("enter value")} />
+                                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("enter value")} />
                                         </div>
                                     </div>
                                     <span className="text-primary-100 text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular cursor-pointer">
@@ -222,14 +227,14 @@ const AddProduct = () => {
                     <div className="flex flex-col gap-y-3 lg:gap-y-4 col-span-2">
                         <div className="bg-white rounded-md p-5 xl:p-7 flex flex-col gap-y-4">
                             <h5 className="text-general-100 text-xs xl:text-sm ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
-                                {t("categories")}
+                                {t("Categories")}
                             </h5>
                             {
                                 isSuccess &&
                                 <ul>
                                     {
                                         data.map((category: { id: string, name: string }) => (
-                                            <li className="text-general-100 text-xs lg:text-sm flex items-center gap-x-2" key={category.id}>
+                                            <li className="text-general-90 text-xs lg:text-sm flex items-center gap-x-2 font-iransans-regular" key={category.id}>
                                                 <input type="checkbox" name={category.id} checked={category.id === categoryId ? true : false} id="" onChange={e => changeCategoryHandler(e, category.id)} />
                                                 <span>{category.name}</span>
                                             </li>
@@ -249,7 +254,7 @@ const AddProduct = () => {
                                 <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                     {t("Add Tags")}
                                 </label>
-                                <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 ltr:font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Enter tag name")} value={tagName} onChange={(event) => setTagName(event.target.value)} onKeyDown={(event) => addNewTag(event.keyCode)} />
+                                <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter tag name")} value={tagName} onChange={(event) => setTagName(event.target.value)} onKeyDown={(event) => addNewTag(event.keyCode)} />
                             </div>
                             <div className="flex flex-wrap gap-2">
                                 {
@@ -272,13 +277,13 @@ const AddProduct = () => {
                                 <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
                                     Title
                                 </label>
-                                <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" placeholder="Enter tag name" />
+                                <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder="Enter tag name" />
                             </div>
                             <div className="flex flex-col">
                                 <label htmlFor="" className="text-xs lg:text-sm text-general-60 font-nunitosans-regular">
                                     Description
                                 </label>
-                                <textarea name="" id="" className="border border-general-50 outline-none rounded text-sm text-general-100 aspect-[5/2] px-4" defaultValue={""}>
+                                <textarea name="" id="" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular aspect-[5/2] resize-none" defaultValue={""}>
 
                                 </textarea>
                             </div>

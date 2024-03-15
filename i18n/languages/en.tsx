@@ -218,6 +218,11 @@ const en = {
     "Updated in": "Updated in",
     "The country is not entered": "The country is not entered",
     "Address not entered": "Address not entered",
-    "No phone number entered": "No phone number entered"
+    "No phone number entered": "No phone number entered",
+    "Count": "Count",
+    "Further Information" :"Further Information",
+    "Enter the product number": "Enter the product number",
+    "Your product has been successfully added to the product list.": "Your product has been successfully added to the product list.",
+    "Your product was not added to the product list, please try again.": "Your product was not added to the product list, please try again."
 }
 export default en

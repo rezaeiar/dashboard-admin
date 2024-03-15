@@ -4,32 +4,7 @@ import { useTranslation } from "react-i18next"
 import Filters from "../components/Filters"
 // import EmptyEntity from "../components/EmptyEntity"
 const Orders = () => {
-    const { t } = useTranslation()
-    const products = [
-        {
-            id: 1,
-            name: "alireza",
-            address: "14 metri chamran, 225",
-            date: new Date(),
-            cat: "home",
-            status: "COMPLETED"
-        },
-        {
-            id: 2,
-            name: "amir",
-            address: "43 metri chamran, 225",
-            date: new Date(),
-            cat: "out",
-            status: "PENDING"
-        },
-    ]
-    console.log(products);
-    
-
-    const [firstItemValue, setFirstItemValue] = useState("-1")
-    const [secondItemValue, setSecondItemValue] = useState("-1")
-
-    console.log(firstItemValue, secondItemValue);
+    const { t } = useTranslation()    
 
     const serachHandler = (value: string) => {
         console.log(value);
@@ -87,7 +62,7 @@ const Orders = () => {
                 </div>
             </div>
             <div className="flex flex-col gap-y-4">
-                <Filters firstitem={["Filter By Category", "laptop"]} seconditem={["Filter By Status", "completed", "pending", "rejected"]} searchSubmit={serachHandler} setFirstItemValue={setFirstItemValue} setSecondItemValue={setSecondItemValue} />
+                {/* <Filters firstitem={["Filter By Category", "laptop"]} seconditem={["Filter By Status", "completed", "pending", "rejected"]} searchSubmit={serachHandler} setFirstItemValue={setFirstItemValue} setSecondItemValue={setSecondItemValue} /> */}
                 <table className='border divide-y border-general-50 bg-white rounded-md w-full flex flex-col overflow-x-auto'>
                     <tr className='p-3 md:p-4 bg-general-30 grid grid-cols-6 sm:text-sm text-xs font-nunitosans-extrabold rtl:font-iransans-bold text-general-100 child:text-start min-w-max gap-x-2 uppercase'>
                         <th className="w-28 sm:w-32">{t("id")}</th>
