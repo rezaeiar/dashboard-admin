@@ -10,7 +10,7 @@ const en = {
     "log out": "log out",
     "dashboard": "dashboard",
     "orders": "orders",
-    "products": "products",
+    "Products": "Products",
     "Categories": "Categories",
     "Customers": "Customers",
     "coupons": "coupons",
@@ -73,7 +73,7 @@ const en = {
     "Image": "Image",
     "images": "images",
     "information": "information",
-    "title": "title",
+    "Title": "Title",
     "product name": "product name",
     "Summer T-Shirt": 'Summer T-Shirt',
     "product description": "product description",
@@ -220,9 +220,16 @@ const en = {
     "Address not entered": "Address not entered",
     "No phone number entered": "No phone number entered",
     "Count": "Count",
-    "Further Information" :"Further Information",
+    "Further Information": "Further Information",
     "Enter the product number": "Enter the product number",
     "Your product has been successfully added to the product list.": "Your product has been successfully added to the product list.",
-    "Your product was not added to the product list, please try again.": "Your product was not added to the product list, please try again."
+    "Your product was not added to the product list, please try again.": "Your product was not added to the product list, please try again.",
+    "Description": "Description",
+    "SEO Settings": "SEO Settings",
+    "You are deleting a product. are you sure?": "You are deleting a product. are you sure?",
+    "Your desired product has been successfully deleted.": "Your desired product has been successfully deleted.",
+    "Your desired Product could not be deleted, please try again.": "Your desired Product could not be deleted, please try again.",
+    "Uncategorized": "Uncategorized",
+    "Delete Product": "Delete Product"
 }
 export default en

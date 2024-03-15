@@ -10,7 +10,7 @@ const fa = {
     "log out": "خروج",
     "dashboard": "داشبورد",
     "orders": "سفارشات",
-    "products": "محصولات",
+    "Products": "محصولات",
     "Categories": "دسته بندی ها",
     "Customers": "مشتریان",
     "coupons": "کدهای تخفیف",
@@ -73,7 +73,7 @@ const fa = {
     "Image": "تصویر",
     "images": "تصاویر",
     "information": "اطلاعات",
-    "title": "عنوان",
+    "Title": "عنوان",
     "product name": "نام محصول",
     "Summer T-Shirt": 'تی شرت تابستانی',
     "product description": "توضیحات محصول",
@@ -223,6 +223,13 @@ const fa = {
     "Further Information": "اطلاعات تکمیلی",
     "Enter the product number": "تعداد محصول را وارد کنید",
     "Your product has been successfully added to the product list.": "محصول شما با موفقیت به لیست محصولات اضافه شد.",
-    "Your product was not added to the product list, please try again.": "محصول شما به لیست محصول اضافه نشده است، لطفا دوباره امتحان کنید."
+    "Your product was not added to the product list, please try again.": "محصول شما به لیست محصول اضافه نشده است، لطفا دوباره امتحان کنید.",
+    "Description": "توضیحات",
+    "SEO Settings": "تنظیمات سئو",
+    "You are deleting a product. are you sure?": "شما در حال حذف یک محصول هستید. مطمئنی؟",
+    "Your desired product has been successfully deleted.": "محصول مورد نظر شما با موفقیت حذف شد.",
+    "Your desired Product could not be deleted, please try again.": "محصول مورد نظر شما حذف نشد، لطفا دوباره امتحان کنید.",
+    "Uncategorized": "دسته بندی نشده",
+    "Delete Product": "حذف محصول"
 }
 export default fa
