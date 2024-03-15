@@ -230,6 +230,7 @@ const fa = {
     "Your desired product has been successfully deleted.": "محصول مورد نظر شما با موفقیت حذف شد.",
     "Your desired Product could not be deleted, please try again.": "محصول مورد نظر شما حذف نشد، لطفا دوباره امتحان کنید.",
     "Uncategorized": "دسته بندی نشده",
-    "Delete Product": "حذف محصول"
+    "Delete Product": "حذف محصول",
+    "Select Category": "انتخاب دسته بندی"
 }
 export default fa

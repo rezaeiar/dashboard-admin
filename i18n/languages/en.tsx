@@ -230,6 +230,7 @@ const en = {
     "Your desired product has been successfully deleted.": "Your desired product has been successfully deleted.",
     "Your desired Product could not be deleted, please try again.": "Your desired Product could not be deleted, please try again.",
     "Uncategorized": "Uncategorized",
-    "Delete Product": "Delete Product"
+    "Delete Product": "Delete Product",
+    "Select Category": "Select Category"
 }
 export default en
