@@ -28,5 +28,5 @@ export const getAllOrders = async () => {
             "Authorization": `Bearer ${cookies.get("token")}`
         }
     })
-        .then(res => res)
+        .then(res => res.data)
 }
