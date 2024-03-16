@@ -26,7 +26,7 @@ const en = {
     "total pending": "total pending",
     "up from yesterday": "up from yesterday",
     "down from yesterday": "down from yesterday",
-    "add order": "add order",
+    "Add Order": "Add Order",
     "Export": "Export",
     "sort by": "sort by",
     "Date": "Date",
@@ -231,6 +231,12 @@ const en = {
     "Your desired Product could not be deleted, please try again.": "Your desired Product could not be deleted, please try again.",
     "Uncategorized": "Uncategorized",
     "Delete Product": "Delete Product",
-    "Select Category": "Select Category"
+    "Select Category": "Select Category",
+    "Your desired order has been added.": "Your desired order has been added.",
+    "Your desired order could not be added, please try again.": "Your desired order could not be added, please try again.",
+    "Product ID (Six digit code)": "Product ID (Six digit code)",
+    "Customer Email": "Customer Email",
+    "Order Count": "Order Count",
+    "Create Order": "Create Order"
 }
 export default en

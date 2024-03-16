@@ -26,7 +26,7 @@ const fa = {
     "total pending": "در انتظار پرداخت",
     "up from yesterday": "افزایش نسبت به دیروز",
     "down from yesterday": "کاهش نسبت به دیروز",
-    "add order": "اضافه کردن سفارش",
+    "Add Order": "اضافه کردن سفارش",
     "Export": "دانلود خروجی",
     "sort by": "مرتب کردن براساس",
     "Date": "تاریخ",
@@ -231,6 +231,12 @@ const fa = {
     "Your desired Product could not be deleted, please try again.": "محصول مورد نظر شما حذف نشد، لطفا دوباره امتحان کنید.",
     "Uncategorized": "دسته بندی نشده",
     "Delete Product": "حذف محصول",
-    "Select Category": "انتخاب دسته بندی"
+    "Select Category": "انتخاب دسته بندی",
+    "Your desired order has been added.": "دسته مورد نظر شما اضافه شد.",
+    "Your desired order could not be added, please try again.": "سفارش مورد نظر شما اضافه نشد، لطفا دوباره امتحان کنید.",
+    "Product ID (Six digit code)": "شناسه محصول (کد شش رقمی)",
+    "Customer Email": "ایمیل مشتری",
+    "Order Count": "تعداد سفارش",
+    "Create Order": "ایجاد سفارش"
 }
 export default fa
