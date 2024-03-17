@@ -1,9 +1,9 @@
-import { useQuery } from "react-query"
-import Button from "../components/Button"
-import ManagerCard from "../components/ManagerCard"
 import { useTranslation } from "react-i18next"
+import { useQuery } from "react-query"
 import { getAllManagers } from "../../api/services/manager"
 import Loading from "../components/Loading"
+import Button from "../components/Button"
+import ManagerCard from "../components/ManagerCard"
 
 type ManagerType = {
     id: string,

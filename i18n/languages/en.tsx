@@ -13,7 +13,7 @@ const en = {
     "Products": "Products",
     "Categories": "Categories",
     "Customers": "Customers",
-    "coupons": "coupons",
+    "Coupons": "Coupons",
     "inbox": "inbox",
     "other information": "other information",
     "product updates": "Product Updates",
@@ -252,6 +252,9 @@ const en = {
     "The number of imported products is greater than the available number": "The number of imported products is greater than the available number",
     "Search by Email or Username": "Search by Email or Username",
     "Message": "Message",
-    "ADMIN": "Admin"
+    "ADMIN": "Admin",
+    "Add Coupon": "Add Coupon",
+    "Your desired coupon has been added.": "Your desired coupon has been added.",
+    "Your desired coupon could not be added, please try again.": "Your desired coupon could not be added, please try again."
 }
 export default en

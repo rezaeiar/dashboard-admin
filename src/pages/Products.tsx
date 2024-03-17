@@ -109,7 +109,7 @@ const Products = () => {
                                 </option>
                                 {
                                     categoryData && categoryData.map((category: any) => (
-                                        <option value={category.id}>{category.name}</option>
+                                        <option key={category.id} value={category.id}>{category.name}</option>
                                     ))
                                 }
                             </select>
@@ -150,7 +150,7 @@ const Products = () => {
                             <tbody>
                                 {
                                     filterBy === "PRICE" && [...allProducts]?.sort((a, b) => b.price - a.price).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((product: any) => (
-                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2 font-iransans-regular'>
+                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2 font-iransans-regular' key={product.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex gap-x-2 items-center">
                                                     <div className="h-12 w-12 rounded-md overflow-hidden shrink-0">
@@ -195,7 +195,7 @@ const Products = () => {
                                 }
                                 {
                                     filterBy === "COUNT" && [...allProducts]?.sort((a, b) => b.count - a.count).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((product: any) => (
-                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2 font-iransans-regular'>
+                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2 font-iransans-regular' key={product.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex gap-x-2 items-center">
                                                     <div className="h-12 w-12 rounded-md overflow-hidden shrink-0">
@@ -240,7 +240,7 @@ const Products = () => {
                                 }
                                 {
                                     filterBy === "-1" && [...allProducts].slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((product: any) => (
-                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2 font-iransans-regular'>
+                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2 font-iransans-regular' key={product.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex gap-x-2 items-center">
                                                     <div className="h-12 w-12 rounded-md overflow-hidden shrink-0">

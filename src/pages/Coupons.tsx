@@ -6,22 +6,22 @@ const Coupons = () => {
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
             <div className="flex justify-between items-center">
-                <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100 capitalize">
-                    {t("coupons")}
+                <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100">
+                    {t("Coupons")}
                 </h2>
                 <div className="flex gap-x-1 sm:gap-x-2">
-                    <Button type="primary" size="small" styles="" link="/coupons/create">
+                    <Button type="primary" size="small" link="/panel/coupons/create">
                         <>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
-                            {t("create")}
+                            {t("Add Coupon")}
                         </>
                     </Button>
                 </div>
             </div>
             <div className="flex flex-col gap-y-4">
-                <div className="capitalize flex gap-2 flex-col md:flex-row">
+                <div className="flex gap-2 flex-col md:flex-row">
                     <div className="grid grid-cols-2 h-10 md:flex gap-x-2">
                         <div className="flex items-center relative md:w-44 shrink-0 font-nunitosans-regular rtl:font-iransans-regular rounded border border-general-50 bg-white">
                             <select className="h-full block w-full p-2 text-xs sm:text-sm text-general-70 bg-transparent appearance-none focus:outline-none focus:ring-0 focus:border-general-60 capitalize">

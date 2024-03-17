@@ -18,9 +18,7 @@ const Customers = () => {
     const { t } = useTranslation()
 
     const { data, isLoading, refetch, dataUpdatedAt } = useQuery("customers", getAllCustomers)
-    const [allCustomers, setAllCustomers] = useState<null | { roles: String[], order_count: number, purchase_amount: number }[]>(null)
-    console.log(data);
-    
+    const [allCustomers, setAllCustomers] = useState<null | { roles: String[], order_count: number, purchase_amount: number }[]>(null)    
 
     const [selectedRole, setSelectedRole] = useState("-1")
     const [filterBy, setFilterBy] = useState("-1")

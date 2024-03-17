@@ -91,9 +91,9 @@ const SingleCategory = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                             </svg>
-                            <Link to='/panel/categories' className="text-xs md:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                            <span className="text-xs md:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular" onClick={() => navigate(-1)}>
                                 {t("Back")}
-                            </Link>
+                            </span>
                         </div>
                         <h2 className="text-lg sm:text-2xl font-iransans-bold text-general-100 capitalize">
                             {data.name}
