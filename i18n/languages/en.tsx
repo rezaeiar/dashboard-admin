@@ -245,6 +245,9 @@ const en = {
     "productId should not be empty": "productId should not be empty",
     "This email not found": "This email not found",
     "product not founded": "product not founded",
-    "Order is exist": "Order is exist"
+    "Order is exist": "Order is exist",
+    "No Orders Yet": "No Orders Yet",
+    "All the upcoming orders from your store will be visible in this page.": "All the upcoming orders from your store will be visible in this page.",
+    "You can add orders by yourself if you sell offline.": "You can add orders by yourself if you sell offline."
 }
 export default en

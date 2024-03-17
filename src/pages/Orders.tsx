@@ -9,6 +9,7 @@ import Button from "../components/Button"
 import { idGenerator, statusStyleGenerator } from "../utils/helpers"
 import Pagination from "../components/Pagination"
 import EmptyEntity from "../components/EmptyEntity"
+import { Link } from "react-router-dom"
 
 const Orders = () => {
 
@@ -59,7 +60,7 @@ const Orders = () => {
     if (isLoading) return <Loading />
 
     return (
-        <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
+        <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden min-h-screen">
             <div className="flex justify-between items-center">
                 <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100 capitalize">
                     {t("orders")}
@@ -145,7 +146,11 @@ const Orders = () => {
                                 filterBy === "-1" && [...allOrders].slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((order: any, index) => (
                                     <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
                                         <td className="w-28 sm:w-32 shrink-0">{idGenerator(String(index + 1))}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">{order.user.first_name} {order.user.last_name}</td>
+                                        <td className="w-28 sm:w-32 shrink-0">
+                                            <Link to={`/panel/customers/info/${order.user.id}`} className="underline">
+                                                {order.user.first_name} {order.user.last_name}
+                                            </Link>
+                                        </td>
                                         <td className="w-28 sm:w-32 shrink-0">{order.user.address ? order.user.address : "Address not entered"}</td>
                                         <td className="w-28 sm:w-32 shrink-0">{order.product.name}</td>
                                         <td className="w-28 sm:w-32 shrink-0">{new Date(order.created_at).toString().slice(4, 15)}</td>
@@ -164,10 +169,10 @@ const Orders = () => {
             </div>
             {
                 allOrders && !allOrders.length &&
-                <EmptyEntity title={t("Create First Customer")} type={"products"} link="/panel/customers/add" button="Add Customer">
+                <EmptyEntity title={t("No Orders Yet")} type={"orders"} onSubmit={AddOrderModalHandler} button="Add Order">
                     <>
-                        {t("Organize all your items in stock by creating and adding them to categories.")} <br className="hidden sm:block" />
-                        {t("Categories helps to find items faster for your customers.")}
+                        {t("All the upcoming orders from your store will be visible in this page.")} <br className="hidden sm:block" />
+                        {t("You can add orders by yourself if you sell offline.")}
                     </>
                 </EmptyEntity>
             }

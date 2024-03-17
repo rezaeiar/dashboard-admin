@@ -1,23 +1,8 @@
-<svg width="148" height="148" viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_0_2916)">
-<rect opacity="0.01" x="4" width="140" height="140" fill="white"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M24 29H104V109C104 111.209 102.209 113 100 113H28C25.7909 113 24 111.209 24 109V29Z" fill="#D7DBEC"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M68 11C74.6274 11 80 16.3726 80 23V29C80 32.3137 77.3137 35 74 35H54C50.6863 35 48 32.3137 48 29V23C48 16.3726 53.3726 11 60 11H68ZM68 17H60C56.7616 17 54.1224 19.5656 54.0041 22.7751L54 23V29H74V23C74 19.7616 71.4344 17.1224 68.2249 17.0041L68 17Z" fill="#131523"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M24 29H98.5H104V49H24V29Z" fill="#131523"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M74 43C74 39.7616 71.4344 37.1224 68.2249 37.0041L68 37H60C56.7616 37 54.1224 39.5656 54.0041 42.7751L54 43V49H48V43C48 36.3726 53.3726 31 60 31H68C74.6274 31 80 36.3726 80 43V49H74V43Z" fill="#D7DBEC"/>
-<circle cx="97" cy="104" r="26" fill="#336DFF"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M106.113 96.5586L108.887 99.4399L93.9735 113.801L86.5857 106.413L89.4141 103.585L94.0259 108.196L106.113 96.5586Z" fill="white"/>
-</g>
-<defs>
-<filter id="filter0_d_0_2916" x="0" y="0" width="148" height="148" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_2916"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_2916" result="shape"/>
-</filter>
-</defs>
+<svg width="99" height="119" viewBox="0 0 99 119" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 18H80V98C80 100.209 78.2091 102 76 102H4C1.79086 102 0 100.209 0 98V18Z" fill="#D7DBEC"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M44 0C50.6274 0 56 5.37258 56 12V18C56 21.3137 53.3137 24 50 24H30C26.6863 24 24 21.3137 24 18V12C24 5.37258 29.3726 0 36 0H44ZM44 6H36C32.7616 6 30.1224 8.56557 30.0041 11.7751L30 12V18H50V12C50 8.7616 47.4344 6.12243 44.2249 6.00414L44 6Z" fill="#131523"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 18H74.5H80V38H0V18Z" fill="#131523"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M50 32C50 28.7616 47.4344 26.1224 44.2249 26.0041L44 26H36C32.7616 26 30.1224 28.5656 30.0041 31.7751L30 32V38H24V32C24 25.3726 29.3726 20 36 20H44C50.6274 20 56 25.3726 56 32V38H50V32Z" fill="#D7DBEC"/>
+<circle cx="73" cy="93" r="26" fill="#336DFF"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M82.1126 85.5586L84.8872 88.4399L69.9735 102.801L62.5857 95.4134L65.4141 92.585L70.0259 97.1962L82.1126 85.5586Z" fill="white"/>
 </svg>

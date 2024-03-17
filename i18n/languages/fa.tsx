@@ -245,6 +245,9 @@ const fa = {
     "productId should not be empty": "شناسه محصول نباید خالی باشد",
     "This email not found": "این ایمیل پیدا نشد",
     "product not founded": "این ایمیل پیدا نشد",
-    "Order is exist": "سفارش موجود است"
+    "Order is exist": "سفارش موجود است",
+    "No Orders Yet" : "هنوز سفارشی وجود ندارد",
+    "All the upcoming orders from your store will be visible in this page." :"تمامی سفارشات بعدی فروشگاه شما در این صفحه قابل مشاهده خواهد بود.",
+    "You can add orders by yourself if you sell offline." :"اگر به صورت آفلاین بفروشید، می توانید سفارشات خود را اضافه کنید."
 }
 export default fa
