@@ -57,6 +57,7 @@ const Orders = () => {
         setAllOrders(searchedData ? searchedData : null)
     }
 
+
     if (isLoading) return <Loading />
 
     return (
@@ -109,7 +110,7 @@ const Orders = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 absolute left-3 rtl:right-3 cursor-pointer" onClick={searchHandler}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
                         </svg>
-                        <input type="text" className="h-10 grow lg:grow-0 lg:w-72 bg-transparent rounded border border-general-50 outline-none px-10 placeholder:text-general-70 font-iransans-regular placeholder:ltr:font-nunitosans-regular placeholder:rtl:font-iransans-regular" placeholder={t("Search")} value={serachedValue} onChange={(e) => setSearchedValue(e.target.value)} />
+                        <input type="text" className="h-10 grow lg:grow-0 lg:w-72 bg-transparent rounded border border-general-50 outline-none px-10 placeholder:text-general-70 font-iransans-regular placeholder:ltr:font-nunitosans-regular placeholder:rtl:font-iransans-regular" placeholder={t("Search by Email or Username")} value={serachedValue} onChange={(e) => setSearchedValue(e.target.value)} />
                     </div>
                 </div>
                 {
@@ -126,42 +127,44 @@ const Orders = () => {
                                     <th className="w-28 sm:w-32">{t("status")}</th>
                                 </tr>
                             </thead>
-                            {
-                                filterBy === "TOTAL_PRICE" && [...allOrders]?.sort((a, b) => b.total_price - a.total_price).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((order: any, index) => (
-                                    <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
-                                        <td className="w-28 sm:w-32 shrink-0">{idGenerator(String(index + 1))}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">{order.user.first_name} {order.user.last_name}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">{order.user.address ? order.user.address : "Address not entered"}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">{order.product.name}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">{new Date(order.created_at).toString().slice(4, 15)}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">
-                                            <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator(order.status)}`}>
-                                                {t(order.status)}
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))
-                            }
-                            {
-                                filterBy === "-1" && [...allOrders].slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((order: any, index) => (
-                                    <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
-                                        <td className="w-28 sm:w-32 shrink-0">{idGenerator(String(index + 1))}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">
-                                            <Link to={`/panel/customers/info/${order.user.id}`} className="underline">
-                                                {order.user.first_name} {order.user.last_name}
-                                            </Link>
-                                        </td>
-                                        <td className="w-28 sm:w-32 shrink-0">{order.user.address ? order.user.address : "Address not entered"}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">{order.product.name}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">{new Date(order.created_at).toString().slice(4, 15)}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">
-                                            <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator(order.status)}`}>
-                                                {t(order.status)}
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))
-                            }
+                            <tbody>
+                                {
+                                    filterBy === "TOTAL_PRICE" && [...allOrders]?.sort((a, b) => b.total_price - a.total_price).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((order: any, index) => (
+                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={order.id}>
+                                            <td className="w-28 sm:w-32 shrink-0">{idGenerator(String(index + 1))}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{order.user.first_name} {order.user.last_name}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{order.user.address ? order.user.address : "Address not entered"}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{order.product.name}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{new Date(order.created_at).toString().slice(4, 15)}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">
+                                                <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator(order.status)}`}>
+                                                    {t(order.status)}
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                                {
+                                    filterBy === "-1" && [...allOrders].slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((order: any, index) => (
+                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={order.id}>
+                                            <td className="w-28 sm:w-32 shrink-0">{idGenerator(String(index + 1))}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">
+                                                <Link to={`/panel/customers/info/${order.user.id}`} className="underline">
+                                                    {order.user.first_name} {order.user.last_name}
+                                                </Link>
+                                            </td>
+                                            <td className="w-28 sm:w-32 shrink-0">{order.user.address ? order.user.address : "Address not entered"}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{order.product.name}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{new Date(order.created_at).toString().slice(4, 15)}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">
+                                                <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator(order.status)}`}>
+                                                    {t(order.status)}
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
                         </table>
                         <Pagination page={page} numberOfItems={allOrders.length} shown={shown} updatedTime={updatedTime} changePage={changePage} />
                     </>

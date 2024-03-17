@@ -248,6 +248,8 @@ const en = {
     "Order is exist": "Order is exist",
     "No Orders Yet": "No Orders Yet",
     "All the upcoming orders from your store will be visible in this page.": "All the upcoming orders from your store will be visible in this page.",
-    "You can add orders by yourself if you sell offline.": "You can add orders by yourself if you sell offline."
+    "You can add orders by yourself if you sell offline.": "You can add orders by yourself if you sell offline.",
+    "The number of imported products is greater than the available number": "The number of imported products is greater than the available number",
+    "Search by Email or Username": "Search by Email or Username"
 }
 export default en

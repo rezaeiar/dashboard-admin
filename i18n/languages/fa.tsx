@@ -248,6 +248,8 @@ const fa = {
     "Order is exist": "سفارش موجود است",
     "No Orders Yet" : "هنوز سفارشی وجود ندارد",
     "All the upcoming orders from your store will be visible in this page." :"تمامی سفارشات بعدی فروشگاه شما در این صفحه قابل مشاهده خواهد بود.",
-    "You can add orders by yourself if you sell offline." :"اگر به صورت آفلاین بفروشید، می توانید سفارشات خود را اضافه کنید."
+    "You can add orders by yourself if you sell offline." :"اگر به صورت آفلاین بفروشید، می توانید سفارشات خود را اضافه کنید.",
+    "The number of imported products is greater than the available number" :"تعداد محصولات وارداتی بیشتر از تعداد موجود است",
+    "Search by Email or Username": "جستجو از طریق ایمیل یا نام کاربری"
 }
 export default fa

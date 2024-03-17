@@ -19,8 +19,6 @@ const App = () => {
     const addCategoryModalInfo = useSelector((state: AddCategoryModalType) => state.addCategoryModal);
     const confirmModalInfo = useSelector((state: confirmModalType) => state.confirmModal);
     const addOrderModalInfo = useSelector((state: AddOrderModalType) => state.addOrderModal);
-
-    console.log(addOrderModalInfo);
     
     return (
         <div className="app">
