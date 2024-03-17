@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { QueryClientProvider, QueryClient } from 'react-query'
-import LanguageSelector from '../utils/LanguageSelector.tsx'
+import LanguageSelector from './utils/LanguageSelector.tsx'
 import { Provider } from 'react-redux'
 import store from './store/store.ts'
 import { BrowserRouter } from 'react-router-dom'

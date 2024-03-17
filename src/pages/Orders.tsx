@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react"
-import Button from "../components/Button"
-import { useTranslation } from "react-i18next"
 import { useDispatch } from "react-redux"
-import EmptyEntity from "../components/EmptyEntity"
-import Loading from "../components/Loading"
+import { useTranslation } from "react-i18next"
 import { useQuery } from "react-query"
-import { getAllCategories } from "../../api/services/category"
 import { getAllOrders } from "../../api/services/order"
-import Pagination from "../components/Pagination"
+import { useState, useEffect } from "react"
 import { showAddOrderModal } from "../store/slices/AddOrderModalSlice"
+import Loading from "../components/Loading"
+import Button from "../components/Button"
+import { idGenerator, statusStyleGenerator } from "../utils/helpers"
+import Pagination from "../components/Pagination"
+import EmptyEntity from "../components/EmptyEntity"
+
 const Orders = () => {
 
     const dispatch = useDispatch()
     const { t } = useTranslation()
 
-    const { data, isLoading, refetch, dataUpdatedAt } = useQuery("orders", getAllOrders)
+    const { data, isLoading, dataUpdatedAt } = useQuery("orders", getAllOrders)
 
     const [allOrders, setAllOrders] = useState<null | { total_price: number }[]>(null)
 
@@ -26,6 +27,10 @@ const Orders = () => {
 
     const changePage = (page: number) => setPage(page)
     let updatedTime = new Date(dataUpdatedAt);
+
+    const AddOrderModalHandler = () => {
+        dispatch(showAddOrderModal({ vissablity: true }))
+    }
 
     useEffect(() => {
         updatedTime = new Date(dataUpdatedAt);
@@ -49,60 +54,6 @@ const Orders = () => {
     const searchHandler = () => {
         const searchedData = data.filter((product: any) => product.user.email.includes(serachedValue) || product.user.username.includes(serachedValue))
         setAllOrders(searchedData ? searchedData : null)
-    }
-
-    // const deleteProductHandler = (id: string) => {
-
-    //     deleteSingleProduct(id)
-    //         .then(res => {
-
-    //             if (res.status === 200) {
-    //                 dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
-    //                 dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your desired product has been successfully deleted.") } }))
-    //                 refetch()
-    //             }
-    //         })
-    //         .catch(() => {
-    //             dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your desired Product could not be deleted, please try again.") } }))
-    //         })
-    // }
-
-    // const showDeleteConfirmModal = (id: string) => {
-    //     dispatch(showConfirmModal({ vissablity: true, payload: { title: t("Delete Product"), description: t("You are deleting a product. are you sure?") }, button: "Delete", handler: () => deleteProductHandler(id as string) }))
-    // }
-
-
-    console.log(data);
-
-    const createIdHandler = (id: string) => {
-        const idFormat = 5;
-        const zeroLength = idFormat - id.length;
-        let idResult: String[] = []
-
-        new Array(zeroLength).fill(0).map(() => {
-            idResult.push("0")
-        })
-        idResult.push(id)
-
-        return idResult.join("")
-    }
-    const statusStyleGenerator = (status: "COMPLETED" | "PENDING" | "REJECTED") => {
-
-        switch (status) {
-            case "COMPLETED": {
-                return 'bg-green-30 text-green-101'
-            }
-            case "PENDING": {
-                return "bg-yellow-30 text-yellow-101"
-            }
-            case "REJECTED": {
-                return "bg-red-30 text-red-101"
-            }
-        }
-    }
-
-    const AddOrderModalHandler = () => {
-        dispatch(showAddOrderModal({ vissablity: true }))
     }
 
     if (isLoading) return <Loading />
@@ -169,19 +120,19 @@ const Orders = () => {
                                     <th className="w-28 sm:w-32">{t("id")}</th>
                                     <th className="w-28 sm:w-32">{t("client")}</th>
                                     <th className="w-28 sm:w-32">{t("address")}</th>
+                                    <th className="w-28 sm:w-32">{t("product")}</th>
                                     <th className="w-28 sm:w-32">{t("date")}</th>
-                                    <th className="w-28 sm:w-32">{t("category")}</th>
                                     <th className="w-28 sm:w-32">{t("status")}</th>
                                 </tr>
                             </thead>
                             {
                                 filterBy === "TOTAL_PRICE" && [...allOrders]?.sort((a, b) => b.total_price - a.total_price).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((order: any, index) => (
                                     <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
-                                        <td className="w-28 sm:w-32 shrink-0">{createIdHandler(String(index + 1))}</td>
+                                        <td className="w-28 sm:w-32 shrink-0">{idGenerator(String(index + 1))}</td>
                                         <td className="w-28 sm:w-32 shrink-0">{order.user.first_name} {order.user.last_name}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">{order.user.address}</td>
+                                        <td className="w-28 sm:w-32 shrink-0">{order.user.address ? order.user.address : "Address not entered"}</td>
+                                        <td className="w-28 sm:w-32 shrink-0">{order.product.name}</td>
                                         <td className="w-28 sm:w-32 shrink-0">{new Date(order.created_at).toString().slice(4, 15)}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">Book</td>
                                         <td className="w-28 sm:w-32 shrink-0">
                                             <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator(order.status)}`}>
                                                 {t(order.status)}
@@ -193,11 +144,11 @@ const Orders = () => {
                             {
                                 filterBy === "-1" && [...allOrders].slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((order: any, index) => (
                                     <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
-                                        <td className="w-28 sm:w-32 shrink-0">{createIdHandler(String(index + 1))}</td>
+                                        <td className="w-28 sm:w-32 shrink-0">{idGenerator(String(index + 1))}</td>
                                         <td className="w-28 sm:w-32 shrink-0">{order.user.first_name} {order.user.last_name}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">{order.user.address}</td>
+                                        <td className="w-28 sm:w-32 shrink-0">{order.user.address ? order.user.address : "Address not entered"}</td>
+                                        <td className="w-28 sm:w-32 shrink-0">{order.product.name}</td>
                                         <td className="w-28 sm:w-32 shrink-0">{new Date(order.created_at).toString().slice(4, 15)}</td>
-                                        <td className="w-28 sm:w-32 shrink-0">Book</td>
                                         <td className="w-28 sm:w-32 shrink-0">
                                             <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator(order.status)}`}>
                                                 {t(order.status)}

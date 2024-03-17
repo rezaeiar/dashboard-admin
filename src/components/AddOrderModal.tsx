@@ -37,10 +37,15 @@ const AddOrderModal = ({ isShowOrderModal }: AddOrderModalProps) => {
                 } else {
                     dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your desired order could not be added, please try again.") } }))
                 }
-                setProductId("")
-                setEmail("")
-                setProduct_count(1)
             })
+            .catch((err) => {
+                dispatch(showAddOrderModal({ visibility: false }))
+                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t(err.response.data.message) } }))
+
+            })
+        setProductId("")
+        setEmail("")
+        setProduct_count(1)
     }
 
     return (
