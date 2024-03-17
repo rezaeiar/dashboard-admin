@@ -168,7 +168,7 @@ const fa = {
     "To-Do List": "لیست وظایف",
     "Your Tasks": "وظایف شما",
     "All Tasks": "همه وظایف",
-    "add Manager": "اضافه کردن مدیر",
+    "Add Manager": "اضافه کردن مدیر",
     "User Name": "نام کاربری",
     "Role": "نقش کاربر",
     "Operation failed": "عملیات شکست خورد",
@@ -250,6 +250,8 @@ const fa = {
     "All the upcoming orders from your store will be visible in this page." :"تمامی سفارشات بعدی فروشگاه شما در این صفحه قابل مشاهده خواهد بود.",
     "You can add orders by yourself if you sell offline." :"اگر به صورت آفلاین بفروشید، می توانید سفارشات خود را اضافه کنید.",
     "The number of imported products is greater than the available number" :"تعداد محصولات وارداتی بیشتر از تعداد موجود است",
-    "Search by Email or Username": "جستجو از طریق ایمیل یا نام کاربری"
+    "Search by Email or Username": "جستجو از طریق ایمیل یا نام کاربری",
+    "Message": "پیام دهید",
+    "ADMIN": "مدیر"
 }
 export default fa
