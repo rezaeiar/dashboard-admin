@@ -1,5 +1,5 @@
 export const idGenerator = (id: string) => {
-    
+
     const idFormat = 5;
     const zeroLength = idFormat - id.length;
     let idResult: String[] = []
@@ -12,16 +12,22 @@ export const idGenerator = (id: string) => {
     return idResult.join("")
 }
 
-export const statusStyleGenerator = (status: "COMPLETED" | "PENDING" | "REJECTED") => {
+export const statusStyleGenerator = (status: "COMPLETED" | "PENDING" | "REJECTED" | "VALID" | "INVALID") => {
 
     switch (status) {
         case "COMPLETED": {
+            return 'bg-green-30 text-green-101'
+        }
+        case "VALID": {
             return 'bg-green-30 text-green-101'
         }
         case "PENDING": {
             return "bg-yellow-30 text-yellow-101"
         }
         case "REJECTED": {
+            return "bg-red-30 text-red-101"
+        }
+        case "INVALID": {
             return "bg-red-30 text-red-101"
         }
     }

@@ -255,6 +255,16 @@ const fa = {
     "ADMIN": "مدیر",
     "Add Coupon": "اضافه کردن کد تخفیف",
     "Your desired coupon has been added.": "کوپن مورد نظر شما اضافه شد.",
-    "Your desired coupon could not be added, please try again.": "کوپن مورد نظر شما اضافه نشد، لطفا دوباره امتحان کنید."
+    "Your desired coupon could not be added, please try again.": "کوپن مورد نظر شما اضافه نشد، لطفا دوباره امتحان کنید.",
+    "VALID": "معتبر",
+    "INVALID": "نامعتبر",
+    "Search by discount code": "جستجو براساس کد تخفیف",
+    "All your next discount codes will be visible on this page.": "تمام کدهای تخفیف بعدی شما در این صفحه قابل مشاهده خواهد بود.",
+    "Codes help to increase your sales, create now!": "کدها به افزایش فروش شما کمک می کنند، همین حالا ایجاد کنید!",
+    "No Coupons Yet": "هنوز کوپنی وجود ندارد",
+    "Delete Coupon": "حذف کد تخفیف",
+    "You are deleting a coupon. are you sure?": "شما در حال حذف یک کوپن هستید. مطمئنی؟",
+    "Your desired coupon has been successfully deleted.": "کوپن مورد نظر شما با موفقیت حذف شد.",
+    "Your desired coupon could not be deleted, please try again.": "کوپن مورد نظر شما حذف نشد، لطفا دوباره امتحان کنید."
 }
 export default fa

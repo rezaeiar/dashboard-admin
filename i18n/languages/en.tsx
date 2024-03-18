@@ -255,6 +255,16 @@ const en = {
     "ADMIN": "Admin",
     "Add Coupon": "Add Coupon",
     "Your desired coupon has been added.": "Your desired coupon has been added.",
-    "Your desired coupon could not be added, please try again.": "Your desired coupon could not be added, please try again."
+    "Your desired coupon could not be added, please try again.": "Your desired coupon could not be added, please try again.",
+    "VALID": "Valid",
+    "INVALID": "Invalid",
+    "Search by discount code": "Search by discount code",
+    "All your next discount codes will be visible on this page.": "All your next discount codes will be visible on this page.",
+    "Codes help to increase your sales, create now!": "Codes help to increase your sales, create now!",
+    "No Coupons Yet": "No Coupons Yet",
+    "Delete Coupon": "Delete Coupon",
+    "You are deleting a coupon. are you sure?": "You are deleting a coupon. are you sure?",
+    "Your desired coupon has been successfully deleted.": "Your desired coupon has been successfully deleted.",
+    "Your desired coupon could not be deleted, please try again." :"Your desired coupon could not be deleted, please try again."
 }
 export default en

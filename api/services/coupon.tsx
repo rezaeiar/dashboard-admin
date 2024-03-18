@@ -22,3 +22,25 @@ export const addCoupon = async (couponInfo: addCouponType) => {
     })
         .then(res => res)
 }
+
+export const getAllCoupons = async () => {
+    return await apiReq({
+        method: "GET",
+        url: "/coupon",
+        headers: {
+            "Authorization": `Bearer ${cookies.get("token")}`
+        }
+    })
+        .then(res => res.data)
+}
+
+export const deleteSingleCoupon = async (id: string) => {
+    return await apiReq({
+        method: "DELETE",
+        url: `/coupon/${id}`,
+        headers: {
+            "Authorization": `Bearer ${cookies.get("token")}`
+        }
+    })
+        .then(res => res)
+}
