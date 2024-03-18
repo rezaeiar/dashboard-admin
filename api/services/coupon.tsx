@@ -3,8 +3,8 @@ import Cookies from 'universal-cookie';
 
 type addCouponType = {
     name: string,
-    coupon_code: string,
-    coupon_type: string,
+    code: string,
+    type: string,
     value: string,
     duration: Date
 }

@@ -14,13 +14,13 @@ const CreateCoupons = () => {
     const { t } = useTranslation()
 
     const [name, setName] = useState("")
-    const [coupon_code, setCoupon_Code] = useState("")
-    const [coupon_type, setCoupon_type] = useState("")
+    const [code, setCode] = useState("")
+    const [type, setType] = useState("")
     const [value, setValue] = useState("")
     const [duration, setDuration] = useState("")
 
     const changeCouponType = (event: ChangeEvent<HTMLInputElement>) => {
-        setCoupon_type(event.target.value);
+        setType(event.target.value);
     }
 
     const addCouponHandler = () => {
@@ -29,8 +29,8 @@ const CreateCoupons = () => {
 
         const couponInfo = {
             name,
-            coupon_code,
-            coupon_type,
+            code,
+            type,
             value,
             duration: date
         }
@@ -39,6 +39,7 @@ const CreateCoupons = () => {
             .then(res => {
                 if (res.status === 201) {
                     dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your desired coupon has been added.") } }))
+                    navigate("/panel/coupons")
                 } else {
                     dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your desired coupon could not be added, please try again.") } }))
                 }
@@ -50,7 +51,7 @@ const CreateCoupons = () => {
 
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-start">
                 <div className="flex flex-col">
                     <div className="flex gap-x-1 text-general-80 font-nunitosans-regular items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3">
@@ -90,15 +91,15 @@ const CreateCoupons = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
                         <div className="flex flex-col">
                             <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                {t("Coupon Code")}
-                            </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder="Shipfree20" value={coupon_code} onChange={e => setCoupon_Code(e.target.value)} />
-                        </div>
-                        <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                 {t("Coupon Name")}
                             </label>
                             <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder="Free Shipping" value={name} onChange={e => setName(e.target.value)} />
+                        </div>
+                        <div className="flex flex-col">
+                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("Coupon Code")}
+                            </label>
+                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder="Shipfree20" value={code} onChange={e => setCode(e.target.value)} />
                         </div>
                     </div>
                 </div>

@@ -26,12 +26,10 @@ const Coupons = () => {
                         <div className="flex items-center relative md:w-44 shrink-0 font-nunitosans-regular rtl:font-iransans-regular rounded border border-general-50 bg-white">
                             <select className="h-full block w-full p-2 text-xs sm:text-sm text-general-70 bg-transparent appearance-none focus:outline-none focus:ring-0 focus:border-general-60 capitalize">
                                 <option selected value='-1'>
-                                    {t('filter by category')}
+                                    {t('filter by status')}
                                 </option>
-                                <option value="US">United States</option>
-                                <option value="CA">Canada</option>
-                                <option value="FR">France</option>
-                                <option value="DE">Germany</option>
+                                <option value="US">Valid</option>
+                                <option value="CA">Invalid</option>
                             </select>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-3 h-3 absolute rtl:left-2 ltr:right-2 text-general-70"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
                         </div>
@@ -40,9 +38,7 @@ const Coupons = () => {
                                 <option selected value='-1'>
                                     {t('filter by')}
                                 </option>
-                                <option value="completed">{t("price")}</option>
-                                <option value="pending">{t("rating")}</option>
-                                <option value="rejected">{t("inventory")}</option>
+                                <option value="completed">{t("usage")}</option>
                             </select>
                         </div>
                     </div>
@@ -54,7 +50,7 @@ const Coupons = () => {
                     </div>
                 </div>
                 <table className='border divide-y border-general-50 bg-white rounded-md w-full flex flex-col overflow-x-auto'>
-                    <tr className='p-3 md:p-4 bg-general-30 grid grid-cols-5 sm:text-sm text-xs font-nunitosans-extrabold rtl:font-iransans-bold text-general-100 child:text-start min-w-max gap-x-2 uppercase'>
+                    <tr className='p-3 md:p-4 bg-general-30 grid grid-cols-5 sm:text-sm text-xs font-nunitosans-extrabold rtl:font-iransans-bold text-general-100 *:text-start min-w-max gap-x-2 uppercase'>
                         <th className="w-36 sm:w-56">{t("coupon")}</th>
                         <th className="w-28 sm:w-32">{t("usage")}</th>
                         <th className="w-28 sm:w-32">{t("status")}</th>
