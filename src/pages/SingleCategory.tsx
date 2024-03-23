@@ -189,7 +189,7 @@ const SingleCategory = () => {
                                 <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                     {t("Name")}
                                 </label>
-                                <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-100 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4" value={categoryName} onChange={e => setCategoryName(e.target.value)} />
+                                <input type="text" className="border border-general-50 outline-none rounded text-xs lg:text-sm text-general-70 py-2 md:py-1.5 lg:py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular" value={categoryName} onChange={e => setCategoryName(e.target.value)} />
                             </div>
                             <div className="flex flex-col">
                                 <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
@@ -200,7 +200,7 @@ const SingleCategory = () => {
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-general-60">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
                                         </svg>
-                                        <span className="text-general-80 text-sm sm:text-[10px] xl:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                        <span className="text-general-70 text-sm sm:text-[10px] xl:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                             {t("or drag and drop files")}
                                         </span>
                                     </div>

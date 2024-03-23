@@ -268,6 +268,7 @@ const fa = {
     "Your desired coupon could not be deleted, please try again.": "کوپن مورد نظر شما حذف نشد، لطفا دوباره امتحان کنید.",
     "Your product has been successfully edited in the product list.": "محصول شما با موفقیت در لیست محصول ویرایش شد.",
     "Your product was not edited to the product list, please try again.": "محصول شما در لیست محصول ویرایش نشده است، لطفا دوباره امتحان کنید.",
-    "Edit Product": "ویرایش محصول"
+    "Edit Product": "ویرایش محصول",
+    "You are changing the information of this customer, are you sure?": "شما در حال تغییر اطلاعات این مشتری هستید، مطمئنید؟"
 }
 export default fa

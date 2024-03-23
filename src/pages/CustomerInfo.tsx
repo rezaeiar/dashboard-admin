@@ -1,6 +1,6 @@
 import Button from "../components/Button"
 import { useTranslation } from "react-i18next"
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { deleteSingleCustomer, getSingleCustomer } from "../../api/services/customer"
 import { useQuery } from "react-query"
 import Loading from "../components/Loading"
@@ -8,7 +8,7 @@ import { showConfirmModal } from "../store/slices/ConfirmModalSlice"
 import { showSuccessModal } from "../store/slices/successModalSlice"
 import { showErrorModal } from "../store/slices/ErrorModalSlice"
 import { useDispatch } from "react-redux"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { editCustomerInfo } from "../../api/services/customer"
 
 const CustomerInfo = () => {
@@ -18,10 +18,13 @@ const CustomerInfo = () => {
     const params = useParams()
     const { t } = useTranslation()
 
-    const { data, isLoading } = useQuery(['customer', params.id], () => getSingleCustomer(params.id as string))
+    const { data, isLoading, isSuccess, refetch } = useQuery(['customer', params.id], () => getSingleCustomer(params.id as string))
 
     const [note, setNote] = useState('')
 
+    useEffect(() => {
+        if (isSuccess) setNote(data.note)
+    }, [isSuccess])
 
     const deleteCategoryHandler = (id: string) => {
         deleteSingleCustomer(id)
@@ -55,11 +58,10 @@ const CustomerInfo = () => {
 
         editCustomerInfo(id, customerInfo)
             .then((res) => {
-                console.log(res);
-
                 if (res.status === 200) {
                     dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
                     dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your changes were made successfully.") } }))
+                    refetch()
                 }
             })
             .catch(() => {
