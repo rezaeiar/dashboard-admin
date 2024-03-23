@@ -12,6 +12,7 @@ import SingleCategory from "../pages/SingleCategory"
 import Customers from "../pages/Customers"
 import AddCustomer from "../pages/AddCustomer"
 import CustomerInfo from "../pages/CustomerInfo"
+import EditCustomer from "../pages/EditCustomer"
 import Coupons from "../pages/Coupons"
 import CreateCoupons from "../pages/CreateCoupons"
 import Managers from "../pages/Managers"
@@ -34,6 +35,7 @@ const routes: RouteType[] = [
             { path: 'customers', element: <Customers /> },
             { path: 'customers/add', element: <AddCustomer /> },
             { path: 'customers/info/:id', element: <CustomerInfo /> },
+            { path: 'customers/edit/:id', element: <EditCustomer /> },
             { path: 'coupons', element: <Coupons /> },
             { path: 'coupons/create', element: <CreateCoupons /> },
             { path: 'managers', element: <Managers /> },

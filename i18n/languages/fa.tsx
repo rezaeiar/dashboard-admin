@@ -269,6 +269,8 @@ const fa = {
     "Your product has been successfully edited in the product list.": "محصول شما با موفقیت در لیست محصول ویرایش شد.",
     "Your product was not edited to the product list, please try again.": "محصول شما در لیست محصول ویرایش نشده است، لطفا دوباره امتحان کنید.",
     "Edit Product": "ویرایش محصول",
-    "You are changing the information of this customer, are you sure?": "شما در حال تغییر اطلاعات این مشتری هستید، مطمئنید؟"
+    "You are changing the information of this customer, are you sure?": "شما در حال تغییر اطلاعات این مشتری هستید، مطمئنید؟",
+    "Edit Customer Information": "ویرایش اطلاعات  مشتری",
+    "Your customer was not edited to the customer list, please try again.": "مشتری شما در لیست مشتریان ویرایش نشده است، لطفا دوباره امتحان کنید."
 }
 export default fa

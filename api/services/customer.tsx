@@ -6,23 +6,23 @@ type addCustomerType = {
     last_name: string,
     email: string,
     username: string,
-    phone_number: string
     password: string,
     roles: string[],
+    home_phone_number: string,
+    phone_number: string
     address: string,
     country: string,
     city: string
-    home_phone_number: string,
-    postal_code: string,
     note: string,
+    postal_code: string,
 }
 
 type editCustomerInfoType = {
     first_name: string,
     last_name: string,
     roles: string[],
-    home_phone_number: string,
     phone_number: string
+    home_phone_number: string,
     address: string,
     country: string,
     city: string

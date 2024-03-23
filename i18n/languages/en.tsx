@@ -269,6 +269,8 @@ const en = {
     "Your product has been successfully edited in the product list.": "Your product has been successfully edited in the product list.",
     "Your product was not edited to the product list, please try again.": "Your product was not edited to the product list, please try again.",
     "Edit Product": "Edit Product",
-    "You are changing the information of this customer, are you sure?": "You are changing the information of this customer, are you sure?"
+    "You are changing the information of this customer, are you sure?": "You are changing the information of this customer, are you sure?",
+    "Edit Customer Information": "Edit Customer Information",
+    "Your customer was not edited to the customer list, please try again.": 'Your customer was not edited to the customer list, please try again.'
 }
 export default en

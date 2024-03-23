@@ -1,21 +1,21 @@
-import Button from "../components/Button"
+import { useParams, useNavigate, Link } from "react-router-dom"
+import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
-import { useNavigate, useParams } from "react-router-dom"
-import { deleteSingleCustomer, getSingleCustomer } from "../../api/services/customer"
 import { useQuery } from "react-query"
-import Loading from "../components/Loading"
+import { getSingleCustomer, deleteSingleCustomer } from "../../api/services/customer"
+import { useState, useEffect } from "react"
+import { editCustomerInfo } from "../../api/services/customer"
 import { showConfirmModal } from "../store/slices/ConfirmModalSlice"
 import { showSuccessModal } from "../store/slices/successModalSlice"
 import { showErrorModal } from "../store/slices/ErrorModalSlice"
-import { useDispatch } from "react-redux"
-import { useEffect, useState } from "react"
-import { editCustomerInfo } from "../../api/services/customer"
+import Loading from "../components/Loading"
+import Button from "../components/Button"
 
 const CustomerInfo = () => {
 
+    const params = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const params = useParams()
     const { t } = useTranslation()
 
     const { data, isLoading, isSuccess, refetch } = useQuery(['customer', params.id], () => getSingleCustomer(params.id as string))
@@ -57,14 +57,16 @@ const CustomerInfo = () => {
         }
 
         editCustomerInfo(id, customerInfo)
-            .then((res) => {
+            .then((res) => {                
                 if (res.status === 200) {
                     dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
                     dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your changes were made successfully.") } }))
                     refetch()
                 }
             })
-            .catch(() => {
+            .catch((err) => {
+                console.log(err);
+                
                 dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your changes were not applied, please try again.") } }))
             })
     }
@@ -253,9 +255,9 @@ const CustomerInfo = () => {
                                 <h5 className="text-general-100 text-xs xl:text-sm ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
                                     {t("Overview")}
                                 </h5>
-                                <span className="text-primary-100 text-xs lg:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                <Link to={`/panel/customers/edit/${params.id}`} className="text-primary-100 text-xs lg:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                     {t("Edit")}
-                                </span>
+                                </Link>
                             </div>
                             <div className="flex flex-col gap-y-2">
                                 <h5 className="text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular text-sm">

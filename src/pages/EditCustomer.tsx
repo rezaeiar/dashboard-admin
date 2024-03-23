@@ -1,24 +1,26 @@
+import { useParams, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import { useState } from "react"
-import { addCustomer } from '../../api/services/customer'
+import { useState, useEffect } from "react"
+import { useQuery } from "react-query"
+import { getSingleCustomer } from '../../api/services/customer'
+import { editCustomerInfo } from "../../api/services/customer"
 import { showSuccessModal } from "../store/slices/successModalSlice"
 import { showErrorModal } from "../store/slices/ErrorModalSlice"
+import Loading from "../components/Loading"
 import Button from "../components/Button"
 
-const AddCustomer = () => {
+const EditCustomer = () => {
 
+    const params = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { t } = useTranslation()
 
     const [first_name, setFirst_name] = useState("")
     const [last_name, setLast_name] = useState("")
-    const [email, setEmail] = useState("")
     const [username, setUsername] = useState("")
     const [phone_number, setPhone_number] = useState("")
-    const [password, setPassword] = useState("")
     const [role, setRole] = useState("DEFAULT")
     const [address, setAddress] = useState("")
     const [country, setCountry] = useState("iran")
@@ -27,15 +29,35 @@ const AddCustomer = () => {
     const [postal_code, setPostal_code] = useState("")
     const [note, setNote] = useState("")
 
+    const { data, isLoading, isSuccess, refetch } = useQuery(['customer', params.id], () => getSingleCustomer(params.id as string))
+
+    useEffect(() => {
+        if (isSuccess) {
+            setFirst_name(data.first_name)
+            setLast_name(data.last_name)
+            setUsername(data.username)
+            setPhone_number(data.phone_number)
+            setAddress(data.address)
+            setCountry(data.country ? data.country : "iran")
+            setCity(data.city)
+            setHome_phone_number(data.home_phone_number)
+            setPostal_code(data.postal_code)
+            setNote(data.note)
+            if (data.roles.includes("ADMIN")) {
+                setRole("ADMIN")
+            } else {
+                setRole("DEFAULT")
+            }
+        }
+    }, [isSuccess])
+
     const saveUser = () => {
         const newCustomerInfo =
         {
             first_name,
             last_name,
-            email,
             username,
             phone_number,
-            password,
             roles: [role],
             address,
             country,
@@ -43,18 +65,21 @@ const AddCustomer = () => {
             home_phone_number,
             postal_code, note
         }
-        
-        addCustomer(newCustomerInfo)
+
+        editCustomerInfo(params.id as string, newCustomerInfo)
             .then(res => {
-                if (res.status === 201) {
-                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your customer has been successfully added to the customer list.") } }))
+                if (res.status === 200) {
+                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your changes were made successfully.") } }))
                     navigate("/panel/customers")
+                    refetch()
                 }
             })
-            .catch(() => {
-                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your customer was not added to the customer list, please try again.") } }))
+            .catch((err) => {
+                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your customer was not edited to the customer list, please try again.") } }))
             })
     }
+
+    if (isLoading) return <Loading />
 
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
@@ -69,7 +94,7 @@ const AddCustomer = () => {
                         </span>
                     </div>
                     <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100">
-                        {t("Add Customer")}
+                        {t("Edit Customer Information")}
                     </h2>
                 </div>
                 <div className="flex gap-x-1 sm:gap-x-2">
@@ -110,12 +135,6 @@ const AddCustomer = () => {
                         </div>
                         <div className="flex flex-col">
                             <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                {t("Email Address")}
-                            </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder="" value={email} onChange={e => setEmail(e.target.value)} />
-                        </div>
-                        <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                 {t("User Name")}
                             </label>
                             <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder="" value={username} onChange={e => setUsername(e.target.value)} />
@@ -125,12 +144,6 @@ const AddCustomer = () => {
                                 {t("Phone Number")}
                             </label>
                             <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder="" value={phone_number} onChange={e => setPhone_number(e.target.value)} />
-                        </div>
-                        <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                {t("Password")}
-                            </label>
-                            <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder="" value={password} onChange={e => setPassword(e.target.value)} />
                         </div>
                         <div className="flex flex-col">
                             <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
@@ -221,4 +234,4 @@ const AddCustomer = () => {
     )
 }
 
-export default AddCustomer
+export default EditCustomer
