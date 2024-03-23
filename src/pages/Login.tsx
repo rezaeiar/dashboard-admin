@@ -36,7 +36,7 @@ const Login = () => {
         singIn(data)
             .then(res => {
                 if (res.status === 201) {
-                    cookies.set('token', res.data.token, { path: '/' });
+                    cookies.set('token', res.data.token, { path: '/', expires: new Date(Date.now() + 2592000) });
                     navigate("/panel/dashboard")
                 } else {
                     dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your login has failed, please try again.") } }))
