@@ -140,7 +140,7 @@ const Coupons = () => {
                             <tbody>
                                 {
                                     filterBy === "USAGE" && [...allCoupons]?.sort((a, b) => b.usage - a.usage).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((coupon: any) => (
-                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
+                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={coupon.id}>
                                             <td className="w-36 sm:w-56 shrink-0">
                                                 <div className="flex items-center gap-x-4">
                                                     <div className={`h-10 w-10 rounded-md flex justify-center items-center text-white shrink-0 ${coupon.type === "FREE_SHIPPING" ? "bg-general-70" : "bg-primary-100"}`}>
@@ -193,7 +193,7 @@ const Coupons = () => {
                                 }
                                 {
                                     filterBy === "-1" && [...allCoupons].slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((coupon: any) => (
-                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
+                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={coupon.id}>
                                             <td className="w-36 sm:w-56 shrink-0">
                                                 <div className="flex items-center gap-x-4">
                                                     <div className={`h-10 w-10 rounded-md flex justify-center items-center text-white shrink-0 ${coupon.type === "FREE_SHIPPING" ? "bg-general-70" : "bg-primary-100"}`}>

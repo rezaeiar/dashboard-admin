@@ -265,6 +265,9 @@ const en = {
     "Delete Coupon": "Delete Coupon",
     "You are deleting a coupon. are you sure?": "You are deleting a coupon. are you sure?",
     "Your desired coupon has been successfully deleted.": "Your desired coupon has been successfully deleted.",
-    "Your desired coupon could not be deleted, please try again." :"Your desired coupon could not be deleted, please try again."
+    "Your desired coupon could not be deleted, please try again.": "Your desired coupon could not be deleted, please try again.",
+    "Your product has been successfully edited in the product list.": "Your product has been successfully edited in the product list.",
+    "Your product was not edited to the product list, please try again.": "Your product was not edited to the product list, please try again.",
+    "Edit Product": "Edit Product"
 }
 export default en

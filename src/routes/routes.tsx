@@ -6,6 +6,7 @@ import Dashboard from "../pages/Dashboard"
 import Orders from "../pages/Orders"
 import Products from "../pages/Products"
 import AddProduct from "../pages/AddProduct"
+import EditProduct from "../pages/EditProduct"
 import Categories from "../pages/Categories"
 import SingleCategory from "../pages/SingleCategory"
 import Customers from "../pages/Customers"
@@ -27,6 +28,7 @@ const routes: RouteType[] = [
             { path: 'orders', element: <Orders /> },
             { path: 'products', element: <Products /> },
             { path: 'products/add', element: <AddProduct /> },
+            { path: 'products/edit/:id', element: <EditProduct /> },
             { path: 'categories', element: <Categories /> },
             { path: 'categories/:CategorieName', element: <SingleCategory /> },
             { path: 'customers', element: <Customers /> },
