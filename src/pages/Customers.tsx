@@ -152,7 +152,7 @@ const Customers = () => {
                             <tbody>
                                 {
                                     filterBy === "SPENT" && [...allCustomers]?.sort((a, b) => b.purchase_amount - a.purchase_amount).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((customer: any) => (
-                                        <tr className='p-3 md:p-4 bg-white hover:bg-general-30/45 grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={customer.id}>
+                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={customer.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex items-center gap-x-3">
                                                     <div className="h-12 w-12 uppercase bg-general-60 rounded-full text-white flex items-center justify-center shrink-0">
@@ -187,7 +187,7 @@ const Customers = () => {
                                 }
                                 {
                                     filterBy === "ORDERS" && [...allCustomers]?.sort((a, b) => b.order_count - a.order_count).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((customer: any) => (
-                                        <tr className='p-3 md:p-4 bg-white hover:bg-general-30/45 grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={customer.id}>
+                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={customer.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex items-center gap-x-3">
                                                     <div className="h-12 w-12 uppercase bg-general-60 rounded-full text-white flex items-center justify-center shrink-0">
@@ -222,7 +222,7 @@ const Customers = () => {
                                 }
                                 {
                                     filterBy === "-1" && [...allCustomers].slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((customer: any) => (
-                                        <tr className='p-3 md:p-4 bg-white hover:bg-general-30/45 grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={customer.id}>
+                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={customer.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex items-center gap-x-3">
                                                     <div className="h-12 w-12 uppercase bg-general-60 rounded-full text-white flex items-center justify-center shrink-0">

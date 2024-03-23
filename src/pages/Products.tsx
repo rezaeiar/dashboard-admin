@@ -292,10 +292,10 @@ const Products = () => {
             </div>
             {
                 allProducts && !allProducts.length &&
-                <EmptyEntity title={t("Create First Customer")} type={"products"} link="/panel/customers/add" button="Add Customer">
+                <EmptyEntity title={t("Create First Product")} type={"products"} link="/panel/products/add" button="Add Product">
                     <>
-                        {t("Organize all your items in stock by creating and adding them to categories.")} <br className="hidden sm:block" />
-                        {t("Categories helps to find items faster for your customers.")}
+                        {t("Start making sales by adding your products.")} <br className="hidden sm:block" />
+                        {t("You can import and manage your products at any time.")}
                     </>
                 </EmptyEntity>
             }

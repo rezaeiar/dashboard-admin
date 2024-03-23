@@ -271,6 +271,9 @@ const en = {
     "Edit Product": "Edit Product",
     "You are changing the information of this customer, are you sure?": "You are changing the information of this customer, are you sure?",
     "Edit Customer Information": "Edit Customer Information",
-    "Your customer was not edited to the customer list, please try again.": 'Your customer was not edited to the customer list, please try again.'
+    "Your customer was not edited to the customer list, please try again.": 'Your customer was not edited to the customer list, please try again.',
+    "Create First Product": "Create First Product",
+    "Start making sales by adding your products.": "Start making sales by adding your products.",
+    "You can import and manage your products at any time.": "You can import and manage your products at any time."
 }
 export default en

@@ -271,6 +271,9 @@ const fa = {
     "Edit Product": "ویرایش محصول",
     "You are changing the information of this customer, are you sure?": "شما در حال تغییر اطلاعات این مشتری هستید، مطمئنید؟",
     "Edit Customer Information": "ویرایش اطلاعات  مشتری",
-    "Your customer was not edited to the customer list, please try again.": "مشتری شما در لیست مشتریان ویرایش نشده است، لطفا دوباره امتحان کنید."
+    "Your customer was not edited to the customer list, please try again.": "مشتری شما در لیست مشتریان ویرایش نشده است، لطفا دوباره امتحان کنید.",
+    "Create First Product": "ایجاد اولین محصول",
+    "Start making sales by adding your products.": "فروش را با افزودن محصولات خود شروع کنید.",
+    "You can import and manage your products at any time.": "شما می توانید محصولات خود را در هر زمان وارد کرده و مدیریت کنید."
 }
 export default fa

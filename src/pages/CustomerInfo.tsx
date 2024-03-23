@@ -10,6 +10,7 @@ import { showSuccessModal } from "../store/slices/successModalSlice"
 import { showErrorModal } from "../store/slices/ErrorModalSlice"
 import Loading from "../components/Loading"
 import Button from "../components/Button"
+import { statusStyleGenerator } from "../utils/helpers"
 
 const CustomerInfo = () => {
 
@@ -19,6 +20,9 @@ const CustomerInfo = () => {
     const { t } = useTranslation()
 
     const { data, isLoading, isSuccess, refetch } = useQuery(['customer', params.id], () => getSingleCustomer(params.id as string))
+
+    console.log(data);
+
 
     const [note, setNote] = useState('')
 
@@ -57,7 +61,7 @@ const CustomerInfo = () => {
         }
 
         editCustomerInfo(id, customerInfo)
-            .then((res) => {                
+            .then((res) => {
                 if (res.status === 200) {
                     dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
                     dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your changes were made successfully.") } }))
@@ -66,7 +70,7 @@ const CustomerInfo = () => {
             })
             .catch((err) => {
                 console.log(err);
-                
+
                 dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your changes were not applied, please try again.") } }))
             })
     }
@@ -174,79 +178,46 @@ const CustomerInfo = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-white rounded-md p-5 xl:p-7 flex flex-col gap-y-4 xl:gap-y-6">
-                        <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
-                            {t("Customer Orders")}
-                        </h5>
-                        <table className='divide-y bg-white rounded-md w-full flex flex-col overflow-x-auto'>
-                            <thead>
-                                <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-70 child:text-start min-w-max gap-x-2 *:text-start'>
-                                    <th className="w-28 sm:w-32">{t("Order")}</th>
-                                    <th className="w-28 sm:w-32">{t("Date")}</th>
-                                    <th className="w-32 sm:w-36">{t("Order Status")}</th>
-                                    <th className="w-28 sm:w-32">{t("Price")}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
-                                    <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
-                                        #23534D
-                                    </td>
-                                    <td className="w-28 sm:w-32 shrink-0">
-                                        May 25, 3:12 PM
-                                    </td>
-                                    <td className="w-32 sm:w-36 shrink-0">
-                                        <button className="w-4/5 flex justify-center bg-green-30 text-green-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                            {t("Completed")}
-                                        </button>
-                                    </td>
-                                    <td className="w-28 sm:w-32 shrink-0">$29.74</td>
-                                </tr>
-                                <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
-                                    <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
-                                        #23534D
-                                    </td>
-                                    <td className="w-28 sm:w-32 shrink-0">
-                                        May 25, 3:12 PM
-                                    </td>
-                                    <td className="w-32 sm:w-36 shrink-0">
-                                        <button className="w-4/5 flex justify-center bg-yellow-30 text-yellow-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                            {t("Pending")}
-                                        </button>
-                                    </td>
-                                    <td className="w-28 sm:w-32 shrink-0">$29.74</td>
-                                </tr>
-                                <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
-                                    <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
-                                        #23534D
-                                    </td>
-                                    <td className="w-28 sm:w-32 shrink-0">
-                                        May 25, 3:12 PM
-                                    </td>
-                                    <td className="w-32 sm:w-36 shrink-0">
-                                        <button className="w-4/5 flex justify-center bg-yellow-30 text-yellow-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                            {t("Pending")}
-                                        </button>
-                                    </td>
-                                    <td className="w-28 sm:w-32 shrink-0">$29.74</td>
-                                </tr>
-                                <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
-                                    <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
-                                        #23534D
-                                    </td>
-                                    <td className="w-28 sm:w-32 shrink-0">
-                                        May 25, 3:12 PM
-                                    </td>
-                                    <td className="w-32 sm:w-36 shrink-0">
-                                        <button className="w-4/5 flex justify-center bg-yellow-30 text-yellow-101 text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                            {t("Pending")}
-                                        </button>
-                                    </td>
-                                    <td className="w-28 sm:w-32 shrink-0">$29.74</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    {
+                        !!data.orders.length &&
+                        <div className="bg-white rounded-md p-5 xl:p-7 flex flex-col gap-y-4 xl:gap-y-6">
+                            <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
+                                {t("Customer Orders")}
+                            </h5>
+                            <table className='divide-y bg-white rounded-md w-full flex flex-col overflow-x-auto'>
+                                <thead>
+                                    <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-70 child:text-start min-w-max gap-x-2 *:text-start'>
+                                        <th className="w-28 sm:w-32">{t("Order")}</th>
+                                        <th className="w-28 sm:w-32">{t("Date")}</th>
+                                        <th className="w-32 sm:w-36">{t("Order Status")}</th>
+                                        <th className="w-28 sm:w-32">{t("Price")}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        data.orders.map((order: any) => (
+                                            <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
+                                                <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
+                                                    #23534D
+                                                </td>
+                                                <td className="w-28 sm:w-32 shrink-0">
+                                                    {order.created_at}
+                                                </td>
+                                                <td className="w-32 sm:w-36 shrink-0">
+                                                    <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator(order.status)}`}>
+                                                        {t(order.status)}
+                                                    </button>
+                                                </td>
+                                                <td className="w-28 sm:w-32 shrink-0">
+                                                    ${order.total_price.toLocaleString()}
+                                                </td>
+                                            </tr>
+                                        ))
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
                 </div>
                 <div className="flex flex-col gap-y-3 lg:gap-y-4 col-span-2">
                     <div className="bg-white rounded-md p-5 xl:p-7 flex flex-col gap-y-4 divide-y">
