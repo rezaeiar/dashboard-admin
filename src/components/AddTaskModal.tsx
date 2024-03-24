@@ -1,11 +1,12 @@
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
 import { useState } from "react"
-import { addTask } from '../../api/services/task'
+import { addTask, getAllTasks, getUserTasks } from '../../api/services/task'
 import { showAddTaskModal } from "../store/slices/AddTaskModalSlice"
 import { showSuccessModal } from "../store/slices/successModalSlice"
 import { showErrorModal } from "../store/slices/ErrorModalSlice"
 import Button from "./Button"
+import { useQuery } from "react-query"
 
 type AddTaskModalProps = {
     isShowAddTaskModal: boolean
@@ -20,6 +21,10 @@ const AddTaskModal = ({ isShowAddTaskModal }: AddTaskModalProps) => {
         if (event.target.className.includes("parent")) dispatch(showAddTaskModal({ visibility: false }))
     }
 
+    const { refetch: allTaskRefetch } = useQuery("tasks", getAllTasks)
+    const { refetch: uerTasksRefetch } = useQuery("user-tasks", getUserTasks)
+
+
     const [title, setTitle] = useState("")
     const [email, setEmail] = useState("")
     const [expire_time, setExpire_time] = useState("")
@@ -31,6 +36,8 @@ const AddTaskModal = ({ isShowAddTaskModal }: AddTaskModalProps) => {
                 if (res.status === 201) {
                     dispatch(showAddTaskModal({ visibility: false }))
                     dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your desired task has been added.") } }))
+                    allTaskRefetch()
+                    uerTasksRefetch()
                 } else {
                     dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired task could not be added, please try again.") } }))
                 }

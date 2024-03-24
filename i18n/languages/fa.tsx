@@ -284,6 +284,12 @@ const fa = {
     "Your desired task has been added.": "وظیفه مورد نظر شما اضافه شد.",
     "Your desired task could not be added, please try again.": "کار مورد نظر شما اضافه نشد، لطفا دوباره امتحان کنید.",
     "Search by name or ID": "جستجو بر اساس نام یا شناسه",
-    "There are no categories." : "هیچ دسته بندی ای وجود ندارد."
+    "There are no categories.": "هیچ دسته بندی ای وجود ندارد.",
+    "Delete Task": "وظیفه را حذف کنید",
+    "You are deleting a Task. are you sure?": "شما در حال حذف یک وظیفه هستید. مطمئنی؟",
+    "There are no tasks assigned to you at this moment or the assigned task has expired, enjoy!": "در حال حاضر هیچ کاری به شما محول نشده است یا کار محول شده منقضی شده است، لذت ببرید!",
+    "There are no Task for you": "هیچ وظیفه ای برای شما وجود ندارد",
+    "There are no Task for Managers.": "هیچ وظیفه ای برای مدیران وجود ندارد.",
+    "There are currently no tasks assigned to administrators or the assigned task has expired.": "در حال حاضر هیچ کاری برای مدیران محول نشده است یا کار محول شده منقضی شده است."
 }
 export default fa

@@ -284,6 +284,12 @@ const en = {
     "Your desired task has been added.": "Your desired task has been added.",
     "Your desired task could not be added, please try again.": "Your desired task could not be added, please try again.",
     "Search by name or ID": "Search by name or ID",
-    "There are no categories." :"There are no categories."
+    "There are no categories.": "There are no categories.",
+    "Delete Task": "Delete Task",
+    "You are deleting a Task. are you sure?": "You are deleting a Task. are you sure?",
+    "There are no tasks assigned to you at this moment or the assigned task has expired, enjoy!": "There are no tasks assigned to you at this moment or the assigned task has expired, enjoy!",
+    "There are no Task for you": "There are no Task for you",
+    "There are no Task for Managers.": "There are no Task for Managers.",
+    "There are currently no tasks assigned to administrators or the assigned task has expired.": "There are currently no tasks assigned to administrators or the assigned task has expired."
 }
 export default en

@@ -60,16 +60,13 @@ const Products = () => {
 
         deleteSingleProduct(id)
             .then(res => {
-                
                 if (res.status === 200) {
                     dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
                     dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your desired product has been successfully deleted.") } }))
                     refetch()
                 }
             })
-            .catch((err) => {
-                console.log(err);
-                
+            .catch(() => {                
                 dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired Product could not be deleted, please try again.") } }))
             })
     }
