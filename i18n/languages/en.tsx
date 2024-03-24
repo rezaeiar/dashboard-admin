@@ -280,6 +280,8 @@ const en = {
     "washing the dishes:)": "washing the dishes:)",
     "Duty deadline": "Duty deadline",
     "30 Days": "30 Days",
-    "Add Task": "Add Task"
+    "Add Task": "Add Task",
+    "Your desired task has been added.": "Your desired task has been added.",
+    "Your desired task could not be added, please try again.": "Your desired task could not be added, please try again."
 }
 export default en

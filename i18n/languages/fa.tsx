@@ -280,6 +280,8 @@ const fa = {
     "washing the dishes:)": "شستن ظرف ها:)",
     "Duty deadline": "مهلت وظیفه",
     "30 Days": "30 روز",
-    "Add Task": "وظیفه اضافه کنید"
+    "Add Task": "وظیفه اضافه کنید",
+    "Your desired task has been added.": "وظیفه مورد نظر شما اضافه شد.",
+    "Your desired task could not be added, please try again.": "کار مورد نظر شما اضافه نشد، لطفا دوباره امتحان کنید."
 }
 export default fa
