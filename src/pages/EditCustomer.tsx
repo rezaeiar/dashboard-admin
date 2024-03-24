@@ -69,13 +69,13 @@ const EditCustomer = () => {
         editCustomerInfo(params.id as string, newCustomerInfo)
             .then(res => {
                 if (res.status === 200) {
-                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your changes were made successfully.") } }))
+                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your changes were made successfully.") } }))
                     navigate("/panel/customers")
                     refetch()
                 }
             })
             .catch(() => {
-                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your customer was not edited to the customer list, please try again.") } }))
+                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your customer was not edited to the customer list, please try again.") } }))
             })
     }
 

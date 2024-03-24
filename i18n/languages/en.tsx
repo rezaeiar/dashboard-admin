@@ -274,6 +274,12 @@ const en = {
     "Your customer was not edited to the customer list, please try again.": 'Your customer was not edited to the customer list, please try again.',
     "Create First Product": "Create First Product",
     "Start making sales by adding your products.": "Start making sales by adding your products.",
-    "You can import and manage your products at any time.": "You can import and manage your products at any time."
+    "You can import and manage your products at any time.": "You can import and manage your products at any time.",
+    "Manager Email": "Manager Email",
+    "Task Title": "Task Title",
+    "washing the dishes:)": "washing the dishes:)",
+    "Duty deadline": "Duty deadline",
+    "30 Days": "30 Days",
+    "Add Task": "Add Task"
 }
 export default en

@@ -38,14 +38,14 @@ const CreateCoupons = () => {
         addCoupon(couponInfo)
             .then(res => {
                 if (res.status === 201) {
-                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your desired coupon has been added.") } }))
+                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your desired coupon has been added.") } }))
                     navigate("/panel/coupons")
                 } else {
-                    dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your desired coupon could not be added, please try again.") } }))
+                    dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired coupon could not be added, please try again.") } }))
                 }
             })
             .catch((err) => {
-                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t(err.response.data.message) } }))
+                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t(err.response.data.message) } }))
             })
     }
 

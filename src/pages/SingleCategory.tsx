@@ -33,50 +33,50 @@ const SingleCategory = () => {
         changeCategoryInfo(id, categoryName)
             .then((res) => {
                 if (res.status === 200) {
-                    dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
-                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your changes were made successfully.") } }))
+                    dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
+                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your changes were made successfully.") } }))
                     refetch()
                 }
             })
             .catch(() => {
-                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your changes were not applied, please try again.") } }))
+                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your changes were not applied, please try again.") } }))
             })
     }
     const deleteCategoryHandler = (id: string) => {
         deleteSingleCategory(id)
             .then(res => {
                 if (res.status === 200) {
-                    dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
-                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your desired category has been successfully deleted.") } }))
+                    dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
+                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your desired category has been successfully deleted.") } }))
                     navigate("/panel/categories")
                 }
             })
             .catch(() => {
-                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your desired category could not be deleted, please try again.") } }))
+                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired category could not be deleted, please try again.") } }))
             })
     }
     const deleteProductFromCategoryHandler = (id: string, productId: string) => {
         deleteProductFromCategory(id, productId)
             .then(res => {
                 if (res.status === 200) {
-                    dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
-                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your desired product has been successfully removed from the category.") } }))
+                    dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
+                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your desired product has been successfully removed from the category.") } }))
                     refetch()
                 }
             })
             .catch(() => {
-                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your desired product was not removed from the category, please try again.") } }))
+                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired product was not removed from the category, please try again.") } }))
             })
     }
 
     const showEditConfirmModal = () => {
-        dispatch(showConfirmModal({ vissablity: true, payload: { title: t("Change information"), description: t("You are changing the information of this category, are you sure?") }, button: "Continue", handler: () => changeCategoryInfoHandler(params.CategorieName as string) }))
+        dispatch(showConfirmModal({ visibility: true, payload: { title: t("Change information"), description: t("You are changing the information of this category, are you sure?") }, button: "Continue", handler: () => changeCategoryInfoHandler(params.CategorieName as string) }))
     }
     const showDeleteConfirmModal = () => {
-        dispatch(showConfirmModal({ vissablity: true, payload: { title: t("Delete Category"), description: t("By deleting a category, all the products of this category will be deleted, are you sure?") }, button: "Delete", handler: () => deleteCategoryHandler(params.CategorieName as string) }))
+        dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete Category"), description: t("By deleting a category, all the products of this category will be deleted, are you sure?") }, button: "Delete", handler: () => deleteCategoryHandler(params.CategorieName as string) }))
     }
     const showDeleteProductConfirmModal = (productId: string) => {
-        dispatch(showConfirmModal({ vissablity: true, payload: { title: t("Delete product from category"), description: t("You are removing the product from this category, are you sure?") }, button: "Delete", handler: () => deleteProductFromCategoryHandler(params.CategorieName as string, productId) }))
+        dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete product from category"), description: t("You are removing the product from this category, are you sure?") }, button: "Delete", handler: () => deleteProductFromCategoryHandler(params.CategorieName as string, productId) }))
     }
 
     if (isLoading) {

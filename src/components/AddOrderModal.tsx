@@ -32,15 +32,15 @@ const AddOrderModal = ({ isShowOrderModal }: AddOrderModalProps) => {
             .then(res => {
                 if (res.status === 201) {
                     dispatch(showAddOrderModal({ visibility: false }))
-                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your desired order has been added.") } }))
+                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your desired order has been added.") } }))
                     refetch()
                 } else {
-                    dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your desired order could not be added, please try again.") } }))
+                    dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired order could not be added, please try again.") } }))
                 }
             })
             .catch((err) => {
                 dispatch(showAddOrderModal({ visibility: false }))
-                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t(err.response.data.message) } }))
+                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t(err.response.data.message) } }))
 
             })
         setProductId("")

@@ -30,7 +30,7 @@ const Orders = () => {
     let updatedTime = new Date(dataUpdatedAt);
 
     const AddOrderModalHandler = () => {
-        dispatch(showAddOrderModal({ vissablity: true }))
+        dispatch(showAddOrderModal({ visibility: true }))
     }
 
     useEffect(() => {

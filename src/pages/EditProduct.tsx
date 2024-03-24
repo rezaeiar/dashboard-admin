@@ -63,7 +63,7 @@ const EditProduct = () => {
     }
 
     const showCategoriesModalHandler = () => {
-        dispatch(showAddCategoryModal({ vissablity: true }))
+        dispatch(showAddCategoryModal({ visibility: true }))
     }
 
     const editProductHandler = () => {
@@ -82,13 +82,13 @@ const EditProduct = () => {
         editProduct(params.id as string, ProductNewInfos)
             .then(res => {
                 if (res.status === 200) {
-                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your product has been successfully edited in the product list.") } }))
+                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your product has been successfully edited in the product list.") } }))
                     navigate("/panel/products")
                     refetch()
                 }
             })
             .catch(() => {
-                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your product was not edited to the product list, please try again.") } }))
+                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your product was not edited to the product list, please try again.") } }))
             })
     }
 

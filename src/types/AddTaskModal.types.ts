@@ -1,5 +1,5 @@
-export type AddCategoryModalType = {
-    addCategoryModal: {
+export type AddTaskModalType = {
+    addTaskModal: {
         value: {
             visibility: boolean
         }

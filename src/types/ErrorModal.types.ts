@@ -1,7 +1,7 @@
 export type errorModalType = {
     errorModal: {
         value: {
-            vissablity: boolean,
+            visibility: boolean,
             payload: {
                 title: string,
                 description: string

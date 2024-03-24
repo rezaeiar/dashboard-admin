@@ -4,7 +4,7 @@ const successModalSlice = createSlice({
     name: "successModal",
     initialState: {
         value: {
-            vissablity: false,
+            visibility: false,
             payload: {
                 title: "",
                 description: ""

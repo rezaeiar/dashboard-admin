@@ -19,7 +19,7 @@ const ConfirmModal = ({ isShowConfirmModal, payload, button, handler }: ConfirmM
     const { t } = useTranslation()
 
     const hideModalHandler = (event: any) => {
-        if (event.target.className.includes("parent")) dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button, handler }))
+        if (event.target.className.includes("parent")) dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button, handler }))
     }
     return (
         <div className={`parent backdrop-blur-sm flex items-center justify-center fixed transition-all h-screen w-full top-0 left-0 bg-general-100/50 z-50 px-4 sm:px-6 md:px-8 ${isShowConfirmModal ? "opacity-100 visible" : "opacity-0 invisible"}`} onClick={(event) => hideModalHandler(event)}>
@@ -28,7 +28,7 @@ const ConfirmModal = ({ isShowConfirmModal, payload, button, handler }: ConfirmM
                     <h3 className='ltr:font-nunitosans-bold rtl:font-iransans-bold text-lg text-general-100'>
                         {payload.title}
                     </h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-general-80 cursor-pointer" onClick={() => dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button, handler }))}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-general-80 cursor-pointer" onClick={() => dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button, handler }))}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
                 </div>
@@ -38,10 +38,10 @@ const ConfirmModal = ({ isShowConfirmModal, payload, button, handler }: ConfirmM
                 <div className="flex gap-x-6 items-center justify-end">
                     {
                         button === "Continue" ?
-                            <a className="text-primary-100 ltr:font-nunitosans-regular rtl:font-iransans-regular cursor-pointer" onClick={() => dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button, handler }))}>
+                            <a className="text-primary-100 ltr:font-nunitosans-regular rtl:font-iransans-regular cursor-pointer" onClick={() => dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button, handler }))}>
                                 {t("Cancel")}
                             </a> :
-                            <a className="text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular cursor-pointer" onClick={() => dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button, handler }))}>
+                            <a className="text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular cursor-pointer" onClick={() => dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button, handler }))}>
                                 {t("Cancel")}
                             </a>
                     }

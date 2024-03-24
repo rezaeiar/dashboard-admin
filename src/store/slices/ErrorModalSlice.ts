@@ -4,7 +4,7 @@ const errorModalSlice = createSlice({
     name: "errorModal",
     initialState: {
         value: {
-            vissablity: false,
+            visibility: false,
             payload: {
                 title: "",
                 description: ""

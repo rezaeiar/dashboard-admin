@@ -1,7 +1,7 @@
 export type successModalType = {
     successModal: {
         value: {
-            vissablity: boolean,
+            visibility: boolean,
             payload: {
                 title: string,
                 description: string

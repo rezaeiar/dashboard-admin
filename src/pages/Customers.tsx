@@ -67,18 +67,18 @@ const Customers = () => {
         deleteSingleCustomer(id)
             .then(res => {
                 if (res.status === 200) {
-                    dispatch(showConfirmModal({ vissablity: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
-                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your desired client has been successfully deleted.") } }))
+                    dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
+                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your desired client has been successfully deleted.") } }))
                     refetch()
                 }
             })
             .catch(() => {
-                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your desired client could not be deleted, please try again.") } }))
+                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired client could not be deleted, please try again.") } }))
             })
     }
 
     const showDeleteConfirmModal = (id: string) => {
-        dispatch(showConfirmModal({ vissablity: true, payload: { title: t("Delete Customer"), description: t("By deleting the user, all his registered information on the site will be deleted. are you sure?") }, button: "Delete", handler: () => deleteCategoryHandler(id as string) }))
+        dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete Customer"), description: t("By deleting the user, all his registered information on the site will be deleted. are you sure?") }, button: "Delete", handler: () => deleteCategoryHandler(id as string) }))
     }
 
     if (isLoading) return <Loading />

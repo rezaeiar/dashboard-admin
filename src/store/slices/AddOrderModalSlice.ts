@@ -4,7 +4,7 @@ const AddOrderModalSlice = createSlice({
     name: "addOrderModal",
     initialState: {
         value: {
-            vissablity: false,
+            visibility: false,
         }
     },
     reducers: {

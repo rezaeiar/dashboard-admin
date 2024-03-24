@@ -4,7 +4,7 @@ const confirmModalSlice = createSlice({
     name: "confirmModal",
     initialState: {
         value: {
-            vissablity: false,
+            visibility: false,
             payload: {
                 title: "",
                 description: "",

@@ -1,7 +1,7 @@
 export type confirmModalType = {
     confirmModal: {
         value: {
-            vissablity: boolean,
+            visibility: boolean,
             payload: {
                 title: string,
                 description: string

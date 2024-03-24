@@ -47,12 +47,12 @@ const AddCustomer = () => {
         addCustomer(newCustomerInfo)
             .then(res => {
                 if (res.status === 201) {
-                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your customer has been successfully added to the customer list.") } }))
+                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your customer has been successfully added to the customer list.") } }))
                     navigate("/panel/customers")
                 }
             })
             .catch(() => {
-                dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your customer was not added to the customer list, please try again.") } }))
+                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your customer was not added to the customer list, please try again.") } }))
             })
     }
 

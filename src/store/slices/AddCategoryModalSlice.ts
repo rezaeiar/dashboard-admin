@@ -4,7 +4,7 @@ const AddCategoryModalSlice = createSlice({
     name: "addCategoryModal",
     initialState: {
         value: {
-            vissablity: false,
+            visibility: false,
         }
     },
     reducers: {

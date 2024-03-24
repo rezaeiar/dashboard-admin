@@ -274,6 +274,12 @@ const fa = {
     "Your customer was not edited to the customer list, please try again.": "مشتری شما در لیست مشتریان ویرایش نشده است، لطفا دوباره امتحان کنید.",
     "Create First Product": "ایجاد اولین محصول",
     "Start making sales by adding your products.": "فروش را با افزودن محصولات خود شروع کنید.",
-    "You can import and manage your products at any time.": "شما می توانید محصولات خود را در هر زمان وارد کرده و مدیریت کنید."
+    "You can import and manage your products at any time.": "شما می توانید محصولات خود را در هر زمان وارد کرده و مدیریت کنید.",
+    "Manager Email": "ایمیل مدیر",
+    "Task Title": "عنوان وظیفه",
+    "washing the dishes:)": "شستن ظرف ها:)",
+    "Duty deadline": "مهلت وظیفه",
+    "30 Days": "30 روز",
+    "Add Task": "وظیفه اضافه کنید"
 }
 export default fa

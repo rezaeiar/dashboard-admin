@@ -1,9 +1,15 @@
 import Button from "../components/Button"
 import { useTranslation } from "react-i18next"
+import { useDispatch } from "react-redux"
+import { showAddTaskModal } from "../store/slices/AddTaskModalSlice"
 
 const TodoList = () => {
     const { t } = useTranslation()
     // const [isChecked, setIsChecked] = useState(false)
+
+    const dispatch = useDispatch()
+
+
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
             <div className="flex justify-between items-center">
@@ -13,7 +19,7 @@ const TodoList = () => {
                     </h2>
                 </div>
                 <div className="flex gap-x-1 sm:gap-x-2">
-                    <Button type="primary" size="small" styles="">
+                    <Button type="primary" size="small" onSubmit={() => dispatch(showAddTaskModal({ visibility: true }))}>
                         <>
                             {t("Add New Task")}
                         </>

@@ -29,10 +29,10 @@ const AddCategoryModal = ({ isShowCategoriesModal }: AddCategoryModalProps) => {
             .then(res => {
                 if (res.status === 201) {
                     dispatch(showAddCategoryModal({ visibility: false }))
-                    dispatch(showSuccessModal({ vissablity: true, payload: { title: t("Successful operation"), description: t("Your desired category has been added.") } }))
+                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your desired category has been added.") } }))
                     refetch()
                 } else {
-                    dispatch(showErrorModal({ vissablity: true, payload: { title: t("Operation failed"), description: t("Your desired category could not be added, please try again.") } }))
+                    dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired category could not be added, please try again.") } }))
                 }
                 setCategoryName("")
             })
