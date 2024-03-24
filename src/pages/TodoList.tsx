@@ -11,11 +11,12 @@ const TodoList = () => {
 
     const dispatch = useDispatch()
     const { t } = useTranslation()
+
     const { data: allTasksData, refetch: allTaskRefetch } = useQuery("tasks", getAllTasks)
     const { data: userTasksData, refetch: uerTasksRefetch } = useQuery("user-tasks", getUserTasks)
 
     const changeTaskComplatedHandler = (id: string, isComplated: boolean) => {
-        console.log(id, isComplated);
+
         changeTaskComplated(id, !isComplated)
             .then(res => {
                 if (res.status === 200) {
@@ -26,6 +27,7 @@ const TodoList = () => {
     }
 
     const deleteTaskGandler = (id: string) => {
+
         deleteSingleTask(id)
             .then(res => {
                 if (res.status === 200) {
@@ -95,7 +97,7 @@ const TodoList = () => {
                             ))
                         }
                         {
-                            !userTasksData.length &&
+                            userTasksData && !userTasksData.length &&
                             <div className="px-3 sm:px-6 py-6 sm:py-10 bg-red-90 rounded flex flex-col gap-y-4">
                                 <h3 className="text-white ltr:font-nunitosans-semiBold rtl:font-iransans-semiBold text-base sm:text-lg">
                                     {t("There are no Task for you")}
@@ -145,7 +147,7 @@ const TodoList = () => {
                             ))
                         }
                         {
-                            !allTasksData.length &&
+                            allTasksData && !allTasksData.length &&
                             <div className="px-3 sm:px-6 py-6 sm:py-10 bg-red-90 rounded flex flex-col gap-y-4">
                                 <h3 className="text-white ltr:font-nunitosans-semiBold rtl:font-iransans-semiBold text-base sm:text-lg">
                                     {t("There are no Task for Managers.")}
