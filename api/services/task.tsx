@@ -32,9 +32,20 @@ export const getAllTasks = async () => {
         .then(res => res.data)
 }
 
-export const getSingleTask = async (id: string) => {
+export const getUserTasks = async () => {
     return await apiReq({
         method: "GET",
+        url: `/task/user-task`,
+        headers: {
+            "Authorization": `Bearer ${cookies.get("token")}`
+        }
+    })
+        .then(res => res.data)
+}
+
+export const deleteSingleTask = async (id: string) => {
+    return await apiReq({
+        method: "DELETE",
         url: `/task/${id}`,
         headers: {
             "Authorization": `Bearer ${cookies.get("token")}`
@@ -42,12 +53,16 @@ export const getSingleTask = async (id: string) => {
     })
         .then(res => res)
 }
-export const deleteSingleTask = async (id: string) => {
+
+export const changeTaskComplated = async (id: string, complated: boolean) => {
     return await apiReq({
-        method: "DELETE",
-        url: `/task/${id}`,
+        method: "PUT",
+        url: `/task/user-task/${id}`,
         headers: {
             "Authorization": `Bearer ${cookies.get("token")}`
+        },
+        data: {
+            isComplated: complated
         }
     })
         .then(res => res)
