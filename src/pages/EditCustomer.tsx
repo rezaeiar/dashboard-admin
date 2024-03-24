@@ -74,7 +74,9 @@ const EditCustomer = () => {
                     refetch()
                 }
             })
-            .catch(() => {
+            .catch((err) => {
+                console.log(err);
+                
                 dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your customer was not edited to the customer list, please try again.") } }))
             })
     }

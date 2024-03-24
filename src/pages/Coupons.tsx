@@ -19,7 +19,7 @@ const Coupons = () => {
     const { t } = useTranslation()
 
     const { data, isLoading, refetch, dataUpdatedAt } = useQuery("coupons", getAllCoupons)
-
+    
     const [allCoupons, setAllCoupons] = useState<null | { usage: number }[]>(null)
 
     const [selectedStatus, setSelectedStatus] = useState("-1")
@@ -74,6 +74,10 @@ const Coupons = () => {
 
     const showDeleteConfirmModal = (id: string) => {
         dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete Coupon"), description: t("You are deleting a coupon. are you sure?") }, button: "Delete", handler: () => deleteCouponHandler(id as string) }))
+    }
+
+    const dateGenerator = (duration: string) => {
+        return new Date(duration).toLocaleDateString("fa-IR-u-nu-latn")
     }
 
     if (isLoading) return <Loading />
@@ -156,7 +160,7 @@ const Coupons = () => {
                                                         }
                                                     </div>
                                                     <div className="flex flex-col">
-                                                        <h4 className='font-nunitosans-bold text-sm text-general-100 line-clamp-1'>
+                                                        <h4 className='font-iransans-semiBold text-sm text-general-100 line-clamp-1'>
                                                             {coupon.name}
                                                         </h4>
                                                         <span className='text-general-60 text-xs'>
@@ -173,7 +177,7 @@ const Coupons = () => {
                                                     {t(coupon.status)}
                                                 </button>
                                             </td>
-                                            <td className="w-28 sm:w-32 shrink-0">{(new Date(data[0].duration)).toString().slice(4, 15)}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{dateGenerator(coupon.duration)}</td>
                                             <td className="w-28 sm:w-32 shrink-0">
                                                 <div className="flex border border-general-50 divide-x rtl:divide-x-reverse rounded-md overflow-hidden">
                                                     <div className="p-2 w-1/2 hover:w-3/4 col-span-2 cursor-pointer bg-general-30 flex items-center justify-center group hover:bg-primary-100 transition-all">
@@ -209,7 +213,7 @@ const Coupons = () => {
                                                         }
                                                     </div>
                                                     <div className="flex flex-col">
-                                                        <h4 className='font-nunitosans-bold text-sm text-general-100 line-clamp-1'>
+                                                        <h4 className='font-iransans-semiBold text-sm text-general-100 line-clamp-1'>
                                                             {coupon.name}
                                                         </h4>
                                                         <span className='text-general-60 text-xs'>
@@ -226,7 +230,7 @@ const Coupons = () => {
                                                     {t(coupon.status)}
                                                 </button>
                                             </td>
-                                            <td className="w-28 sm:w-32 shrink-0">{(new Date(data[0].duration)).toString().slice(4, 15)}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{dateGenerator(coupon.duration)}</td>
                                             <td className="w-28 sm:w-32 shrink-0">
                                                 <div className="flex border border-general-50 divide-x rtl:divide-x-reverse rounded-md overflow-hidden">
                                                     <div className="p-2 w-1/2 hover:w-3/4 col-span-2 cursor-pointer bg-general-30 flex items-center justify-center group hover:bg-primary-100 transition-all">

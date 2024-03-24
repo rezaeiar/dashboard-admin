@@ -24,9 +24,7 @@ const CreateCoupons = () => {
     }
 
     const addCouponHandler = () => {
-        let date = new Date();
-        date.setDate(date.getDate() + Number(duration)); // Set now + 30 days as the new date
-
+        let date = new Date(new Date().getTime() + (86400000 * Number(duration)))
         const couponInfo = {
             name,
             code,
