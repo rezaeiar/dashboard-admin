@@ -282,6 +282,8 @@ const en = {
     "30 Days": "30 Days",
     "Add Task": "Add Task",
     "Your desired task has been added.": "Your desired task has been added.",
-    "Your desired task could not be added, please try again.": "Your desired task could not be added, please try again."
+    "Your desired task could not be added, please try again.": "Your desired task could not be added, please try again.",
+    "Search by name or ID": "Search by name or ID",
+    "There are no categories." :"There are no categories."
 }
 export default en

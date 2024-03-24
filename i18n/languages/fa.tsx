@@ -282,6 +282,8 @@ const fa = {
     "30 Days": "30 روز",
     "Add Task": "وظیفه اضافه کنید",
     "Your desired task has been added.": "وظیفه مورد نظر شما اضافه شد.",
-    "Your desired task could not be added, please try again.": "کار مورد نظر شما اضافه نشد، لطفا دوباره امتحان کنید."
+    "Your desired task could not be added, please try again.": "کار مورد نظر شما اضافه نشد، لطفا دوباره امتحان کنید.",
+    "Search by name or ID": "جستجو بر اساس نام یا شناسه",
+    "There are no categories." : "هیچ دسته بندی ای وجود ندارد."
 }
 export default fa

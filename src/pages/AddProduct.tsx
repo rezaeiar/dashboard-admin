@@ -227,6 +227,12 @@ const AddProduct = () => {
                             isSuccess &&
                             <ul>
                                 {
+                                    !data.length &&
+                                    <span className="text-general-80 text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                        {t("There are no categories.")}
+                                    </span>
+                                }
+                                {
                                     data.map((category: { id: string, name: string }) => (
                                         <li className="text-general-90 text-xs lg:text-sm flex items-center gap-x-2 font-iransans-regular" key={category.id}>
                                             <input type="checkbox" name={category.id} checked={category.id === categoryId ? true : false} id="" onChange={e => changeCategoryHandler(e, category.id)} />

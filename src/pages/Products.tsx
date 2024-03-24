@@ -67,7 +67,9 @@ const Products = () => {
                     refetch()
                 }
             })
-            .catch(() => {
+            .catch((err) => {
+                console.log(err);
+                
                 dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired Product could not be deleted, please try again.") } }))
             })
     }
@@ -131,7 +133,7 @@ const Products = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 absolute left-3 rtl:right-3 cursor-pointer" onClick={searchHandler}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
                         </svg>
-                        <input type="text" className="h-10 grow lg:grow-0 lg:w-72 bg-transparent rounded border border-general-50 outline-none px-10 placeholder:text-general-70 font-iransans-regular placeholder:ltr:font-nunitosans-regular placeholder:rtl:font-iransans-regular" placeholder={t("Search")} value={serachedValue} onChange={(e) => setSearchedValue(e.target.value)} />
+                        <input type="text" className="h-10 grow lg:grow-0 lg:w-72 bg-transparent rounded border border-general-50 outline-none px-10 placeholder:text-general-70 font-iransans-regular placeholder:ltr:font-nunitosans-regular placeholder:rtl:font-iransans-regular" placeholder={t("Search by name or ID")} value={serachedValue} onChange={(e) => setSearchedValue(e.target.value)} />
                     </div>
                 </div>
                 {

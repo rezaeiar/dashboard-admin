@@ -45,7 +45,7 @@ const EditProduct = () => {
             setWeight(productData.weight)
             setCountry(productData.country)
             setIsDigital(productData.isDigital)
-            setCategoryId(productData.category.id)
+            setCategoryId(productData.category ? productData.category.id : "")
         }
     }, [isSuccessProductData, isFetched])
 
@@ -247,6 +247,12 @@ const EditProduct = () => {
                         {
                             isSuccess &&
                             <ul>
+                                {
+                                    !data.length &&
+                                    <span className="text-general-80 text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                        {t("There are no categories.")}
+                                    </span>
+                                }
                                 {
                                     data.map((category: { id: string, name: string }) => (
                                         <li className="text-general-90 text-xs lg:text-sm flex items-center gap-x-2 font-iransans-regular" key={category.id}>

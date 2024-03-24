@@ -1,12 +1,10 @@
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
-import { useQuery } from "react-query"
-import { showAddTaskModal } from "../store/slices/AddTaskModalSlice"
 import { useState } from "react"
-import { getAllCategories, addCategory } from '../../api/services/category'
+import { addTask } from '../../api/services/task'
+import { showAddTaskModal } from "../store/slices/AddTaskModalSlice"
 import { showSuccessModal } from "../store/slices/successModalSlice"
 import { showErrorModal } from "../store/slices/ErrorModalSlice"
-import { addTask } from '../../api/services/task'
 import Button from "./Button"
 
 type AddTaskModalProps = {
@@ -27,7 +25,8 @@ const AddTaskModal = ({ isShowAddTaskModal }: AddTaskModalProps) => {
     const [expire_time, setExpire_time] = useState("")
 
     const addTaskHandler = () => {
-        addTask({ title, email, expire_time })
+        let expire = new Date((new Date().getTime() + (86400000 * Number(expire_time))))
+        addTask({ title, email, expire_time: expire })
             .then(res => {
                 if (res.status === 201) {
                     dispatch(showAddTaskModal({ visibility: false }))

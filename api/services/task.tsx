@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie';
 type addTaskType = {
     email: string,
     title: string,
-    expire_time: string,
+    expire_time: Date,
 }
 
 const cookies = new Cookies()
