@@ -41,6 +41,7 @@ const routes: RouteType[] = [
             { path: 'coupons/create', element: <CreateCoupons /> },
             { path: 'managers', element: <Managers /> },
             { path: 'todolist', element: <TodoList /> },
+            { path: 'setting/', element: <Setting /> },
             { path: 'setting/:page', element: <Setting /> },
         ]
     },

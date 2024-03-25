@@ -74,9 +74,7 @@ const ProfileSetting = () => {
                     <li className="*:p-1 *:sm:p-2 *:pt-0 shrink-0">
                         <NavLink
                             to={`/panel/setting/profile`}
-                            className={({ isActive }) =>
-                                isActive ? "text-primary-100 border-b border-primary-100" : ""
-                            }
+                            className={'text-primary-100 border-b border-primary-100'}
                         >
                             Profile
                         </NavLink>

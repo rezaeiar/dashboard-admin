@@ -150,7 +150,7 @@ const SideBar = () => {
                 </span>
                 <ul className='flex flex-col gap-y-1'>
                     <li className='relative'>
-                        <NavLink to={'/panel/setting/profile'} className={({ isActive }) => {
+                        <NavLink to={'/panel/setting/'} className={({ isActive }) => {
                             return `h-10 lg:px-4 mx-4 rounded text-sm flex justify-center lg:justify-between items-center rtl:font-iransans-semiBold transition-colors cursor-pointer ${isActive ? 'bg-primary-100 text-white before:bg-primary-100 before:h-full before:w-1 before:rounded-e before:left-0 rtl:before:right-0 before:absolute' : 'text-general-80 hover:bg-primary-100 hover:text-white'}`
                         }}>
                             <div className="flex gap-x-4 items-center">
