@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { useQuery } from "react-query"
 import { getAllCategories } from "../../api/services/category"

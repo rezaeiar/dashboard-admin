@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux"
 import { useParams, useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { useQuery } from "react-query"
-import { getSindleProduct, addProduct, editProduct } from '../../api/services/product'
+import { getSindleProduct, editProduct } from '../../api/services/product'
 import { getAllCategories } from "../../api/services/category"
 import { useState, ChangeEvent, useEffect } from "react"
 import { showAddCategoryModal } from "../store/slices/AddCategoryModalSlice"

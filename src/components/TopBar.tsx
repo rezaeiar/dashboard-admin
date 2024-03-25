@@ -31,6 +31,8 @@ const TopBar = () => {
     }
 
     const { data, isLoading, isSuccess } = useQuery("admin", () => getMe())
+    console.log(data);
+    
 
     return (
         <div className='sticky top-0 w-full h-14 md:h-16 bg-white shadow flex justify-between items-center px-4 z-50 select-none'>
