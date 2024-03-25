@@ -5,36 +5,30 @@ import Button from '../components/Button'
 import { useQuery } from 'react-query'
 import { getMe } from '../../api/services/auth'
 import Loading from '../components/Loading'
-import CheckBox from '../components/CheckBox'
 
-const NotificationSetting = () => {
+const PanelSetting = () => {
 
     const { t } = useTranslation()
     const navigate = useNavigate()
 
     const { isLoading, isSuccess } = useQuery("admin", () => getMe())
 
-    const [PendingOrders, setPendingOrders] = useState(true)
-    const [outOfStockproduct, setOutOfStockproduct] = useState(true)
-    const [emptyProductList, setEmptyProductList] = useState(false)
-    const [taskNotDone, setTaskNotDone] = useState(true)
+    const [numberOfListItem, setNumberOfListItem] = useState(10)
 
     useEffect(() => {
         if (isSuccess) {
         }
     }, [isSuccess])
 
-
-
     const saveSettingHandler = () => {
-        const changeSetting = {
-            PendingOrders,
-            outOfStockproduct,
-            emptyProductList,
-            taskNotDone
-        }
-        console.log(changeSetting);
-
+        // const newProfileInfo = {
+        //     first_name,
+        //     last_name,
+        //     email,
+        //     username
+        // }
+        // console.log(newProfileInfo);
+        
     }
 
     if (isLoading) return <Loading />
@@ -68,7 +62,7 @@ const NotificationSetting = () => {
                     </Button>
                 </div>
             </div>
-            <div className="bg-white rounded-md p-5 xl:p-7 flex flex-col">
+            <div className="bg-white rounded-md p-5 xl:p-7 flex flex-col gap-y-5 xl:gap-y-7">
                 <ul className="border-b flex gap-x-4 sm:gap-x-8 items-center *:text-general-80 ltr:font-nunitosans-semiBold rtl:font-iransans-semiBold pb-1 sm:pb-2 overflow-x-auto overflow-y-hidden text-sm lg:text-base">
                     <li className="*:p-1 *:sm:p-2 *:pt-0 shrink-0">
                         <NavLink
@@ -101,57 +95,27 @@ const NotificationSetting = () => {
                         </NavLink>
                     </li>
                 </ul>
-                <div className="flex flex-col divide-y">
-                    <div className="py-6 flex justify-between items-center">
-                        <div className="flex flex-col">
-                            <h4 className='text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold'>
-                                Pending Orders
-                            </h4>
-                            <span className='text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular'>
-                                It allows you to see if you have a pending order in the notifications section.
-                            </span>
-                        </div>
-                        <CheckBox forId='PendingOrders' isChecked={PendingOrders} setIsChecked={setPendingOrders} />
+                <div className="flex flex-col gap-y-5 xl:gap-y-7">
+                    <div className="flex flex-col">
+                        <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
+                            {t("General Settings")}
+                        </h5>
+                        <span className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                            {t("Manage your main panel settings.")}
+                        </span>
                     </div>
-                    <div className="py-6 flex justify-between items-center">
+                    <div className="grid grid-cols-1 sm:grid-cols-1 gap-x-4 gap-y-3 sm:gap-y-6">
                         <div className="flex flex-col">
-                            <h4 className='text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold'>
-                                Out of stock
-                            </h4>
-                            <span className='text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular'>
-                                You will be notified if a product is out of stock.
-                            </span>
+                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                                {t("The number of display items in the lists")}
+                            </label>
+                            <input type="number" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder="" value={numberOfListItem} onChange={e => setNumberOfListItem(+e.target.value)} />
                         </div>
-                        <CheckBox forId='outOfStockproduct' isChecked={outOfStockproduct} setIsChecked={setOutOfStockproduct} />
-                    </div>
-                    <div className="py-6 flex justify-between items-center">
-                        <div className="flex flex-col">
-                            <h4 className='text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold'>
-                                Empty of product
-                            </h4>
-                            <span className='text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular'>
-                                Be notified if the store's product list is empty.
-                            </span>
-                        </div>
-                        <CheckBox forId='emptyProductList' isChecked={emptyProductList} setIsChecked={setEmptyProductList} />
-                    </div>
-                    <div className="pt-6 flex justify-between items-center">
-                        <div className="flex flex-col">
-                            <h4 className='text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold'>
-                                Task not done
-                            </h4>
-                            <span className='text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular'>
-                                If you have an uncompleted task, you will be notified.
-                            </span>
-                        </div>
-                        <CheckBox forId='taskNotDone' isChecked={taskNotDone} setIsChecked={setTaskNotDone} />
                     </div>
                 </div>
             </div>
         </div>
-
-
     )
 }
 
-export default NotificationSetting
+export default PanelSetting
