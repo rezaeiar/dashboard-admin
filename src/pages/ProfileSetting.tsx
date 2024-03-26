@@ -5,13 +5,17 @@ import Button from '../components/Button'
 import { useQuery } from 'react-query'
 import { getMe } from '../../api/services/auth'
 import Loading from '../components/Loading'
+import { editProfileSetting } from '../../api/services/setting'
+import { showSuccessModal } from '../store/slices/successModalSlice'
+import { useDispatch } from 'react-redux'
 
 const ProfileSetting = () => {
 
-    const { t } = useTranslation()
+    const dispatch = useDispatch()
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
-    const { data, isLoading, isSuccess } = useQuery("admin", () => getMe())
+    const { data, isLoading, isSuccess, refetch } = useQuery("admin", () => getMe())
 
     const [first_name, setFirst_name] = useState("")
     const [last_name, setLast_name] = useState("")
@@ -34,8 +38,15 @@ const ProfileSetting = () => {
             email,
             username
         }
-        console.log(newProfileInfo);
-        
+        editProfileSetting(newProfileInfo)
+            .then(res => {
+                if (res.status === 200) {
+                    console.log(res);
+                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your settings have been applied successfully.") } }))
+                    refetch()
+                }
+            })
+
     }
 
     if (isLoading) return <Loading />

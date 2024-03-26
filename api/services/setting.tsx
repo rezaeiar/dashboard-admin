@@ -9,6 +9,13 @@ type PostSettingType = {
     numberDispaly?: number
 }
 
+type PostProfileSettingType = {
+    first_name: string,
+    last_name: string,
+    email: string,
+    username: string,
+}
+
 const cookies = new Cookies()
 
 export const getAllSetting = async () => {
@@ -34,38 +41,14 @@ export const editSetting = async (settingInfo: PostSettingType) => {
         .then(res => res)
 }
 
-// export const addProduct = async (productInfo: PostProductType) => {
-//     return await apiReq({
-//         method: "POST",
-//         url: "/product",
-//         data: productInfo,
-//         headers: {
-//             "Authorization": `Bearer ${cookies.get("token")}`
-//         }
-//     })
-//         .then(res => res)
-// }
-
-// export const getSindleProduct = async (id: string) => {
-//     return await apiReq({
-//         method: "GET",
-//         url: `/product/${id}`,
-//         headers: {
-//             "Authorization": `Bearer ${cookies.get("token")}`
-//         }
-//     })
-//         .then(res => res.data)
-// }
-
-
-
-// export const deleteSingleProduct = async (id: string) => {
-//     return await apiReq({
-//         method: "DELETE",
-//         url: `/product/${id}`,
-//         headers: {
-//             "Authorization": `Bearer ${cookies.get("token")}`
-//         }
-//     })
-//         .then(res => res)
-// }
+export const editProfileSetting = async (ProfileSettingInfo: PostProfileSettingType) => {
+    return await apiReq({
+        method: "PUT",
+        url: `/setting/admin`,
+        data: ProfileSettingInfo,
+        headers: {
+            "Authorization": `Bearer ${cookies.get("token")}`
+        }
+    })
+        .then(res => res)
+}
