@@ -12,6 +12,7 @@ import Button from "../components/Button"
 import { statusStyleGenerator } from "../utils/helpers"
 import Pagination from "../components/Pagination"
 import EmptyEntity from "../components/EmptyEntity"
+import { getAllSetting } from "../../api/services/setting"
 
 const Coupons = () => {
 
@@ -19,14 +20,20 @@ const Coupons = () => {
     const { t } = useTranslation()
 
     const { data, isLoading, refetch, dataUpdatedAt } = useQuery("coupons", getAllCoupons)
+    const { data: dataSetting, isSuccess: isSuccessSetting } = useQuery("setting", getAllSetting)
+
     
     const [allCoupons, setAllCoupons] = useState<null | { usage: number }[]>(null)
 
     const [selectedStatus, setSelectedStatus] = useState("-1")
     const [filterBy, setFilterBy] = useState("-1")
     const [serachedValue, setSearchedValue] = useState("")
-    const [shown] = useState(10)
+    const [shown, setShown] = useState(10)
     const [page, setPage] = useState(1);
+
+    useEffect(() => {
+        if (isSuccessSetting) setShown(dataSetting.numberDispaly)
+    }, [isSuccessSetting, dataSetting])
 
     const changePage = (page: number) => setPage(page)
     let updatedTime = new Date(dataUpdatedAt);

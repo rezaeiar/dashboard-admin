@@ -12,6 +12,7 @@ import Button from "../components/Button"
 import { Link } from "react-router-dom"
 import Pagination from "../components/Pagination"
 import EmptyEntity from "../components/EmptyEntity"
+import { getAllSetting } from "../../api/services/setting"
 
 const Products = () => {
 
@@ -20,14 +21,19 @@ const Products = () => {
 
     const { data, isLoading, refetch, dataUpdatedAt } = useQuery("products", getAllProducts)
     const { data: categoryData } = useQuery("categories", getAllCategories)
+    const { data: dataSetting, isSuccess: isSuccessSetting } = useQuery("setting", getAllSetting)
 
     const [allProducts, setAllProducts] = useState<null | { count: number, price: number }[]>(null)
 
     const [selectedCategory, setSelectedCategory] = useState("-1")
     const [filterBy, setFilterBy] = useState("-1")
     const [serachedValue, setSearchedValue] = useState("")
-    const [shown] = useState(10)
+    const [shown, setShown] = useState(10)
     const [page, setPage] = useState(1);
+
+    useEffect(() => {
+        if (isSuccessSetting) setShown(dataSetting.numberDispaly)
+    }, [isSuccessSetting, dataSetting])
 
     const changePage = (page: number) => setPage(page)
     let updatedTime = new Date(dataUpdatedAt);

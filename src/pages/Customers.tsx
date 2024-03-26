@@ -11,6 +11,7 @@ import Button from "../components/Button"
 import { Link } from "react-router-dom"
 import Pagination from "../components/Pagination"
 import EmptyEntity from "../components/EmptyEntity"
+import { getAllSetting } from "../../api/services/setting"
 
 const Customers = () => {
 
@@ -18,13 +19,19 @@ const Customers = () => {
     const { t } = useTranslation()
 
     const { data, isLoading, refetch, dataUpdatedAt } = useQuery("customers", getAllCustomers)
+    const { data: dataSetting, isSuccess: isSuccessSetting } = useQuery("setting", getAllSetting)
+
     const [allCustomers, setAllCustomers] = useState<null | { roles: String[], order_count: number, purchase_amount: number }[]>(null)
 
     const [selectedRole, setSelectedRole] = useState("-1")
     const [filterBy, setFilterBy] = useState("-1")
     const [serachedValue, setSearchedValue] = useState("")
-    const [shown] = useState(10)
+    const [shown, setShown] = useState(10)
     const [page, setPage] = useState(1);
+
+    useEffect(() => {
+        if (isSuccessSetting) setShown(dataSetting.numberDispaly)
+    }, [isSuccessSetting, dataSetting])
 
     const changePage = (page: number) => setPage(page)
     let updatedTime = new Date(dataUpdatedAt);

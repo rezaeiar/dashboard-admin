@@ -10,6 +10,7 @@ import { idGenerator, statusStyleGenerator } from "../utils/helpers"
 import Pagination from "../components/Pagination"
 import EmptyEntity from "../components/EmptyEntity"
 import { Link } from "react-router-dom"
+import { getAllSetting } from "../../api/services/setting"
 
 const Orders = () => {
 
@@ -17,14 +18,19 @@ const Orders = () => {
     const { t } = useTranslation()
 
     const { data, isLoading, dataUpdatedAt } = useQuery("orders", getAllOrders)
+    const { data: dataSetting, isSuccess: isSuccessSetting } = useQuery("setting", getAllSetting)
 
     const [allOrders, setAllOrders] = useState<null | { total_price: number }[]>(null)
 
     const [selectedStatus, setSelectedStatus] = useState("-1")
     const [filterBy, setFilterBy] = useState("-1")
     const [serachedValue, setSearchedValue] = useState("")
-    const [shown] = useState(10)
+    const [shown, setShown] = useState(10)
     const [page, setPage] = useState(1);
+
+    useEffect(() => {
+        if (isSuccessSetting) setShown(dataSetting.numberDispaly)
+    }, [isSuccessSetting, dataSetting])
 
     const changePage = (page: number) => setPage(page)
     let updatedTime = new Date(dataUpdatedAt);
