@@ -12,17 +12,17 @@ const DashboardDetailCard = (props: DashboardDetailCardProps) => {
     const { t } = useTranslation()
 
     return (
-        <div className="rounded-md shadow-md border-general-50 bg-white p-3 xl:p-4 flex flex-col gap-y-4 sm:gap-y-6 capitalize">
+        <div className="border-general-50 bg-white p-3 xl:p-4 flex flex-col gap-y-4 sm:gap-y-6 capitalize">
             <div className="flex justify-between items-center">
                 <div className="flex flex-col gap-y-1">
-                    <h4 className="text-general-80 rtl:font-iransans-semiBold text-base lg:text-xs xl:text-base">
+                    <h4 className="text-general-80 ltr:font-nunitosans-semiBold rtl:font-iransans-semiBold text-sm lg:text-xs xl:text-sm">
                         {props.title}
                     </h4>
                     <span className="text-general-100 text-xl font-nunitosans-extrabold rtl:font-iransans-extrabold">
                         {props.value.toLocaleString()}
                     </span>
                 </div>
-                <img src={`./icons/${props.icon}`} className="h-12 w-12 lg:h-10 lg:w-10 xl:h-12 xl:w-12" alt="icon" />
+                <img src={`/icons/${props.icon}`} className="h-12 w-12 lg:h-10 lg:w-10 xl:h-12 xl:w-12" alt="icon" />
             </div>
             <div className="flex gap-x-1 lg:gap-x-0.5 xl:gap-x-1 text-xs items-center">
                 {
@@ -36,13 +36,13 @@ const DashboardDetailCard = (props: DashboardDetailCardProps) => {
                 }
                 {
                     props.status.type ?
-                        <div className="flex gap-x-1 rtl:font-iransans-semiBold text-sm lg:text-[10px] xl:text-sm">
+                        <div className="flex gap-x-1 ltr:font-nunitosans-semiBold rtl:font-iransans-semiBold text-sm lg:text-[10px] xl:text-xs">
                             <span className="text-green-101">
                                 {props.status.value}%
                             </span>
                             {t("up from yesterday")}
                         </div> :
-                        <div className="flex gap-x-1 rtl:font-iransans-semiBold text-sm lg:text-[10px] xl:text-sm">
+                        <div className="flex gap-x-1 ltr:font-nunitosans-semiBold rtl:font-iransans-semiBold text-sm lg:text-[10px] xl:text-xs">
                             <span className="text-red-101">
                                 {props.status.value}%
                             </span>

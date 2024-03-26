@@ -186,14 +186,14 @@ const CustomerInfo = () => {
                             </h5>
                             <table className='divide-y bg-white rounded-md w-full flex flex-col overflow-x-auto'>
                                 <thead>
-                                    <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-70 child:text-start min-w-max gap-x-2 *:text-start'>
+                                    <tr className='p-3 md:p-4 bg-general-40 grid grid-cols-4 sm:text-sm text-xs ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-100 child:text-start min-w-max gap-x-2 *:text-start'>
                                         <th className="w-28 sm:w-32">{t("Order")}</th>
                                         <th className="w-28 sm:w-32">{t("Date")}</th>
                                         <th className="w-32 sm:w-36">{t("Order Status")}</th>
                                         <th className="w-28 sm:w-32">{t("Price")}</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody className="divide-y">
                                     {
                                         data.orders.map((order: any) => (
                                             <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
