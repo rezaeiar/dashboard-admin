@@ -3,32 +3,38 @@ import { useTranslation } from 'react-i18next'
 import { NavLink, useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
 import { useQuery } from 'react-query'
-import { getMe } from '../../api/services/auth'
 import Loading from '../components/Loading'
+import { editSetting, getAllSetting } from '../../api/services/setting'
+import { showSuccessModal } from '../store/slices/successModalSlice'
+import { useDispatch } from 'react-redux'
 
 const PanelSetting = () => {
 
-    const { t } = useTranslation()
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const { t } = useTranslation()
 
-    const { isLoading, isSuccess } = useQuery("admin", () => getMe())
+    const { data, isSuccess, isLoading } = useQuery("setting", getAllSetting)
 
-    const [numberOfListItem, setNumberOfListItem] = useState(10)
+    const [numberDispaly, setNumberDispaly] = useState(10)
 
     useEffect(() => {
         if (isSuccess) {
+            setNumberDispaly(data.numberDispaly)
         }
     }, [isSuccess])
 
     const saveSettingHandler = () => {
-        // const newProfileInfo = {
-        //     first_name,
-        //     last_name,
-        //     email,
-        //     username
-        // }
-        // console.log(newProfileInfo);
-        
+        const changeSetting = {
+            numberDispaly
+        }
+
+        editSetting(changeSetting)
+            .then(res => {
+                if (res.status === 200) {
+                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your settings have been applied successfully.") } }))
+                }
+            })
     }
 
     if (isLoading) return <Loading />
@@ -109,7 +115,7 @@ const PanelSetting = () => {
                             <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                 {t("The number of display items in the lists")}
                             </label>
-                            <input type="number" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder="" value={numberOfListItem} onChange={e => setNumberOfListItem(+e.target.value)} />
+                            <input type="number" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder="" value={numberDispaly} onChange={e => setNumberDispaly(+e.target.value)} />
                         </div>
                     </div>
                 </div>
