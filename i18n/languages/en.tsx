@@ -290,6 +290,7 @@ const en = {
     "There are no tasks assigned to you at this moment or the assigned task has expired, enjoy!": "There are no tasks assigned to you at this moment or the assigned task has expired, enjoy!",
     "There are no Task for you": "There are no Task for you",
     "There are no Task for Managers.": "There are no Task for Managers.",
-    "There are currently no tasks assigned to administrators or the assigned task has expired.": "There are currently no tasks assigned to administrators or the assigned task has expired."
+    "There are currently no tasks assigned to administrators or the assigned task has expired.": "There are currently no tasks assigned to administrators or the assigned task has expired.",
+    "Your settings have been applied successfully." : "Your settings have been applied successfully."
 }
 export default en

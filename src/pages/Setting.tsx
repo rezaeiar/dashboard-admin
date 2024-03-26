@@ -6,9 +6,7 @@ import PanelSetting from "./PanelSetting"
 const Setting = () => {
 
     const params = useParams()
-    
-    console.log("Fdsa");
-    
+
     switch (params.page) {
         case "profile": {
             return <ProfileSetting />
@@ -19,7 +17,7 @@ const Setting = () => {
         case "general": {
             return <PanelSetting />
         }
-        default : {
+        default: {
             return <ProfileSetting />
         }
     }

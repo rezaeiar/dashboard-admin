@@ -290,6 +290,7 @@ const fa = {
     "There are no tasks assigned to you at this moment or the assigned task has expired, enjoy!": "در حال حاضر هیچ کاری به شما محول نشده است یا کار محول شده منقضی شده است، لذت ببرید!",
     "There are no Task for you": "هیچ وظیفه ای برای شما وجود ندارد",
     "There are no Task for Managers.": "هیچ وظیفه ای برای مدیران وجود ندارد.",
-    "There are currently no tasks assigned to administrators or the assigned task has expired.": "در حال حاضر هیچ کاری برای مدیران محول نشده است یا کار محول شده منقضی شده است."
+    "There are currently no tasks assigned to administrators or the assigned task has expired.": "در حال حاضر هیچ کاری برای مدیران محول نشده است یا کار محول شده منقضی شده است.",
+    "Your settings have been applied successfully." : "تنظیمات شما با موفقیت اعمال شد."
 }
 export default fa

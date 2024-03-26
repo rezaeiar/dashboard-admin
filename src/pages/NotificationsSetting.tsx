@@ -1,26 +1,35 @@
-import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate, NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { NavLink, useNavigate } from 'react-router-dom'
-import Button from '../components/Button'
-import { useQuery } from 'react-query'
-import { getMe } from '../../api/services/auth'
+import { useQuery } from "react-query"
+import { getAllSetting, editSetting } from '../../api/services/setting'
+import { useState, useEffect } from 'react'
+import { showSuccessModal } from '../store/slices/successModalSlice'
 import Loading from '../components/Loading'
+import Button from '../components/Button'
 import CheckBox from '../components/CheckBox'
 
 const NotificationSetting = () => {
 
-    const { t } = useTranslation()
+    const dispatch = useDispatch()
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
-    const { isLoading, isSuccess } = useQuery("admin", () => getMe())
+    const { data, isSuccess, isLoading } = useQuery("setting", getAllSetting)
+    console.log(data);
 
-    const [PendingOrders, setPendingOrders] = useState(true)
-    const [outOfStockproduct, setOutOfStockproduct] = useState(true)
+
+    const [pendingOrder, setPendingOrder] = useState(false)
+    const [outOfStockProduct, setOutOfStockProduct] = useState(false)
     const [emptyProductList, setEmptyProductList] = useState(false)
-    const [taskNotDone, setTaskNotDone] = useState(true)
+    const [taskNotDone, setTaskNotDone] = useState(false)
 
     useEffect(() => {
         if (isSuccess) {
+            setPendingOrder(data.pendingOrder)
+            setOutOfStockProduct(data.outOfStockProduct)
+            setEmptyProductList(data.emptyProductList)
+            setTaskNotDone(data.taskNotDone)
         }
     }, [isSuccess])
 
@@ -28,12 +37,17 @@ const NotificationSetting = () => {
 
     const saveSettingHandler = () => {
         const changeSetting = {
-            PendingOrders,
-            outOfStockproduct,
+            pendingOrder,
+            outOfStockProduct,
             emptyProductList,
             taskNotDone
         }
-        console.log(changeSetting);
+        editSetting(changeSetting)
+            .then(res => {
+                if (res.status === 200) {
+                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your settings have been applied successfully.") } }))
+                }
+            })
 
     }
 
@@ -111,7 +125,7 @@ const NotificationSetting = () => {
                                 It allows you to see if you have a pending order in the notifications section.
                             </span>
                         </div>
-                        <CheckBox forId='PendingOrders' isChecked={PendingOrders} setIsChecked={setPendingOrders} />
+                        <CheckBox forId='PendingOrders' isChecked={pendingOrder} setIsChecked={setPendingOrder} />
                     </div>
                     <div className="py-6 flex justify-between items-center">
                         <div className="flex flex-col">
@@ -122,7 +136,7 @@ const NotificationSetting = () => {
                                 You will be notified if a product is out of stock.
                             </span>
                         </div>
-                        <CheckBox forId='outOfStockproduct' isChecked={outOfStockproduct} setIsChecked={setOutOfStockproduct} />
+                        <CheckBox forId='outOfStockproduct' isChecked={outOfStockProduct} setIsChecked={setOutOfStockProduct} />
                     </div>
                     <div className="py-6 flex justify-between items-center">
                         <div className="flex flex-col">
