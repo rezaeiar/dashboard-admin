@@ -15,7 +15,7 @@ const NotificationSetting = () => {
     const navigate = useNavigate()
     const { t } = useTranslation()
 
-    const { data, isSuccess, isLoading } = useQuery("setting", getAllSetting)
+    const { data, isSuccess, isLoading, refetch } = useQuery("setting", getAllSetting)
     console.log(data);
 
 
@@ -46,6 +46,7 @@ const NotificationSetting = () => {
             .then(res => {
                 if (res.status === 200) {
                     dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your settings have been applied successfully.") } }))
+                    refetch()
                 }
             })
 
