@@ -16,8 +16,6 @@ const NotificationSetting = () => {
     const { t } = useTranslation()
 
     const { data, isSuccess, isLoading, refetch } = useQuery("setting", getAllSetting)
-    console.log(data);
-
 
     const [pendingOrder, setPendingOrder] = useState(false)
     const [outOfStockProduct, setOutOfStockProduct] = useState(false)
