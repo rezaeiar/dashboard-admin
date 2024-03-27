@@ -15,10 +15,28 @@ const NotificationCard = (props: NotificationCardProps) => {
     const { data, isSuccess } = useQuery("setting", getAllSetting)
     const { data: ordersData, isSuccess: ordersIsSuccess } = useQuery("orders", getAllOrders)
     const { data: productsData, isSuccess: productsIsSuccess } = useQuery("products", getAllProducts)
-    // const { data: userTasksData, isSuccess: userTasksIsSuccess } = useQuery("user-tasks", getUserTasks)
+    const { data: userTasksData, isSuccess: userTasksIsSuccess } = useQuery("user-tasks", getUserTasks)
 
-    console.log(data, productsData);
+    console.log( userTasksData);
 
+    const outOfStockProductHandler = () => {
+        const outOfStockLength = productsIsSuccess && productsData.filter((order: any) => order.inـstock === false).length
+        return outOfStockLength
+    }
+
+    const pendingOrderHandler = () => {
+        const pendingOrderLength = ordersIsSuccess && ordersData.filter((order: any) => order.status === "PENDING").length
+        return pendingOrderLength
+    }
+
+    const emptyProductListHandler = () => {
+        return productsIsSuccess && productsData.length ? false : true
+    }
+
+    const taskNotDoneHandler = () => {
+        const taskNotDoneLength = userTasksIsSuccess && userTasksData.length
+        return taskNotDoneLength
+    }
 
     return (
         <div className={`${props.show ? 'visible opacity-100' : 'invisible opacity-0'} flex transition-all flex-col w-max bg-white shadow-box rounded-xl absolute top-12 rtl:-right-28 ltr:-left-28 divide-y border border-general-30 overflow-hidden`}>
@@ -29,7 +47,7 @@ const NotificationCard = (props: NotificationCardProps) => {
             </div>
             <div className="flex flex-col child-hover:bg-general-30">
                 {
-                    isSuccess && !!data.outOfStockProduct &&
+                    !!(isSuccess && !!data.outOfStockProduct && outOfStockProductHandler()) &&
                     <div className="py-3 px-5 flex items-center gap-x-2 text-general-90">
                         <div className="flex items-center justify-center rounded-full h-9 w-9 bg-gradient-to-b from-[#4E96FF] to-[#80C9FC] text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -42,13 +60,13 @@ const NotificationCard = (props: NotificationCardProps) => {
                                 {t("Empty product inventory")}
                             </h4>
                             <span className="hidden md:block text-general-60 text-[10px] lg:text-xs ltr:font-nunitosans-regular rtl:font-iransans-semiBold">
-                                {t(`Take action to increase product inventory (${productsIsSuccess && productsData.filter((order: any) => order.inـstock === false).length})`)}
+                                {t(`Take action to increase product inventory (${outOfStockProductHandler()})`)}
                             </span>
                         </div>
                     </div>
                 }
                 {
-                    isSuccess && !!data.pendingOrder &&
+                    !!(isSuccess && !!data.pendingOrder && pendingOrderHandler()) &&
                     <div className="py-3 px-5 flex items-center gap-x-2 text-general-90">
                         <div className="flex items-center justify-center rounded-full h-9 w-9 bg-gradient-to-b from-[#F97FD9] to-[#FFC1E6] text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -61,13 +79,13 @@ const NotificationCard = (props: NotificationCardProps) => {
                                 Pending Orders
                             </h4>
                             <span className="hidden md:block text-general-60 text-[10px] lg:text-xs ltr:font-nunitosans-regular rtl:font-iransans-semiBold">
-                                Do you have a number of pending orders ({ordersIsSuccess && ordersData.filter((order: any) => order.status === "PENDING").length})
+                                Do you have a number of pending orders ({pendingOrderHandler()})
                             </span>
                         </div>
                     </div>
                 }
                 {
-                    isSuccess && !!data.emptyProductList &&
+                    !!(isSuccess && !!data.emptyProductList && emptyProductListHandler()) &&
                     <div className="py-3 px-5 flex items-center gap-x-2 text-general-90">
                         <div className="flex items-center justify-center rounded-full h-9 w-9 bg-gradient-to-b from-[#9E8FFF] to-[#EBCBFF] text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -85,7 +103,7 @@ const NotificationCard = (props: NotificationCardProps) => {
                     </div>
                 }
                 {
-                    isSuccess && !!data.taskNotDone &&
+                    !!(isSuccess && !!data.taskNotDone && taskNotDoneHandler()) &&
                     <div className="py-3 px-5 flex items-center gap-x-2 text-general-90">
                         <div className="flex items-center justify-center rounded-full h-9 w-9 bg-gradient-to-b from-[#FF8F8F] to-[#FFC1C1] text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
