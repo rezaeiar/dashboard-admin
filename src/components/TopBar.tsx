@@ -18,6 +18,8 @@ const TopBar = () => {
     const [isShowLanguageSelection, setIsShowLanguageSelection] = useState(false)
     const [isShowNotificationCard, setIsShowNotificationCard] = useState(false)
 
+    const [isShowMobileSideBar, setIsShowMobileSideBar] = useState(false)
+
     const ShowAdminCardHandler = (show: boolean) => {
         setIsShowAdminCard(show)
         setIsShowLanguageSelection(false)
@@ -38,14 +40,13 @@ const TopBar = () => {
 
     return (
         <>
-            <MobileSideBar />
+            <MobileSideBar isShowMobileSideBar={isShowMobileSideBar} setIsShowMobileSideBar={setIsShowMobileSideBar} />
             <div className='sticky top-0 w-full h-14 md:h-16 bg-white shadow flex justify-between items-center px-4 z-30 select-none'>
                 <div className="block md:hidden text-general-70">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
                 </div>
-
                 <div className="flex gap-x-6 lg:gap-x-8 grow-0 md:grow">
                     <h1 className='text-lg lg:text-xl flex items-center font-nunitosans-extrabold cursor-default'>
                         <span className='text-primary-100'>Dash</span>
@@ -135,7 +136,7 @@ const TopBar = () => {
                             <AdminCard show={isShowAdminCard} />
                         </div>
                     }
-                    <div className="block md:hidden text-general-70">
+                    <div className="block md:hidden text-general-70" onClick={() => setIsShowMobileSideBar(true)}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>

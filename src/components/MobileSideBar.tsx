@@ -1,19 +1,32 @@
 import { NavLink } from "react-router-dom"
 import { useTranslation } from "react-i18next"
+import { Dispatch } from "@reduxjs/toolkit"
+import { SetStateAction, useEffect } from "react"
+import { useLocation } from "react-router-dom"
 
-const MobileSideBar = () => {
+type MobileSideBarProps = {
+    isShowMobileSideBar: boolean,
+    setIsShowMobileSideBar: Dispatch<SetStateAction<boolean>>
+}
+
+const MobileSideBar = ({ isShowMobileSideBar, setIsShowMobileSideBar }: MobileSideBarProps) => {
 
     const { t } = useTranslation()
+    const location = useLocation()
+    useEffect(() => {
+        setIsShowMobileSideBar(false)
+    }, [location.pathname])
+
     return (
         <>
-            <div className='block md:hidden fixed h-screen w-full backdrop-blur-sm right-0 left-0 z-40 bg-black/10'></div>
-            <div className="fixed h-full w-72 sm:w-80 left-0 bg-white shadow-sm z-50 flex flex-col gap-y-5">
+            <div className={`md:hidden fixed h-screen w-full backdrop-blur-sm right-0 left-0 z-40 bg-black/10 transition-all ${isShowMobileSideBar ? 'visible opacity-100' : 'invisible opacity-0'}`} onClick={() => setIsShowMobileSideBar(false)}></div>
+            <div className={`fixed md:hidden h-full w-72 sm:w-80 left-0 bg-white shadow-sm z-50 flex flex-col gap-y-5 transition-all ${isShowMobileSideBar ? 'ltr:left-0 rtl:right-0' : "ltr:-left-72 ltr:sm:-left-80 rtl:-right-72 rtl:sm:-right-80"}`}>
                 <div className="flex justify-between items-center p-4 pb-0">
                     <h1 className='text-lg lg:text-xl flex items-center font-nunitosans-extrabold cursor-default'>
                         <span className='text-primary-100'>Dash</span>
                         <span className='text-general-100'>Stack</span>
                     </h1>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-general-70">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 cursor-pointer text-general-70" onClick={() => setIsShowMobileSideBar(false)}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
                 </div>
