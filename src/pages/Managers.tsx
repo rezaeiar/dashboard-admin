@@ -18,7 +18,6 @@ const Managers = () => {
     const { t } = useTranslation()
 
     const { data, isLoading } = useQuery("managers", getAllManagers)
-    console.log(data);
 
     if (isLoading) return <Loading />
 
@@ -44,7 +43,7 @@ const Managers = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 lg:gap-4">
                     {
                         data.map((manager: ManagerType) => (
-                            <ManagerCard {...manager} />
+                            <ManagerCard {...manager} key={manager.id} />
                         ))
                     }
                 </div>

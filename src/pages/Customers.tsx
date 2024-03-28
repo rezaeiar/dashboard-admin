@@ -79,7 +79,10 @@ const Customers = () => {
                     refetch()
                 }
             })
-            .catch(() => {
+            .catch((err) => {
+                console.log(err);
+                
+                dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
                 dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired client could not be deleted, please try again.") } }))
             })
     }
