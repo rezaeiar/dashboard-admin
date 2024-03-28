@@ -12,7 +12,7 @@ export type CatagoryCardProps = {
 const CategorieCard = ({ id, name, products, image }: CatagoryCardProps) => {
     const { t } = useTranslation()
     return (
-        <div className="flex flex-col bg-white rounded-md overflow-hidden shadow-card group">
+        <div className="flex flex-col bg-white rounded-md overflow-hidden shadow-card group hover:scale-105 hover:shadow-lg hover:z-20 transition-all">
             <div className="relative">
                 {
                     image &&
