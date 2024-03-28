@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import { Dispatch } from "@reduxjs/toolkit"
-import { SetStateAction, useEffect } from "react"
+import { SetStateAction, useEffect, Dispatch } from "react"
 import { useLocation } from "react-router-dom"
 
 type MobileSideBarProps = {
