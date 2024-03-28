@@ -7,6 +7,7 @@ import { getUserTasks } from "../../api/services/task"
 import { useDispatch } from "react-redux"
 import { setNotificationsLength } from "../store/slices/NotificationsLengthSlice"
 import { useEffect } from "react"
+import { Link } from "react-router-dom"
 
 type NotificationCardProps = {
     show: boolean,
@@ -148,9 +149,9 @@ const NotificationCard = (props: NotificationCardProps) => {
                     </div>
             }
             <div className="py-3 flex justify-center">
-                <span className='text-xs text-general-60 font-nunitosans-regular'>
-                    See all notification
-                </span>
+                <Link to={'/panel/setting/notifications'} className='text-xs text-general-60 font-nunitosans-regular'>
+                    Manage notifications
+                </Link>
             </div>
         </div >
     )

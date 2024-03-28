@@ -7,6 +7,7 @@ import { useQuery } from "react-query"
 import { getMe } from "../../api/services/auth"
 import { useSelector } from "react-redux"
 import MobileSideBar from "./MobileSideBar"
+import { Link } from "react-router-dom"
 
 
 const TopBar = () => {
@@ -42,11 +43,11 @@ const TopBar = () => {
         <>
             <MobileSideBar isShowMobileSideBar={isShowMobileSideBar} setIsShowMobileSideBar={setIsShowMobileSideBar} />
             <div className='sticky top-0 w-full h-14 md:h-16 bg-white shadow flex justify-between items-center px-4 z-30 select-none'>
-                <div className="block md:hidden text-general-70">
+                <Link to={'/panel/setting/profile'} className="block md:hidden text-general-70">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
-                </div>
+                </Link>
                 <div className="flex gap-x-6 lg:gap-x-8 grow-0 md:grow">
                     <h1 className='text-lg lg:text-xl flex items-center font-nunitosans-extrabold cursor-default'>
                         <span className='text-primary-100'>Dash</span>
