@@ -8,6 +8,8 @@ const Panel = () => {
     const outlet = useOutlet()
     const navigate = useNavigate()
     useEffect(() => {
+        console.log(outlet);
+        
         if (token) {
             if (!outlet) navigate("dashboard")
         } else {

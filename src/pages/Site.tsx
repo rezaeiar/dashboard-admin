@@ -1,32 +1,31 @@
-import { useToken } from "../hooks/useToken"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import Button from "../components/Button"
 import Cookies from 'universal-cookie';
 import { useQuery } from "react-query";
 import { getMe } from "../../api/services/auth";
+import { useToken } from "../hooks/useToken";
 
 const Site = () => {
 
     const cookies = new Cookies()
-    const token = useToken()
     const navigate = useNavigate()
+    const token = useToken()
 
-    const { data, isSuccess } = useQuery("admin", () => getMe())
+    const { data } = useQuery("admin", () => getMe())
 
     useEffect(() => {
-        if (isSuccess) {
-            if (data) {
-                if (data.roles.includes("ADMIN")) {
-                    navigate("/panel/dashboard")
-                }
-            }
-            else {
+
+        console.log(data);
+        
+        if (data) {
+            navigate("/panel/dashboard")
+        } else {
+            if (!token) {
                 navigate("/login")
             }
         }
-
-    }, [isSuccess])
+    }, [data])
 
     const logOutHandler = () => {
         cookies.remove("token", { path: '/', expires: new Date(Date.now() + 86400000) })

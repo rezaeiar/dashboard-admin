@@ -1,5 +1,4 @@
 import apiReq from "../CoreApi";
-import Cookies from 'universal-cookie';
 
 type PostSettingType = {
     pendingOrder?: boolean,
@@ -16,15 +15,10 @@ type PostProfileSettingType = {
     username: string,
 }
 
-const cookies = new Cookies()
-
 export const getAllSetting = async () => {
     return await apiReq({
         method: "GET",
         url: "/setting",
-        headers: {
-            "Authorization": `Bearer ${cookies.get("token")}`
-        }
     })
         .then(res => res.data)
 }
@@ -34,9 +28,6 @@ export const editSetting = async (settingInfo: PostSettingType) => {
         method: "PUT",
         url: `/setting/`,
         data: settingInfo,
-        headers: {
-            "Authorization": `Bearer ${cookies.get("token")}`
-        }
     })
         .then(res => res)
 }
@@ -46,9 +37,6 @@ export const editProfileSetting = async (ProfileSettingInfo: PostProfileSettingT
         method: "PUT",
         url: `/setting/admin`,
         data: ProfileSettingInfo,
-        headers: {
-            "Authorization": `Bearer ${cookies.get("token")}`
-        }
     })
         .then(res => res)
 }

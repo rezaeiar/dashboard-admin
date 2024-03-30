@@ -21,9 +21,6 @@ export const getMe = async () => {
     return await apiReq({
         method: "GET",
         url: "/admin",
-        headers: {
-            "Authorization": `Bearer ${document.cookie.split('=')[1]}`
-        }
     })
         .then(res => res.data)
 }
