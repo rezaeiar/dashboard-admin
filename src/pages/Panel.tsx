@@ -7,9 +7,7 @@ const Panel = () => {
     const token = useToken()
     const outlet = useOutlet()
     const navigate = useNavigate()
-    useEffect(() => {
-        console.log(outlet);
-        
+    useEffect(() => {        
         if (token) {
             if (!outlet) navigate("dashboard")
         } else {

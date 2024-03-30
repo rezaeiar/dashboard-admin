@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { useQuery } from "react-query"
-import { useState, useEffect } from "react"
+import { useState, useEffect, ChangeEvent } from "react"
 import { getSingleCategory, changeCategoryInfo, deleteSingleCategory } from "../../api/services/category"
 import { showConfirmModal } from "../store/slices/ConfirmModalSlice"
 import { showSuccessModal } from "../store/slices/successModalSlice"
@@ -79,9 +79,14 @@ const SingleCategory = () => {
         dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete product from category"), description: t("You are removing the product from this category, are you sure?") }, button: "Delete", handler: () => deleteProductFromCategoryHandler(params.CategorieName as string, productId) }))
     }
 
-    if (isLoading) {
-        return <Loading />
+    const [categoryPhoto, setCategoryPhoto] = useState(false)
+    const uploadFileHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        console.dir(event.target.value);
+
     }
+
+    if (isLoading) return <Loading />
+
     return (
         <>
             <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
@@ -205,7 +210,7 @@ const SingleCategory = () => {
                                         </span>
                                     </div>
                                 </label>
-                                <input className="w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 hidden" id="small_size" type="file" />
+                                <input className="w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 hidden" id="small_size" type="file" onChange={(event) => uploadFileHandler(event)} />
                             </div>
                             <div className="flex mt-5 pt-5 w-full border-t">
                                 <span className="text-red-101  text-xs lg:text-sm ltr:font-nunitosans-regular rtl:font-iransans-regular cursor-pointer" onClick={() => showDeleteConfirmModal()}>
