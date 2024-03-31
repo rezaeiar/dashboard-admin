@@ -1,7 +1,7 @@
 import { ButtonProps, ButtonType } from "../types/Modules.types";
 import { Link } from "react-router-dom";
 
-const Button = ({ type, size, styles, link, onSubmit, submit, children }: ButtonProps) => {
+const Button = ({ type, size, styles, link, onSubmit, submit, disabled, children }: ButtonProps) => {
 
     const generateInnerClasses = (type: ButtonType) => {
         let innerClasses = null;
@@ -42,7 +42,7 @@ const Button = ({ type, size, styles, link, onSubmit, submit, children }: Button
         )
     }
     return (
-        <button onClick={onSubmit} className={generateInnerClasses(type)} type={submit ? "submit" : "button"}>
+        <button onClick={onSubmit} disabled={disabled} className={generateInnerClasses(type)} type={submit ? "submit" : "button"}>
             {
                 children
             }

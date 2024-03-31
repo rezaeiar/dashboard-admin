@@ -30,10 +30,10 @@ const SingleCategory = () => {
         if (isSuccess) setCategoryName(data.name)
     }, [isSuccess])
 
-    const [categoryPhoto, setCategoryPhoto] = useState(false)
+    const [categoryPhoto, setCategoryPhoto] = useState("")
 
     const changeCategoryInfoHandler = (id: string) => {
-        const categoryInfo = {
+        const categoryInfo : {name: string, image?: string} = {
             name: categoryName,
         }
         if (categoryPhoto) {
@@ -91,13 +91,16 @@ const SingleCategory = () => {
         dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete product from category"), description: t("You are removing the product from this category, are you sure?") }, button: "Delete", handler: () => deleteProductFromCategoryHandler(params.CategorieName as string, productId) }))
     }
 
+    const [isFileUploading, setIsFileUploading] = useState(false)
     const uploadFileHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        setIsFileUploading(true)
         console.dir(event.target);
         uploadFile(event.target)
             .then(res => {
-                console.log(">>>>", res);
-                
-                setCategoryPhoto(res.data.url);
+                if(res.status === 201) {
+                    setIsFileUploading(false)
+                    setCategoryPhoto(res.data.url);
+                }                
             })
 
     }
@@ -127,7 +130,7 @@ const SingleCategory = () => {
                                 {t("Cancel")}
                             </>
                         </Button>
-                        <Button type="primary" size="small" styles="" onSubmit={() => showEditConfirmModal()}>
+                        <Button type="primary" size="small" disabled={isFileUploading} onSubmit={() => showEditConfirmModal()}>
                             <>
                                 {t("Save")}
                             </>

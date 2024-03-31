@@ -8,6 +8,7 @@ export type ButtonProps = {
     styles?: string,
     link?: string,
     onSubmit?: () => void,
-    submit? : boolean
+    submit? : boolean,
+    disabled?: boolean,
     children: JSX.Element,
 }
