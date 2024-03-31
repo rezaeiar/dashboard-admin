@@ -11,6 +11,7 @@ type ManagerType = {
     first_name: string,
     last_name: string,
     roles: string[],
+    avatar: string
 }
 
 const Managers = () => {
@@ -19,6 +20,8 @@ const Managers = () => {
 
     const { data, isLoading } = useQuery("managers", getAllManagers)
 
+    console.log(data);
+    
     if (isLoading) return <Loading />
 
     return (

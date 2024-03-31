@@ -13,6 +13,7 @@ type PostProfileSettingType = {
     last_name: string,
     email: string,
     username: string,
+    avatar: string
 }
 
 export const getAllSetting = async () => {
