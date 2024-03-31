@@ -9,6 +9,7 @@ import { showConfirmModal } from "../store/slices/ConfirmModalSlice"
 import { showSuccessModal } from "../store/slices/successModalSlice"
 import { showErrorModal } from "../store/slices/ErrorModalSlice"
 import { deleteProductFromCategory } from "../../api/services/category"
+import { uploadFile } from '../../api/services/upload'
 import Loading from "../components/Loading"
 import Button from "../components/Button"
 import CheckBox from "../components/CheckBox"
@@ -81,7 +82,12 @@ const SingleCategory = () => {
 
     const [categoryPhoto, setCategoryPhoto] = useState(false)
     const uploadFileHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        console.dir(event.target.value);
+        console.dir(event.target);
+        uploadFile(event.target)
+        .then(res => {
+            console.log(res);
+            
+        })
 
     }
 
