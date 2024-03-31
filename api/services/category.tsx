@@ -33,11 +33,11 @@ export const deleteSingleCategory = async (id: string) => {
     })
         .then(res => res)
 }
-export const changeCategoryInfo = async (id: string, name: string) => {
+export const changeCategoryInfo = async (id: string, categoryInfo: { image?: string, name: string }) => {
     return await apiReq({
         method: "PUT",
         url: `/category/${id}`,
-        data: { name }
+        data: categoryInfo
     })
         .then(res => res)
 }
@@ -45,7 +45,7 @@ export const deleteProductFromCategory = async (id: string, productId: string) =
     return await apiReq({
         method: "DELETE",
         url: `/category/${id}/removeProduct`,
-        data: {productId}
+        data: { productId }
     })
         .then(res => res)
 }

@@ -30,8 +30,19 @@ const SingleCategory = () => {
         if (isSuccess) setCategoryName(data.name)
     }, [isSuccess])
 
+    const [categoryPhoto, setCategoryPhoto] = useState(false)
+
     const changeCategoryInfoHandler = (id: string) => {
-        changeCategoryInfo(id, categoryName)
+        const categoryInfo = {
+            name: categoryName,
+        }
+        if (categoryPhoto) {
+            categoryInfo.image = categoryPhoto
+        }
+
+        console.log(categoryInfo);
+        
+        changeCategoryInfo(id, categoryInfo)
             .then((res) => {
                 if (res.status === 200) {
                     dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
@@ -80,14 +91,14 @@ const SingleCategory = () => {
         dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete product from category"), description: t("You are removing the product from this category, are you sure?") }, button: "Delete", handler: () => deleteProductFromCategoryHandler(params.CategorieName as string, productId) }))
     }
 
-    const [categoryPhoto, setCategoryPhoto] = useState(false)
     const uploadFileHandler = (event: ChangeEvent<HTMLInputElement>) => {
         console.dir(event.target);
         uploadFile(event.target)
-        .then(res => {
-            console.log(res);
-            
-        })
+            .then(res => {
+                console.log(">>>>", res);
+                
+                setCategoryPhoto(res.data.url);
+            })
 
     }
 

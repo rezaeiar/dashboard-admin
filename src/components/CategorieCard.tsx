@@ -10,13 +10,15 @@ export type CatagoryCardProps = {
 }
 
 const CategorieCard = ({ id, name, products, image }: CatagoryCardProps) => {
+    console.log(image);
+    
     const { t } = useTranslation()
     return (
         <div className="flex flex-col bg-white rounded-md overflow-hidden shadow-card group hover:scale-105 hover:shadow-lg hover:z-20 transition-all">
             <div className="relative">
                 {
                     image &&
-                    <img src="./images/Bitmap.png" className="w-full h-36 sm:h-48 md:h-56 lg:h-64 object-cover" alt="" />
+                    <img src={image} className="w-full h-36 sm:h-48 md:h-56 lg:h-64 object-cover" alt="" />
                 }
                 {
                     !image &&
