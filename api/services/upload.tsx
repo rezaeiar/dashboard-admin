@@ -7,7 +7,7 @@ type addCategoryType = {
 const form = new FormData();
 
 export const uploadFile = async (file: any) => {
-    form.append("file", file.files[0])
+    form.set("file", file.files[0])
     return await apiReq({
         method: "POST",
         url: "/upload",

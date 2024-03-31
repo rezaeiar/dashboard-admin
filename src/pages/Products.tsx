@@ -22,6 +22,7 @@ const Products = () => {
     const { data, isLoading, refetch, dataUpdatedAt } = useQuery("products", getAllProducts)
     const { data: categoryData } = useQuery("categories", getAllCategories)
     const { data: dataSetting, isSuccess: isSuccessSetting } = useQuery("setting", getAllSetting)
+    console.log(data);
 
     const [allProducts, setAllProducts] = useState<null | { count: number, price: number }[]>(null)
 
@@ -72,7 +73,7 @@ const Products = () => {
                     refetch()
                 }
             })
-            .catch(() => {                
+            .catch(() => {
                 dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired Product could not be deleted, please try again.") } }))
             })
     }
@@ -159,9 +160,17 @@ const Products = () => {
                                         <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2 font-iransans-regular' key={product.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex gap-x-2 items-center">
-                                                    <div className="h-12 w-12 rounded-md overflow-hidden shrink-0">
-                                                        <img src="/images/Bitmap2.png" className='object-cover' alt="" />
-                                                    </div>
+                                                    {
+                                                        product.images ?
+                                                            <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-general-50">
+                                                                <img src={product.images[0]} className='object-cover' alt="" />
+                                                            </div> :
+                                                            <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-general-50 bg-general-40 flex items-center justify-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8 text-general-60">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path>
+                                                                </svg>
+                                                            </div>
+                                                    }
                                                     <div className="flex flex-col">
                                                         <h3 className="line-clamp-1">
                                                             {product.name}
@@ -204,9 +213,17 @@ const Products = () => {
                                         <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2 font-iransans-regular' key={product.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex gap-x-2 items-center">
-                                                    <div className="h-12 w-12 rounded-md overflow-hidden shrink-0">
-                                                        <img src="/images/Bitmap2.png" className='object-cover' alt="" />
-                                                    </div>
+                                                    {
+                                                        product.images ?
+                                                            <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-general-50">
+                                                                <img src={product.images[0]} className='object-cover' alt="" />
+                                                            </div> :
+                                                            <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-general-50 bg-general-40 flex items-center justify-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8 text-general-60">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path>
+                                                                </svg>
+                                                            </div>
+                                                    }
                                                     <div className="flex flex-col">
                                                         <h3 className="line-clamp-1">
                                                             {product.name}
@@ -249,9 +266,17 @@ const Products = () => {
                                         <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2 font-iransans-regular' key={product.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex gap-x-2 items-center">
-                                                    <div className="h-12 w-12 rounded-md overflow-hidden shrink-0">
-                                                        <img src="/images/Bitmap2.png" className='object-cover' alt="" />
-                                                    </div>
+                                                    {
+                                                        product.images ?
+                                                            <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-general-50">
+                                                                <img src={product.images[0]} className='object-cover h-full' alt="" />
+                                                            </div> :
+                                                            <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-general-50 bg-general-40 flex items-center justify-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8 text-general-60">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path>
+                                                                </svg>
+                                                            </div>
+                                                    }
                                                     <div className="flex flex-col">
                                                         <h3 className="line-clamp-1">
                                                             {product.name}
