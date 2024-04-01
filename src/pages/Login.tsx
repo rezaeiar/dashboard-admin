@@ -1,14 +1,10 @@
-import { useGetTokenFromCookies, useSaveTokenInCookies } from '../hooks/useToken';
+import { useGetTokenFromCookies } from '../hooks/useToken';
 import { useNavigate, Link } from "react-router-dom"
-import { useDispatch } from 'react-redux';
 import { useTranslation } from "react-i18next"
 import { useEffect } from "react"
-import Button from "../components/Button"
+import { useLogin } from '../hooks/api/useLogin';
 import { useForm, SubmitHandler } from "react-hook-form"
-import { singIn } from "../../api/services/auth"
-import { showErrorModal } from '../store/slices/ErrorModalSlice';
-import { useMutation } from 'react-query';
-import { singInType } from '../types/Auth.types';
+import Button from "../components/Button"
 
 type LoginInputs = {
     username: string
@@ -19,29 +15,11 @@ const Login = () => {
 
     const token = useGetTokenFromCookies()
     const navigate = useNavigate()
-    const dispatch = useDispatch()
     const { t } = useTranslation()
 
-    useEffect(() => {
-        if (token) {
-            navigate("/panel")
-        }
-    }, [])
+    useEffect(() => token && navigate("/panel"), [])
 
-    const { mutate: LoginHandler } = useMutation({
-        mutationFn: async (data: singInType) => {
-            return singIn(data)
-                .then(res => {
-                    if (res.status === 201) {
-                        useSaveTokenInCookies(res.data.token)
-                        navigate("/panel/dashboard")
-                    }
-                })
-                .catch((err) => {
-                    dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t(err.response.data.message) } }))
-                })
-        }
-    })
+    const { mutate: LoginHandler } = useLogin()
 
     const {
         register,
