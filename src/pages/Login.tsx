@@ -1,5 +1,4 @@
-import { useToken } from '../hooks/useToken';
-import Cookies from 'universal-cookie';
+import { useGetTokenFromCookies, useSaveTokenInCookies } from '../hooks/useToken';
 import { useNavigate, Link } from "react-router-dom"
 import { useDispatch } from 'react-redux';
 import { useTranslation } from "react-i18next"
@@ -15,8 +14,7 @@ type Inputs = {
 }
 
 const Login = () => {
-    const token = useToken()
-    const cookies = new Cookies()
+    const token = useGetTokenFromCookies()
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { t } = useTranslation()
@@ -26,7 +24,7 @@ const Login = () => {
             navigate("/panel")
         }
     }, [])
-
+    
     const {
         register,
         handleSubmit,
@@ -36,7 +34,7 @@ const Login = () => {
         singIn(data)
             .then(res => {
                 if (res.status === 201) {
-                    cookies.set('token', res.data.token, { path: '/', expires: new Date(Date.now() + 86400000) });
+                    useSaveTokenInCookies(res.data.token)
                     navigate("/panel/dashboard")
                 } else {
                     dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your login has failed, please try again.") } }))

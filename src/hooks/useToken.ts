@@ -1,8 +1,14 @@
 import Cookies from 'universal-cookie';
 
-const useToken = () => {
-    const cookies = new Cookies();
+const cookies = new Cookies()
+const TOKEN_STORAGE_TIME_IN_STORAGE = 86400000 // 24 Hour
+
+const useGetTokenFromCookies = () => {
     return cookies.get("token")
 }
 
-export { useToken }
+const useSaveTokenInCookies = (token: string) => {
+    cookies.set('token', token, { path: '/', expires: new Date(Date.now() + TOKEN_STORAGE_TIME_IN_STORAGE) });
+}
+
+export { useGetTokenFromCookies, useSaveTokenInCookies }

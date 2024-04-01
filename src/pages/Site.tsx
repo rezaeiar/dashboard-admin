@@ -4,13 +4,13 @@ import Button from "../components/Button"
 import Cookies from 'universal-cookie';
 import { useQuery } from "react-query";
 import { getMe } from "../../api/services/auth";
-import { useToken } from "../hooks/useToken";
+import { useGetTokenFromCookies } from "../hooks/useToken";
 
 const Site = () => {
 
     const cookies = new Cookies()
     const navigate = useNavigate()
-    const token = useToken()
+    const token = useGetTokenFromCookies()
 
     const { data } = useQuery("admin", () => getMe())
 

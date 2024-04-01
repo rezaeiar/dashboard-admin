@@ -1,10 +1,10 @@
-import { useToken } from "../hooks/useToken"
+import { useGetTokenFromCookies } from "../hooks/useToken"
 import { useOutlet, useNavigate, Outlet } from "react-router-dom"
 import { useEffect } from "react"
 import TopBar from "../components/TopBar"
 import SideBar from "../components/SideBar"
 const Panel = () => {
-    const token = useToken()
+    const token = useGetTokenFromCookies()
     const outlet = useOutlet()
     const navigate = useNavigate()
     useEffect(() => {        

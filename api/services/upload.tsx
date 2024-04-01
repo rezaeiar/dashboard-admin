@@ -1,9 +1,5 @@
 import apiReq from "../CoreApi";
 
-type addCategoryType = {
-    name: string,
-}
-
 const form = new FormData();
 
 export const uploadFile = async (file: any) => {

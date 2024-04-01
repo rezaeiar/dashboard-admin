@@ -1,4 +1,4 @@
-import { useToken } from "../hooks/useToken"
+import { useGetTokenFromCookies } from "../hooks/useToken"
 import { useNavigate, Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { useEffect, useState } from "react"
@@ -15,7 +15,7 @@ type Inputs = {
 }
 
 const Register = () => {
-    const token = useToken()
+    const token = useGetTokenFromCookies()
     const navigate = useNavigate()
     const { t } = useTranslation()
 

@@ -20,6 +20,7 @@ const Customers = () => {
 
     const { data, isLoading, refetch, dataUpdatedAt } = useQuery("customers", getAllCustomers)
     const { data: dataSetting, isSuccess: isSuccessSetting } = useQuery("setting", getAllSetting)
+    console.log(data);
 
     const [allCustomers, setAllCustomers] = useState<null | { roles: String[], order_count: number, purchase_amount: number }[]>(null)
 
@@ -81,7 +82,7 @@ const Customers = () => {
             })
             .catch((err) => {
                 console.log(err);
-                
+
                 dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
                 dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired client could not be deleted, please try again.") } }))
             })
