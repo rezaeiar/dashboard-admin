@@ -1,4 +1,4 @@
-export type singUpType = {
+export type RegisterInputs = {
     first_name: string,
     last_name: string,
     email: string,
@@ -6,7 +6,7 @@ export type singUpType = {
     password: string
 }
 
-export type singInType = {
-    username: string,
+export type LoginInputs = {
+    username: string
     password: string
 }

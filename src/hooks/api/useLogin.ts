@@ -1,5 +1,5 @@
 import { useMutation } from "react-query"
-import { singInType } from "../../types/Auth.types"
+import { LoginInputs } from "../../types/auth/Auth.types" 
 import { singIn } from "../../../api/services/auth"
 import { useSaveTokenInCookies } from "../useToken"
 import { useDispatch } from "react-redux"
@@ -15,7 +15,7 @@ const useLogin = () => {
     const { t } = useTranslation()
 
     return useMutation({
-        mutationFn: async (data: singInType) => {
+        mutationFn: async (data: LoginInputs) => {
             return singIn(data)
                 .then(res => {
                     if (res.status === 201) {
