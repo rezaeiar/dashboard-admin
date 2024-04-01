@@ -7,13 +7,16 @@ import Button from "../components/Button"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { singIn } from "../../api/services/auth"
 import { showErrorModal } from '../store/slices/ErrorModalSlice';
+import { useMutation } from 'react-query';
+import { singInType } from '../types/Auth.types';
 
-type Inputs = {
+type LoginInputs = {
     username: string
     password: string
 }
 
 const Login = () => {
+
     const token = useGetTokenFromCookies()
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -24,26 +27,28 @@ const Login = () => {
             navigate("/panel")
         }
     }, [])
-    
+
+    const { mutate: LoginHandler } = useMutation({
+        mutationFn: async (data: singInType) => {
+            return singIn(data)
+                .then(res => {
+                    if (res.status === 201) {
+                        useSaveTokenInCookies(res.data.token)
+                        navigate("/panel/dashboard")
+                    }
+                })
+                .catch((err) => {
+                    dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t(err.response.data.message) } }))
+                })
+        }
+    })
+
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        singIn(data)
-            .then(res => {
-                if (res.status === 201) {
-                    useSaveTokenInCookies(res.data.token)
-                    navigate("/panel/dashboard")
-                } else {
-                    dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your login has failed, please try again.") } }))
-                }
-            })
-            .catch(() => {
-                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your login has failed, please try again.") } }))
-            })
-    }
+    } = useForm<LoginInputs>()
+    const onSubmit: SubmitHandler<LoginInputs> = (data) => LoginHandler(data)
 
     return (
         <div className="w-full min-h-screen flex items-center justify-center bg-general-30 py-0 sm:py-12 md:py-20">
@@ -63,19 +68,19 @@ const Login = () => {
                 </div>
                 <div className="grid grid-cols-1 gap-y-3 sm:gap-y-5 w-full sm:w-auto">
                     <div className="flex flex-col w-auto sm:w-96 gap-y-1">
-                        <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                        <label htmlFor="identifire" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                             {t("User Name")}
                         </label>
-                        <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Username")} {...register("username", {
+                        <input type="text" id='identifire' className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Username")} {...register("username", {
                             required: t("Username is required")
                         })} />
                         {errors.username && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.username.message}</span>}
                     </div>
                     <div className="flex flex-col w-auto sm:w-96 gap-y-1">
-                        <label htmlFor="" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                        <label htmlFor="password" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                             {t("Password")}
                         </label>
-                        <input type="password" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Password")} {...register("password", {
+                        <input type="password" id='password' className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Password")} {...register("password", {
                             required: t("Password is required"), pattern: {
                                 value: /^[a-zA-Z0-9!@#$%^&*]{6,16}$/,
                                 message: t("The password must be between 6 and 16 and contain English characters.")
@@ -89,9 +94,9 @@ const Login = () => {
                         </>
                     </Button>
                     <div className="ltr:font-nunitosans-regular rtl:font-iransans-regular text-xs flex flex-col gap-y-1 items-center">
-                        <span className="text-primary-100">
+                        <Link to='' className="text-primary-100">
                             {t("Forgot your password?")}
-                        </span>
+                        </Link>
                     </div>
                     <span className="bg-general-50 h-px"></span>
                     <span className="text-general-60 text-xs flex justify-center">
