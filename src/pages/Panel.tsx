@@ -1,22 +1,28 @@
-import { useGetTokenFromCookies } from "../hooks/useToken"
 import { useOutlet, useNavigate, Outlet } from "react-router-dom"
+import { useGetMe } from "../hooks/api/useGetMe"
 import { useEffect } from "react"
 import TopBar from "../components/TopBar"
 import SideBar from "../components/SideBar"
 
 const Panel = () => {
 
-    const token = useGetTokenFromCookies()
     const outlet = useOutlet()
     const navigate = useNavigate()
+    const { data, isSuccess } = useGetMe()
 
-    useEffect(() => {                
-        if (token) {
-            if (!outlet) navigate("dashboard")
-        } else {
-            navigate("/login")
+    useEffect(() => {
+        if (isSuccess) {
+            if (data) {
+                if (data.roles.includes("ADMIN")) {
+                    if (!outlet) navigate("dashboard")
+                } else {
+                    navigate("/")
+                }
+            } else {
+                navigate("/logn")
+            }
         }
-    }, [outlet])
+    }, [data, outlet])
 
     return (
         <div className="relative">
