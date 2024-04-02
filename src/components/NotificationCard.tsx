@@ -6,9 +6,9 @@ import { useProducts } from "../hooks/api/useProducts"
 import { useTasks } from "../hooks/api/useTasks"
 import { useEffect } from "react"
 import { setNotificationsLength } from "../store/slices/NotificationsLengthSlice"
-import { product } from "../types/api/products.types"
-import { order } from "../types/api/orders.types"
-import { task } from "../types/api/tasks.types"
+import { ProductType } from "../types/api/products.types"
+import { OrderType } from "../types/api/orders.types"
+import { TaskType } from "../types/api/tasks.types"
 import { Link } from "react-router-dom"
 
 const NotificationCard = () => {
@@ -22,12 +22,12 @@ const NotificationCard = () => {
     const { data: userTasksData, isSuccess: userTasksIsSuccess } = useTasks()
 
     const outOfStockProductHandler = () => {
-        const outOfStockLength = productsIsSuccess && productsData.filter((product: product) => product.inـstock === false).length
+        const outOfStockLength = productsIsSuccess && productsData.filter((product: ProductType) => product.inـstock === false).length
         return outOfStockLength
     }
 
     const pendingOrderHandler = () => {
-        const pendingOrderLength = ordersIsSuccess && ordersData.filter((order: order) => order.status === "PENDING").length
+        const pendingOrderLength = ordersIsSuccess && ordersData.filter((order: OrderType) => order.status === "PENDING").length
         return pendingOrderLength
     }
 
@@ -36,7 +36,7 @@ const NotificationCard = () => {
     }
 
     const taskNotDoneHandler = () => {
-        const taskNotDoneLength = userTasksIsSuccess && userTasksData.filter((task: task) => task.isComplated === false).length;
+        const taskNotDoneLength = userTasksIsSuccess && userTasksData.filter((task: TaskType) => task.isComplated === false).length;
         return taskNotDoneLength
     }
 

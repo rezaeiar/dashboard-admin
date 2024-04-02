@@ -1,5 +1,5 @@
 import { useMutation } from "react-query"
-import { changePasswordType } from "../../types/api/password.types"
+import { ChangePasswordType } from "../../types/api/password.types"
 import { changePassword } from "../../../api/services/password"
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
@@ -13,7 +13,7 @@ const usePassword = () => {
     const { t } = useTranslation()
 
     return useMutation({
-        mutationFn: async (passwordInfos: changePasswordType) => {
+        mutationFn: async (passwordInfos: ChangePasswordType) => {
             return changePassword(passwordInfos)
                 .then(res => {
                     if (res.status === 200) {

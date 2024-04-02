@@ -1,3 +1,3 @@
-export type order = {
+export type OrderType = {
     status: "REJECTED" | "PENDING" | "COMPLETED"
 }

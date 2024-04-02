@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
-import { notificationLength } from "../types/store/Store"
+import { NotificationLengthType } from "../types/store/Store.types"
 import { useGetMe } from "../hooks/api/useGetMe"
 import { useState } from "react"
 import MobileSideBar from "./MobileSideBar"
@@ -12,7 +12,7 @@ import AdminCard from "./AdminCard"
 const TopBar = () => {
 
     const { t, i18n } = useTranslation()
-    const notificationsLength = useSelector((state: notificationLength) => state.notificationLength)
+    const notificationsLength = useSelector((state: NotificationLengthType) => state.notificationLength)
     const { data, isLoading, isSuccess } = useGetMe()
 
     const [isShowMobileSideBar, setIsShowMobileSideBar] = useState(false)

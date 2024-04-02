@@ -14,7 +14,7 @@ import ConfirmModal from "./components/ConfirmModal"
 import AddOrderModal from "./components/AddOrderModal"
 import AddTaskModal from "./components/AddTaskModal"
 import ChangePasswordModal from "./components/ChangePasswordModal"
-import { ChangePasswordModalType } from "./types/store/Store"
+import { ChangePasswordModalType } from "./types/store/Store.types"
 
 const App = () => {
     const router = useRoutes(routes);

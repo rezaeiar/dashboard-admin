@@ -1,5 +1,5 @@
 import apiReq from "../CoreApi";
-import {LoginInputs, RegisterInputs} from '../../src/types/auth/Auth.types'
+import {LoginInputs, RegisterInputs} from '../../src/types/api/Auth.types'
 
 export const singUp = async (userInfo: RegisterInputs) => {
     return await apiReq({

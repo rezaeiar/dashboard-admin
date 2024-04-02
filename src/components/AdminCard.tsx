@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next"
 import { useNavigate, Link } from "react-router-dom";
 import { useRemoveTokenFromCookies } from "../hooks/useToken";
-import { UseDispatch, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { ShowChangePasswordModal } from "../store/slices/ChangePasswordSlice";
 
 const AdminCard = () => {

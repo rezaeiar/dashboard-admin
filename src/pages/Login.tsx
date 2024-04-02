@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import { useEffect } from "react"
 import { useLogin } from '../hooks/api/useLogin';
 import { useForm, SubmitHandler } from "react-hook-form"
-import { LoginInputs } from '../types/auth/Auth.types';
+import { LoginInputs } from '../types/api/Auth.types';
 import Button from "../components/Button"
 
 const Login = () => {

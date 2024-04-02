@@ -1,5 +1,7 @@
-export type notificationLength = {
-    notificationLength: { value: number }
+export type NotificationLengthType = {
+    notificationLength: {
+        value: number
+    }
 }
 
 export type ChangePasswordModalType = {

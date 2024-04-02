@@ -1,5 +1,5 @@
 import { useMutation } from "react-query"
-import { RegisterInputs } from "../../types/auth/Auth.types"
+import { RegisterInputs } from "../../types/api/Auth.types"
 import { singUp } from "../../../api/services/auth"
 
 const useRegister = () => {

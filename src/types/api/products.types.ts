@@ -1,3 +1,3 @@
-export type product = {
+export type ProductType = {
     inـstock: boolean
 }

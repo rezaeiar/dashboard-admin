@@ -1,5 +1,5 @@
 import { useMutation } from "react-query"
-import { LoginInputs } from "../../types/auth/Auth.types" 
+import { LoginInputs } from "../../types/api/Auth.types" 
 import { singIn } from "../../../api/services/auth"
 import { useSaveTokenInCookies } from "../useToken"
 import { useDispatch } from "react-redux"

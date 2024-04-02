@@ -1,3 +1,3 @@
-export type task = {
+export type TaskType = {
     isComplated: boolean
 }

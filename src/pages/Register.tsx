@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import { useRegister } from "../hooks/api/useRegister"
 import { useEffect, useState } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { RegisterInputs } from "../types/auth/Auth.types"
+import { RegisterInputs } from "../types/api/Auth.types"
 import Button from "../components/Button"
 
 const Register = () => {

@@ -1,10 +1,9 @@
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
 import { useState } from "react"
+import { usePassword } from "../hooks/api/usePassword"
 import { ShowChangePasswordModal } from "../store/slices/ChangePasswordSlice"
 import Button from "./Button"
-import { usePassword } from "../hooks/api/usePassword"
-
 
 type AddTaskModalProps = {
     isShowChangePasswordModal: boolean
