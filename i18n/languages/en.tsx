@@ -291,6 +291,10 @@ const en = {
     "There are no Task for you": "There are no Task for you",
     "There are no Task for Managers.": "There are no Task for Managers.",
     "There are currently no tasks assigned to administrators or the assigned task has expired.": "There are currently no tasks assigned to administrators or the assigned task has expired.",
-    "Your settings have been applied successfully." : "Your settings have been applied successfully."
+    "Your settings have been applied successfully.": "Your settings have been applied successfully.",
+    "a problem!": "a problem!",
+    "This page was not found.": "This page was not found.",
+    "This page was not found, please return to the main page or contact support to report a problem.": "This page was not found, please return to the main page or contact support to report a problem.",
+    "Back to Panel": "Back to Panel"
 }
 export default en

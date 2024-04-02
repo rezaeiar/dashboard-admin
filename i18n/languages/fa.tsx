@@ -291,6 +291,10 @@ const fa = {
     "There are no Task for you": "هیچ وظیفه ای برای شما وجود ندارد",
     "There are no Task for Managers.": "هیچ وظیفه ای برای مدیران وجود ندارد.",
     "There are currently no tasks assigned to administrators or the assigned task has expired.": "در حال حاضر هیچ کاری برای مدیران محول نشده است یا کار محول شده منقضی شده است.",
-    "Your settings have been applied successfully." : "تنظیمات شما با موفقیت اعمال شد."
+    "Your settings have been applied successfully.": "تنظیمات شما با موفقیت اعمال شد.",
+    "a problem!": "یک مشکل!",
+    "This page was not found.": "این صفحه پیدا نشد.",
+    "This page was not found, please return to the main page or contact support to report a problem.": "این صفحه یافت نشد، لطفاً به صفحه اصلی بازگردید یا برای گزارش مشکل با پشتیبانی تماس بگیرید.",
+    "Back to Panel": "بازگشت به پنل"
 }
 export default fa
