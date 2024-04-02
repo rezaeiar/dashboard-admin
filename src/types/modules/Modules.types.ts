@@ -1,6 +1,6 @@
 export type ButtonType = "primary" | "secondary" | "destructive" | "destructive-secondary" | 'white'
 
-type ButtonSize = 'small' | 'medium' | 'large'
+export type ButtonSize = 'small' | 'medium' | 'large'
 
 export type ButtonProps = {
     type: ButtonType,

@@ -312,6 +312,9 @@ const en = {
     "New Password": "New Password",
     "Username Or Email": "Username Or Email",
     "Username or Email is required": 'Username or Email is required',
-    "Enter Username or Email": "Enter Username or Email"
+    "Enter Username or Email": "Enter Username or Email",
+    "You are not an admin!": "You are not an admin!",
+    "Your login has been approved, but your role on this site is not admin; Please log out and enter as admin.": "Your login has been approved, but your role on this site is not admin; Please log out and enter as admin.",
+    "Log out and go to the login page": "Log out and go to the login page"
 }
 export default en

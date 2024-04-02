@@ -7,7 +7,7 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { LoginInputs } from '../types/api/Auth.types';
 import Button from "../components/Button"
 
-const Login = () => {
+const Login =  () => {
 
     const token = useGetTokenFromCookies()
     const navigate = useNavigate()

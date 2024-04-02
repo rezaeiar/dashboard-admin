@@ -1,5 +1,5 @@
 import { useMutation } from "react-query"
-import { ChangePasswordType } from "../../types/api/password.types"
+import { ChangePasswordType } from "../../types/api/Password.types"
 import { changePassword } from "../../../api/services/password"
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"

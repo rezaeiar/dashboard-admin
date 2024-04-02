@@ -1,12 +1,7 @@
 import { useRoutes } from "react-router-dom"
 import routes from "./routes/routes"
 import { useSelector } from "react-redux"
-import { successModalType } from './types/SuccessModal.types'
-import { errorModalType } from './types/ErrorModal.types'
-import { AddCategoryModalType } from './types/AddCategoryModal.types'
-import { confirmModalType } from "./types/ConfirmModal.types"
-import { AddOrderModalType } from "./types/AddOrderModal.types"
-import { AddTaskModalType } from "./types/AddTaskModal.types"
+import { SuccessModalType, ErrorModalType, AddCategoryModalType, ConfirmModalType, AddOrderModalType, AddTaskModalType, ChangePasswordModalType } from "./types/store/Store.types"
 import SuccessModal from "./components/SuccessModal"
 import ErrorModal from './components/ErrorModal'
 import AddCategoryModal from './components/AddCategoryModal'
@@ -14,18 +9,17 @@ import ConfirmModal from "./components/ConfirmModal"
 import AddOrderModal from "./components/AddOrderModal"
 import AddTaskModal from "./components/AddTaskModal"
 import ChangePasswordModal from "./components/ChangePasswordModal"
-import { ChangePasswordModalType } from "./types/store/Store.types"
 
 const App = () => {
     const router = useRoutes(routes);
-    const successModalInfo = useSelector((state: successModalType) => state.successModal);
-    const errorModalInfo = useSelector((state: errorModalType) => state.errorModal);
+    const successModalInfo = useSelector((state: SuccessModalType) => state.successModal);
+    const errorModalInfo = useSelector((state: ErrorModalType) => state.errorModal);
     const addCategoryModalInfo = useSelector((state: AddCategoryModalType) => state.addCategoryModal);
-    const confirmModalInfo = useSelector((state: confirmModalType) => state.confirmModal);
+    const confirmModalInfo = useSelector((state: ConfirmModalType) => state.confirmModal);
     const addOrderModalInfo = useSelector((state: AddOrderModalType) => state.addOrderModal);
     const addTaskModalInfo = useSelector((state: AddTaskModalType) => state.addTaskModal);
     const changePasswordModalInfo = useSelector((state: ChangePasswordModalType) => state.changePasswordModal);
-    
+
     return (
         <div className="app">
             {router}

@@ -1,4 +1,4 @@
-import { ButtonProps, ButtonType } from "../types/Modules.types";
+import { ButtonProps, ButtonType } from "../types/modules/Modules.types";
 import { Link } from "react-router-dom";
 
 const Button = ({ type, size, styles, link, onSubmit, submit, disabled, children }: ButtonProps) => {

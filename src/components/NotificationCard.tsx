@@ -6,9 +6,9 @@ import { useProducts } from "../hooks/api/useProducts"
 import { useTasks } from "../hooks/api/useTasks"
 import { useEffect } from "react"
 import { setNotificationsLength } from "../store/slices/NotificationsLengthSlice"
-import { ProductType } from "../types/api/products.types"
-import { OrderType } from "../types/api/orders.types"
-import { TaskType } from "../types/api/tasks.types"
+import { ProductType } from "../types/api/Products.types" 
+import { OrderType } from "../types/api/Orders.types"
+import { TaskType } from "../types/api/Tasks.types"
 import { Link } from "react-router-dom"
 
 const NotificationCard = () => {

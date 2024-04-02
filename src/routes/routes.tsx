@@ -1,5 +1,4 @@
-import { RouteType } from "../types/Routes.types"
-
+import { RouteType } from "../types/routes/Routes.types"
 import Site from "../pages/Site"
 import Panel from "../pages/Panel"
 import Dashboard from "../pages/Dashboard"

@@ -1,13 +1,18 @@
-import { useMutation } from "react-query"
+import { useQueryClient, useMutation } from "react-query"
 import { RegisterInputs } from "../../types/api/Auth.types"
 import { singUp } from "../../../api/services/auth"
 
 const useRegister = () => {
-    return useMutation({
-        mutationFn: async (data: RegisterInputs) => {
-            return singUp(data)
+
+    const queryClient = useQueryClient()
+    return useMutation((data: RegisterInputs) => {
+        return singUp(data)
+    }, {
+        onSuccess: () => {
+            queryClient.invalidateQueries(["customers"])
         }
-    })
+    }
+    )
 }
 
 export { useRegister }

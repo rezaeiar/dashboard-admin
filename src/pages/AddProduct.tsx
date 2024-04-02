@@ -31,7 +31,7 @@ const AddProduct = () => {
     const [tagName, setTagName] = useState("")
     const [categoryId, setCategoryId] = useState("")
     const [multipleOptions, setMultipleOptions] = useState(false)
-    const [images, setImages] = useState([])
+    const [images, setImages] = useState<string[]>([])
 
     const addNewTag = (keyCode: number) => {
         if (tagName.length && keyCode === 13) {
@@ -86,7 +86,8 @@ const AddProduct = () => {
                 if (res.status === 201) {
                     setIsFileUploading(false)
                     setImages((prevState) => {
-                        return prevState ? [...prevState, res.data.url] : [res.data.url]
+                        return [...prevState, res.data.url]
+
                     });
                 }
             })

@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import { QueryClientProvider, QueryClient } from 'react-query'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import LanguageSelector from './utils/LanguageSelector.ts'
 import { Provider } from 'react-redux'
 import store from './store/store.ts'
