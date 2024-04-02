@@ -1,9 +1,6 @@
 import { useTranslation } from "react-i18next"
 
-type LanguageSelectionProps = {
-    show: boolean,
-}
-const LanguageSelection = (props: LanguageSelectionProps) => {
+const LanguageSelection = () => {
 
     const changeDirectionHandler = (lang: string) => {
         i18n.changeLanguage(lang)
@@ -12,7 +9,7 @@ const LanguageSelection = (props: LanguageSelectionProps) => {
     }
     const { t, i18n } = useTranslation()
     return (
-        <div className={`${props.show ? 'visible opacity-100' : 'invisible opacity-0'} flex transition-all flex-col w-max bg-white shadow-box rounded-xl absolute top-12 rtl:left-0 ltr:right-0 divide-y  border border-general-30 overflow-hidden capitalize`} >
+        <div className={`invisible opacity-0 group-hover:visible group-hover:opacity-100 flex transition-all flex-col w-max bg-white shadow-box rounded-xl absolute top-12 rtl:left-0 ltr:right-0 divide-y  border border-general-30 overflow-hidden capitalize`} >
             <div className="py-3 px-5">
                 <span className='text-sm text-general-80 font-nunitosans-regular rtl:font-iransans-regular'>
                     {t('select language')}
