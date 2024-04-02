@@ -1,8 +1,9 @@
 import i18n from '../../i18n'
+import { useTranslation } from 'react-i18next';
 
 const pageLanguage = localStorage.getItem("lang");
 
-function LanguageSelector() {
+const LanguageSelector = () => {
     if (pageLanguage) {
         switch (pageLanguage) {
             case "fa": {
@@ -26,4 +27,15 @@ function LanguageSelector() {
         localStorage.setItem("lang", i18n.language)
     }
 }
+
+const changeLanguage = () => {
+    const { i18n: i18next } = useTranslation()
+    return (lang: string) => {
+        i18next.changeLanguage(lang)
+        document.body.dir = lang === 'fa' ? 'rtl' : 'ltr'
+        localStorage.setItem("lang", lang)
+    }
+}
+
 export default LanguageSelector
+export { changeLanguage }

@@ -295,6 +295,18 @@ const en = {
     "a problem!": "a problem!",
     "This page was not found.": "This page was not found.",
     "This page was not found, please return to the main page or contact support to report a problem.": "This page was not found, please return to the main page or contact support to report a problem.",
-    "Back to Panel": "Back to Panel"
+    "Back to Panel": "Back to Panel",
+    "Notification": "Notification",
+    "Empty product inventory": "Empty product inventory",
+    "Take action to increase product inventory": "Take action to increase product inventory",
+    "Pending Orders": "Pending Orders",
+    "You have a number of pending orders": "You have a number of pending orders",
+    "Empty of product": "Empty of product",
+    "There are no products for sale.": "There are no products for sale.",
+    "Task not done": "Task not done",
+    "You have some unfinished tasks.": "You have some unfinished tasks.",
+    "There are currently no notifications.": "There are currently no notifications.",
+    "Manage notifications": "Manage notifications",
+    "manage tasks": "manage tasks"
 }
 export default en

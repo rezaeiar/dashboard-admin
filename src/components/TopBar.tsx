@@ -51,14 +51,11 @@ const TopBar = () => {
                         <NotificationCard />
                     </div>
                     <div className="relative group">
-                        <div className="h-10 hidden md:flex gap-x-2 lg:gap-x-3 items-center cursor-pointer">
+                        <div className="h-10 hidden md:flex gap-x-2 items-center cursor-pointer">
                             <div className="block rounded-md overflow-hidden">
-                                {
-                                    i18n.language === "fa"
-                                        ? <img src="/topbar/Flag_of_Iran.svg.webp" className="h-6 lg:h-7" alt="language" />
-                                        : <img src="/topbar/UK Flag.svg" className="h-6 lg:h-7" alt="language" />
-                                }
-
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-general-70">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802" />
+                                </svg>
                             </div>
                             <span className='text-general-70 text-xs lg:text-sm font-nunitosans-semiBold rtl:font-iransans-semiBold'>
                                 {
@@ -99,7 +96,7 @@ const TopBar = () => {
                                 <div className="hidden md:flex rounded-full bg-general-40 h-8 w-8 lg:h-9 lg:w-9 overflow-hidden items-center justify-center">
                                     {
                                         data.avatar ? (
-                                            <img src={data.avatar} alt="admin" />
+                                            <img src={data.avatar} alt="admin" className="h-full object-cover" />
                                         ) : (
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-general-60">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />

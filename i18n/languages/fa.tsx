@@ -295,6 +295,18 @@ const fa = {
     "a problem!": "یک مشکل!",
     "This page was not found.": "این صفحه پیدا نشد.",
     "This page was not found, please return to the main page or contact support to report a problem.": "این صفحه یافت نشد، لطفاً به صفحه اصلی بازگردید یا برای گزارش مشکل با پشتیبانی تماس بگیرید.",
-    "Back to Panel": "بازگشت به پنل"
+    "Back to Panel": "بازگشت به پنل",
+    "Notification": "نوتیفیکیشن ها",
+    "Empty product inventory": "موجودی کالا خالی",
+    "Take action to increase product inventory": "برای افزایش موجودی محصول اقدام کنید",
+    "Pending Orders": "سفارشات در حال انتظار",
+    "You have a number of pending orders": "شما تعدادی سفارش معلق دارید",
+    "Empty of product": "خالی از محصول",
+    "There are no products for sale.": "هیچ محصولی برای فروش وجود ندارد.",
+    "Task not done": "وظیفه انجام نشده است",
+    "You have some unfinished tasks.": "شما چند وظیفه ناتمام دارید.",
+    "There are currently no notifications.": "در حال حاضر هیچ اطلاعیه ای وجود ندارد.",
+    "Manage notifications": "مدیریت اعلان ها",
+    "manage tasks": "مدیریت وظایف"
 }
 export default fa

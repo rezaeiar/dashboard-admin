@@ -1,7 +1,7 @@
 import apiReq from "../CoreApi";
-import { singUpType, singInType } from "../../src/types/Auth.types";
+import {LoginInputs, RegisterInputs} from '../../src/types/auth/Auth.types'
 
-export const singUp = async (userInfo: singUpType) => {
+export const singUp = async (userInfo: RegisterInputs) => {
     return await apiReq({
         method: "POST",
         url: "/auth/signup",
@@ -9,7 +9,7 @@ export const singUp = async (userInfo: singUpType) => {
     })
         .then(res => res)
 }
-export const singIn = async (userInfo: singInType) => {
+export const singIn = async (userInfo: LoginInputs) => {
     return await apiReq({
         method: "POST",
         url: "/auth/signin",
