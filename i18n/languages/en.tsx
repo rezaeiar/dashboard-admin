@@ -5,7 +5,7 @@ const en = {
     'admin': 'admin',
     "select language": "select language",
     "manage account": "manage account",
-    "change password": "change password",
+    "Change Password": "Change Password",
     "activity log": "activity log",
     "log out": "log out",
     "dashboard": "dashboard",
@@ -307,6 +307,11 @@ const en = {
     "You have some unfinished tasks.": "You have some unfinished tasks.",
     "There are currently no notifications.": "There are currently no notifications.",
     "Manage notifications": "Manage notifications",
-    "manage tasks": "manage tasks"
+    "manage tasks": "manage tasks",
+    "Current Password": "Current Password",
+    "New Password": "New Password",
+    "Username Or Email": "Username Or Email",
+    "Username or Email is required": 'Username or Email is required',
+    "Enter Username or Email": "Enter Username or Email"
 }
 export default en

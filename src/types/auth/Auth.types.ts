@@ -7,6 +7,6 @@ export type RegisterInputs = {
 }
 
 export type LoginInputs = {
-    username: string
+    usernameOrEmail: string
     password: string
 }

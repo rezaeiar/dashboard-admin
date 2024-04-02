@@ -27,7 +27,7 @@ const TopBar = () => {
                     </svg>
                 </Link>
                 <div className="flex gap-x-6 lg:gap-x-8 grow-0 md:grow">
-                    <Link to='/panel' className='text-lg lg:text-xl flex items-center font-nunitosans-extrabold'>
+                    <Link to='/panel/dashboard' className='text-lg lg:text-xl flex items-center font-nunitosans-extrabold'>
                         <span className='text-primary-100'>Dash</span>
                         <span className='text-general-100'>Stack</span>
                     </Link>
@@ -39,7 +39,7 @@ const TopBar = () => {
                     </div>
                 </div>
                 <div className="flex gap-x-6 md:gap-x-8 items-center *:shrink-0 h-full capitalize">
-                    <div className="relative group">
+                    <div className="relative group hidden md:flex">
                         <div className="h-10 hidden md:flex items-center cursor-pointer">
                             <div className="h-4 w-4 bg-primary-100 absolute rounded-full text-white text-[10px] flex items-center justify-center -right-1.5 top-1">
                                 {notificationsLength.value}
@@ -50,7 +50,7 @@ const TopBar = () => {
                         </div>
                         <NotificationCard />
                     </div>
-                    <div className="relative group">
+                    <div className="relative group hidden md:flex">
                         <div className="h-10 hidden md:flex gap-x-2 items-center cursor-pointer">
                             <div className="block rounded-md overflow-hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-general-70">
@@ -91,7 +91,7 @@ const TopBar = () => {
                     }
                     {
                         isSuccess &&
-                        <div className="relative group">
+                        <div className="relative group hidden md:flex">
                             <div className="h-10 hidden md:flex gap-x-2 lg:gap-x-3 items-center cursor-pointer">
                                 <div className="hidden md:flex rounded-full bg-general-40 h-8 w-8 lg:h-9 lg:w-9 overflow-hidden items-center justify-center">
                                     {

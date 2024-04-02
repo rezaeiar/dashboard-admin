@@ -13,6 +13,8 @@ import AddCategoryModal from './components/AddCategoryModal'
 import ConfirmModal from "./components/ConfirmModal"
 import AddOrderModal from "./components/AddOrderModal"
 import AddTaskModal from "./components/AddTaskModal"
+import ChangePasswordModal from "./components/ChangePasswordModal"
+import { ChangePasswordModalType } from "./types/store/Store"
 
 const App = () => {
     const router = useRoutes(routes);
@@ -22,6 +24,7 @@ const App = () => {
     const confirmModalInfo = useSelector((state: confirmModalType) => state.confirmModal);
     const addOrderModalInfo = useSelector((state: AddOrderModalType) => state.addOrderModal);
     const addTaskModalInfo = useSelector((state: AddTaskModalType) => state.addTaskModal);
+    const changePasswordModalInfo = useSelector((state: ChangePasswordModalType) => state.changePasswordModal);
     
     return (
         <div className="app">
@@ -32,6 +35,7 @@ const App = () => {
             <ConfirmModal isShowConfirmModal={confirmModalInfo.value.visibility} payload={confirmModalInfo.value.payload} button={confirmModalInfo.value.button as "Delete" | "Continue"} handler={confirmModalInfo.value.handler} />
             <AddOrderModal isShowOrderModal={addOrderModalInfo.value.visibility} />
             <AddTaskModal isShowAddTaskModal={addTaskModalInfo.value.visibility} />
+            <ChangePasswordModal isShowChangePasswordModal={changePasswordModalInfo.value.visibility} />
         </div>
     )
 }

@@ -5,7 +5,7 @@ const fa = {
     'admin': 'مدیر',
     "select language": 'انتخاب زبان',
     "manage account": "مدیریت حساب",
-    "change password": "تغییر رمز عبور",
+    "Change Password": "تغییر رمز عبور",
     "activity log": "گزارش فعالیت",
     "log out": "خروج",
     "dashboard": "داشبورد",
@@ -307,6 +307,11 @@ const fa = {
     "You have some unfinished tasks.": "شما چند وظیفه ناتمام دارید.",
     "There are currently no notifications.": "در حال حاضر هیچ اطلاعیه ای وجود ندارد.",
     "Manage notifications": "مدیریت اعلان ها",
-    "manage tasks": "مدیریت وظایف"
+    "manage tasks": "مدیریت وظایف",
+    "Current Password": "رمز عبور فعلی",
+    "New Password": "رمز عبور جدید",
+    "Username Or Email": "نام کاربری یا پست الکترونیک",
+    "Username or Email is required": "نام کاربری یا ایمیل مورد نیاز است",
+    "Enter Username or Email": "نام کاربری یا ایمیل را وارد کنید"
 }
 export default fa

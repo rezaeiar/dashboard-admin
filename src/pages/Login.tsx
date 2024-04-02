@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import { useEffect } from "react"
 import { useLogin } from '../hooks/api/useLogin';
 import { useForm, SubmitHandler } from "react-hook-form"
-import { LoginInputs } from '../types/auth/Auth.types'; 
+import { LoginInputs } from '../types/auth/Auth.types';
 import Button from "../components/Button"
 
 const Login = () => {
@@ -43,12 +43,12 @@ const Login = () => {
                 <div className="grid grid-cols-1 gap-y-3 sm:gap-y-5 w-full sm:w-auto">
                     <div className="flex flex-col w-auto sm:w-96 gap-y-1">
                         <label htmlFor="identifire" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                            {t("User Name")}
+                            {t("Username Or Email")}
                         </label>
-                        <input type="text" id='identifire' className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Username")} {...register("username", {
-                            required: t("Username is required")
+                        <input type="text" id='identifire' className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Username or Email")} {...register("usernameOrEmail", {
+                            required: t("Username or Email is required")
                         })} />
-                        {errors.username && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.username.message}</span>}
+                        {errors.usernameOrEmail && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.usernameOrEmail.message}</span>}
                     </div>
                     <div className="flex flex-col w-auto sm:w-96 gap-y-1">
                         <label htmlFor="password" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
