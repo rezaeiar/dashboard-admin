@@ -1,5 +1,10 @@
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
+import { useProducts } from "../hooks/api/useProducts"
+import { useCategories } from '../hooks/api/useCategories'
+import { useSetting } from "../hooks/api/useSetting"
+import { useDeleteProduct } from "../hooks/api/useProducts"
+import { ProductType } from "../types/api/Products.types"
 import { useState, useEffect } from "react"
 import { showConfirmModal } from "../store/slices/ConfirmModalSlice"
 import Loading from "../components/Loading"
@@ -7,11 +12,6 @@ import Button from "../components/Button"
 import { Link } from "react-router-dom"
 import Pagination from "../components/Pagination"
 import EmptyEntity from "../components/EmptyEntity"
-import { useProducts } from "../hooks/api/useProducts"
-import { useSetting } from "../hooks/api/useSetting"
-import { useCategories } from '../hooks/api/useCategories'
-import { ProductType } from "../types/api/Products.types"
-import { useDeleteProduct } from "../hooks/api/useProducts"
 
 const Products = () => {
 

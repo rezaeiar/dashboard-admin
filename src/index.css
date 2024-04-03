@@ -51,27 +51,27 @@
 
     button.primary,
     a.primary {
-        @apply bg-primary-100 text-white rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-primary-80 active:bg-primary-90 disabled:bg-general-50 focus:bg-primary-100 transition-colors flex items-center gap-x-1
+        @apply bg-primary-100 text-white rounded disabled:animate-pulse font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-primary-80 active:bg-primary-90 disabled:bg-general-50 focus:bg-primary-100 transition-colors flex items-center gap-x-1
     }
 
     button.secondary,
     a.secondary {
-        @apply bg-primary-40 text-primary-100 rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-primary-30 active:bg-primary-40 disabled:bg-general-50 disabled:text-white focus:bg-primary-40 transition-colors flex items-center gap-x-1
+        @apply bg-primary-40 text-primary-100 rounded disabled:animate-pulse font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-primary-30 active:bg-primary-40 disabled:bg-general-50 disabled:text-white focus:bg-primary-40 transition-colors flex items-center gap-x-1
     }
 
     button.white,
     a.white {
-        @apply bg-white text-primary-100 rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-general-30 active:bg-white disabled:bg-general-50 disabled:text-white focus:bg-white transition-colors border border-general-50 flex items-center gap-x-1
+        @apply bg-white text-primary-100 rounded disabled:animate-pulse font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-general-30 active:bg-white disabled:bg-general-50 disabled:text-white focus:bg-white transition-colors border border-general-50 flex items-center gap-x-1
     }
 
     button.destructive,
     a.destructive {
-        @apply bg-red-101 text-white rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-red-80 active:bg-red-90 disabled:bg-general-50 focus:bg-red-100 transition-colors flex items-center gap-x-1
+        @apply bg-red-101 text-white rounded disabled:animate-pulse font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-red-80 active:bg-red-90 disabled:bg-general-50 focus:bg-red-100 transition-colors flex items-center gap-x-1
     }
 
     button.destructive-secondary,
     a.destructive-secondary {
-        @apply bg-red-40 text-red-101 rounded font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-red-30 active:bg-red-40 disabled:bg-general-50 disabled:text-white focus:bg-red-40 transition-colors flex items-center gap-x-1
+        @apply bg-red-40 text-red-101 rounded disabled:animate-pulse font-nunitosans-regular rtl:font-iransans-regular h-min hover:bg-red-30 active:bg-red-40 disabled:bg-general-50 disabled:text-white focus:bg-red-40 transition-colors flex items-center gap-x-1
     }
 
     button.large,

@@ -315,6 +315,6 @@ const fa = {
     "Enter Username or Email": "نام کاربری یا ایمیل را وارد کنید",
     "You are not an admin!": "شما مدیر نیستید",
     "Your login has been approved, but your role on this site is not admin; Please log out and enter as admin.": "ورود شما تایید شده است، اما نقش شما در این سایت مدیر نیست. لطفا از سیستم خارج شوید و به عنوان مدیر وارد شوید.",
-    "Log out and go to the login page": "از سیستم خارج شوید و به صفحه ورود بروید"
+    "Log out and go to the login page": "از سیستم خارج شوید و به صفحه ورود بروید",
 }
 export default fa

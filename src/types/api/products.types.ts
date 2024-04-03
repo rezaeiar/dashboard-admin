@@ -1,10 +1,13 @@
-import { CategoryType } from "./Categories.types"
-
 export type ProductType = {
+    inـstock?: boolean,
     name: string,
-    inـstock: boolean,
+    description: string,
     count: number,
     price: number,
-    unique_id: string,
-    category: CategoryType | null
+    tags: string[],
+    weight: string,
+    country: string,
+    isDigital: boolean,
+    categoryId: string,
+    images: string[]
 }
