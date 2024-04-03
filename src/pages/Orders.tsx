@@ -19,6 +19,8 @@ const Orders = () => {
 
     const { data, isLoading, dataUpdatedAt } = useQuery("orders", getAllOrders)
     const { data: dataSetting, isSuccess: isSuccessSetting } = useQuery("setting", getAllSetting)
+    console.log(">",data);
+    
 
     const [allOrders, setAllOrders] = useState<null | { total_price: number }[]>(null)
 

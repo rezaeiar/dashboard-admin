@@ -37,16 +37,16 @@ const ChangePasswordModal = ({ isShowChangePasswordModal }: AddTaskModalProps) =
                     </svg>
                 </div>
                 <div className="flex flex-col">
-                    <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                    <label htmlFor="current-password" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                         {t("Current Password")}
                     </label>
-                    <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} />
+                    <input type="password" id="current-password" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} />
                 </div>
                 <div className="flex flex-col">
-                    <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                    <label htmlFor="password" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                         {t("New Password")}
                     </label>
-                    <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" value={password} onChange={e => setPassword(e.target.value)} />
+                    <input type="password" id="password" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" value={password} onChange={e => setPassword(e.target.value)} />
                 </div>
                 <div className="flex gap-x-6 items-center justify-end">
                     <a href="#" className="text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular" onClick={() => dispatch(ShowChangePasswordModal({ visibility: false }))}>

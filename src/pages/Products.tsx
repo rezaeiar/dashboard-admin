@@ -1,43 +1,41 @@
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
-import { useQuery } from "react-query"
-import { getAllProducts, deleteSingleProduct } from "../../api/services/product"
-import { getAllCategories } from "../../api/services/category"
 import { useState, useEffect } from "react"
 import { showConfirmModal } from "../store/slices/ConfirmModalSlice"
-import { showSuccessModal } from "../store/slices/successModalSlice"
-import { showErrorModal } from "../store/slices/ErrorModalSlice"
 import Loading from "../components/Loading"
 import Button from "../components/Button"
 import { Link } from "react-router-dom"
 import Pagination from "../components/Pagination"
 import EmptyEntity from "../components/EmptyEntity"
-import { getAllSetting } from "../../api/services/setting"
+import { useProducts } from "../hooks/api/useProducts"
+import { useSetting } from "../hooks/api/useSetting"
+import { useCategories } from '../hooks/api/useCategories'
+import { ProductType } from "../types/api/Products.types"
+import { useDeleteProduct } from "../hooks/api/useProducts"
 
 const Products = () => {
 
     const dispatch = useDispatch()
     const { t } = useTranslation()
 
-    const { data, isLoading, refetch, dataUpdatedAt } = useQuery("products", getAllProducts)
-    const { data: categoryData } = useQuery("categories", getAllCategories)
-    const { data: dataSetting, isSuccess: isSuccessSetting } = useQuery("setting", getAllSetting)
-    console.log(data);
+    const { data, isLoading, dataUpdatedAt } = useProducts()
+    const { data: categoryData } = useCategories()
+    const { data: dataSetting, isSuccess: isSuccessSetting } = useSetting()
+    const { mutate: removeProduct } = useDeleteProduct()
 
-    const [allProducts, setAllProducts] = useState<null | { count: number, price: number }[]>(null)
+    const [allProducts, setAllProducts] = useState<null | ProductType[]>(null)
 
     const [selectedCategory, setSelectedCategory] = useState("-1")
     const [filterBy, setFilterBy] = useState("-1")
-    const [serachedValue, setSearchedValue] = useState("")
+    const [searchedValue, setSearchedValue] = useState("")
     const [shown, setShown] = useState(10)
     const [page, setPage] = useState(1);
+
+    let updatedTime = new Date(dataUpdatedAt);
 
     useEffect(() => {
         if (isSuccessSetting) setShown(dataSetting.numberDispaly)
     }, [isSuccessSetting, dataSetting])
-
-    const changePage = (page: number) => setPage(page)
-    let updatedTime = new Date(dataUpdatedAt);
 
     useEffect(() => {
         updatedTime = new Date(dataUpdatedAt);
@@ -51,39 +49,28 @@ const Products = () => {
     useEffect(() => {
         setSearchedValue("")
         if (selectedCategory !== "-1") {
-            const filteredData = data?.filter((product: any) => product.category?.id === selectedCategory)
+            const filteredData = data?.filter((product: ProductType) => product.category?.id === selectedCategory)
             setAllProducts(filteredData)
         } else {
             setAllProducts(data)
         }
     }, [selectedCategory, filterBy])
 
+    useEffect(() => {
+        if (!searchedValue) setAllProducts(data ? [...data] : [])
+    }, [searchedValue])
+
+    const changePage = (page: number) => setPage(page)
     const searchHandler = () => {
-        const searchedData = data.filter((product: any) => product.name.includes(serachedValue) || product.unique_id.includes(serachedValue))
+        const searchedData = data.filter((product: ProductType) => product.name.toLocaleLowerCase().includes(searchedValue) || product.unique_id.includes(searchedValue.toLocaleLowerCase()))
         setAllProducts(searchedData ? searchedData : null)
     }
 
-    const deleteProductHandler = (id: string) => {
-
-        deleteSingleProduct(id)
-            .then(res => {
-                if (res.status === 200) {
-                    dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
-                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your desired product has been successfully deleted.") } }))
-                    refetch()
-                }
-            })
-            .catch(() => {
-                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired Product could not be deleted, please try again.") } }))
-            })
-    }
-
     const showDeleteConfirmModal = (id: string) => {
-        dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete Product"), description: t("You are deleting a product. are you sure?") }, button: "Delete", handler: () => deleteProductHandler(id as string) }))
+        dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete Product"), description: t("You are deleting a product. are you sure?") }, button: "Delete", handler: () => removeProduct(id as string) }))
     }
 
     if (isLoading) return <Loading />
-
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden min-h-screen">
             <div className="flex justify-between items-center">
@@ -137,7 +124,7 @@ const Products = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 absolute left-3 rtl:right-3 cursor-pointer" onClick={searchHandler}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
                         </svg>
-                        <input type="text" className="h-10 grow lg:grow-0 lg:w-72 bg-transparent rounded border border-general-50 outline-none px-10 placeholder:text-general-70 font-iransans-regular placeholder:ltr:font-nunitosans-regular placeholder:rtl:font-iransans-regular" placeholder={t("Search by name or ID")} value={serachedValue} onChange={(e) => setSearchedValue(e.target.value)} />
+                        <input type="text" className="h-10 grow lg:grow-0 lg:w-72 bg-transparent rounded border border-general-50 outline-none px-10 placeholder:text-general-70 font-iransans-regular placeholder:ltr:font-nunitosans-regular placeholder:rtl:font-iransans-regular" placeholder={t("Search by name or ID")} value={searchedValue} onChange={(e) => setSearchedValue(e.target.value)} />
                     </div>
                 </div>
                 {
@@ -166,8 +153,8 @@ const Products = () => {
                                                                 <img src={product.images[0]} className='object-cover' alt="" />
                                                             </div> :
                                                             <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-general-50 bg-general-40 flex items-center justify-center">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8 text-general-60">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8 text-general-60">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path>
                                                                 </svg>
                                                             </div>
                                                     }
@@ -219,8 +206,8 @@ const Products = () => {
                                                                 <img src={product.images[0]} className='object-cover' alt="" />
                                                             </div> :
                                                             <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-general-50 bg-general-40 flex items-center justify-center">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8 text-general-60">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8 text-general-60">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path>
                                                                 </svg>
                                                             </div>
                                                     }
@@ -272,8 +259,8 @@ const Products = () => {
                                                                 <img src={product.images[0]} className='object-cover h-full' alt="" />
                                                             </div> :
                                                             <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-general-50 bg-general-40 flex items-center justify-center">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8 text-general-60">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8 text-general-60">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path>
                                                                 </svg>
                                                             </div>
                                                     }

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next";
-import { useGetTokenFromCookies } from "../hooks/useToken";
+import { useGetTokenFromCookies } from "../hooks/modules/useToken";
 import { useGetMe } from "../hooks/api/useGetMe";
 import { useEffect } from "react"
-import { useRemoveTokenFromCookies } from "../hooks/useToken";
+import { useRemoveTokenFromCookies } from "../hooks/modules/useToken";
 import Button from "../components/Button"
 
 const Site = () => {
