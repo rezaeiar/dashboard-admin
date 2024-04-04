@@ -31,7 +31,7 @@ const routes: RouteType[] = [
             { path: 'products/add', element: <AddProduct /> },
             { path: 'products/edit/:id', element: <EditProduct /> },
             { path: 'categories', element: <Categories /> },
-            { path: 'categories/:CategorieName', element: <SingleCategory /> },
+            { path: 'categories/:id', element: <SingleCategory /> },
             { path: 'customers', element: <Customers /> },
             { path: 'customers/add', element: <AddCustomer /> },
             { path: 'customers/info/:id', element: <CustomerInfo /> },

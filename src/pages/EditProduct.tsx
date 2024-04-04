@@ -1,15 +1,14 @@
-import { useDispatch } from "react-redux"
 import { useParams, useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
-import { useQuery } from "react-query"
-import { getAllCategories } from "../../api/services/category"
 import { useState, ChangeEvent, useEffect } from "react"
 import { showAddCategoryModal } from "../store/slices/AddCategoryModalSlice"
+import { uploadFile } from "../../api/services/upload"
+import { useSingleProduct,usePutProduct } from "../hooks/api/useProducts"
+import { useCategories } from "../hooks/api/useCategories"
 import Loading from "../components/Loading"
 import Button from "../components/Button"
 import CheckBox from "../components/CheckBox"
-import { usePutProduct, useSingleProduct } from "../hooks/api/useProducts"
-import { uploadFile } from "../../api/services/upload"
 
 const EditProduct = () => {
 
@@ -17,9 +16,9 @@ const EditProduct = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { t } = useTranslation()
-    
+
     const { data: productData, isSuccess: isSuccessProductData, isLoading, isFetched } = useSingleProduct(params.id as string)
-    const { data, isSuccess } = useQuery("categories", getAllCategories)
+    const { data, isSuccess } = useCategories()
     const { mutate: editProduct } = usePutProduct(params.id as string)
 
     const [name, setName] = useState("")
@@ -148,18 +147,18 @@ const EditProduct = () => {
                 <div className="bg-white rounded-md p-5 xl:p-7 col-span-5 flex flex-col gap-y-6 xl:gap-y-8 divide-y">
                     <div className="flex flex-col gap-y-6">
                         <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
-                            {t("information")}
+                            {t("Information")}
                         </h5>
                         <div className="flex flex-col gap-y-3 sm:gap-y-6">
                             <div className="flex flex-col">
                                 <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                    {t("product name")}
+                                    {t("Product Name")}
                                 </label>
                                 <input type="text" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Summer T-Shirt")} value={name} onChange={e => setName(e.target.value)} />
                             </div>
                             <div className="flex flex-col">
                                 <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
-                                    {t("product description")}
+                                    {t("Product Description")}
                                 </label>
                                 <textarea name="" id="" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular aspect-[10/2] resize-none" onChange={e => setDescription(e.target.value)} defaultValue={description}></textarea>
                             </div>
@@ -167,7 +166,7 @@ const EditProduct = () => {
                     </div>
                     <div className="flex flex-col gap-y-6 pt-4 xl:pt-6">
                         <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
-                            {t("images")}
+                            {t("Images")}
                         </h5>
                         <label className="border cursor-pointer border-dashed bg-general-30/40 hover:bg-general-30/80 transition-all border-general-60 rounded-md flex items-center justify-center aspect-square sm:aspect-[6/2]" htmlFor="small_size">
                             <div className="flex items-center justify-center flex-col gap-y-2">

@@ -1,24 +1,17 @@
 import { useTranslation } from "react-i18next"
+import { CategoryType } from "../types/api/Categories.types"
 import Button from "./Button"
 
-export type CatagoryCardProps = {
-    id: string,
-    image: null,
-    name: string,
-    products: object[],
-    visibale: boolean
-}
-
-const CategorieCard = ({ id, name, products, image }: CatagoryCardProps) => {
-    console.log(image);
+const CategorieCard = ({ id, name, products, image }: CategoryType) => {
     
     const { t } = useTranslation()
+
     return (
         <div className="flex flex-col bg-white rounded-md overflow-hidden shadow-card group hover:scale-105 hover:shadow-lg hover:z-20 transition-all">
             <div className="relative">
                 {
                     image &&
-                    <img src={image} className="w-full h-36 sm:h-48 md:h-56 lg:h-64 object-cover" alt="" />
+                    <img src={image} className="w-full h-36 sm:h-48 md:h-56 lg:h-64 object-cover" alt="Category" />
                 }
                 {
                     !image &&
@@ -28,7 +21,7 @@ const CategorieCard = ({ id, name, products, image }: CatagoryCardProps) => {
                         </svg>
                     </div>
                 }
-                <div className="h-full w-full absolute bg-general-90 bg-opacity-0 top-0 left-0 group-hover:bg-opacity-70 transition-colors items-center justify-center flex">
+                <div className="h-full w-full absolute group-hover:bg-general-100 bg-opacity-0 top-0 left-0 group-hover:bg-opacity-70 transition-colors items-center justify-center flex">
                     <Button type="white" size="small" styles="hidden opacity-0 group-hover:flex group-hover:opacity-100 transition-colors" link={`/panel/categories/${id}`}>
                         <>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">

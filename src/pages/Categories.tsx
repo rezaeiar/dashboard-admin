@@ -1,27 +1,19 @@
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
 import { showAddCategoryModal } from "../store/slices/AddCategoryModalSlice"
-import { useQuery } from "react-query"
-import { getAllCategories } from "../../api/services/category"
 import Loading from "../components/Loading"
 import Button from "../components/Button"
 import EmptyEntity from "../components/EmptyEntity"
 import CategorieCard from "../components/CategorieCard"
-
-export type CatagoryType = {
-    id: string,
-    image: null,
-    name: string,
-    products: object[],
-    visibale: boolean
-}
+import { useCategories } from "../hooks/api/useCategories"
+import { CategoryType } from "../types/api/Categories.types"
 
 const Categories = () => {
 
     const dispatch = useDispatch()
     const { t } = useTranslation()
 
-    const { data, isLoading } = useQuery("categories", getAllCategories)
+    const { data, isLoading } = useCategories()
 
     const AddCategoryModalHandler = () => {
         dispatch(showAddCategoryModal({ visibility: true }))
@@ -58,7 +50,7 @@ const Categories = () => {
                 !!data.length &&
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 lg:gap-4">
                     {
-                        data.map((category: CatagoryType) => (
+                        data.map((category: CategoryType) => (
                             <CategorieCard key={category.id} {...category} />
                         ))
                     }
