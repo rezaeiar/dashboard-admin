@@ -316,5 +316,7 @@ const fa = {
     "You are not an admin!": "شما مدیر نیستید",
     "Your login has been approved, but your role on this site is not admin; Please log out and enter as admin.": "ورود شما تایید شده است، اما نقش شما در این سایت مدیر نیست. لطفا از سیستم خارج شوید و به عنوان مدیر وارد شوید.",
     "Log out and go to the login page": "از سیستم خارج شوید و به صفحه ورود بروید",
+    "Account Deleted": "حساب حذف شد",
+    "Product Deleted": "محصول حذف شده"
 }
 export default fa

@@ -62,7 +62,7 @@ const Products = () => {
 
     const changePage = (page: number) => setPage(page)
     const searchHandler = () => {
-        const searchedData = data.filter((product: ProductType) => product.name.toLocaleLowerCase().includes(searchedValue) || product.unique_id.includes(searchedValue.toLocaleLowerCase()))
+        const searchedData = data.filter((product: ProductType) => product.name.toLocaleLowerCase().includes(searchedValue) || (product.unique_id as string).includes(searchedValue.toLocaleLowerCase()))
         setAllProducts(searchedData ? searchedData : null)
     }
 
@@ -144,13 +144,13 @@ const Products = () => {
                             <tbody>
                                 {
                                     filterBy === "PRICE" && [...allProducts]?.sort((a, b) => b.price - a.price).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((product: any) => (
-                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2 font-iransans-regular' key={product.id}>
+                                        <tr className='even:bg-general-30/30 first:border-none border-t p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={product.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex gap-x-2 items-center">
                                                     {
                                                         product.images ?
                                                             <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-general-50">
-                                                                <img src={product.images[0]} className='object-cover' alt="" />
+                                                                <img src={product.images[0]} className='object-cover h-full' alt="" />
                                                             </div> :
                                                             <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-general-50 bg-general-40 flex items-center justify-center">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8 text-general-60">
@@ -163,7 +163,7 @@ const Products = () => {
                                                             {product.name}
                                                         </h3>
                                                         <span className="text-[10px] text-general-60 line-clamp-1">
-                                                            {product.unique_id}
+                                                            #{product.unique_id}
                                                         </span>
                                                     </div>
                                                 </div>
@@ -197,13 +197,13 @@ const Products = () => {
                                 }
                                 {
                                     filterBy === "COUNT" && [...allProducts]?.sort((a, b) => b.count - a.count).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((product: any) => (
-                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2 font-iransans-regular' key={product.id}>
+                                        <tr className='even:bg-general-30/30 first:border-none border-t p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={product.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex gap-x-2 items-center">
                                                     {
                                                         product.images ?
                                                             <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-general-50">
-                                                                <img src={product.images[0]} className='object-cover' alt="" />
+                                                                <img src={product.images[0]} className='object-cover h-full' alt="" />
                                                             </div> :
                                                             <div className="h-12 w-12 rounded-lg overflow-hidden shrink-0 border border-general-50 bg-general-40 flex items-center justify-center">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8 text-general-60">
@@ -216,7 +216,7 @@ const Products = () => {
                                                             {product.name}
                                                         </h3>
                                                         <span className="text-[10px] text-general-60 line-clamp-1">
-                                                            {product.unique_id}
+                                                            #{product.unique_id}
                                                         </span>
                                                     </div>
                                                 </div>
@@ -250,7 +250,7 @@ const Products = () => {
                                 }
                                 {
                                     filterBy === "-1" && [...allProducts].slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((product: any) => (
-                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2 font-iransans-regular' key={product.id}>
+                                        <tr className='even:bg-general-30/30 first:border-none border-t p-3 md:p-4 bg-white grid grid-cols-6 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={product.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex gap-x-2 items-center">
                                                     {
@@ -269,7 +269,7 @@ const Products = () => {
                                                             {product.name}
                                                         </h3>
                                                         <span className="text-[10px] text-general-60 line-clamp-1">
-                                                            {product.unique_id}
+                                                            #{product.unique_id}
                                                         </span>
                                                     </div>
                                                 </div>

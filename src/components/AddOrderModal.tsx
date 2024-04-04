@@ -1,12 +1,9 @@
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
-import { useQuery } from "react-query"
 import { showAddOrderModal } from "../store/slices/AddOrderModalSlice"
 import { useState } from "react"
-import { getAllOrders, addOrder } from '../../api/services/order'
-import { showSuccessModal } from "../store/slices/successModalSlice"
-import { showErrorModal } from "../store/slices/ErrorModalSlice"
 import Button from "./Button"
+import { usePostOrder } from "../hooks/api/useOrders"
 
 type AddOrderModalProps = {
     isShowOrderModal: boolean
@@ -21,28 +18,14 @@ const AddOrderModal = ({ isShowOrderModal }: AddOrderModalProps) => {
         if (event.target.className.includes("parent")) dispatch(showAddOrderModal({ visibility: false }))
     }
 
-    const { refetch } = useQuery("orders", getAllOrders)
-
     const [productId, setProductId] = useState("")
     const [email, setEmail] = useState("")
     const [product_count, setProduct_count] = useState(1)
+    const { mutate: addOrder } = usePostOrder()
 
     const addOrderHandler = () => {
-        addOrder({ productId, email, product_count })
-            .then(res => {
-                if (res.status === 201) {
-                    dispatch(showAddOrderModal({ visibility: false }))
-                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your desired order has been added.") } }))
-                    refetch()
-                } else {
-                    dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired order could not be added, please try again.") } }))
-                }
-            })
-            .catch((err) => {
-                dispatch(showAddOrderModal({ visibility: false }))
-                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t(err.response.data.message) } }))
-
-            })
+        const newOrderInfo = { productId, email, product_count }
+        addOrder(newOrderInfo)
         setProductId("")
         setEmail("")
         setProduct_count(1)

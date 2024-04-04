@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
+import { useCategories } from "../hooks/api/useCategories"
 import { showAddCategoryModal } from "../store/slices/AddCategoryModalSlice"
 import Loading from "../components/Loading"
 import Button from "../components/Button"
 import EmptyEntity from "../components/EmptyEntity"
-import CategorieCard from "../components/CategorieCard"
-import { useCategories } from "../hooks/api/useCategories"
 import { CategoryType } from "../types/api/Categories.types"
+import CategorieCard from "../components/CategorieCard"
 
 const Categories = () => {
 

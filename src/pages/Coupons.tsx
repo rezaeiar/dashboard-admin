@@ -13,6 +13,7 @@ import { statusStyleGenerator } from "../utils/helpers"
 import Pagination from "../components/Pagination"
 import EmptyEntity from "../components/EmptyEntity"
 import { getAllSetting } from "../../api/services/setting"
+import { dateGenerator } from "../utils/dateGenerator"
 
 const Coupons = () => {
 
@@ -83,9 +84,7 @@ const Coupons = () => {
         dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete Coupon"), description: t("You are deleting a coupon. are you sure?") }, button: "Delete", handler: () => deleteCouponHandler(id as string) }))
     }
 
-    const dateGenerator = (duration: string) => {
-        return new Date(duration).toLocaleDateString("fa-IR-u-nu-latn")
-    }
+    
 
     if (isLoading) return <Loading />
 
