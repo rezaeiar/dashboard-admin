@@ -9,5 +9,5 @@ export type ProductType = {
     country: string,
     isDigital: boolean,
     categoryId: string,
-    images: string[]
+    images: string[] | null
 }

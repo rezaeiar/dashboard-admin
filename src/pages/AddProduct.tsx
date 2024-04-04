@@ -78,6 +78,10 @@ const AddProduct = () => {
             })
     }
 
+    const removePhoto = (clickedImage: string) => {
+        setImages(prevState => prevState.filter(image => image !== clickedImage))
+    }
+
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
             <div className="flex justify-between items-start">
@@ -159,7 +163,7 @@ const AddProduct = () => {
                         <div className="flex gap-2">
                             {
                                 images.map(image => (
-                                    <div className="h-20 w-20 border p-2 flex items-center justify-center rounded border-general-60" key={image}>
+                                    <div className="h-20 w-20 border p-2 flex items-center justify-center rounded border-general-60 cursor-pointer" key={image} onClick={() => removePhoto(image)}>
                                         <img src={image} alt="product image" />
                                     </div>
                                 ))

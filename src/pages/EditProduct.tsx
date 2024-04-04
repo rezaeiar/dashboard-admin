@@ -2,15 +2,14 @@ import { useDispatch } from "react-redux"
 import { useParams, useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { useQuery } from "react-query"
-import { getSindleProduct, editProduct } from '../../api/services/product'
 import { getAllCategories } from "../../api/services/category"
 import { useState, ChangeEvent, useEffect } from "react"
 import { showAddCategoryModal } from "../store/slices/AddCategoryModalSlice"
-import { showSuccessModal } from "../store/slices/successModalSlice"
-import { showErrorModal } from "../store/slices/ErrorModalSlice"
 import Loading from "../components/Loading"
 import Button from "../components/Button"
 import CheckBox from "../components/CheckBox"
+import { usePutProduct, useSingleProduct } from "../hooks/api/useProducts"
+import { uploadFile } from "../../api/services/upload"
 
 const EditProduct = () => {
 
@@ -18,10 +17,10 @@ const EditProduct = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { t } = useTranslation()
-
-    const { data: productData, isSuccess: isSuccessProductData, isLoading, isFetched, refetch } = useQuery(["product", params.id], () => getSindleProduct(params.id as string))
-
+    
+    const { data: productData, isSuccess: isSuccessProductData, isLoading, isFetched } = useSingleProduct(params.id as string)
     const { data, isSuccess } = useQuery("categories", getAllCategories)
+    const { mutate: editProduct } = usePutProduct(params.id as string)
 
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
@@ -34,6 +33,7 @@ const EditProduct = () => {
     const [tagName, setTagName] = useState("")
     const [categoryId, setCategoryId] = useState("")
     const [multipleOptions, setMultipleOptions] = useState(false)
+    const [images, setImages] = useState<string[]>([])
 
     useEffect(() => {
         if (isSuccessProductData) {
@@ -46,14 +46,15 @@ const EditProduct = () => {
             setCountry(productData.country)
             setIsDigital(productData.isDigital)
             setCategoryId(productData.category ? productData.category.id : "")
+            setImages(productData.images ? productData.images : [])
         }
     }, [isSuccessProductData, isFetched])
 
     const addNewTag = (keyCode: number) => {
         if (tagName.length && keyCode === 13) {
-            setTags(prevState => {
-                return [...prevState, tagName.toLowerCase()]
-            })
+            if (!tags.includes(tagName)) {
+                setTags(prevState => [...prevState, tagName])
+            }
             setTagName("")
         }
     }
@@ -66,6 +67,24 @@ const EditProduct = () => {
         dispatch(showAddCategoryModal({ visibility: true }))
     }
 
+    const removePhoto = (clickedImage: string) => {
+        setImages(prevState => prevState.filter(image => image !== clickedImage))
+    }
+
+    const [isFileUploading, setIsFileUploading] = useState(false)
+    const uploadFileHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        setIsFileUploading(true)
+        uploadFile(event.target)
+            .then(res => {
+                if (res.status === 201) {
+                    setIsFileUploading(false)
+                    setImages((prevState) => {
+                        return [...prevState, res.data.url]
+                    });
+                }
+            })
+    }
+
     const editProductHandler = () => {
         const ProductNewInfos = {
             name,
@@ -76,24 +95,13 @@ const EditProduct = () => {
             weight,
             country,
             isDigital,
-            categoryId
+            categoryId,
+            images: images.length ? images : null
         }
-
-        editProduct(params.id as string, ProductNewInfos)
-            .then(res => {
-                if (res.status === 200) {
-                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your product has been successfully edited in the product list.") } }))
-                    navigate("/panel/products")
-                    refetch()
-                }
-            })
-            .catch(() => {
-                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your product was not edited to the product list, please try again.") } }))
-            })
+        editProduct(ProductNewInfos)
     }
 
     if (isLoading) return <Loading />
-
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
             <div className="flex justify-between items-start">
@@ -116,9 +124,22 @@ const EditProduct = () => {
                             {t("Cancel")}
                         </>
                     </Button>
-                    <Button type="primary" size="small" styles="" onSubmit={editProductHandler}>
+                    <Button type="primary" size="small" disabled={isFileUploading} onSubmit={editProductHandler}>
                         <>
-                            {t("Save")}
+                            {
+                                !isFileUploading &&
+                                t("Save")
+                            }
+                            {
+                                !!isFileUploading &&
+                                <div className="flex gap-2">
+                                    {t("Save")}
+                                    <svg aria-hidden="true" className="inline w-4 h-4 text-gray-200 animate-spin dark:text-gray-600 fill-general-70" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                                    </svg>
+                                </div>
+                            }
                         </>
                     </Button>
                 </div>
@@ -158,7 +179,16 @@ const EditProduct = () => {
                                 </span>
                             </div>
                         </label>
-                        <input className="w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 hidden" id="small_size" type="file" />
+                        <input className="w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 hidden" id="small_size" type="file" onChange={event => uploadFileHandler(event)} />
+                        <div className="flex gap-2">
+                            {
+                                images.map(image => (
+                                    <div className="h-20 w-20 border p-2 flex items-center justify-center rounded border-general-60 cursor-pointer" key={image} onClick={() => removePhoto(image)}>
+                                        <img src={image} alt="product image" />
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
                     <div className="flex flex-col gap-y-6 pt-4 xl:pt-6">
                         <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
@@ -179,7 +209,6 @@ const EditProduct = () => {
                             </div>
                         </div>
                     </div>
-
                     <div className="flex flex-col gap-y-6 pt-4 xl:pt-6">
                         <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
                             {t("shipping")}

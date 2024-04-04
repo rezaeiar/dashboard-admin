@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "react-query"
-import { addProduct, deleteSingleProduct, getAllProducts } from "../../../api/services/product"
+import { addProduct, deleteSingleProduct, editProduct, getAllProducts, getSindleProduct } from "../../../api/services/product"
 import { useDispatch } from "react-redux"
 import { showConfirmModal } from "../../store/slices/ConfirmModalSlice"
 import { showSuccessModal } from "../../store/slices/successModalSlice"
@@ -12,6 +12,10 @@ const useProducts = () => {
     return useQuery("products", getAllProducts)
 }
 
+const useSingleProduct = (id: string) => {
+    return useQuery(["product", id], () => getSindleProduct(id))
+}
+
 const useDeleteProduct = () => {
 
     const queryClient = useQueryClient()
@@ -20,7 +24,7 @@ const useDeleteProduct = () => {
 
     return useMutation({
         mutationFn: async (id: string) => {
-            await deleteSingleProduct(id + "f")
+            await deleteSingleProduct(id)
                 .then(res => {
                     if (res.status === 200) {
                         dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
@@ -63,4 +67,30 @@ const usePostProduct = () => {
     })
 }
 
-export { useProducts, useDeleteProduct, usePostProduct }
+const usePutProduct = (id: string) => {
+
+    const queryClient = useQueryClient()
+    const dispatch = useDispatch()
+    const { t } = useTranslation()
+    const navigate = useNavigate()
+
+    return useMutation({
+        mutationFn: async (productInfo: ProductType) => {
+            await editProduct(id, productInfo)
+                .then(res => {
+                    if (res.status === 200) {
+                        dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your product has been successfully edited in the product list.") } }))
+                        navigate("/panel/products")
+                    }
+                })
+                .catch(() => {
+                    dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your product was not edited to the product list, please try again.") } }))
+                })
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["product", id] })
+        }
+    })
+}
+
+export { useProducts, useSingleProduct, useDeleteProduct, usePostProduct, usePutProduct }
