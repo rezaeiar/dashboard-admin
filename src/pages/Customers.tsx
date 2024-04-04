@@ -1,45 +1,37 @@
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
-import { useQuery } from "react-query"
-import { getAllCustomers, deleteSingleCustomer } from "../../api/services/customer"
+import { useCustomers } from "../hooks/api/useCustomers"
+import { useSetting } from "../hooks/api/useSetting"
 import { useState, useEffect } from "react"
+import { CustomerType } from "../types/api/customers.types"
+import { useDeleteCustomer } from "../hooks/api/useCustomers"
 import { showConfirmModal } from "../store/slices/ConfirmModalSlice"
-import { showSuccessModal } from "../store/slices/successModalSlice"
-import { showErrorModal } from "../store/slices/ErrorModalSlice"
 import Loading from "../components/Loading"
 import Button from "../components/Button"
 import { Link } from "react-router-dom"
 import Pagination from "../components/Pagination"
 import EmptyEntity from "../components/EmptyEntity"
-import { getAllSetting } from "../../api/services/setting"
 
 const Customers = () => {
 
     const dispatch = useDispatch()
     const { t } = useTranslation()
 
-    const { data, isLoading, refetch, dataUpdatedAt } = useQuery("customers", getAllCustomers)
-    const { data: dataSetting, isSuccess: isSuccessSetting } = useQuery("setting", getAllSetting)
-    console.log(data);
+    const { data, isLoading, dataUpdatedAt } = useCustomers()
+    const { data: dataSetting, isSuccess: isSuccessSetting } = useSetting()
 
-    const [allCustomers, setAllCustomers] = useState<null | { roles: String[], order_count: number, purchase_amount: number }[]>(null)
-
+    const [allCustomers, setAllCustomers] = useState<null | CustomerType[]>(null)
     const [selectedRole, setSelectedRole] = useState("-1")
     const [filterBy, setFilterBy] = useState("-1")
-    const [serachedValue, setSearchedValue] = useState("")
+    const [searchedValue, setSearchedValue] = useState("")
     const [shown, setShown] = useState(10)
     const [page, setPage] = useState(1);
-
-    useEffect(() => {
-        if (isSuccessSetting) setShown(dataSetting.numberDispaly)
-    }, [isSuccessSetting, dataSetting])
-
-    const changePage = (page: number) => setPage(page)
     let updatedTime = new Date(dataUpdatedAt);
+    const { mutate: deleteCustomer } = useDeleteCustomer()
 
-    useEffect(() => {
-        updatedTime = new Date(dataUpdatedAt);
-    }, [dataUpdatedAt])
+    useEffect(() => { if (isSuccessSetting) setShown(dataSetting.numberDispaly) }, [isSuccessSetting, dataSetting])
+
+    useEffect(() => { updatedTime = new Date(dataUpdatedAt) }, [dataUpdatedAt])
 
     useEffect(() => {
         if (data) setAllCustomers([...data])
@@ -66,26 +58,19 @@ const Customers = () => {
         }
     }, [selectedRole, filterBy])
 
+    useEffect(() => {
+        if (!searchedValue) setAllCustomers(data ? [...data] : [])
+    }, [searchedValue])
+
+    const changePage = (page: number) => setPage(page)
+
     const searchHandler = () => {
-        const searchedData = data.filter((customer: any) => customer.email.includes(serachedValue) || customer.username.includes(serachedValue))
+        const searchedData = data.filter((customer: any) => customer.email.toLowerCase().includes(searchedValue) || customer.username.toLowerCase().includes(searchedValue))
         setAllCustomers(searchedData ? searchedData : null)
     }
 
     const deleteCategoryHandler = (id: string) => {
-        deleteSingleCustomer(id)
-            .then(res => {
-                if (res.status === 200) {
-                    dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
-                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your desired client has been successfully deleted.") } }))
-                    refetch()
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-
-                dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
-                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired client could not be deleted, please try again.") } }))
-            })
+        deleteCustomer(id)
     }
 
     const showDeleteConfirmModal = (id: string) => {
@@ -93,7 +78,6 @@ const Customers = () => {
     }
 
     if (isLoading) return <Loading />
-
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden min-h-screen">
             <div className="flex justify-between items-center">
@@ -144,7 +128,7 @@ const Customers = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 absolute left-3 rtl:right-3 cursor-pointer" onClick={searchHandler}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
                         </svg>
-                        <input type="text" className="h-10 grow lg:grow-0 lg:w-72 bg-transparent rounded border border-general-50 outline-none px-10 placeholder:text-general-70 font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Search")} value={serachedValue} onChange={(e) => setSearchedValue(e.target.value)} />
+                        <input type="text" className="h-10 grow lg:grow-0 lg:w-72 bg-transparent rounded border border-general-50 outline-none px-10 placeholder:text-general-70 font-nunitosans-regular rtl:font-iransans-regular" placeholder={t("Search by Email or Username")} value={searchedValue} onChange={(e) => setSearchedValue(e.target.value)} />
                     </div>
                 </div>
                 {
@@ -198,7 +182,7 @@ const Customers = () => {
                                 }
                                 {
                                     filterBy === "ORDERS" && [...allCustomers]?.sort((a, b) => b.order_count - a.order_count).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((customer: any) => (
-                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={customer.id}>
+                                        <tr className='even:bg-general-30/30 first:border-none border-t p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={customer.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex items-center gap-x-3">
                                                     <div className="h-12 w-12 uppercase bg-general-60 rounded-full text-white flex items-center justify-center shrink-0">
@@ -233,7 +217,7 @@ const Customers = () => {
                                 }
                                 {
                                     filterBy === "-1" && [...allCustomers].slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((customer: any) => (
-                                        <tr className='p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={customer.id}>
+                                        <tr className='even:bg-general-30/30 first:border-none border-t p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={customer.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex items-center gap-x-3">
                                                     <div className="h-12 w-12 uppercase bg-general-60 rounded-full text-white flex items-center justify-center shrink-0">
