@@ -4,7 +4,6 @@ import NotificationSetting from "./NotificationsSetting"
 import PanelSetting from "./PanelSetting"
 
 const Setting = () => {
-
     const params = useParams()
 
     switch (params.page) {

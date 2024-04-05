@@ -145,7 +145,7 @@ const Orders = () => {
                                                             {order.user.first_name} {order.user.last_name}
                                                         </Link>
                                                     ) : (
-                                                        <span className="ltr:font-nunitosans-regular rtl:font-iransans-regular text-sm text-red-90">
+                                                        <span className="ltr:font-nunitosans-regular rtl:font-iransans-regular text-sm text-red-60">
                                                             {t("Account Deleted")}
                                                         </span>
                                                     )
@@ -154,8 +154,12 @@ const Orders = () => {
                                             <td className="w-28 sm:w-32 shrink-0">{order.total_price.toLocaleString()}</td>
                                             <td className="w-28 sm:w-32 shrink-0">
                                                 {
-                                                    order.product ? order.product.name :
-                                                        <span className="ltr:font-nunitosans-regular rtl:font-iransans-regular text-sm text-red-90">
+                                                    order.product ?
+                                                        <span className="font-iransans-regular text-sm">
+                                                            {order.product.name}
+                                                        </span>
+                                                        :
+                                                        <span className="ltr:font-nunitosans-regular rtl:font-iransans-regular text-sm text-red-60">
                                                             {t("Product Deleted")}
                                                         </span>
                                                 }</td>
@@ -183,7 +187,7 @@ const Orders = () => {
                                                             {order.user.first_name} {order.user.last_name}
                                                         </Link>
                                                     ) : (
-                                                        <span className="ltr:font-nunitosans-regular rtl:font-iransans-regular text-sm text-red-90">
+                                                        <span className="ltr:font-nunitosans-regular rtl:font-iransans-regular text-sm text-red-60">
                                                             {t("Account Deleted")}
                                                         </span>
                                                     )
@@ -193,8 +197,12 @@ const Orders = () => {
                                             <td className="w-28 sm:w-32 shrink-0">{order.total_price.toLocaleString()}</td>
                                             <td className="w-28 sm:w-32 shrink-0">
                                                 {
-                                                    order.product ? order.product.name :
-                                                        <span className="ltr:font-nunitosans-regular rtl:font-iransans-regular text-sm text-red-90">
+                                                    order.product ?
+                                                        <span className="font-iransans-regular text-sm">
+                                                            {order.product.name}
+                                                        </span>
+                                                        :
+                                                        <span className="ltr:font-nunitosans-regular rtl:font-iransans-regular text-sm text-red-60">
                                                             {t("Product Deleted")}
                                                         </span>
                                                 }

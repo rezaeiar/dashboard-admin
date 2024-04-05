@@ -11,7 +11,7 @@ const CategorieCard = ({ id, name, products, image }: CategoryType) => {
             <div className="relative">
                 {
                     image &&
-                    <img src={image} className="w-full h-36 sm:h-48 md:h-56 lg:h-64 object-cover" alt="Category" />
+                    <img src={image} className="w-full h-36 sm:h-48 md:h-56 lg:h-64 object-cover" alt="category" />
                 }
                 {
                     !image &&

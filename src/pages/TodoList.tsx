@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
-import { useQuery } from "react-query"
-import { getAllTasks, getUserTasks, deleteSingleTask } from "../../api/services/task"
-import { changeTaskComplated } from "../../api/services/task"
+import { useAllTasks, useTasks } from "../hooks/api/useTasks"
+import { useChangeTaskComplated } from "../hooks/api/useTasks"
+import { useDeleteTask } from "../hooks/api/useTasks"
 import { showConfirmModal } from "../store/slices/ConfirmModalSlice"
 import { showAddTaskModal } from "../store/slices/AddTaskModalSlice"
 import Button from "../components/Button"
@@ -12,30 +12,17 @@ const TodoList = () => {
     const dispatch = useDispatch()
     const { t } = useTranslation()
 
-    const { data: allTasksData, refetch: allTaskRefetch } = useQuery("tasks", getAllTasks)
-    const { data: userTasksData, refetch: uerTasksRefetch } = useQuery("user-tasks", getUserTasks)
+    const { data: allTasksData } = useAllTasks()
+    const { data: userTasksData } = useTasks()
+    const { mutate: changeTaskCoplated } = useChangeTaskComplated()
+    const { mutate: deleteTask } = useDeleteTask()
 
     const changeTaskComplatedHandler = (id: string, isComplated: boolean) => {
-
-        changeTaskComplated(id, !isComplated)
-            .then(res => {
-                if (res.status === 200) {
-                    uerTasksRefetch()
-                    allTaskRefetch()
-                }
-            })
+        changeTaskCoplated({ id, isComplated })
     }
 
     const deleteTaskGandler = (id: string) => {
-
-        deleteSingleTask(id)
-            .then(res => {
-                if (res.status === 200) {
-                    dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
-                    uerTasksRefetch()
-                    allTaskRefetch()
-                }
-            })
+        deleteTask(id as string)
     }
 
     const showDeleteConfirmModal = (id: string) => {

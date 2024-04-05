@@ -322,6 +322,7 @@ const en = {
     "Edit Customer": "Edit Customer",
     "There is no order": "There is no order",
     "From this date our customer:": "From this date our customer:",
-    "deadline": "deadline"
+    "deadline": "deadline",
+    "Show Me": "Show Me"
 }
 export default en

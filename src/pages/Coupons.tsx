@@ -98,8 +98,8 @@ const Coupons = () => {
                                 <option value='-1'>
                                     {t('filter by status')}
                                 </option>
-                                <option value="VALID">{t("Valid")}</option>
-                                <option value="INVALID">{t("Invalid")}</option>
+                                <option value="VALID">{t("VALID")}</option>
+                                <option value="INVALID">{t("INVALID")}</option>
                             </select>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-3 h-3 absolute rtl:left-2 ltr:right-2 text-general-70"><path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
                         </div>

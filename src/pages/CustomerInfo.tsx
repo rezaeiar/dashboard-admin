@@ -28,7 +28,7 @@ const CustomerInfo = () => {
 
     const showDeleteConfirmModal = (id: string) => {
         dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete Customer"), description: t("By deleting the user, all his registered information on the site will be deleted. are you sure?") }, button: "Delete", handler: () => deleteCustomerHandler(id as string) }))
-    }    
+    }
 
     if (isLoading) return <Loading />
     return (
@@ -150,7 +150,11 @@ const CustomerInfo = () => {
                                         data.orders.reverse().map((order: any) => (
                                             <tr key={order.id} className='even:bg-general-30/30 border-b p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
                                                 <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
-                                                    #23534D
+                                                    {
+                                                        order.product ?
+                                                        `#${order.product.unique_id}`
+                                                        : "-"
+                                                    }
                                                 </td>
                                                 <td className="w-28 sm:w-32 shrink-0">
                                                     {
