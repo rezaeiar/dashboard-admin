@@ -1,16 +1,11 @@
-import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { useState } from "react"
-import { addCustomer } from '../../api/services/customer'
-import { showSuccessModal } from "../store/slices/successModalSlice"
-import { showErrorModal } from "../store/slices/ErrorModalSlice"
-import Button from "../components/Button"
 import { usePostCustomer } from "../hooks/api/useCustomers"
+import Button from "../components/Button"
 
 const AddCustomer = () => {
 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
     const { t } = useTranslation()
 

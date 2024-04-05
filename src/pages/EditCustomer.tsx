@@ -1,19 +1,13 @@
 import { useParams, useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
 import { useState, useEffect } from "react"
-import { useQuery } from "react-query"
-import { getSingleCustomer } from '../../api/services/customer'
-import { editCustomerInfo } from "../../api/services/customer"
-import { showSuccessModal } from "../store/slices/successModalSlice"
-import { showErrorModal } from "../store/slices/ErrorModalSlice"
+import { useSingleCustomer, usePutCustomer } from "../hooks/api/useCustomers"
 import Loading from "../components/Loading"
 import Button from "../components/Button"
 
 const EditCustomer = () => {
 
     const params = useParams()
-    const dispatch = useDispatch()
     const navigate = useNavigate()
     const { t } = useTranslation()
 
@@ -29,7 +23,8 @@ const EditCustomer = () => {
     const [postal_code, setPostal_code] = useState("")
     const [note, setNote] = useState("")
 
-    const { data, isLoading, isSuccess, refetch } = useQuery(['customer', params.id], () => getSingleCustomer(params.id as string))
+    const { data, isLoading, isSuccess } = useSingleCustomer(params.id as string)
+    const { mutate: editCustomer } = usePutCustomer(params.id as string)
 
     useEffect(() => {
         if (isSuccess) {
@@ -65,24 +60,10 @@ const EditCustomer = () => {
             home_phone_number,
             postal_code, note
         }
-
-        editCustomerInfo(params.id as string, newCustomerInfo)
-            .then(res => {
-                if (res.status === 200) {
-                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your changes were made successfully.") } }))
-                    navigate("/panel/customers")
-                    refetch()
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                
-                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your customer was not edited to the customer list, please try again.") } }))
-            })
+        editCustomer(newCustomerInfo)
     }
 
     if (isLoading) return <Loading />
-
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
             <div className="flex justify-between items-start">

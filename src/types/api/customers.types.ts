@@ -4,6 +4,21 @@ export type CustomerType = {
     purchase_amount?: number,
     first_name: string,
     last_name: string,
+    email?: string,
+    username: string,
+    phone_number: string,
+    password?: string,
+    address: string,
+    country: string,
+    city: string,
+    home_phone_number: string,
+    postal_code: string,
+    note: string
+}
+export type CustomerPostType = {
+    roles: string[],
+    first_name: string,
+    last_name: string,
     email: string,
     username: string,
     phone_number: string,
