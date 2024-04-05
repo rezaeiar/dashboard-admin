@@ -1,12 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "react-query"
-import { deleteSingleCustomer, getAllCustomers, getSingleCustomer } from "../../../api/services/customer"
+import { addCustomer, deleteSingleCustomer, getAllCustomers, getSingleCustomer } from "../../../api/services/customer"
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
 import { showConfirmModal } from "../../store/slices/ConfirmModalSlice"
 import { showSuccessModal } from "../../store/slices/successModalSlice"
 import { showErrorModal } from "../../store/slices/ErrorModalSlice"
 import { useNavigate } from "react-router-dom"
-
+import { CustomerType } from "../../types/api/Customers.types"
 const useCustomers = () => {
     return useQuery("customers", getAllCustomers)
 }
@@ -43,4 +43,29 @@ const useDeleteCustomer = () => {
     })
 }
 
-export { useCustomers, useDeleteCustomer, useSingleCustomer }
+const usePostCustomer = () => {
+    const queryClient = useQueryClient()
+    const dispatch = useDispatch()
+    const { t } = useTranslation()
+    const navigate = useNavigate()
+
+    return useMutation({
+        mutationFn: async (customerData: CustomerType) => {
+            await addCustomer(customerData)
+                .then(res => {
+                    if (res.status === 201) {
+                        dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your customer has been successfully added to the customer list.") } }))
+                        navigate("/panel/customers")
+                    }
+                })
+                .catch(() => {
+                    dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your customer was not added to the customer list, please try again.") } }))
+                })
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["customers"] })
+        }
+    })
+}
+
+export { useCustomers, useDeleteCustomer, useSingleCustomer, usePostCustomer }

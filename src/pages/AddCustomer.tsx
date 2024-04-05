@@ -6,6 +6,7 @@ import { addCustomer } from '../../api/services/customer'
 import { showSuccessModal } from "../store/slices/successModalSlice"
 import { showErrorModal } from "../store/slices/ErrorModalSlice"
 import Button from "../components/Button"
+import { usePostCustomer } from "../hooks/api/useCustomers"
 
 const AddCustomer = () => {
 
@@ -27,6 +28,8 @@ const AddCustomer = () => {
     const [postal_code, setPostal_code] = useState("")
     const [note, setNote] = useState("")
 
+    const { mutate: addCustomer } = usePostCustomer()
+
     const saveUser = () => {
         const newCustomerInfo =
         {
@@ -43,17 +46,8 @@ const AddCustomer = () => {
             home_phone_number,
             postal_code, note
         }
-        
+
         addCustomer(newCustomerInfo)
-            .then(res => {
-                if (res.status === 201) {
-                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your customer has been successfully added to the customer list.") } }))
-                    navigate("/panel/customers")
-                }
-            })
-            .catch(() => {
-                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your customer was not added to the customer list, please try again.") } }))
-            })
     }
 
     return (

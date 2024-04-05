@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import { useCustomers } from "../hooks/api/useCustomers"
 import { useSetting } from "../hooks/api/useSetting"
 import { useState, useEffect } from "react"
-import { CustomerType } from "../types/api/customers.types"
+import { CustomerType } from "../types/api/Customers.types"
 import { useDeleteCustomer } from "../hooks/api/useCustomers"
 import { showConfirmModal } from "../store/slices/ConfirmModalSlice"
 import Loading from "../components/Loading"
@@ -146,7 +146,7 @@ const Customers = () => {
                             </thead>
                             <tbody>
                                 {
-                                    filterBy === "SPENT" && [...allCustomers]?.sort((a, b) => b.purchase_amount - a.purchase_amount).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((customer: any) => (
+                                    filterBy === "SPENT" && [...allCustomers]?.sort((a, b) => b.purchase_amount as number - (a.purchase_amount as number)).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((customer: any) => (
                                         <tr className='even:bg-general-30/30 first:border-none border-t p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={customer.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex items-center gap-x-3">
@@ -182,7 +182,7 @@ const Customers = () => {
                                     ))
                                 }
                                 {
-                                    filterBy === "ORDERS" && [...allCustomers]?.sort((a, b) => b.order_count - a.order_count).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((customer: any) => (
+                                    filterBy === "ORDERS" && [...allCustomers]?.sort((a, b) => b.order_count as number - (a.order_count as number)).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((customer: any) => (
                                         <tr className='even:bg-general-30/30 first:border-none border-t p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={customer.id}>
                                             <td className='w-36 sm:w-44 shrink-0 overflow-hidden items-center gap-x-2'>
                                                 <div className="flex items-center gap-x-3">
