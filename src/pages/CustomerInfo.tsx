@@ -55,7 +55,7 @@ const CustomerInfo = () => {
                     </Button>
                     <Button type="primary" size="small" link={`/panel/customers/edit/${params.id}`} >
                         <>
-                            {t("Edit Customer")}
+                            {t("Edit")}
                         </>
                     </Button>
                 </div>
@@ -65,7 +65,7 @@ const CustomerInfo = () => {
                     <div className="bg-white rounded-md p-5 xl:p-7 flex flex-col gap-y-4 xl:gap-y-6 divide-y">
                         <div className="flex justify-between">
                             <div className="flex gap-x-2 md:gap-x-5">
-                                <div className={`h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 text-xl md:text-4xl rounded-full text-white flex items-center justify-center uppercase ${!!data.roles.includes("ADMIN") ? 'bg-yellow-101 shadow-md' : "bg-general-60"}`}>
+                                <div className={`h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 shrink-0 text-xl md:text-4xl rounded-full text-white flex items-center justify-center uppercase ${!!data.roles.includes("ADMIN") ? 'bg-yellow-101 shadow-md' : "bg-general-60"}`}>
                                     {data.first_name.slice(0, 1)}
                                 </div>
                                 <div className="flex flex-col gap-y-1 md:gap-y-2">

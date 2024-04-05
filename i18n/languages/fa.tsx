@@ -258,7 +258,7 @@ const fa = {
     "Your desired coupon could not be added, please try again.": "کوپن مورد نظر شما اضافه نشد، لطفا دوباره امتحان کنید.",
     "VALID": "معتبر",
     "INVALID": "نامعتبر",
-    "Search by discount code": "جستجو براساس کد تخفیف",
+    "Search by name or discount code": "جستجو براساس نام یا کد تخفیف",
     "All your next discount codes will be visible on this page.": "تمام کدهای تخفیف بعدی شما در این صفحه قابل مشاهده خواهد بود.",
     "Codes help to increase your sales, create now!": "کدها به افزایش فروش شما کمک می کنند، همین حالا ایجاد کنید!",
     "No Coupons Yet": "هنوز کوپنی وجود ندارد",

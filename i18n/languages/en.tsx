@@ -258,7 +258,7 @@ const en = {
     "Your desired coupon could not be added, please try again.": "Your desired coupon could not be added, please try again.",
     "VALID": "Valid",
     "INVALID": "Invalid",
-    "Search by discount code": "Search by discount code",
+    "Search by name or discount code": "Search by name or discount code",
     "All your next discount codes will be visible on this page.": "All your next discount codes will be visible on this page.",
     "Codes help to increase your sales, create now!": "Codes help to increase your sales, create now!",
     "No Coupons Yet": "No Coupons Yet",
