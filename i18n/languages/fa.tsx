@@ -323,6 +323,20 @@ const fa = {
     "There is no order": "سفارشی وجود ندارد",
     "From this date our customer:": "مشتری ما است از:",
     "deadline": "مهلت استفاده",
-    "Show Me": "نشونم بده"
+    "Show Me": "نشونم بده",
+    "Profile": "نمایه",
+    "Notifications": "نوتیفیکیشن ها",
+    "Panel Settings": "تنظیمات پنل",
+    "Profile Details": "جزئیات نمایه",
+    "Enter your profile information": "اطلاعات پروفایل خود را وارد کنید",
+    "It allows you to see if you have a pending order in the notifications section.": "این امکان را به شما می دهد تا ببینید آیا سفارش معلقی در بخش اعلان ها دارید یا خیر.",
+    "Out of stock": "تمام شده",
+    "You will be notified if a product is out of stock.": "در صورت اتمام موجودی کالا به شما اطلاع داده خواهد شد.",
+    "Be notified if the store's product list is empty.": "در صورت خالی بودن لیست محصولات فروشگاه مطلع شوید.",
+    "If you have an uncompleted task, you will be notified.": "اگر کار ناتمام دارید به شما اطلاع داده می شود.",
+    "Profile Picture": "عکس پروفایل",
+    "General Settings": 'تنظیمات عمومی',
+    "Manage your main panel settings.": "تنظیمات پنل اصلی خود را مدیریت کنید.",
+    "The number of display items in the lists": "تعداد موارد نمایش داده شده در لیست ها"
 }
 export default fa

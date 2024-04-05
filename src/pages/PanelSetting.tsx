@@ -1,27 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useNavigate, NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { NavLink, useNavigate } from 'react-router-dom'
-import Button from '../components/Button'
-import { useQuery } from 'react-query'
+import { useSetting, usePutSetting } from '../hooks/api/useSetting'
+import { useState, useEffect } from 'react'
 import Loading from '../components/Loading'
-import { editSetting, getAllSetting } from '../../api/services/setting'
-import { showSuccessModal } from '../store/slices/successModalSlice'
-import { useDispatch } from 'react-redux'
+import Button from '../components/Button'
 
 const PanelSetting = () => {
 
     const navigate = useNavigate()
-    const dispatch = useDispatch()
     const { t } = useTranslation()
 
-    const { data, isSuccess, isLoading } = useQuery("setting", getAllSetting)
+    const { data, isSuccess, isLoading } = useSetting()
+    const { mutate: editSetting } = usePutSetting()
 
     const [numberDispaly, setNumberDispaly] = useState(10)
 
     useEffect(() => {
-        if (isSuccess) {
-            setNumberDispaly(data.numberDispaly)
-        }
+        if (isSuccess) { setNumberDispaly(data.numberDispaly) }
     }, [isSuccess])
 
     const saveSettingHandler = () => {
@@ -30,11 +25,6 @@ const PanelSetting = () => {
         }
 
         editSetting(changeSetting)
-            .then(res => {
-                if (res.status === 200) {
-                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your settings have been applied successfully.") } }))
-                }
-            })
     }
 
     if (isLoading) return <Loading />
@@ -73,11 +63,9 @@ const PanelSetting = () => {
                     <li className="*:p-1 *:sm:p-2 *:pt-0 shrink-0">
                         <NavLink
                             to={`/panel/setting/profile`}
-                            className={({ isActive }) =>
-                                isActive ? "text-primary-100 border-b border-primary-100" : ""
-                            }
+                            className={''}
                         >
-                            Profile
+                            {t("Profile")}
                         </NavLink>
                     </li>
                     <li className="*:p-1 *:sm:p-2 *:pt-0 shrink-0">
@@ -87,7 +75,7 @@ const PanelSetting = () => {
                                 isActive ? "text-primary-100 border-b border-primary-100" : ""
                             }
                         >
-                            Notifications
+                            {t("Notifications")}
                         </NavLink>
                     </li>
                     <li className="*:p-1 *:sm:p-2 *:pt-0 shrink-0">
@@ -97,7 +85,7 @@ const PanelSetting = () => {
                                 isActive ? "text-primary-100 border-b border-primary-100" : ""
                             }
                         >
-                            Panel Settings
+                            {t("Panel Settings")}
                         </NavLink>
                     </li>
                 </ul>
@@ -112,10 +100,10 @@ const PanelSetting = () => {
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-1 gap-x-4 gap-y-3 sm:gap-y-6">
                         <div className="flex flex-col">
-                            <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                            <label htmlFor="numberDispaly" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                 {t("The number of display items in the lists")}
                             </label>
-                            <input type="number" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder="" value={numberDispaly} onChange={e => setNumberDispaly(+e.target.value)} />
+                            <input type="number" id='numberDispaly' className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder="" value={numberDispaly} onChange={e => setNumberDispaly(+e.target.value)} />
                         </div>
                     </div>
                 </div>

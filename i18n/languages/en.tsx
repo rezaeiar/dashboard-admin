@@ -323,6 +323,20 @@ const en = {
     "There is no order": "There is no order",
     "From this date our customer:": "From this date our customer:",
     "deadline": "deadline",
-    "Show Me": "Show Me"
+    "Show Me": "Show Me",
+    "Profile": "Profile",
+    "Notifications": "Notifications",
+    "Panel Settings": "Panel Settings",
+    "Profile Details": "Profile Details",
+    "Enter your profile information": "Enter your profile information",
+    "It allows you to see if you have a pending order in the notifications section.": "It allows you to see if you have a pending order in the notifications section.",
+    "Out of stock": "Out of stock",
+    "You will be notified if a product is out of stock.": "You will be notified if a product is out of stock.",
+    "Be notified if the store's product list is empty.": "Be notified if the store's product list is empty.",
+    "If you have an uncompleted task, you will be notified.": "If you have an uncompleted task, you will be notified.",
+    "Profile Picture": "Profile Picture",
+    "General Settings": "General Settings",
+    "Manage your main panel settings.": "Manage your main panel settings.",
+    "The number of display items in the lists": "The number of display items in the lists"
 }
 export default en

@@ -1,21 +1,18 @@
-import { useDispatch } from 'react-redux'
 import { useNavigate, NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { useQuery } from "react-query"
-import { getAllSetting, editSetting } from '../../api/services/setting'
+import { useSetting, usePutSetting } from '../hooks/api/useSetting'
 import { useState, useEffect } from 'react'
-import { showSuccessModal } from '../store/slices/successModalSlice'
 import Loading from '../components/Loading'
 import Button from '../components/Button'
 import CheckBox from '../components/CheckBox'
 
 const NotificationSetting = () => {
 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
     const { t } = useTranslation()
 
-    const { data, isSuccess, isLoading, refetch } = useQuery("setting", getAllSetting)
+    const { data, isSuccess, isLoading } = useSetting()
+    const { mutate: editSetting } = usePutSetting()
 
     const [pendingOrder, setPendingOrder] = useState(false)
     const [outOfStockProduct, setOutOfStockProduct] = useState(false)
@@ -31,8 +28,6 @@ const NotificationSetting = () => {
         }
     }, [isSuccess])
 
-
-
     const saveSettingHandler = () => {
         const changeSetting = {
             pendingOrder,
@@ -41,12 +36,6 @@ const NotificationSetting = () => {
             taskNotDone
         }
         editSetting(changeSetting)
-            .then(res => {
-                if (res.status === 200) {
-                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your settings have been applied successfully.") } }))
-                    refetch()
-                }
-            })
 
     }
 
@@ -86,11 +75,9 @@ const NotificationSetting = () => {
                     <li className="*:p-1 *:sm:p-2 *:pt-0 shrink-0">
                         <NavLink
                             to={`/panel/setting/profile`}
-                            className={({ isActive }) =>
-                                isActive ? "text-primary-100 border-b border-primary-100" : ""
-                            }
+                            className={''}
                         >
-                            Profile
+                            {t("Profile")}
                         </NavLink>
                     </li>
                     <li className="*:p-1 *:sm:p-2 *:pt-0 shrink-0">
@@ -100,7 +87,7 @@ const NotificationSetting = () => {
                                 isActive ? "text-primary-100 border-b border-primary-100" : ""
                             }
                         >
-                            Notifications
+                            {t("Notifications")}
                         </NavLink>
                     </li>
                     <li className="*:p-1 *:sm:p-2 *:pt-0 shrink-0">
@@ -110,7 +97,7 @@ const NotificationSetting = () => {
                                 isActive ? "text-primary-100 border-b border-primary-100" : ""
                             }
                         >
-                            Panel Settings
+                            {t("Panel Settings")}
                         </NavLink>
                     </li>
                 </ul>
@@ -118,10 +105,10 @@ const NotificationSetting = () => {
                     <div className="py-6 flex justify-between items-center">
                         <div className="flex flex-col">
                             <h4 className='text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold'>
-                                Pending Orders
+                                {t("Pending Orders")}
                             </h4>
                             <span className='text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular'>
-                                It allows you to see if you have a pending order in the notifications section.
+                                {t("It allows you to see if you have a pending order in the notifications section.")}
                             </span>
                         </div>
                         <CheckBox forId='PendingOrders' isChecked={pendingOrder} setIsChecked={setPendingOrder} />
@@ -129,10 +116,10 @@ const NotificationSetting = () => {
                     <div className="py-6 flex justify-between items-center">
                         <div className="flex flex-col">
                             <h4 className='text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold'>
-                                Out of stock
+                                {t("Out of stock")}
                             </h4>
                             <span className='text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular'>
-                                You will be notified if a product is out of stock.
+                                {t("You will be notified if a product is out of stock.")}
                             </span>
                         </div>
                         <CheckBox forId='outOfStockproduct' isChecked={outOfStockProduct} setIsChecked={setOutOfStockProduct} />
@@ -140,10 +127,10 @@ const NotificationSetting = () => {
                     <div className="py-6 flex justify-between items-center">
                         <div className="flex flex-col">
                             <h4 className='text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold'>
-                                Empty of product
+                                {t("Empty of product")}
                             </h4>
                             <span className='text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular'>
-                                Be notified if the store's product list is empty.
+                                {t("Be notified if the store's product list is empty.")}
                             </span>
                         </div>
                         <CheckBox forId='emptyProductList' isChecked={emptyProductList} setIsChecked={setEmptyProductList} />
@@ -151,10 +138,10 @@ const NotificationSetting = () => {
                     <div className="pt-6 flex justify-between items-center">
                         <div className="flex flex-col">
                             <h4 className='text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold'>
-                                Task not done
+                                {t("Task not done")}
                             </h4>
                             <span className='text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular'>
-                                If you have an uncompleted task, you will be notified.
+                                {t("If you have an uncompleted task, you will be notified.")}
                             </span>
                         </div>
                         <CheckBox forId='taskNotDone' isChecked={taskNotDone} setIsChecked={setTaskNotDone} />
