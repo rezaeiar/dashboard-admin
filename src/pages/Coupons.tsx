@@ -128,13 +128,13 @@ const Coupons = () => {
                                     <th className="w-36 sm:w-44">{t("coupon")}</th>
                                     <th className="w-28 sm:w-32">{t("usage")}</th>
                                     <th className="w-28 sm:w-32">{t("status")}</th>
-                                    <th className="w-28 sm:w-32">{t("date")}</th>
+                                    <th className="w-28 sm:w-32">{t("deadline")}</th>
                                     <th className="w-28 sm:w-32">{t("actions")}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    filterBy === "USAGE" && [...allCoupons]?.sort((a, b) => b.usage - a.usage).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((coupon: any) => (
+                                    filterBy === "USAGE" && [...allCoupons]?.sort((a, b) => b.usage as number - (a.usage as number)).slice(((page - 1) * shown), ((page - 1) * shown) + shown).map((coupon: any) => (
                                         <tr className='even:bg-general-30/30 first:border-none border-t p-3 md:p-4 bg-white grid grid-cols-5 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2' key={coupon.id}>
                                             <td className="w-36 sm:w-44 shrink-0">
                                                 <div className="flex items-center gap-x-4">

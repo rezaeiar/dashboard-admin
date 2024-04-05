@@ -320,7 +320,8 @@ const fa = {
     "Product Deleted": "محصول حذف شده",
     "User notes are shown here.": "یادداشت های کاربر در اینجا نشان داده میشود.",
     "Edit Customer": "ویرایش مشتری",
-    "There is no order" :"سفارشی وجود ندارد",
-    "From this date our customer:": "مشتری ما است از:"
+    "There is no order": "سفارشی وجود ندارد",
+    "From this date our customer:": "مشتری ما است از:",
+    "deadline": "مهلت استفاده"
 }
 export default fa

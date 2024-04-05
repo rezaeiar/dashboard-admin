@@ -319,8 +319,9 @@ const en = {
     "Account Deleted": "Account Deleted",
     "Product Deleted": "Product Deleted",
     "User notes are shown here.": "User notes are shown here.",
-    "Edit Customer" :"Edit Customer",
+    "Edit Customer": "Edit Customer",
     "There is no order": "There is no order",
-    "From this date our customer:": "From this date our customer:"
+    "From this date our customer:": "From this date our customer:",
+    "deadline": "deadline"
 }
 export default en
