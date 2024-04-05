@@ -1,16 +1,13 @@
 import { useParams, useNavigate, Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
-import { useQuery } from "react-query"
-import { getSingleCustomer, deleteSingleCustomer } from "../../api/services/customer"
 import { useState, useEffect } from "react"
-import { editCustomerInfo } from "../../api/services/customer"
 import { showConfirmModal } from "../store/slices/ConfirmModalSlice"
-import { showSuccessModal } from "../store/slices/successModalSlice"
-import { showErrorModal } from "../store/slices/ErrorModalSlice"
 import Loading from "../components/Loading"
 import Button from "../components/Button"
 import { statusStyleGenerator } from "../utils/helpers"
+import { useDeleteCustomer, useSingleCustomer } from "../hooks/api/useCustomers"
+import { dateGenerator } from "../utils/dateGenerator"
 
 const CustomerInfo = () => {
 
@@ -19,73 +16,21 @@ const CustomerInfo = () => {
     const navigate = useNavigate()
     const { t } = useTranslation()
 
-    const { data, isLoading, isSuccess, refetch } = useQuery(['customer', params.id], () => getSingleCustomer(params.id as string))
-
-    console.log(data);
-
-
+    const { data, isLoading, isSuccess } = useSingleCustomer(params.id as string)
+    const { mutate: deleteCustomer } = useDeleteCustomer()
     const [note, setNote] = useState('')
 
-    useEffect(() => {
-        if (isSuccess) setNote(data.note)
-    }, [isSuccess])
+    useEffect(() => { if (isSuccess) setNote(data.note) }, [isSuccess])
 
-    const deleteCategoryHandler = (id: string) => {
-        deleteSingleCustomer(id)
-            .then(res => {
-                if (res.status === 200) {
-                    dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
-                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your desired client has been successfully deleted.") } }))
-                    navigate("/panel/customers")
-                }
-            })
-            .catch(() => {
-                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your desired client could not be deleted, please try again.") } }))
-            })
-    }
-
-    const changeCustomerInfoHandler = (id: string) => {
-
-        const { first_name, last_name, roles, home_phone_number, phone_number, address, country, city, postal_code } = data
-        const customerInfo = {
-            first_name,
-            last_name,
-            roles,
-            home_phone_number,
-            phone_number,
-            address,
-            country,
-            city,
-            postal_code,
-            note
-        }
-
-        editCustomerInfo(id, customerInfo)
-            .then((res) => {
-                if (res.status === 200) {
-                    dispatch(showConfirmModal({ visibility: false, payload: { title: t("Working on Title"), description: t("Working on Description") }, button: "Continue", handler: null }))
-                    dispatch(showSuccessModal({ visibility: true, payload: { title: t("Successful operation"), description: t("Your changes were made successfully.") } }))
-                    refetch()
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-
-                dispatch(showErrorModal({ visibility: true, payload: { title: t("Operation failed"), description: t("Your changes were not applied, please try again.") } }))
-            })
+    const deleteCustomerHandler = (id: string) => {
+        deleteCustomer(id)
     }
 
     const showDeleteConfirmModal = (id: string) => {
-        dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete Customer"), description: t("By deleting the user, all his registered information on the site will be deleted. are you sure?") }, button: "Delete", handler: () => deleteCategoryHandler(id as string) }))
-    }
-
-    const showEditConfirmModal = (id: string) => {
-        dispatch(showConfirmModal({ visibility: true, payload: { title: t("Change information"), description: t("You are changing the information of this customer, are you sure?") }, button: "Continue", handler: () => changeCustomerInfoHandler(id as string) }))
-    }
-
+        dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete Customer"), description: t("By deleting the user, all his registered information on the site will be deleted. are you sure?") }, button: "Delete", handler: () => deleteCustomerHandler(id as string) }))
+    }    
 
     if (isLoading) return <Loading />
-
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden">
             <div className="flex justify-between items-start">
@@ -108,9 +53,9 @@ const CustomerInfo = () => {
                             {t("Cancel")}
                         </>
                     </Button>
-                    <Button type="primary" size="small" onSubmit={() => showEditConfirmModal(params.id as string)}>
+                    <Button type="primary" size="small" link={`/panel/customers/edit/${params.id}`} >
                         <>
-                            {t("Save")}
+                            {t("Edit Customer")}
                         </>
                     </Button>
                 </div>
@@ -138,11 +83,18 @@ const CustomerInfo = () => {
                                             {data.country ? data.country : t("The country is not entered")}
                                         </span>
                                         <span className="text-general-70 ltr:font-nunitosans-semiBold rtl:font-iransans-regular text-[10px] sm:text-xs">
-                                            5 {t("Order")}
+                                            {
+                                                data?.orders.length
+                                                    ? `${data.orders.length} ${t("Order")}`
+                                                    : t('There is no order')
+                                            }
                                         </span>
-                                        <span className="text-general-70 ltr:font-nunitosans-semiBold rtl:font-iransans-regular text-[10px] sm:text-xs">
-                                            Customer for 2 years
-                                        </span>
+                                        {
+                                            !!data &&
+                                            <span className="text-general-70 ltr:font-nunitosans-semiBold rtl:font-iransans-regular text-[10px] sm:text-xs">
+                                                {t("From this date our customer:")} {dateGenerator(new Date(data?.created_at))}
+                                            </span>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +111,7 @@ const CustomerInfo = () => {
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-101">
                                     <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 sm:w-5 h-4 sm:h-5 text-general-60">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-101">
                                     <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
                                 </svg>
                             </div>
@@ -173,7 +125,7 @@ const CustomerInfo = () => {
                                     <label htmlFor="" className="text-xs lg:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                                         {t("Notes")}
                                     </label>
-                                    <textarea name="" id="" className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular aspect-[10/2] resize-none" placeholder={t("Add notes about customer")} onChange={e => setNote(e.target.value)} value={note}></textarea>
+                                    <textarea name="" id="" disabled className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular aspect-[10/2] resize-none" placeholder={t("User notes are shown here.")} value={note}></textarea>
                                 </div>
                             </div>
                         </div>
@@ -193,15 +145,17 @@ const CustomerInfo = () => {
                                         <th className="w-28 sm:w-32">{t("Price")}</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y">
+                                <tbody className="">
                                     {
-                                        data.orders.map((order: any) => (
-                                            <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
+                                        data.orders.reverse().map((order: any) => (
+                                            <tr key={order.id} className='even:bg-general-30/30 border-b p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
                                                 <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
                                                     #23534D
                                                 </td>
                                                 <td className="w-28 sm:w-32 shrink-0">
-                                                    {order.created_at}
+                                                    {
+                                                        dateGenerator(new Date(order.created_at))
+                                                    }
                                                 </td>
                                                 <td className="w-32 sm:w-36 shrink-0">
                                                     <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator(order.status)}`}>

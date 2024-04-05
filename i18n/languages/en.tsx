@@ -317,6 +317,10 @@ const en = {
     "Your login has been approved, but your role on this site is not admin; Please log out and enter as admin.": "Your login has been approved, but your role on this site is not admin; Please log out and enter as admin.",
     "Log out and go to the login page": "Log out and go to the login page",
     "Account Deleted": "Account Deleted",
-    "Product Deleted": "Product Deleted"
+    "Product Deleted": "Product Deleted",
+    "User notes are shown here.": "User notes are shown here.",
+    "Edit Customer" :"Edit Customer",
+    "There is no order": "There is no order",
+    "From this date our customer:": "From this date our customer:"
 }
 export default en
