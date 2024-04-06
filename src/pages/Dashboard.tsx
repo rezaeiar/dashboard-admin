@@ -4,80 +4,54 @@ import DashboardDetailCard from '../components/DashboardDetailCard';
 import Button from '../components/Button';
 import { statusStyleGenerator } from '../utils/helpers';
 const Dashboard = () => {
+
+    const { t } = useTranslation()
+
     const data = [
         {
-            name: '1',
-            uv: 4000,
-            pv: 3543,
-            amt: 2400,
+            name: t('Sunday'),
+            pending: 200,
+            completed: 360,
         },
         {
-            name: '2',
-            uv: 3000,
-            pv: 1398,
-            amt: 7335,
+            name: t('Monday'),
+            pending: 440,
+            completed: 300,
         },
         {
-            name: '3',
-            uv: 4345,
-            pv: 9800,
-            amt: 2290,
+            name: t("Tuesday"),
+            pending: 100,
+            completed: 540,
         },
         {
-            name: '4',
-            uv: 2780,
-            pv: 3908,
-            amt: 2000,
+            name: t("Wednesday"),
+            pending: 200,
+            completed: 180,
         },
         {
-            name: '5',
-            uv: 232,
-            pv: 4800,
-            amt: 2181,
+            name: t('Thursday'),
+            pending: 500,
+            completed: 480,
         },
         {
-            name: '6',
-            uv: 2390,
-            pv: 3800,
-            amt: 2500,
+            name: t('Friday'),
+            pending: 200,
+            completed: 110,
         },
         {
-            name: '7',
-            uv: 3490,
-            pv: 4300,
-            amt: 2100,
-        }
+            name: t('Saturday'),
+            pending: 200,
+            completed: 400,
+        },
     ];
 
     const SalesGoal = [
         {
-            name: "Group A",
+            name: "Custom",
             value: 12,
-        },
-        // {
-        //   name: "Group B",
-        //   value: 4567,
-        // },
-        // {
-        //   name: "Group C",
-        //   value: 1398,
-        // },
-        // {
-        //   name: "Group D",
-        //   value: 9800,
-        // },
-        // {
-        //   name: "Group E",
-        //   value: 3908,
-        // },
-        // {
-        //   name: "Group F",
-        //   value: 4800,
-        // },
+        }
     ];
 
-
-    const { t } = useTranslation()
 
     const calcPieChart = (percent: number) => {
 
@@ -89,7 +63,7 @@ const Dashboard = () => {
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-10 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8">
             <div className="flex justify-between items-center">
                 <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100">
-                    {t("dashboard")}
+                    {t("Dashboard")}
                 </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-between rounded-md overflow-hidden lg:divide-x rtl:lg:divide-x-reverse gap-3 lg:gap-0">
@@ -122,8 +96,8 @@ const Dashboard = () => {
                             <YAxis />
                             <CartesianGrid strokeDasharray="3 3" />
                             <Tooltip />
-                            <Area type="monotone" dataKey="pv" stroke="#4379EE" fillOpacity={1} fill="url(#colorUv)" />
-                            <Area type="monotone" dataKey="uv" stroke="#5A607F" fillOpacity={1} fill="url(#colorPv)" />
+                            <Area type="monotone" dataKey="completed" stroke="#4379EE" fillOpacity={1} fill="url(#colorUv)" />
+                            <Area type="monotone" dataKey="pending" stroke="#5A607F" fillOpacity={1} fill="url(#colorPv)" />
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>
@@ -242,7 +216,7 @@ const Dashboard = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="bg-white h-96 rounded-md p-3 xl:p-4 col-span-4 2xl:col-span-2 flex flex-col gap-y-4 xl:gap-y-6">
+                <div className="bg-white rounded-md p-3 xl:p-4 col-span-4 2xl:col-span-2 flex flex-col gap-y-4 xl:gap-y-6">
                     <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
                         {t("Latest orders")}
                     </h5>

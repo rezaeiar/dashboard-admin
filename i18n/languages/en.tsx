@@ -8,7 +8,7 @@ const en = {
     "Change Password": "Change Password",
     "activity log": "activity log",
     "log out": "log out",
-    "dashboard": "dashboard",
+    "Dashboard": "Dashboard",
     "orders": "orders",
     "Products": "Products",
     "Categories": "Categories",
@@ -19,7 +19,7 @@ const en = {
     "product updates": "Product Updates",
     "setting": "setting",
     "personal settings": "personal settings",
-    "global settings": "global settings",
+    "Global Settings": "Global Settings",
     "total user": "total user",
     "total order": "total order",
     "total sales": "total sales",
@@ -346,6 +346,13 @@ const en = {
     "Completed Orders": "Completed Orders",
     "Value of orders:": "Value of orders:",
     "Number of orders:": "Number of orders:",
-    "Status": "Status:"
+    "Status": "Status:",
+    "Sunday": "Sunday",
+    "Monday": "Monday",
+    "Tuesday": "Tuesday",
+    "Wednesday": "Wednesday",
+    'Thursday': 'Thursday',
+    "Friday": "Friday",
+    'Saturday': 'Saturday'
 }
 export default en

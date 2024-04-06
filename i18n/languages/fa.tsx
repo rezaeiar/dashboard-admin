@@ -8,7 +8,7 @@ const fa = {
     "Change Password": "تغییر رمز عبور",
     "activity log": "گزارش فعالیت",
     "log out": "خروج",
-    "dashboard": "داشبورد",
+    "Dashboard": "داشبورد",
     "orders": "سفارشات",
     "Products": "محصولات",
     "Categories": "دسته بندی ها",
@@ -19,7 +19,7 @@ const fa = {
     "product updates": "به روز رسانی محصول",
     "setting": "تنظیمات",
     "personal settings": "تنظیمات شخصی",
-    "global settings": "تنظیمات جهانی",
+    "Global Settings": "تنظیمات جهانی",
     "total user": "کل کاربران",
     "total order": "کل سفارشات",
     "total sales": "کل فروش",
@@ -346,6 +346,13 @@ const fa = {
     "Completed Orders": "سفارشات تکمیل شده",
     "Value of orders:": "ارزش سفارشات:",
     "Number of orders:": "تعداد سفارشات",
-    "Status": "وضعیت:"
+    "Status": "وضعیت:",
+    "Sunday": "یکشنبه",
+    "Monday": "دوشنبه",
+    "Tuesday": "سه شنبه",
+    "Wednesday": "چهارشنبه",
+    'Thursday': 'پنج شنبه',
+    'Friday': 'جمعه',
+    'Saturday': 'شنبه'
 }
 export default fa

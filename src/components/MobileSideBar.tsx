@@ -183,7 +183,7 @@ const MobileSideBar = ({ isShowMobileSideBar, setIsShowMobileSideBar }: MobileSi
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                     </svg>
                                     <span>
-                                        {t("global settings")}
+                                        {t("Global Settings")}
                                     </span>
                                 </div>
                             </NavLink>
