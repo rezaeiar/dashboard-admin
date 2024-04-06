@@ -69,12 +69,12 @@ const Customers = () => {
         setAllCustomers(searchedData ? searchedData : null)
     }
 
-    const deleteCategoryHandler = (id: string) => {
+    const deleteCustomerHandler = (id: string) => {
         deleteCustomer(id)
     }
 
     const showDeleteConfirmModal = (id: string) => {
-        dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete Customer"), description: t("By deleting the user, all his registered information on the site will be deleted. are you sure?") }, button: "Delete", handler: () => deleteCategoryHandler(id as string) }))
+        dispatch(showConfirmModal({ visibility: true, payload: { title: t("Delete Customer"), description: t("By deleting the user, all his registered information on the site will be deleted. are you sure?") }, button: "Delete", handler: () => deleteCustomerHandler(id as string) }))
     }
 
     if (isLoading) return <Loading />
@@ -162,7 +162,7 @@ const Customers = () => {
                                                 {customer.email}
                                             </td>
                                             <td className="w-28 sm:w-32 shrink-0">{customer.order_count}</td>
-                                            <td className="w-28 sm:w-32 shrink-0">${customer.purchase_amount.toLocaleString()}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{customer.purchase_amount.toLocaleString()}</td>
                                             <td className="w-28 sm:w-32 shrink-0">
                                                 <div className="flex border border-general-50 divide-x rtl:divide-x-reverse rounded-md overflow-hidden">
                                                     <Link to={`/panel/customers/info/${customer.id}`} className="p-2 w-1/2 hover:w-3/4 col-span-2 cursor-pointer bg-general-30 flex items-center justify-center group hover:bg-primary-100 transition-all">
@@ -198,7 +198,7 @@ const Customers = () => {
                                                 {customer.email}
                                             </td>
                                             <td className="w-28 sm:w-32 shrink-0">{customer.order_count}</td>
-                                            <td className="w-28 sm:w-32 shrink-0">${customer.purchase_amount.toLocaleString()}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{customer.purchase_amount.toLocaleString()}</td>
                                             <td className="w-28 sm:w-32 shrink-0">
                                                 <div className="flex border border-general-50 divide-x rtl:divide-x-reverse rounded-md overflow-hidden">
                                                     <Link to={`/panel/customers/info/${customer.id}`} className="p-2 w-1/2 hover:w-3/4 col-span-2 cursor-pointer bg-general-30 flex items-center justify-center group hover:bg-primary-100 transition-all">
@@ -234,7 +234,7 @@ const Customers = () => {
                                                 {customer.email}
                                             </td>
                                             <td className="w-28 sm:w-32 shrink-0">{customer.order_count}</td>
-                                            <td className="w-28 sm:w-32 shrink-0">${customer.purchase_amount.toLocaleString()}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{customer.purchase_amount.toLocaleString()}</td>
                                             <td className="w-28 sm:w-32 shrink-0">
                                                 <div className="flex border border-general-50 divide-x rtl:divide-x-reverse rounded-md overflow-hidden">
                                                     <Link to={`/panel/customers/info/${customer.id}`} className="p-2 w-1/2 hover:w-3/4 col-span-2 cursor-pointer bg-general-30 flex items-center justify-center group hover:bg-primary-100 transition-all">

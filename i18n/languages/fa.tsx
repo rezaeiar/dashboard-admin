@@ -337,6 +337,9 @@ const fa = {
     "Profile Picture": "عکس پروفایل",
     "General Settings": 'تنظیمات عمومی',
     "Manage your main panel settings.": "تنظیمات پنل اصلی خود را مدیریت کنید.",
-    "The number of display items in the lists": "تعداد موارد نمایش داده شده در لیست ها"
+    "The number of display items in the lists": "تعداد موارد نمایش داده شده در لیست ها",
+    "Inbox": "صندوق ورودی",
+    "Write Message..": "پیام خود را بنویسید..",
+    "Send": "ارسال"
 }
 export default fa

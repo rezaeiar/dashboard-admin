@@ -14,6 +14,7 @@ import CustomerInfo from "../pages/CustomerInfo"
 import EditCustomer from "../pages/EditCustomer"
 import Coupons from "../pages/Coupons"
 import CreateCoupons from "../pages/CreateCoupons"
+import Inbox from "../pages/Inbox"
 import Managers from "../pages/Managers"
 import TodoList from "../pages/TodoList"
 import Setting from "../pages/Setting"
@@ -38,6 +39,7 @@ const routes: RouteType[] = [
             { path: 'customers/edit/:id', element: <EditCustomer /> },
             { path: 'coupons', element: <Coupons /> },
             { path: 'coupons/create', element: <CreateCoupons /> },
+            { path: 'inbox', element: <Inbox /> },
             { path: 'managers', element: <Managers /> },
             { path: 'todolist', element: <TodoList /> },
             { path: 'setting/', element: <Setting /> },

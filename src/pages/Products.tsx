@@ -173,7 +173,7 @@ const Products = () => {
                                                     product.category ? product.category.name : t("Uncategorized")
                                                 }
                                             </td>
-                                            <td className="w-28 sm:w-32 shrink-0">${product.price.toLocaleString()}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{product.price.toLocaleString()}</td>
                                             <td className="w-28 sm:w-32 shrink-0">{product.count}</td>
                                             <td className="w-28 sm:w-32 shrink-0">
                                                 (Votes {product.score}) 5.0
@@ -226,7 +226,7 @@ const Products = () => {
                                                     product.category ? product.category.name : t("Uncategorized")
                                                 }
                                             </td>
-                                            <td className="w-28 sm:w-32 shrink-0">${product.price.toLocaleString()}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{product.price.toLocaleString()}</td>
                                             <td className="w-28 sm:w-32 shrink-0">{product.count}</td>
                                             <td className="w-28 sm:w-32 shrink-0">
                                                 (Votes {product.score}) 5.0
@@ -279,7 +279,7 @@ const Products = () => {
                                                     product.category ? product.category.name : t("Uncategorized")
                                                 }
                                             </td>
-                                            <td className="w-28 sm:w-32 shrink-0">${product.price.toLocaleString()}</td>
+                                            <td className="w-28 sm:w-32 shrink-0">{product.price.toLocaleString()}</td>
                                             <td className="w-28 sm:w-32 shrink-0">{product.count}</td>
                                             <td className="w-28 sm:w-32 shrink-0">
                                                 (Votes {product.score}) 5.0

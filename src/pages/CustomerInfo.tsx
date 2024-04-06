@@ -167,7 +167,7 @@ const CustomerInfo = () => {
                                                     </button>
                                                 </td>
                                                 <td className="w-28 sm:w-32 shrink-0">
-                                                    ${order.total_price.toLocaleString()}
+                                                    {order.total_price.toLocaleString()}
                                                 </td>
                                             </tr>
                                         ))

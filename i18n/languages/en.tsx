@@ -337,6 +337,9 @@ const en = {
     "Profile Picture": "Profile Picture",
     "General Settings": "General Settings",
     "Manage your main panel settings.": "Manage your main panel settings.",
-    "The number of display items in the lists": "The number of display items in the lists"
+    "The number of display items in the lists": "The number of display items in the lists",
+    "Inbox": "Inbox",
+    "Write Message..": "Write Message..",
+    "Send": "Send"
 }
 export default en
