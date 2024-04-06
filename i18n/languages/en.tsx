@@ -353,6 +353,10 @@ const en = {
     "Wednesday": "Wednesday",
     'Thursday': 'Thursday',
     "Friday": "Friday",
-    'Saturday': 'Saturday'
+    'Saturday': 'Saturday',
+    "Go to Dashboard page": "Go to Dashboard page",
+    "The panel is being built": "The panel is being built",
+    "This part of the panel is under construction and will be deployed soon.": "This part of the panel is under construction and will be deployed soon.",
+    "Using soken.io, this section will provide simultaneous two-way messaging for site and panel members.": "Using soken.io, this section will provide simultaneous two-way messaging for site and panel members."
 }
 export default en

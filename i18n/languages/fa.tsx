@@ -353,6 +353,10 @@ const fa = {
     "Wednesday": "چهارشنبه",
     'Thursday': 'پنج شنبه',
     'Friday': 'جمعه',
-    'Saturday': 'شنبه'
+    'Saturday': 'شنبه',
+    "Go to Dashboard page": "برو به صفحه داشبورد",
+    "The panel is being built": "پنل در حال ساخت است",
+    "This part of the panel is under construction and will be deployed soon.": "این قسمت از پنل در حال ساخت است و به زودی مستقر می شود.",
+    "Using soken.io, this section will provide simultaneous two-way messaging for site and panel members.": 'با استفاده از "socket.io" این بخش پیام رسانی دو طرفه همزمان را برای اعضای سایت و پنل فراهم می کند.'
 }
 export default fa

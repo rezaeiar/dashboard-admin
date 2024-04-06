@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next"
-import Button from "../components/Button"
 
 const Inbox = () => {
 
@@ -7,14 +6,14 @@ const Inbox = () => {
 
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8 overflow-hidden min-h-screen">
-            <div className="flex justify-between items-center">
+            {/* <div className="flex justify-between items-center">
                 <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100 capitalize">
                     {t("Inbox")}
                 </h2>
                 <div className="flex gap-x-1 sm:gap-x-2">
                 </div>
-            </div>
-            <div className="grid grid-cols-4 overflow-hidden gap-3 lg:gap-4">
+            </div> */}
+            {/* <div className="grid grid-cols-4 overflow-hidden gap-3 lg:gap-4">
                 <div className="bg-white border rounded-lg flex flex-col overflow-hidden divide-y">
                     <div className="flex justify-between items-center p-2 bg-general-30">
                         <div className="flex gap-2">
@@ -200,6 +199,17 @@ const Inbox = () => {
                             </Button>
                         </div>
                     </div>
+                </div>
+            </div> */}
+            <div className="from-red-101 to-red-80 bg-gradient-to-bl h-full rounded shadow flex justify-center sm:items-center">
+                <div className="text-white p-4">
+                    <h1 className="text-xl sm:text-2xl ltr:font-nunitosans-bold rtl:font-iransans-bold">
+                        {t("The panel is being built")}
+                    </h1>
+                    <span className="text-xs sm:text-base ltr:font-nunitosans-regular rtl:font-iransans-regular">
+                        {t("This part of the panel is under construction and will be deployed soon.")} <br />
+                        {t("Using soken.io, this section will provide simultaneous two-way messaging for site and panel members.")}
+                    </span>
                 </div>
             </div>
         </div>
