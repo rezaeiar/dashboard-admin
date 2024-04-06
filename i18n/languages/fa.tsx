@@ -340,6 +340,12 @@ const fa = {
     "The number of display items in the lists": "تعداد موارد نمایش داده شده در لیست ها",
     "Inbox": "صندوق ورودی",
     "Write Message..": "پیام خود را بنویسید..",
-    "Send": "ارسال"
+    "Send": "ارسال",
+    "Sales Details": "جزئیات فروش",
+    "Go to orders": "برو به سفارشات",
+    "Completed Orders": "سفارشات تکمیل شده",
+    "Value of orders:": "ارزش سفارشات:",
+    "Number of orders:": "تعداد سفارشات",
+    "Status": "وضعیت:"
 }
 export default fa

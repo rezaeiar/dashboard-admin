@@ -340,6 +340,12 @@ const en = {
     "The number of display items in the lists": "The number of display items in the lists",
     "Inbox": "Inbox",
     "Write Message..": "Write Message..",
-    "Send": "Send"
+    "Send": "Send",
+    "Sales Details": "Sales Details",
+    "Go to orders": "Go to orders",
+    "Completed Orders": "Completed Orders",
+    "Value of orders:": "Value of orders:",
+    "Number of orders:": "Number of orders:",
+    "Status": "Status:"
 }
 export default en

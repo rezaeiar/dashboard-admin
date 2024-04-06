@@ -2,6 +2,7 @@ import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, A
 import { useTranslation } from 'react-i18next';
 import DashboardDetailCard from '../components/DashboardDetailCard';
 import Button from '../components/Button';
+import { statusStyleGenerator } from '../utils/helpers';
 const Dashboard = () => {
     const data = [
         {
@@ -78,6 +79,12 @@ const Dashboard = () => {
 
     const { t } = useTranslation()
 
+    const calcPieChart = (percent: number) => {
+
+        const pie = -((percent * 360) / 100) + 90;
+        return pie
+    }
+
     return (
         <div className="py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-10 w-full bg-general-30 flex flex-col gap-y-4 sm:gap-y-6 md:gap-y-8">
             <div className="flex justify-between items-center">
@@ -93,8 +100,8 @@ const Dashboard = () => {
             </div>
             <div className="shadow-md rounded-md h-96 bg-white p-8 hidden sm:flex flex-col gap-y-10">
                 <div className="flex justify-between items-center">
-                    <h3 className="text-general-100 font-nunitosans-bold">
-                        Sales Details
+                    <h3 className="text-general-100 ltr:font-nunitosans-bold rtl:font-iransans-bold">
+                        {t("Sales Details")}
                     </h3>
                     <Button type="primary" size="small" link="/panel/orders">
                         <>
@@ -121,11 +128,11 @@ const Dashboard = () => {
                     </ResponsiveContainer>
                 </div>
             </div>
-            <div className="rounded-md h-96 gap-x-4 grid grid-cols-4">
-                <div className="bg-white p-6 rounded-md shadow-md h-96 flex flex-col justify-between">
+            <div className="rounded-md gap-4 grid grid-cols-4">
+                <div className="bg-primary-100 h-96 p-6 rounded-md col-span-4 sm:col-span-2 2xl:col-span-1 shadow-md flex flex-col justify-between">
                     <div className="flex flex-col h-full">
-                        <h4 className='text-general-100 ltr:font-nunitosans-bold rtl:font-iransans-semiBold'>
-                            Completed Sales
+                        <h4 className='text-white ltr:font-nunitosans-bold rtl:font-iransans-semiBold'>
+                            {t("Completed Orders")}
                         </h4>
                         <ResponsiveContainer>
                             <PieChart>
@@ -137,15 +144,16 @@ const Dashboard = () => {
                                     cy="50%"
                                     innerRadius={65}
                                     outerRadius={80}
-                                    fill="#1FD286"
+                                    fill="#fff"
                                     startAngle={90}
-                                    endAngle={-180}
-                                // activeIndex={100}
+                                    endAngle={calcPieChart(70)}
+                                    width={20}
                                 >
                                     <Label
-                                        className="text-3xl font-bold dark:text-white rtl:font-iransans-700 text-a_general-100"
-                                        value={"75%"}
+                                        className="text-3xl font-bold rtl:font-iransans-700"
+                                        value={"70%"}
                                         position={"center"}
+                                        fill='#fff'
                                     ></Label>
                                 </Pie>
                             </PieChart>
@@ -153,35 +161,35 @@ const Dashboard = () => {
                     </div>
                     <ul className="flex flex-col gap-y-2">
                         <li className='flex justify-between items-center'>
-                            <span className='ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-80 text-sm'>
+                            <span className='ltr:font-nunitosans-regular rtl:font-iransans-regular text-white text-sm'>
                                 {t("Value of orders:")}
                             </span>
-                            <span className='text-general-100 ltr:font-nunitosans-bold rtl:font-iransans-bold'>
+                            <span className='text-white ltr:font-nunitosans-bold rtl:font-iransans-bold'>
                                 333,000
                             </span>
                         </li>
                         <li className='flex justify-between items-center'>
-                            <span className='ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-80 text-sm'>
-                                {t("Value of orders:")}
+                            <span className='ltr:font-nunitosans-regular rtl:font-iransans-regular text-white text-sm'>
+                                {t("Number of orders:")}
                             </span>
-                            <span className='text-general-100 ltr:font-nunitosans-bold rtl:font-iransans-bold'>
+                            <span className='text-white ltr:font-nunitosans-bold rtl:font-iransans-bold'>
                                 333,000
                             </span>
                         </li>
                         <li className='flex justify-between items-center'>
-                            <span className='ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-80 text-sm'>
-                                {t("Value of orders:")}
+                            <span className='ltr:font-nunitosans-regular rtl:font-iransans-regular text-white text-sm'>
+                                {t("Status")}
                             </span>
-                            <span className='text-general-100 ltr:font-nunitosans-bold rtl:font-iransans-bold'>
-                                333,000
+                            <span className='text-white ltr:font-nunitosans-bold rtl:font-iransans-bold'>
+                                Normal
                             </span>
                         </li>
                     </ul>
                 </div>
-                <div className="bg-white p-6 rounded-md shadow-md h-96 flex flex-col justify-between">
+                <div className="bg-primary-100 h-96 p-6 rounded-md col-span-4 sm:col-span-2 2xl:col-span-1 shadow-md flex flex-col justify-between">
                     <div className="flex flex-col h-full">
-                        <h4 className='text-general-100 ltr:font-nunitosans-bold rtl:font-iransans-semiBold'>
-                            Completed Sales
+                        <h4 className='text-white ltr:font-nunitosans-bold rtl:font-iransans-semiBold'>
+                            {t("Pending Orders")}
                         </h4>
                         <ResponsiveContainer>
                             <PieChart>
@@ -193,14 +201,15 @@ const Dashboard = () => {
                                     cy="50%"
                                     innerRadius={65}
                                     outerRadius={80}
-                                    fill="#FFC700"
+                                    fill="#fff"
                                     startAngle={90}
-                                    endAngle={0}
+                                    endAngle={calcPieChart(25)}
                                 >
                                     <Label
-                                        className="text-3xl font-bold dark:text-white rtl:font-iransans-700 text-a_general-100"
+                                        className="text-3xl font-bold rtl:font-iransans-700"
                                         value={"25%"}
                                         position={"center"}
+                                        fill='#fff'
                                     ></Label>
                                 </Pie>
                             </PieChart>
@@ -208,34 +217,34 @@ const Dashboard = () => {
                     </div>
                     <ul className="flex flex-col gap-y-2">
                         <li className='flex justify-between items-center'>
-                            <span className='ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-80 text-sm'>
+                            <span className='ltr:font-nunitosans-regular rtl:font-iransans-regular text-white text-sm'>
                                 {t("Value of orders:")}
                             </span>
-                            <span className='text-general-100 ltr:font-nunitosans-bold rtl:font-iransans-bold'>
+                            <span className='text-white ltr:font-nunitosans-bold rtl:font-iransans-bold'>
                                 333,000
                             </span>
                         </li>
                         <li className='flex justify-between items-center'>
-                            <span className='ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-80 text-sm'>
-                                {t("Value of orders:")}
+                            <span className='ltr:font-nunitosans-regular rtl:font-iransans-regular text-white text-sm'>
+                                {t("Number of orders:")}
                             </span>
-                            <span className='text-general-100 ltr:font-nunitosans-bold rtl:font-iransans-bold'>
+                            <span className='text-white ltr:font-nunitosans-bold rtl:font-iransans-bold'>
                                 333,000
                             </span>
                         </li>
                         <li className='flex justify-between items-center'>
-                            <span className='ltr:font-nunitosans-regular rtl:font-iransans-regular text-general-80 text-sm'>
-                                {t("Value of orders:")}
+                            <span className='ltr:font-nunitosans-regular rtl:font-iransans-regular text-white text-sm'>
+                                {t("Status")}
                             </span>
-                            <span className='text-general-100 ltr:font-nunitosans-bold rtl:font-iransans-bold'>
-                                333,000
+                            <span className='text-white ltr:font-nunitosans-bold rtl:font-iransans-bold'>
+                                Normal
                             </span>
                         </li>
                     </ul>
                 </div>
-                <div className="bg-white h-96 rounded-md p-3 xl:p-4 col-span-2 flex flex-col gap-y-4 xl:gap-y-6">
+                <div className="bg-white h-96 rounded-md p-3 xl:p-4 col-span-4 2xl:col-span-2 flex flex-col gap-y-4 xl:gap-y-6">
                     <h5 className="text-general-100 text-sm xl:text-base ltr:font-nunitosans-extrabold rtl:font-iransans-bold">
-                        {t("Customer Orders")}
+                        {t("Latest orders")}
                     </h5>
                     <table className='divide-y bg-white rounded-md w-full flex flex-col overflow-x-auto'>
                         <thead>
@@ -246,8 +255,8 @@ const Dashboard = () => {
                                 <th className="w-28 sm:w-32">{t("Price")}</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y">
-                            <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
+                        <tbody>
+                            <tr className='even:bg-general-30/30 border-b p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
                                 <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
                                     #23534D
                                 </td>
@@ -255,15 +264,15 @@ const Dashboard = () => {
                                     17 June
                                 </td>
                                 <td className="w-32 sm:w-36 shrink-0">
-                                    <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular`}>
-                                        PENDING
+                                    <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator("PENDING")}`}>
+                                        {t("PENDING")}
                                     </button>
                                 </td>
                                 <td className="w-28 sm:w-32 shrink-0">
                                     $177,543
                                 </td>
                             </tr>
-                            <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
+                            <tr className='even:bg-general-30/30 border-b p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
                                 <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
                                     #23534D
                                 </td>
@@ -271,15 +280,15 @@ const Dashboard = () => {
                                     17 June
                                 </td>
                                 <td className="w-32 sm:w-36 shrink-0">
-                                    <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular`}>
-                                        PENDING
+                                    <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator("PENDING")}`}>
+                                        {t("PENDING")}
                                     </button>
                                 </td>
                                 <td className="w-28 sm:w-32 shrink-0">
                                     $177,543
                                 </td>
                             </tr>
-                            <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
+                            <tr className='even:bg-general-30/30 border-b p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
                                 <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
                                     #23534D
                                 </td>
@@ -287,15 +296,15 @@ const Dashboard = () => {
                                     17 June
                                 </td>
                                 <td className="w-32 sm:w-36 shrink-0">
-                                    <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular`}>
-                                        PENDING
+                                    <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator("PENDING")}`}>
+                                        {t("PENDING")}
                                     </button>
                                 </td>
                                 <td className="w-28 sm:w-32 shrink-0">
                                     $177,543
                                 </td>
                             </tr>
-                            <tr className='p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
+                            <tr className='even:bg-general-30/30 border-b p-3 md:p-4 bg-white grid grid-cols-4 sm:text-sm text-xs text-general-90 child:line-clamp-1 child:h-min items-center child:text-start min-w-max gap-x-2'>
                                 <td className='w-28 sm:w-32 shrink-0 overflow-hidden items-center gap-x-2'>
                                     #23534D
                                 </td>
@@ -303,8 +312,8 @@ const Dashboard = () => {
                                     17 June
                                 </td>
                                 <td className="w-32 sm:w-36 shrink-0">
-                                    <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular`}>
-                                        PENDING
+                                    <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator("PENDING")}`}>
+                                        {t("PENDING")}
                                     </button>
                                 </td>
                                 <td className="w-28 sm:w-32 shrink-0">
