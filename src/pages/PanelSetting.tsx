@@ -42,7 +42,7 @@ const PanelSetting = () => {
                         </span>
                     </div>
                     <h2 className="text-lg sm:text-2xl font-nunitosans-bold rtl:font-iransans-bold text-general-100 capitalize">
-                        {t("global settings")}
+                        {t("Global Settings")}
                     </h2>
                 </div>
                 <div className="flex gap-x-1 sm:gap-x-2">

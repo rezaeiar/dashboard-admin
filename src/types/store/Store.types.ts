@@ -74,3 +74,12 @@ export type NotificationLengthType = {
         value: number
     }
 }
+
+export type ChangeOrderStatusModalType = {
+    changeOrderStatusModal: {
+        value: {
+            visibility: boolean,
+            orderId: string
+        }
+    }
+}

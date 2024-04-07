@@ -1,7 +1,7 @@
 import { useRoutes } from "react-router-dom"
 import routes from "./routes/routes"
 import { useSelector } from "react-redux"
-import { SuccessModalType, ErrorModalType, AddCategoryModalType, ConfirmModalType, AddOrderModalType, AddTaskModalType, ChangePasswordModalType } from "./types/store/Store.types"
+import { SuccessModalType, ErrorModalType, AddCategoryModalType, ConfirmModalType, AddOrderModalType, AddTaskModalType, ChangePasswordModalType, ChangeOrderStatusModalType } from "./types/store/Store.types"
 import SuccessModal from "./components/SuccessModal"
 import ErrorModal from './components/ErrorModal'
 import AddCategoryModal from './components/AddCategoryModal'
@@ -9,6 +9,7 @@ import ConfirmModal from "./components/ConfirmModal"
 import AddOrderModal from "./components/AddOrderModal"
 import AddTaskModal from "./components/AddTaskModal"
 import ChangePasswordModal from "./components/ChangePasswordModal"
+import ChangeOrderStatusModal from "./components/ChangeOrderStatusModal"
 
 const App = () => {
     const router = useRoutes(routes);
@@ -19,6 +20,7 @@ const App = () => {
     const addOrderModalInfo = useSelector((state: AddOrderModalType) => state.addOrderModal);
     const addTaskModalInfo = useSelector((state: AddTaskModalType) => state.addTaskModal);
     const changePasswordModalInfo = useSelector((state: ChangePasswordModalType) => state.changePasswordModal);
+    const changeOrderStatusModalInfo = useSelector((state: ChangeOrderStatusModalType) => state.changeOrderStatusModal);
 
     return (
         <div className="app">
@@ -30,6 +32,8 @@ const App = () => {
             <AddOrderModal isShowOrderModal={addOrderModalInfo.value.visibility} />
             <AddTaskModal isShowAddTaskModal={addTaskModalInfo.value.visibility} />
             <ChangePasswordModal isShowChangePasswordModal={changePasswordModalInfo.value.visibility} />
+            <ChangeOrderStatusModal isShowChangeOrderStatusModal={changeOrderStatusModalInfo.value.visibility} orderId={changeOrderStatusModalInfo.value.orderId} />
+
         </div>
     )
 }

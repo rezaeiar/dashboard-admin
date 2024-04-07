@@ -12,6 +12,7 @@ import { Link } from "react-router-dom"
 import { dateGenerator } from "../utils/dateGenerator"
 import Pagination from "../components/Pagination"
 import EmptyEntity from "../components/EmptyEntity"
+import { showChangeOrderStatusModal } from "../store/slices/ChangeOrderStatusSlice"
 
 const Orders = () => {
 
@@ -63,6 +64,10 @@ const Orders = () => {
             }
         })
         setAllOrders(searchedData ? searchedData : null)
+    }
+
+    const changeOrderStatusHandler = (orderId: string) => {
+        dispatch(showChangeOrderStatusModal({ visibility: true, orderId }))
     }
 
     if (isLoading) return <Loading />
@@ -169,7 +174,7 @@ const Orders = () => {
                                                 }
                                             </td>
                                             <td className="w-28 sm:w-32 shrink-0">
-                                                <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator(order.status)}`}>
+                                                <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator(order.status)}`} onClick={() => changeOrderStatusHandler(order.id)}>
                                                     {t(order.status)}
                                                 </button>
                                             </td>
@@ -213,7 +218,7 @@ const Orders = () => {
                                                 }
                                             </td>
                                             <td className="w-28 sm:w-32 shrink-0">
-                                                <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator(order.status)}`}>
+                                                <button className={`w-4/5 flex justify-center text-xs px-5 py-2 rounded gap-x-2 items-center transition-colors ltr:font-nunitosans-regular rtl:font-iransans-regular ${statusStyleGenerator(order.status)}`} onClick={() => changeOrderStatusHandler(order.id)}>
                                                     {t(order.status)}
                                                 </button>
                                             </td>

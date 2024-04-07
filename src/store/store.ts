@@ -7,6 +7,7 @@ import AddOrderModalSlice from "./slices/AddOrderModalSlice";
 import AddTaskModalSlice from "./slices/AddTaskModalSlice";
 import NotificationsLengthSlice from "./slices/NotificationsLengthSlice";
 import ChangePasswordModalSlice from './slices/ChangePasswordSlice'
+import ChangeOrderStatusSlice from "./slices/ChangeOrderStatusSlice";
 
 const store = configureStore({
     reducer: {
@@ -17,7 +18,8 @@ const store = configureStore({
         addOrderModal: AddOrderModalSlice,
         addTaskModal: AddTaskModalSlice,
         notificationLength: NotificationsLengthSlice,
-        changePasswordModal: ChangePasswordModalSlice
+        changePasswordModal: ChangePasswordModalSlice,
+        changeOrderStatusModal: ChangeOrderStatusSlice
     }
 })
 

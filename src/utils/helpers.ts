@@ -12,7 +12,7 @@ export const idGenerator = (id: string) => {
     return idResult.join("")
 }
 
-export const statusStyleGenerator = (status: "COMPLETED" | "PENDING" | "REJECTED" | "VALID" | "INVALID") => {
+export const statusStyleGenerator = (status: "COMPLETED" | "PENDING" | "REJECTED" | "VALID" | "INVALID" | "SUCCESS" | "CANSELLED") => {
 
     switch (status) {
         case "COMPLETED": {
