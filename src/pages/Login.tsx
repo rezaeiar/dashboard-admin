@@ -56,7 +56,7 @@ const Login =  () => {
                         </label>
                         <input type="password" id='password' className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Password")} {...register("password", {
                             required: t("Password is required"), pattern: {
-                                value: /^[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+                                value: /^[a-zA-Z0-9!@#$%^&*]{5,16}$/,
                                 message: t("The password must be between 6 and 16 and contain English characters.")
                             }
                         })} />
