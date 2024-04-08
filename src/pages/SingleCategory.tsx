@@ -124,13 +124,13 @@ const SingleCategory = () => {
                         data.products.length ?
                             <div className="flex flex-col gap-y-3">
                                 {
-                                    data.products.map((product: { name: string, id: string }) => (
+                                    data.products.map((product: { name: string, id: string, images: string[] }) => (
                                         <div className="border border-general-50 rounded-md p-2 sm:p-3 xl:p-4 flex justify-between items-center" key={product.id}>
                                             <div className="flex gap-x-3 xl:gap-x-4 items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 sm:w-6 sm:h-6">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
                                                 </svg>
-                                                <img src="/images/Bitmap1.png" alt="" className="rounded" />
+                                                <img src={product.images[0]} alt="" className="rounded w-10" />
                                                 <h6 className="text-general-100 text-xs sm:text-sm lg:text-base font-iransans-semiBold line-clamp-1">
                                                     {product.name}
                                                 </h6>
