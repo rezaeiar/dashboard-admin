@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from 'universal-cookie';
 
 const apiReq = axios.create({
-    baseURL: 'https://cms-app.liara.run/'
+    baseURL: 'https://dashboard-api.liara.run/'
 })
 
 const cookies = new Cookies()
