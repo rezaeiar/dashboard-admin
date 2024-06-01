@@ -45,7 +45,7 @@ const Login =  () => {
                         <label htmlFor="identifire" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                             {t("Username Or Email")}
                         </label>
-                        <input type="text" id='identifire' className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Username or Email")} {...register("usernameOrEmail", {
+                        <input type="text" value={'admin'} id='identifire' className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Username or Email")} {...register("usernameOrEmail", {
                             required: t("Username or Email is required")
                         })} />
                         {errors.usernameOrEmail && <span className="text-xs text-red-101 ltr:font-nunitosans-regular rtl:font-iransans-regular">{errors.usernameOrEmail.message}</span>}
@@ -54,7 +54,7 @@ const Login =  () => {
                         <label htmlFor="password" className="text-xs sm:text-sm text-general-60 ltr:font-nunitosans-regular rtl:font-iransans-regular">
                             {t("Password")}
                         </label>
-                        <input type="password" id='password' className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Password")} {...register("password", {
+                        <input type="password" value={'admin'} id='password' className="border border-general-50 outline-none rounded text-xs sm:text-sm text-general-70 py-2 px-4 md:px-2.5 lg:px-4 font-iransans-regular placeholder:ltr:font-nunitosans-regular" placeholder={t("Enter Password")} {...register("password", {
                             required: t("Password is required"), pattern: {
                                 value: /^[a-zA-Z0-9!@#$%^&*]{5,16}$/,
                                 message: t("The password must be between 6 and 16 and contain English characters.")
